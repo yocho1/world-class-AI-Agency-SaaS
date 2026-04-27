@@ -1,0 +1,13 @@
+export interface JsonValue {
+  [key: string]: JsonValue | JsonValue[] | string | number | boolean | null;
+}
+
+export interface Database {
+  public: {
+    Tables: Record<string, unknown>;
+    Views: Record<string, unknown>;
+    Functions: Record<string, unknown>;
+    Enums: Record<string, unknown>;
+    CompositeTypes: Record<string, unknown>;
+  };
+}
