@@ -1,7 +1,6 @@
 "use client";
 
 import Link from "next/link";
-import { motion, useReducedMotion } from "framer-motion";
 import { Card } from "@/components/ui";
 
 interface LiveAIDemoProps {
@@ -9,21 +8,16 @@ interface LiveAIDemoProps {
 }
 
 export function LiveAIDemo({ title = "Preview the AI concierge experience" }: LiveAIDemoProps) {
-  const reduceMotion = useReducedMotion();
-
   return (
     <section className="container py-10" id="live-demo">
       <Card className="relative overflow-hidden border-primary-700/50 bg-[radial-gradient(circle_at_80%_10%,rgba(22,163,74,0.12),transparent_35%),radial-gradient(circle_at_15%_85%,rgba(108,99,255,0.15),transparent_30%)]">
-        <motion.div
-          animate={reduceMotion ? undefined : { opacity: 1, y: 0 }}
-          initial={reduceMotion ? false : { opacity: 0, y: 14 }}
-        >
+        <div>
           <p className="text-xs uppercase tracking-[0.18em] text-accent-400">Live AI demo</p>
           <h2 className="mt-3 max-w-3xl text-2xl font-medium text-text-primary md:text-3xl">{title}</h2>
           <p className="mt-3 max-w-2xl text-text-secondary">
             Explore how our assistant qualifies leads, answers service questions, and routes hot opportunities directly into your CRM in under 90 seconds.
           </p>
-        </motion.div>
+        </div>
 
         <div className="mt-8 grid gap-4 md:grid-cols-[1.2fr_0.8fr]">
           <div className="rounded-xl border border-border-subtle bg-bg-overlay p-5">

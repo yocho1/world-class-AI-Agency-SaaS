@@ -1,7 +1,6 @@
 "use client";
 
 import Link from "next/link";
-import { motion, useReducedMotion } from "framer-motion";
 import { usePostHog } from "@/hooks/usePostHog";
 import { trackCaseStudyClick } from "@/lib/analytics/events";
 
@@ -10,16 +9,11 @@ interface CaseStudySpotlightProps {
 }
 
 export function CaseStudySpotlight({ caseStudyId = "hospitality-concierge-001" }: CaseStudySpotlightProps) {
-  const reduceMotion = useReducedMotion();
   const posthog = usePostHog();
 
   return (
     <section className="container py-10">
-      <motion.div
-        animate={reduceMotion ? undefined : { opacity: 1, y: 0 }}
-        className="rounded-2xl border border-border-subtle bg-bg-surface p-8"
-        initial={reduceMotion ? false : { opacity: 0, y: 16 }}
-      >
+      <div className="rounded-2xl border border-border-subtle bg-bg-surface p-8">
         <p className="text-sm text-accent-400">Case Study Spotlight</p>
         <h2 className="mt-2 max-w-3xl text-2xl font-medium text-text-primary md:text-3xl">Hospitality group cut response time by 62% in four weeks.</h2>
         <p className="mt-3 max-w-2xl text-text-secondary">We deployed an AI concierge across web chat and WhatsApp, synced to CRM follow-up, and tuned multilingual routing for MENA guest support.</p>
@@ -46,7 +40,7 @@ export function CaseStudySpotlight({ caseStudyId = "hospitality-concierge-001" }
         >
           Read full case study
         </Link>
-      </motion.div>
+      </div>
     </section>
   );
 }

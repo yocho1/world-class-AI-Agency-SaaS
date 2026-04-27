@@ -1,6 +1,5 @@
 "use client";
 
-import { motion, useReducedMotion } from "framer-motion";
 import { Card } from "@/components/ui";
 import { usePostHog } from "@/hooks/usePostHog";
 import { trackServiceCardClick } from "@/lib/analytics/events";
@@ -34,7 +33,6 @@ const SERVICES: ServiceItem[] = [
 ];
 
 export function ServicesOverview({ services = SERVICES }: ServicesOverviewProps) {
-  const reduceMotion = useReducedMotion();
   const posthog = usePostHog();
 
   const onServiceClick = (service: string, position: number) => {
@@ -54,20 +52,17 @@ export function ServicesOverview({ services = SERVICES }: ServicesOverviewProps)
 
       <div className="grid gap-4 md:grid-cols-2">
         {services.map((service, index) => (
-          <motion.button
-            animate={reduceMotion ? undefined : { opacity: 1, y: 0 }}
+          <button
             className="text-left"
-            initial={reduceMotion ? false : { opacity: 0, y: 18 }}
             key={service.title}
             onClick={() => onServiceClick(service.title, index + 1)}
-            transition={{ delay: 0.08 + index * 0.06 }}
             type="button"
           >
             <Card className="h-full hover:border-primary-600/60 hover:shadow-[0_0_0_1px_rgba(108,99,255,0.2)]">
               <h3 className="text-xl font-medium text-text-primary">{service.title}</h3>
               <p className="mt-2 text-text-secondary">{service.summary}</p>
             </Card>
-          </motion.button>
+          </button>
         ))}
       </div>
     </section>

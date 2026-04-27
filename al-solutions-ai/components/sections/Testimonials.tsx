@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
-import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { usePostHog } from "@/hooks/usePostHog";
 import { trackTestimonialViewed } from "@/lib/analytics/events";
 
@@ -42,7 +41,6 @@ const ITEMS: TestimonialItem[] = [
 ];
 
 export function Testimonials({ items = ITEMS }: TestimonialsProps) {
-  const reduceMotion = useReducedMotion();
   const posthog = usePostHog();
   const [active, setActive] = useState(0);
   const [isHovered, setIsHovered] = useState(false);
@@ -61,7 +59,7 @@ export function Testimonials({ items = ITEMS }: TestimonialsProps) {
   }, [activeItem, posthog]);
 
   useEffect(() => {
-    if (reduceMotion || isHovered || items.length <= 1) {
+    if (isHovered || items.length <= 1) {
       return;
     }
 
@@ -72,7 +70,7 @@ export function Testimonials({ items = ITEMS }: TestimonialsProps) {
     return () => {
       window.clearInterval(timer);
     };
-  }, [isHovered, items.length, reduceMotion]);
+  }, [isHovered, items.length]);
 
   const goTo = (index: number) => {
     setActive(index);
@@ -96,20 +94,13 @@ export function Testimonials({ items = ITEMS }: TestimonialsProps) {
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
       >
-        <AnimatePresence mode="wait">
-          <motion.figure
-            animate={reduceMotion ? undefined : { opacity: 1, y: 0 }}
-            initial={reduceMotion ? false : { opacity: 0, y: 16 }}
-            key={activeItem.id}
-            transition={{ duration: 0.28 }}
-          >
-            <blockquote className="max-w-3xl text-lg text-text-primary md:text-2xl">&quot;{activeItem.quote}&quot;</blockquote>
-            <figcaption className="mt-4 text-sm text-text-secondary">
-              {activeItem.person} • {activeItem.role}
-            </figcaption>
-            <p className="mt-4 text-base font-medium text-accent-400">{activeItem.metric}</p>
-          </motion.figure>
-        </AnimatePresence>
+        <figure key={activeItem.id}>
+          <blockquote className="max-w-3xl text-lg text-text-primary md:text-2xl">&quot;{activeItem.quote}&quot;</blockquote>
+          <figcaption className="mt-4 text-sm text-text-secondary">
+            {activeItem.person} • {activeItem.role}
+          </figcaption>
+          <p className="mt-4 text-base font-medium text-accent-400">{activeItem.metric}</p>
+        </figure>
 
         <div className="mt-6 flex items-center gap-2">
           {items.map((item, index) => (
