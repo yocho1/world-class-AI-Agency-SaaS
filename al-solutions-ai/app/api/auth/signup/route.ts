@@ -1,39 +1,78 @@
-import { NextResponse } from "next/server"
-import { createClient } from "@supabase/supabase-js"
+import { NextRequest, NextResponse } from "next/server";
+import { createAuthRouteClient, createServiceRoleAuthClient } from "../_supabase";
+import { ensureTenantForUser } from "@/lib/tenants";
 
-export async function POST(req: Request) {
-  const body = await req.json()
-  const { email, password, fullName, company } = body || {}
+export const dynamic = "force-dynamic";
+export const runtime = "nodejs";
 
-  if (!email || !password) {
-    return NextResponse.json({ error: "Missing email or password" }, { status: 400 })
-  }
+export async function GET() {
+  return NextResponse.redirect(new URL("/signup", "http://localhost:3000"));
+}
 
-  const SUPABASE_URL = process.env.NEXT_PUBLIC_SUPABASE_URL || process.env.SUPABASE_URL
-  const SUPABASE_SERVICE_ROLE_KEY = process.env.SUPABASE_SERVICE_ROLE_KEY || process.env.SUPABASE_KEY
+export async function POST(request: NextRequest) {
+  try {
+    const body = (await request.json().catch(() => null)) as
+      | { email?: string; password?: string; fullName?: string; company?: string }
+      | null;
+    const email = body?.email?.trim() ?? "";
+    const password = body?.password ?? "";
+    const fullName = body?.fullName?.trim() ?? "";
+    const company = body?.company?.trim() ?? "";
 
-  if (SUPABASE_URL && SUPABASE_SERVICE_ROLE_KEY) {
-    try {
-      const supabase = createClient(SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY)
-      // Use admin API to create a user when service role key is available
-      // Note: This requires a service role key in environment variables.
-      /* eslint-disable @typescript-eslint/no-explicit-any */
-      const resp = await (supabase as any).auth.admin.createUser({
-        email,
-        password,
-        user_metadata: { fullName, company },
-      })
-      /* eslint-enable @typescript-eslint/no-explicit-any */
-      return NextResponse.json({ ok: true, data: resp })
-    } catch (err) {
-      // eslint-disable-next-line no-console
-      console.error("signup error", err)
-      return NextResponse.json({ error: String(err) }, { status: 500 })
+    if (!email || !password) {
+      return NextResponse.json({ error: "Missing email or password" }, { status: 400 });
     }
-  }
 
-  // Fallback: stubbed response for local/dev when Supabase is not configured
-  // eslint-disable-next-line no-console
-  console.warn("SUPABASE not configured — returning mocked signup response")
-  return NextResponse.json({ ok: true, mocked: true, email })
+    const initialResponse = NextResponse.json({ ok: true });
+    const supabase = createAuthRouteClient(request, initialResponse);
+    const { data, error } = await supabase.auth.signUp({
+      email,
+      password,
+      options: {
+        data: {
+          full_name: fullName,
+          company,
+        },
+        emailRedirectTo: `${request.nextUrl.origin}/dashboard`,
+      },
+    });
+
+    if (error) {
+      return NextResponse.json({ error: error.message }, { status: 400 });
+    }
+
+    const user = data.user;
+
+    if (user) {
+      try {
+        const serviceClient = createServiceRoleAuthClient();
+        await ensureTenantForUser({
+          userId: user.id,
+          email,
+          fullName: fullName || null,
+          company: company || null,
+        });
+
+        const { error: profileError } = await serviceClient.auth.admin.updateUserById(user.id, {
+          user_metadata: {
+            full_name: fullName,
+            company,
+          },
+        });
+
+        if (profileError) {
+          return NextResponse.json({ error: profileError.message }, { status: 400 });
+        }
+
+      } catch (provisioningError) {
+        console.warn("Workspace provisioning failed during signup", provisioningError);
+      }
+    }
+
+    // Return the original response so Set-Cookie headers from Supabase are preserved
+    return initialResponse;
+  } catch (error) {
+    const message = error instanceof Error ? error.message : "Signup failed";
+    return NextResponse.json({ error: message }, { status: 500 });
+  }
 }

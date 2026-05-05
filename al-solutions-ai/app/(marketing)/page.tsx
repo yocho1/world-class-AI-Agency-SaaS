@@ -1,30 +1,179 @@
 import type { Metadata } from "next";
-import { CaseStudySpotlight, FinalCTA, Hero, HowItWorks, LiveAIDemo, ProblemStatement, ServicesOverview, SocialProofBar, Testimonials } from "@/components/sections";
+import {
+  CaseStudySpotlight,
+  FaqSection,
+  FinalCTA,
+  Hero,
+  HowItWorks,
+  LiveAIDemo,
+  ProblemStatement,
+  ServicesOverview,
+  SocialProofBar,
+  Testimonials,
+} from "@/components/sections";
+
+const siteUrl = process.env.NEXT_PUBLIC_APP_URL ?? "https://alsolutionsai.com";
 
 export const metadata: Metadata = {
-  title: "AL Solutions AI | AI Products Built in 30 Days",
+  metadataBase: new URL(siteUrl),
+  title: "AI Chatbot & Automation Agency for SMBs | AL Solutions AI",
   description:
-    "AL Solutions AI builds customer-facing chatbots and AI automation systems for growth teams across MENA and Europe.",
+    "AL Solutions AI builds and deploys custom AI chatbots, automation systems, and lead conversion tools for growth-stage companies across MENA and Europe. Production-ready in 30 days.",
+  keywords: [
+    "AI chatbot agency",
+    "AI automation agency",
+    "custom AI chatbot development",
+    "AI agency MENA",
+    "business automation AI",
+    "AI chatbot for SMB",
+    "AI lead generation",
+    "chatbot development company",
+    "AI automation MENA",
+    "WhatsApp AI chatbot",
+    "Arabic AI chatbot",
+    "lead qualification AI",
+  ],
   openGraph: {
-    title: "AL Solutions AI | AI Products Built in 30 Days",
-    description: "From strategy to launch-ready AI in 30 days. Chatbots, automation, and growth systems.",
+    title: "AI Chatbots & Automation That Ship in 30 Days | AL Solutions AI",
+    description:
+      "Build and deploy a real AI product — not a prototype. Custom chatbots, automation systems, and lead conversion tools for growth teams in MENA and Europe.",
+    url: siteUrl,
+    siteName: "AL Solutions AI",
+    images: [
+      {
+        url: `${siteUrl}/og/homepage.png`,
+        width: 1200,
+        height: 630,
+        alt: "AL Solutions AI — AI chatbots and automation that ship in 30 days",
+      },
+    ],
     type: "website",
+    locale: "en_US",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "AI Chatbots & Automation That Ship in 30 Days | AL Solutions AI",
+    description:
+      "Custom AI chatbots, automation systems, and lead conversion tools. Production-ready in 30 days.",
+    images: [`${siteUrl}/og/homepage.png`],
+  },
+  alternates: {
+    canonical: `${siteUrl}/`,
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
   },
 };
 
-const STRUCTURED_DATA = {
+const SERVICE_SCHEMA = [
+  {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    name: "AI Chatbots",
+    serviceType: "AI Chatbot Development",
+    provider: { "@type": "Organization", name: "AL Solutions AI", url: siteUrl },
+    areaServed: ["MENA", "Europe"],
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    name: "Automation",
+    serviceType: "Business Process Automation",
+    provider: { "@type": "Organization", name: "AL Solutions AI", url: siteUrl },
+    areaServed: ["MENA", "Europe"],
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    name: "Lead Conversion",
+    serviceType: "Lead Conversion Systems",
+    provider: { "@type": "Organization", name: "AL Solutions AI", url: siteUrl },
+    areaServed: ["MENA", "Europe"],
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    name: "Web + AI Solutions",
+    serviceType: "AI Product Development",
+    provider: { "@type": "Organization", name: "AL Solutions AI", url: siteUrl },
+    areaServed: ["MENA", "Europe"],
+  },
+];
+
+const FAQ_SCHEMA = {
   "@context": "https://schema.org",
-  "@type": "Organization",
-  name: "AL Solutions AI",
-  description: "AI product agency building chatbots and automation systems in 30 days.",
-  url: "https://www.alsolutions.ai",
-  areaServed: ["MENA", "Europe"],
+  "@type": "FAQPage",
+  mainEntity: [
+    {
+      "@type": "Question",
+      name: "How long does it take to launch an AI chatbot?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Our standard launch cycle is 30 days from contract signing to production deployment. Bundled Web + AI builds follow the same 30-day cadence.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "What languages does your AI support?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Our chatbots support Arabic, English, and French natively, with full right-to-left layout support for Arabic interfaces. Additional languages are available on request.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Do you integrate with existing CRM systems?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Yes. We integrate with HubSpot, Salesforce, Zoho CRM, and custom CRM systems via API. WhatsApp and email integrations are included in all plans.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "What is included in the free AI audit?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "The free AI audit includes a 30-minute strategy call, an analysis of your current operations and toolstack, and a written report identifying three specific automation or AI opportunities with estimated ROI and implementation timeline.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "How much does a custom AI chatbot cost?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "AI chatbot projects start at $2,500 for a single-workflow implementation. Full transparent pricing is available on our pricing page.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Do you provide support after launch?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Yes. All plans include 60 days of post-launch support with prompt tuning and workflow optimization. Enterprise plans include ongoing monthly performance reviews and a dedicated optimization log.",
+      },
+    },
+  ],
 };
+
+const STRUCTURED_DATA = [FAQ_SCHEMA, ...SERVICE_SCHEMA];
 
 export default function MarketingHomePage() {
   return (
     <main className="space-y-16 pb-16 md:space-y-24 md:pb-24">
-      <script dangerouslySetInnerHTML={{ __html: JSON.stringify(STRUCTURED_DATA) }} type="application/ld+json" />
+      {STRUCTURED_DATA.map((schema, index) => (
+        <script
+          key={`schema-${index}`}
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+          type="application/ld+json"
+        />
+      ))}
       <Hero />
       <SocialProofBar />
       <ProblemStatement />
@@ -33,6 +182,7 @@ export default function MarketingHomePage() {
       <CaseStudySpotlight />
       <HowItWorks />
       <Testimonials />
+      <FaqSection />
       <FinalCTA />
     </main>
   );

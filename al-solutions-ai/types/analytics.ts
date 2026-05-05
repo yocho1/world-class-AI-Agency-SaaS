@@ -25,4 +25,5 @@ export interface CaseStudyClickedEvent {
 export interface GenericPageEvent {
   page: string;
   referrer: string;
+  session_id?: string;
 }

@@ -1,4 +1,5 @@
 export * from "./CaseStudySpotlight";
+export * from "./FaqSection";
 export * from "./FinalCTA";
 export * from "./Hero";
 export * from "./HowItWorks";
