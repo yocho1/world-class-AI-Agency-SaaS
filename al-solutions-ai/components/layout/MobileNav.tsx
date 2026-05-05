@@ -11,10 +11,11 @@ interface NavItem {
 }
 
 interface MobileNavProps {
-  navItems: NavItem[];
+  readonly navItems: readonly NavItem[];
 }
 
-export function MobileNav({ navItems }: MobileNavProps) {
+export function MobileNav(props: Readonly<MobileNavProps>) {
+  const { navItems } = props;
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
 
@@ -29,7 +30,7 @@ export function MobileNav({ navItems }: MobileNavProps) {
         aria-haspopup="menu"
         aria-label="Toggle menu"
         className={cn(
-          "rounded-md border px-3 py-2 text-sm text-text-primary transition-colors",
+          "inline-flex h-11 items-center rounded-md border px-4 text-sm text-text-primary transition-colors",
           open ? "border-primary-600 bg-primary-600/10" : "border-border-default",
         )}
         onClick={() => setOpen((value) => !value)}
@@ -41,7 +42,7 @@ export function MobileNav({ navItems }: MobileNavProps) {
         <div className="absolute right-0 top-14 w-[min(88vw,320px)] rounded-xl border border-border-subtle bg-bg-overlay p-4 shadow-[0_18px_40px_rgba(0,0,0,0.34)]">
           <div className="flex flex-col gap-3 text-sm text-text-secondary">
             {navItems.map((item) => (
-              <Link className="rounded-md px-2 py-1.5 hover:bg-bg-elevated hover:text-text-primary" href={item.href} key={item.href}>
+              <Link className="inline-flex min-h-11 items-center rounded-md px-2 hover:bg-bg-elevated hover:text-text-primary" href={item.href} key={item.href}>
                 {item.label}
               </Link>
             ))}

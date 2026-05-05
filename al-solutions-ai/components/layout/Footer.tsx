@@ -1,14 +1,24 @@
+import Image from "next/image";
 import Link from "next/link";
 
 export function Footer() {
   return (
     <footer className="border-t border-border-subtle bg-bg-surface py-12">
-      <div className="container grid gap-8 text-sm text-text-secondary md:grid-cols-[1.4fr_0.8fr_0.8fr]">
+      <div className="container grid gap-8 text-sm text-text-secondary md:grid-cols-[1.4fr_0.8fr_0.8fr_1fr]">
         <div>
-          <p className="text-base font-medium text-text-primary">AL Solutions AI</p>
+          <Link href="/" className="relative inline-block h-14 w-56 overflow-hidden">
+            <Image
+              alt="AL Solutions AI logo"
+              fill
+              priority
+              src="/images/al-solutions-ai-logo.svg"
+              className="object-cover object-center"
+              sizes="224px"
+            />
+          </Link>
           <p className="mt-3 max-w-md">Real AI products shipped in 30 days for growth teams that want results, not slide decks.</p>
-          <Link className="mt-5 inline-flex text-sm font-medium text-accent-400 hover:text-accent-300" href="/free-ai-audit">
-            Book your free audit
+          <Link className="mt-5 inline-flex text-sm text-muted-foreground transition-colors hover:text-primary" href="#live-demo">
+            Not ready to book yet? Chat with our AI first →
           </Link>
         </div>
 
@@ -18,6 +28,8 @@ export function Footer() {
             <Link href="/about">About</Link>
             <Link href="/services">Services</Link>
             <Link href="/case-studies">Case Studies</Link>
+            <Link href="/blog">Blog</Link>
+            <Link href="/free-ai-audit">Free AI Audit</Link>
           </div>
         </div>
 
@@ -29,6 +41,12 @@ export function Footer() {
             <Link href="/contact">Contact</Link>
           </div>
         </div>
+
+        <div>
+          <p className="text-xs uppercase tracking-[0.16em] text-text-tertiary">Built with</p>
+          <p className="mt-3 max-w-xs text-text-secondary">AL Solutions AI</p>
+        </div>
+
       </div>
     </footer>
   );

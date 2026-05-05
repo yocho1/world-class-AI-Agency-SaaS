@@ -1,11 +1,13 @@
 "use client"
 import { useState } from "react"
+import { useSearchParams } from "next/navigation"
 import Link from "next/link"
 import { Button, Card, Input } from "@/components/ui"
 
 export default function LoginPage() {
   const [loading, setLoading] = useState(false)
   const [message, setMessage] = useState<string | null>(null)
+  const searchParams = useSearchParams()
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault()
@@ -25,7 +27,11 @@ export default function LoginPage() {
       })
       const json = await res.json()
       if (!res.ok) throw new Error(json?.error || "Login failed")
-      setMessage(json.mocked ? "Login simulated (no Supabase configured)" : "Signed in")
+      
+      // Redirect to next param or dashboard using full-page navigation
+      const next = searchParams.get("next") || "/dashboard"
+      // use full navigation to ensure cookies set by the server are applied
+      window.location.href = next
     } catch (err: unknown) {
       let msg = "Unknown error"
       if (err && typeof err === "object" && "message" in err) {
@@ -35,7 +41,6 @@ export default function LoginPage() {
         msg = err
       }
       setMessage(msg)
-    } finally {
       setLoading(false)
     }
   }

@@ -5,7 +5,7 @@ export async function register() {
   }
 
   if (process.env.NEXT_RUNTIME === "edge") {
-    const { initializeClientSentry } = await import("./sentry.client.config");
-    initializeClientSentry();
+    const { initializeEdgeSentry } = await import("./sentry.edge.config");
+    initializeEdgeSentry();
   }
 }

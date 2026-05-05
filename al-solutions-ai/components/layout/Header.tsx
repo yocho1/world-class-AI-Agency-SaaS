@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
@@ -7,7 +8,7 @@ import { MobileNav } from "@/components/layout/MobileNav";
 import { cn } from "@/lib/utils";
 
 const NAV_ITEMS = [
-  { label: "Solutions", href: "/services" },
+  { label: "Services", href: "/services" },
   { label: "Case Studies", href: "/case-studies" },
   { label: "Pricing", href: "/pricing" },
   { label: "About", href: "/about" },
@@ -37,9 +38,16 @@ export function Header() {
         isScrolled ? "bg-bg-base/95 shadow-[0_8px_30px_rgba(0,0,0,0.28)] backdrop-blur" : "bg-transparent",
       )}
     >
-      <div className="container flex h-20 items-center justify-between">
-        <Link className="text-sm font-medium tracking-wide text-text-primary" href="/">
-          AL Solutions AI
+      <div className="container flex h-24 items-center justify-between md:h-28">
+        <Link className="relative flex h-16 w-72 items-center overflow-hidden text-sm font-medium tracking-wide text-text-primary md:h-20 md:w-96 lg:h-24 lg:w-[28rem]" href="/" aria-label="AL Solutions AI home">
+          <Image
+            alt="AL Solutions AI logo"
+            fill
+            priority
+            sizes="(min-width: 1024px) 448px, (min-width: 768px) 384px, 288px"
+            src="/images/al-solutions-ai-logo.svg"
+            className="object-cover object-center"
+          />
         </Link>
         <nav className="hidden items-center gap-8 text-sm text-text-secondary md:flex">
           {NAV_ITEMS.map((item) => (

@@ -25,9 +25,13 @@ export default function SignupPage() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload),
       })
-      const json = await res.json()
+      const raw = await res.text()
+      const json = raw ? JSON.parse(raw) : {}
       if (!res.ok) throw new Error(json?.error || "Signup failed")
-      setMessage(json.mocked ? "Signup simulated (no Supabase configured)" : "Account created — check your email")
+      
+      // Redirect to onboarding on success using full-page navigation
+      // ensures auth cookies set by the server are applied before middleware runs
+      window.location.href = "/onboarding"
     } catch (err: unknown) {
       let msg = "Unknown error"
       if (err && typeof err === "object" && "message" in err) {
@@ -37,7 +41,6 @@ export default function SignupPage() {
         msg = err
       }
       setMessage(msg)
-    } finally {
       setLoading(false)
     }
   }

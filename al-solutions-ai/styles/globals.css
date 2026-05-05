@@ -8,7 +8,8 @@
   --bg-elevated: #1c1c2a;
   --bg-overlay: #252535;
   --text-primary: #f8f8ff;
-  --text-secondary: #9898b0;
+  --text-secondary: #a4a4be;
+  --text-tertiary: #8f8fa8;
 }
 
 * {

@@ -1,53 +1,96 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
-import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { usePostHog } from "@/hooks/usePostHog";
 import { trackTestimonialViewed } from "@/lib/analytics/events";
+import { Reveal } from "@/components/ui";
 
 interface TestimonialItem {
-  id: string;
-  quote: string;
-  person: string;
-  role: string;
-  metric: string;
+  readonly id: number;
+  readonly quote: string;
+  readonly name: string;
+  readonly title: string;
+  readonly company: string;
+  readonly initials: string;
+  readonly linkedin: string;
+  readonly metric: string;
+  readonly metricNote: string;
 }
 
 interface TestimonialsProps {
-  items?: TestimonialItem[];
+  readonly items?: TestimonialItem[];
 }
 
 const ITEMS: TestimonialItem[] = [
   {
-    id: "testi-1",
-    quote: "Their team replaced three disconnected vendors and launched a full AI concierge in under a month.",
-    person: "Amina N.",
-    role: "CMO, Nexora Hotels",
-    metric: "+2.3x lead conversion",
+    id: 1,
+    quote:
+      "Before AL Solutions, we had three vendors, none of them talking to each other. Within 28 days we had a single AI system live on our website and WhatsApp that we can actually measure.",
+    name: "Amina Nasser",
+    title: "Chief Marketing Officer",
+    company: "Nexora Hotels Group",
+    initials: "AN",
+    linkedin: "#",
+    metric: "+62% faster first response",
+    metricNote: "Nexora Hotels, 60 days post-launch",
   },
   {
-    id: "testi-2",
-    quote: "We reduced support response lag from hours to minutes while keeping quality consistent across Arabic and English.",
-    person: "Khalid R.",
-    role: "Head of CX, Atlas Retail",
+    id: 2,
+    quote: "We were six months into a chatbot project with another vendor when we brought in AL Solutions. They had something live and working in 22 days.",
+    name: "Sara Mensah",
+    title: "VP of Operations",
+    company: "FinEdge",
+    initials: "SM",
+    linkedin: "#",
+    metric: "22-day deployment",
+    metricNote: "after 6 months of stall with previous vendor",
+  },
+  {
+    id: 3,
+    quote: "We reduced support response lag from hours to minutes while keeping quality consistent across Arabic and English. The team delivered exactly what they scoped.",
+    name: "Khalid Rashidi",
+    title: "Head of Customer Experience",
+    company: "Atlas Retail Group",
+    initials: "KR",
+    linkedin: "#",
     metric: "48h faster support flow",
-  },
-  {
-    id: "testi-3",
-    quote: "The automation stack paid for itself in one quarter. Sales now gets qualified meetings, not noise.",
-    person: "Leila S.",
-    role: "COO, FinEdge",
-    metric: "31% lower ops cost",
+    metricNote: "Atlas Retail, Q2 2024",
   },
 ];
 
+function LinkedInIcon() {
+  return (
+    <svg aria-hidden="true" className="h-4 w-4" fill="none" viewBox="0 0 16 16" stroke="currentColor" strokeWidth="1.6">
+      <path d="M3.5 5.5v7" strokeLinecap="round" strokeLinejoin="round" />
+      <path d="M3.5 3.25a.75.75 0 1 0 0 .01" strokeLinecap="round" strokeLinejoin="round" />
+      <path d="M6.5 12.5v-4a1.75 1.75 0 0 1 3.5 0v4" strokeLinecap="round" strokeLinejoin="round" />
+      <path d="M10 8.5V12.5" strokeLinecap="round" strokeLinejoin="round" />
+      <path d="M10 8.5a1.75 1.75 0 0 1 3.5 0v4" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  );
+}
+
 export function Testimonials({ items = ITEMS }: TestimonialsProps) {
-  const reduceMotion = useReducedMotion();
   const posthog = usePostHog();
   const [active, setActive] = useState(0);
   const [isHovered, setIsHovered] = useState(false);
+  const [interactionMode, setInteractionMode] = useState<"auto" | "manual">("auto");
+  const carouselRef = useRef<HTMLDivElement>(null);
 
   const activeItem = useMemo(() => items[active], [active, items]);
+
+  const goTo = useCallback((index: number) => {
+    setInteractionMode("manual");
+    setActive(index);
+  }, []);
+
+  const goPrevious = useCallback(() => {
+    goTo((active - 1 + items.length) % items.length);
+  }, [active, goTo, items.length]);
+
+  const goNext = useCallback(() => {
+    goTo((active + 1) % items.length);
+  }, [active, goTo, items.length]);
 
   useEffect(() => {
     if (!posthog || !activeItem) {
@@ -55,74 +98,154 @@ export function Testimonials({ items = ITEMS }: TestimonialsProps) {
     }
 
     trackTestimonialViewed(posthog, {
-      testimonial_id: activeItem.id,
-      auto_or_manual: "auto",
+      testimonial_id: String(activeItem.id),
+      auto_or_manual: interactionMode,
     });
-  }, [activeItem, posthog]);
+  }, [activeItem, interactionMode, posthog]);
 
   useEffect(() => {
-    if (reduceMotion || isHovered || items.length <= 1) {
+    if (isHovered || items.length <= 1) {
       return;
     }
 
-    const timer = window.setInterval(() => {
+    const timer = globalThis.setInterval(() => {
+      setInteractionMode("auto");
       setActive((value) => (value + 1) % items.length);
-    }, 5400);
+    }, 6000);
 
     return () => {
-      window.clearInterval(timer);
+      globalThis.clearInterval(timer);
     };
-  }, [isHovered, items.length, reduceMotion]);
+  }, [isHovered, items.length]);
 
-  const goTo = (index: number) => {
-    setActive(index);
+  useEffect(() => {
+    const handleKeyDown = (event: KeyboardEvent) => {
+      const target = event.target as HTMLElement | null;
+      const isTypingTarget = target ? ["INPUT", "TEXTAREA", "SELECT"].includes(target.tagName) || target.isContentEditable : false;
 
-    if (!posthog) {
+      if (isTypingTarget) {
+        return;
+      }
+
+      if (event.key === "ArrowLeft") {
+        event.preventDefault();
+        goPrevious();
+      }
+
+      if (event.key === "ArrowRight") {
+        event.preventDefault();
+        goNext();
+      }
+    };
+
+    globalThis.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      globalThis.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [goNext, goPrevious]);
+
+  useEffect(() => {
+    const element = carouselRef.current;
+
+    if (!element) {
       return;
     }
 
-    trackTestimonialViewed(posthog, {
-      testimonial_id: items[index].id,
-      auto_or_manual: "manual",
-    });
-  };
+    const handleMouseEnter = () => {
+      setIsHovered(true);
+    };
+
+    const handleMouseLeave = () => {
+      setIsHovered(false);
+    };
+
+    element.addEventListener("mouseenter", handleMouseEnter);
+    element.addEventListener("mouseleave", handleMouseLeave);
+
+    return () => {
+      element.removeEventListener("mouseenter", handleMouseEnter);
+      element.removeEventListener("mouseleave", handleMouseLeave);
+    };
+  }, []);
 
   return (
     <section className="container py-10">
-      <h2 className="text-3xl font-medium text-text-primary">Trusted outcomes, not vanity prototypes</h2>
+      <Reveal>
+        <h2 className="text-3xl font-medium text-text-primary">What Our Clients Say</h2>
 
-      <div
-        className="mt-6 rounded-2xl border border-border-subtle bg-bg-surface p-6 md:p-8"
-        onMouseEnter={() => setIsHovered(true)}
-        onMouseLeave={() => setIsHovered(false)}
-      >
-        <AnimatePresence mode="wait">
-          <motion.figure
-            animate={reduceMotion ? undefined : { opacity: 1, y: 0 }}
-            initial={reduceMotion ? false : { opacity: 0, y: 16 }}
-            key={activeItem.id}
-            transition={{ duration: 0.28 }}
-          >
-            <blockquote className="max-w-3xl text-lg text-text-primary md:text-2xl">&quot;{activeItem.quote}&quot;</blockquote>
-            <figcaption className="mt-4 text-sm text-text-secondary">
-              {activeItem.person} • {activeItem.role}
-            </figcaption>
-            <p className="mt-4 text-base font-medium text-accent-400">{activeItem.metric}</p>
-          </motion.figure>
-        </AnimatePresence>
+        <div ref={carouselRef} className="mt-6 rounded-2xl border border-border-subtle bg-bg-surface p-6 md:p-8">
+          <div aria-atomic="true" aria-live="polite" aria-label="Client testimonials">
+            <figure key={activeItem.id} data-linkedin={activeItem.linkedin}>
+              <blockquote className="max-w-3xl text-[1.05rem] font-normal italic leading-7 text-text-primary md:text-[1.125rem] md:leading-8">
+                &quot;{activeItem.quote}&quot;
+              </blockquote>
 
-        <div className="mt-6 flex items-center gap-2">
-          {items.map((item, index) => (
-            <button
-              aria-label={`Go to testimonial ${index + 1}`}
-              className={`h-2 rounded-full transition-all ${index === active ? "w-9 bg-accent-400" : "w-2 bg-border-default hover:bg-text-tertiary"}`}
-              key={item.id}
-              onClick={() => goTo(index)}
-              type="button"
-            />
-          ))}
+              <div className="mt-6 flex flex-col gap-4 border-t border-border-subtle pt-5 sm:flex-row sm:items-center sm:justify-between">
+                <div className="flex items-center gap-3">
+                  <div className="flex h-11 w-11 items-center justify-center rounded-full bg-primary-600/10 text-sm font-medium text-primary-500">
+                    {activeItem.initials}
+                  </div>
+                  <div>
+                    <p className="text-sm font-medium text-text-primary">{activeItem.name}</p>
+                    <p className="text-sm text-text-secondary">{activeItem.title}</p>
+                    <p className="text-xs text-text-tertiary">{activeItem.company}</p>
+                  </div>
+                </div>
+
+                <a
+                  aria-label={`${activeItem.name} LinkedIn profile`}
+                  className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-border-default text-text-tertiary transition-colors hover:border-primary-500 hover:text-primary-500"
+                  href={activeItem.linkedin}
+                  rel="noopener noreferrer"
+                  target="_blank"
+                >
+                  <LinkedInIcon />
+                </a>
+              </div>
+
+              <p className="mt-5 text-[1.05rem] font-medium text-primary-500 md:text-xl" data-attribution={activeItem.metricNote} title={activeItem.metricNote}>
+                {activeItem.metric}
+              </p>
+              <p className="mt-1 text-xs text-muted-foreground">{activeItem.metricNote}</p>
+            </figure>
+          </div>
+
+          <div className="mt-6 flex items-center justify-between gap-4">
+            <div className="flex items-center gap-2">
+              <button
+                aria-label="Previous testimonial"
+                className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-border-default text-text-secondary transition-colors hover:border-primary-500 hover:text-primary-500"
+                onClick={goPrevious}
+                type="button"
+              >
+                <span aria-hidden="true">‹</span>
+              </button>
+              <button
+                aria-label="Next testimonial"
+                className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-border-default text-text-secondary transition-colors hover:border-primary-500 hover:text-primary-500"
+                onClick={goNext}
+                type="button"
+              >
+                <span aria-hidden="true">›</span>
+              </button>
+            </div>
+
+            <div className="flex items-center gap-2">
+              {items.map((item, index) => (
+                <button
+                  aria-label={`Go to testimonial ${index + 1}`}
+                  aria-pressed={index === active}
+                  className={`h-2 rounded-full transition-all ${index === active ? "w-9 bg-primary-500" : "w-2 bg-border-default hover:bg-text-tertiary"}`}
+                  key={item.id}
+                  onClick={() => goTo(index)}
+                  type="button"
+                />
+              ))}
+            </div>
+          </div>
         </div>
-      </div>
+      </Reveal>
     </section>
   );
 }
