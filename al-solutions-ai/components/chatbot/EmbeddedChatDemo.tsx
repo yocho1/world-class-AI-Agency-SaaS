@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useChat } from "@/hooks/useChat";
 import { ChatInput } from "./ChatInput";
 import { MessageBubble } from "./MessageBubble";
@@ -24,15 +24,6 @@ export function EmbeddedChatDemo() {
   const [showHandoffBanner, setShowHandoffBanner] = useState(false);
   const typingStartedAtRef = useRef<number | null>(null);
   const typingTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
-
-  const starterSummary = useMemo(
-    () => [
-      "Shows real streaming responses",
-      "Demonstrates qualification, not a script",
-      "Connects naturally into audit capture",
-    ],
-    []
-  );
 
   useEffect(() => {
     if (chat.isLoading) {
@@ -93,84 +84,67 @@ export function EmbeddedChatDemo() {
   };
 
   return (
-    <div className="grid gap-4 lg:grid-cols-[1.1fr_0.9fr]">
-      <div className="rounded-2xl border border-border-subtle bg-bg-overlay p-4">
-        <div className="flex items-center justify-between border-b border-border-subtle pb-3">
-          <div>
-            <p className="text-xs uppercase tracking-[0.18em] text-text-tertiary">Embedded demo</p>
-            <h3 className="mt-1 text-lg font-medium text-text-primary">Try the live assistant below</h3>
-          </div>
-          <div className="rounded-full border border-accent-400/30 bg-accent-400/10 px-3 py-1 text-xs text-accent-400">
-            Live streaming
-          </div>
+    <div className="rounded-2xl border border-border-subtle bg-bg-overlay p-4">
+      <div className="flex items-center justify-between border-b border-border-subtle pb-3">
+        <div>
+          <p className="text-xs uppercase tracking-[0.18em] text-text-tertiary">Embedded demo</p>
+          <h3 className="mt-1 text-lg font-medium text-text-primary">Try the live assistant below</h3>
         </div>
-
-        <div className="mt-4 space-y-3">
-          {chat.messages.length === 0 ? (
-            <div className="rounded-2xl border border-dashed border-border-default bg-bg-elevated p-4 text-sm text-text-secondary">
-              Ask the assistant anything about our AI products. It will answer directly, qualify the use case, and move naturally toward a demo or audit.
-            </div>
-          ) : (
-            <div className="flex max-h-[320px] flex-col gap-3 overflow-y-auto pr-1">
-              {chat.messages.map((message) => (
-                <MessageBubble
-                  key={message.id}
-                  message={message}
-                  isStreaming={
-                    isAssistantTypingVisible &&
-                    message.role === "assistant" &&
-                    message === chat.messages[chat.messages.length - 1]
-                  }
-                />
-              ))}
-              {isAssistantTypingVisible && <TypingIndicator />}
-            </div>
-          )}
-
-          {chat.messages.length === 0 && (
-            <div className={isQuickReplyTransitioning ? "pointer-events-none opacity-60 transition-all duration-200" : "transition-all duration-200"}>
-              <QuickReplies options={DEMO_STARTERS} onSelect={handleQuickReply} disabled={isQuickReplyTransitioning} />
-            </div>
-          )}
-
-          {showHandoffBanner && !chat.leadCaptured ? (
-            <div className="rounded-2xl border border-accent-400/20 bg-accent-400/10 p-3 text-xs text-text-secondary" aria-live="polite">
-              <p className="font-medium text-text-primary">Routing this to a specialist</p>
-              <p className="mt-1">We&apos;ve got enough context to move beyond chat. Share your email when you&apos;re ready and we&apos;ll follow up with the next step.</p>
-            </div>
-          ) : null}
-        </div>
-
-        <div className="mt-4">
-          <label className="mb-2 block text-xs font-medium uppercase tracking-[0.18em] text-text-tertiary">
-            Or ask your own question
-          </label>
-          <ChatInput
-            onSend={(message) => {
-              if (message.toLowerCase().includes("audit") || message.toLowerCase().includes("demo")) {
-                setShowHandoffBanner(true);
-              }
-              void chat.sendMessage(message);
-            }}
-            disabled={chat.isLoading || isQuickReplyTransitioning}
-            placeholder="Ask about integrations, pricing, or timelines"
-          />
+        <div className="rounded-full border border-accent-400/30 bg-accent-400/10 px-3 py-1 text-xs text-accent-400">
+          Live streaming
         </div>
       </div>
 
-      <div className="rounded-2xl border border-border-subtle bg-bg-surface p-5">
-        <p className="text-xs uppercase tracking-[0.18em] text-accent-400">What this proves</p>
-        <ul className="mt-4 space-y-3 text-sm text-text-secondary">
-          {starterSummary.map((item) => (
-            <li key={item} className="flex items-start gap-3 rounded-xl border border-border-subtle bg-bg-elevated px-4 py-3">
-              <span className="mt-1 h-2 w-2 rounded-full bg-accent-400" />
-              <span>{item}</span>
-            </li>
-          ))}
-        </ul>
-        <div className="mt-6 rounded-2xl border border-primary-600/20 bg-primary-600/10 p-4 text-sm text-text-secondary">
-          The floating chatbot remains the persistent site assistant, while this embedded version is a hands-on proof-of-capability module on the homepage.
-        </div>
+      <div className="mt-4 space-y-3">
+        {chat.messages.length === 0 ? (
+          <div className="rounded-2xl border border-dashed border-border-default bg-bg-elevated p-4 text-sm text-text-secondary">
+            Ask the assistant anything about our AI products. It will answer directly, qualify the use case, and move naturally toward a demo or audit.
+          </div>
+        ) : (
+          <div className="flex max-h-[320px] flex-col gap-3 overflow-y-auto pr-1">
+            {chat.messages.map((message) => (
+              <MessageBubble
+                key={message.id}
+                message={message}
+                isStreaming={
+                  isAssistantTypingVisible &&
+                  message.role === "assistant" &&
+                  message === chat.messages[chat.messages.length - 1]
+                }
+              />
+            ))}
+            {isAssistantTypingVisible && <TypingIndicator />}
+          </div>
+        )}
+
+        {chat.messages.length === 0 && (
+          <div className={isQuickReplyTransitioning ? "pointer-events-none opacity-60 transition-all duration-200" : "transition-all duration-200"}>
+            <QuickReplies options={DEMO_STARTERS} onSelect={handleQuickReply} disabled={isQuickReplyTransitioning} />
+          </div>
+        )}
+
+        {showHandoffBanner && !chat.leadCaptured ? (
+          <div className="rounded-2xl border border-accent-400/20 bg-accent-400/10 p-3 text-xs text-text-secondary" aria-live="polite">
+            <p className="font-medium text-text-primary">Routing this to a specialist</p>
+            <p className="mt-1">We&apos;ve got enough context to move beyond chat. Share your email when you&apos;re ready and we&apos;ll follow up with the next step.</p>
+          </div>
+        ) : null}
+      </div>
+
+      <div className="mt-4">
+        <label className="mb-2 block text-xs font-medium uppercase tracking-[0.18em] text-text-tertiary">
+          Or ask your own question
+        </label>
+        <ChatInput
+          onSend={(message) => {
+            if (message.toLowerCase().includes("audit") || message.toLowerCase().includes("demo")) {
+              setShowHandoffBanner(true);
+            }
+            void chat.sendMessage(message);
+          }}
+          disabled={chat.isLoading || isQuickReplyTransitioning}
+          placeholder="Ask about integrations, pricing, or timelines"
+        />
       </div>
     </div>
   );

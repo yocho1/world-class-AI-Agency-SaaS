@@ -2,6 +2,7 @@ import Link from "next/link";
 import { Card } from "@/components/ui";
 
 const POSTS = [
+  { title: "AI Chatbot for Hotels in MENA", slug: "ai-chatbot-for-hotels-mena" },
   { title: "How to launch an AI chatbot in 30 days", slug: "launch-ai-chatbot-30-days" },
   { title: "Why most automation projects stall", slug: "automation-projects-stall" },
   { title: "Conversion lessons from real AI deployments", slug: "conversion-lessons-deployments" },

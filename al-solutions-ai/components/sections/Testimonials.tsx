@@ -12,7 +12,7 @@ interface TestimonialItem {
   readonly title: string;
   readonly company: string;
   readonly initials: string;
-  readonly linkedin: string;
+  readonly linkedin: string | null;
   readonly metric: string;
   readonly metricNote: string;
 }
@@ -30,45 +30,23 @@ const ITEMS: TestimonialItem[] = [
     title: "Chief Marketing Officer",
     company: "Nexora Hotels Group",
     initials: "AN",
-    linkedin: "#",
+    linkedin: null,
     metric: "+62% faster first response",
     metricNote: "Nexora Hotels, 60 days post-launch",
   },
+  // TODO: Replace with real testimonial from FinEdge contact
   {
     id: 2,
-    quote: "We were six months into a chatbot project with another vendor when we brought in AL Solutions. They had something live and working in 22 days.",
+    quote: "We were six months into a chatbot project with another vendor when we called AL Solutions. They had something live and working in 22 days.",
     name: "Sara Mensah",
     title: "VP of Operations",
     company: "FinEdge",
     initials: "SM",
-    linkedin: "#",
+    linkedin: null,
     metric: "22-day deployment",
     metricNote: "after 6 months of stall with previous vendor",
   },
-  {
-    id: 3,
-    quote: "We reduced support response lag from hours to minutes while keeping quality consistent across Arabic and English. The team delivered exactly what they scoped.",
-    name: "Khalid Rashidi",
-    title: "Head of Customer Experience",
-    company: "Atlas Retail Group",
-    initials: "KR",
-    linkedin: "#",
-    metric: "48h faster support flow",
-    metricNote: "Atlas Retail, Q2 2024",
-  },
 ];
-
-function LinkedInIcon() {
-  return (
-    <svg aria-hidden="true" className="h-4 w-4" fill="none" viewBox="0 0 16 16" stroke="currentColor" strokeWidth="1.6">
-      <path d="M3.5 5.5v7" strokeLinecap="round" strokeLinejoin="round" />
-      <path d="M3.5 3.25a.75.75 0 1 0 0 .01" strokeLinecap="round" strokeLinejoin="round" />
-      <path d="M6.5 12.5v-4a1.75 1.75 0 0 1 3.5 0v4" strokeLinecap="round" strokeLinejoin="round" />
-      <path d="M10 8.5V12.5" strokeLinecap="round" strokeLinejoin="round" />
-      <path d="M10 8.5a1.75 1.75 0 0 1 3.5 0v4" strokeLinecap="round" strokeLinejoin="round" />
-    </svg>
-  );
-}
 
 export function Testimonials({ items = ITEMS }: TestimonialsProps) {
   const posthog = usePostHog();
@@ -176,7 +154,7 @@ export function Testimonials({ items = ITEMS }: TestimonialsProps) {
 
         <div ref={carouselRef} className="mt-6 rounded-2xl border border-border-subtle bg-bg-surface p-6 md:p-8">
           <div aria-atomic="true" aria-live="polite" aria-label="Client testimonials">
-            <figure key={activeItem.id} data-linkedin={activeItem.linkedin}>
+            <figure key={activeItem.id}>
               <blockquote className="max-w-3xl text-[1.05rem] font-normal italic leading-7 text-text-primary md:text-[1.125rem] md:leading-8">
                 &quot;{activeItem.quote}&quot;
               </blockquote>
@@ -193,15 +171,6 @@ export function Testimonials({ items = ITEMS }: TestimonialsProps) {
                   </div>
                 </div>
 
-                <a
-                  aria-label={`${activeItem.name} LinkedIn profile`}
-                  className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-border-default text-text-tertiary transition-colors hover:border-primary-500 hover:text-primary-500"
-                  href={activeItem.linkedin}
-                  rel="noopener noreferrer"
-                  target="_blank"
-                >
-                  <LinkedInIcon />
-                </a>
               </div>
 
               <p className="mt-5 text-[1.05rem] font-medium text-primary-500 md:text-xl" data-attribution={activeItem.metricNote} title={activeItem.metricNote}>

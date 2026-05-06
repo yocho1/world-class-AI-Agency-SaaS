@@ -6,7 +6,8 @@ import { PostHogProvider } from "@/components/analytics/PostHogProvider";
 import { PageViewTracker } from "@/components/analytics/PageViewTracker";
 import "./globals.css";
 
-const siteUrl = process.env.NEXT_PUBLIC_APP_URL ?? "https://alsolutionsai.com";
+const configuredSiteUrl = process.env.NEXT_PUBLIC_APP_URL;
+const siteUrl = configuredSiteUrl && !configuredSiteUrl.includes("localhost") ? configuredSiteUrl : "https://www.alsolutionsai.online";
 const supportedLocales = new Set(["en", "ar", "fr"]);
 const organizationSchema = {
   "@context": "https://schema.org",
@@ -15,8 +16,7 @@ const organizationSchema = {
   url: siteUrl,
   description: "AI agency specializing in custom chatbots, automation systems, and lead conversion tools for SMBs in MENA and Europe.",
   areaServed: ["Middle East", "North Africa", "Europe"],
-  serviceType: ["AI Chatbot Development", "Business Process Automation", "Lead Conversion Systems", "Web and AI Solutions"],
-  knowsAbout: ["Artificial Intelligence", "Machine Learning", "Business Automation", "Conversational AI", "Natural Language Processing"],
+  serviceType: ["AI Chatbot Development", "Business Process Automation", "Lead Conversion Systems"],
 };
 
 const plusJakartaSans = Plus_Jakarta_Sans({

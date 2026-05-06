@@ -12,7 +12,8 @@ import {
   Testimonials,
 } from "@/components/sections";
 
-const siteUrl = process.env.NEXT_PUBLIC_APP_URL ?? "https://alsolutionsai.com";
+const configuredSiteUrl = process.env.NEXT_PUBLIC_APP_URL;
+const siteUrl = configuredSiteUrl && !configuredSiteUrl.includes("localhost") ? configuredSiteUrl : "https://www.alsolutionsai.online";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
@@ -116,7 +117,7 @@ const FAQ_SCHEMA = {
       name: "How long does it take to launch an AI chatbot?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Our standard launch cycle is 30 days from contract signing to production deployment. Bundled Web + AI builds follow the same 30-day cadence.",
+        text: "Our standard launch cycle is 30 days from contract signing to production deployment.",
       },
     },
     {
@@ -124,7 +125,7 @@ const FAQ_SCHEMA = {
       name: "What languages does your AI support?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Our chatbots support Arabic, English, and French natively, with full right-to-left layout support for Arabic interfaces. Additional languages are available on request.",
+        text: "Our chatbots support Arabic, English, and French natively, with full RTL support for Arabic interfaces.",
       },
     },
     {
@@ -132,7 +133,7 @@ const FAQ_SCHEMA = {
       name: "Do you integrate with existing CRM systems?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Yes. We integrate with HubSpot, Salesforce, Zoho CRM, and custom CRM systems via API. WhatsApp and email integrations are included in all plans.",
+        text: "Yes — we integrate with HubSpot, Salesforce, Zoho, and custom CRM systems via API. WhatsApp integrations included in all plans.",
       },
     },
     {
@@ -140,7 +141,7 @@ const FAQ_SCHEMA = {
       name: "What is included in the free AI audit?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "The free AI audit includes a 30-minute strategy call, an analysis of your current operations and toolstack, and a written report identifying three specific automation or AI opportunities with estimated ROI and implementation timeline.",
+        text: "A 30-minute strategy call, analysis of your current operations, and a written report identifying 3 specific automation opportunities with estimated ROI and timeline.",
       },
     },
     {
@@ -148,7 +149,7 @@ const FAQ_SCHEMA = {
       name: "How much does a custom AI chatbot cost?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "AI chatbot projects start at $2,500 for a single-workflow implementation. Full transparent pricing is available on our pricing page.",
+        text: "Projects start at $2,500 for a single-workflow implementation. Full pricing at alsolutionsai.online/pricing.",
       },
     },
     {
@@ -156,7 +157,7 @@ const FAQ_SCHEMA = {
       name: "Do you provide support after launch?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Yes. All plans include 60 days of post-launch support with prompt tuning and workflow optimization. Enterprise plans include ongoing monthly performance reviews and a dedicated optimization log.",
+        text: "All plans include 60 days of post-launch support. Enterprise plans include monthly performance reviews and an optimization log.",
       },
     },
   ],
