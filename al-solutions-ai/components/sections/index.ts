@@ -5,6 +5,8 @@ export * from "./Hero";
 export * from "./HowItWorks";
 export * from "./LiveAIDemo";
 export * from "./ProblemStatement";
+export * from "./ROICalculator";
 export * from "./ServicesOverview";
 export * from "./SocialProofBar";
 export * from "./Testimonials";
+export * from "./WhyCompare";

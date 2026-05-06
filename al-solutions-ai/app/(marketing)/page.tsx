@@ -7,9 +7,11 @@ import {
   HowItWorks,
   LiveAIDemo,
   ProblemStatement,
+  ROICalculator,
   ServicesOverview,
   SocialProofBar,
   Testimonials,
+  WhyCompare,
 } from "@/components/sections";
 
 const siteUrl = "https://www.alsolutionsai.online";
@@ -178,10 +180,12 @@ export default function MarketingHomePage() {
       <SocialProofBar />
       <ProblemStatement />
       <ServicesOverview />
+      <ROICalculator />
       <LiveAIDemo />
       <CaseStudySpotlight />
       <HowItWorks />
       <Testimonials />
+      <WhyCompare />
       <FaqSection />
       <FinalCTA />
     </main>

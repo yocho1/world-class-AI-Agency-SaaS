@@ -20,7 +20,7 @@ export function Header() {
 
   useEffect(() => {
     const onScroll = () => {
-      setIsScrolled(window.scrollY > 12);
+      setIsScrolled(window.scrollY > 80);
     };
 
     onScroll();
@@ -65,7 +65,12 @@ export function Header() {
         </nav>
         <div className="flex items-center gap-3">
           <Link
-            className="hidden h-11 items-center rounded-lg bg-primary-600 px-6 text-sm font-medium text-white transition-colors hover:bg-primary-700 md:inline-flex"
+            className={cn(
+              "hidden h-11 items-center rounded-lg px-6 text-sm font-medium transition-all duration-200 md:inline-flex",
+              isScrolled
+                ? "bg-accent-400 text-bg-default hover:bg-accent-300 hover:shadow-lg hover:shadow-accent-400/20"
+                : "bg-primary-600 text-white hover:bg-primary-700"
+            )}
             href="/free-ai-audit"
           >
             Get Free AI Audit
