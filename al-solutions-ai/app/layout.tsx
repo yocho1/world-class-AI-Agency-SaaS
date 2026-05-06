@@ -6,8 +6,7 @@ import { PostHogProvider } from "@/components/analytics/PostHogProvider";
 import { PageViewTracker } from "@/components/analytics/PageViewTracker";
 import "./globals.css";
 
-const configuredSiteUrl = process.env.NEXT_PUBLIC_APP_URL;
-const siteUrl = configuredSiteUrl && !configuredSiteUrl.includes("localhost") ? configuredSiteUrl : "https://www.alsolutionsai.online";
+const siteUrl = "https://www.alsolutionsai.online";
 const supportedLocales = new Set(["en", "ar", "fr"]);
 const organizationSchema = {
   "@context": "https://schema.org",

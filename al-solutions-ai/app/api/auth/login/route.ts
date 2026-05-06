@@ -5,7 +5,7 @@ export const dynamic = "force-dynamic";
 export const runtime = "nodejs";
 
 export async function GET() {
-  return NextResponse.redirect(new URL("/login", "http://localhost:3000"));
+  return NextResponse.redirect(new URL("/login", "https://www.alsolutionsai.online"));
 }
 
 export async function POST(request: NextRequest) {

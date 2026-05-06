@@ -12,8 +12,7 @@ import {
   Testimonials,
 } from "@/components/sections";
 
-const configuredSiteUrl = process.env.NEXT_PUBLIC_APP_URL;
-const siteUrl = configuredSiteUrl && !configuredSiteUrl.includes("localhost") ? configuredSiteUrl : "https://www.alsolutionsai.online";
+const siteUrl = "https://www.alsolutionsai.online";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
