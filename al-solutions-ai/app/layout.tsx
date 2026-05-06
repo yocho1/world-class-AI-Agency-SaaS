@@ -29,12 +29,9 @@ export const metadata: Metadata = {
   title: "AL Solutions AI",
   description: "Production-grade AI chatbots and automation systems delivered in 30 days.",
   icons: {
-    icon: [
-      { url: "/images/Favicon.svg?v=3", type: "image/svg+xml" },
-      { url: "/favicon.ico?v=3", type: "image/x-icon", sizes: "any" },
-    ],
-    apple: "/images/Favicon.svg?v=3",
-    shortcut: "/favicon.ico?v=3",
+    icon: [{ url: "/images/Favicon.svg", type: "image/svg+xml" }],
+    apple: "/images/Favicon.svg",
+    shortcut: "/images/Favicon.svg",
   },
 };
 
@@ -51,10 +48,8 @@ export default function RootLayout({
   return (
     <html dir={dirHeader} lang={lang} className={`${plusJakartaSans.variable} h-full antialiased`}>
       <head>
-        <link rel="icon" href="/images/Favicon.svg?v=3" type="image/svg+xml" />
-        <link rel="icon" href="/favicon.ico?v=3" sizes="any" />
-        <link rel="apple-touch-icon" href="/images/Favicon.svg?v=3" />
-        <link rel="shortcut icon" href="/favicon.ico?v=3" />
+        <link rel="icon" href="/images/Favicon.svg" type="image/svg+xml" />
+        <link rel="apple-touch-icon" href="/images/Favicon.svg" />
         <script dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }} type="application/ld+json" />
       </head>
       <body className="min-h-full">
