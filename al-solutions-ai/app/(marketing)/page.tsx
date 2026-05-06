@@ -58,7 +58,7 @@ export const metadata: Metadata = {
     images: [`${siteUrl}/og/homepage.png`],
   },
   alternates: {
-    canonical: `${siteUrl}/`,
+    canonical: siteUrl,
   },
   robots: {
     index: true,
