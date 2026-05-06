@@ -1,7 +1,6 @@
 "use client";
 
-import Link from "next/link";
-import { Reveal } from "@/components/ui";
+import { LogoStrip } from "@/components/LogoStrip";
 
 interface SocialProofBarProps {
   readonly clients?: string[];
@@ -9,42 +8,32 @@ interface SocialProofBarProps {
 
 const DEFAULT_CLIENTS = ["Nexora Hotels", "MediCore", "Atlas Retail", "Zain Mobility", "EduBridge", "FinEdge", "Sahara Foods"];
 
+function escapeXml(value: string) {
+  return value.replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll('"', "&quot;").replaceAll("'", "&apos;");
+}
+
+function createPlaceholderLogoSrc(name: string) {
+  const svg = `
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 40" role="img" aria-label="${escapeXml(name)} logo">
+      <rect width="120" height="40" rx="10" fill="#F3F4F6" />
+      <rect x="0.75" y="0.75" width="118.5" height="38.5" rx="9.25" fill="none" stroke="#E5E7EB" />
+      <text x="60" y="21" text-anchor="middle" dominant-baseline="middle" fill="#6B7280" font-family="Arial, Helvetica, sans-serif" font-size="11" font-weight="600">${escapeXml(name)}</text>
+    </svg>
+  `;
+
+  return `data:image/svg+xml;charset=UTF-8,${encodeURIComponent(svg.replace(/\s+/g, " ").trim())}`;
+}
+
 export function SocialProofBar({ clients = DEFAULT_CLIENTS }: SocialProofBarProps) {
-  const hasAnonymisedClients = clients.some((client) => client.includes("*"));
+  const items = clients.map((client) => ({
+    name: client,
+    logoSrc: createPlaceholderLogoSrc(client),
+  }));
 
   return (
     <section className="border-y border-border-subtle bg-bg-surface py-6">
       <div className="container">
-        <Reveal>
-          <p className="text-center text-xs uppercase tracking-[0.18em] text-text-tertiary">Trusted by teams shipping customer-facing AI</p>
-          <div className="mt-4 flex flex-wrap justify-center gap-3">
-            {clients.map((client) => {
-              const clientSlug = client
-                .toLowerCase()
-                .split(/[^a-z0-9]+/g)
-                .filter(Boolean)
-                .join("-");
-
-              return (
-                <Link
-                  aria-label={`${client} — AL Solutions AI client`}
-                  className="rounded-full border border-border-subtle px-4 py-1.5 text-sm text-text-secondary transition-colors hover:border-border-default hover:text-text-primary"
-                  href={`/case-studies#${clientSlug}`}
-                  key={client}
-                  rel="noopener noreferrer"
-                >
-                  {client}
-                </Link>
-              );
-            })}
-          </div>
-          {hasAnonymisedClients ? (
-            <p className="mt-3 text-center text-xs text-text-tertiary">Names anonymised at client request where marked *</p>
-          ) : null}
-          <p className="mt-3 text-center text-xs text-muted-foreground">
-            Shown with client permission. Some names anonymised per NDA.
-          </p>
-        </Reveal>
+        <LogoStrip items={items} />
       </div>
     </section>
   );
