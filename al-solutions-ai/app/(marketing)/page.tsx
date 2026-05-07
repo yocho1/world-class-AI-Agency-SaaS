@@ -13,6 +13,7 @@ import {
   Testimonials,
   WhyCompare,
 } from "@/components/sections";
+import LeadCaptureModal from "@/components/forms/LeadCaptureModal";
 
 const siteUrl = "https://www.alsolutionsai.online";
 
@@ -188,6 +189,7 @@ export default function MarketingHomePage() {
       <WhyCompare />
       <FaqSection />
       <FinalCTA />
+      <LeadCaptureModal />
     </main>
   );
 }
