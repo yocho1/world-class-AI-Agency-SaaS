@@ -44,7 +44,7 @@ export default function ContactForm() {
       //   body: JSON.stringify(formData),
       // });
 
-      alert("Thank you! We'll be in touch within 4 business hours.");
+      alert("Thank you! We&apos;ll be in touch within 4 business hours.");
       setFormData({ name: "", company: "", email: "", phone: "", message: "", honeypot: "" });
     } catch (error) {
       console.error("Form submission error:", error);
@@ -134,7 +134,7 @@ export default function ContactForm() {
         Send message
       </button>
 
-      <p className="text-xs text-text-tertiary">We'll respond within 4 business hours.</p>
+      <p className="text-xs text-text-tertiary">We&apos;ll respond within 4 business hours.</p>
     </form>
   );
 }

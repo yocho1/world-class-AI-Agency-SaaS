@@ -332,7 +332,7 @@ export default function PricingPage() {
               />
               <PricingFaqItem
                 question="Do you offer refunds?"
-                answer="We don't offer refunds on completed work. However, if a deliverable doesn't meet our quality standards or your requirements, we'll iterate at no extra charge until you're satisfied."
+                answer="We don&apos;t offer refunds on completed work. However, if a deliverable doesn&apos;t meet our quality standards or your requirements, we&apos;ll iterate at no extra charge until you&apos;re satisfied."
               />
               <PricingFaqItem
                 question="What currencies do you accept?"
@@ -360,7 +360,7 @@ export default function PricingPage() {
               </h2>
 
               <p className="mt-4 text-base text-text-secondary sm:text-lg">
-                Let's discuss your project scope, timeline, and goals. We'll recommend the best plan during a free 30-minute consultation.
+                Let&apos;s discuss your project scope, timeline, and goals. We&apos;ll recommend the best plan during a free 30-minute consultation.
               </p>
 
               <Link

@@ -1,10 +1,5 @@
 import fs from "fs";
 import path from "path";
-import { unified } from "unified";
-import remarkParse from "remark-parse";
-import remarkRehype from "remark-rehype";
-import rehypeStringify from "rehype-stringify";
-import rehypeSanitize from "rehype-sanitize";
 
 type RawPost = {
   slug: string;
@@ -30,7 +25,7 @@ function parseFrontmatter(raw: string): { attrs: Partial<Post>; body: string } {
   const fm = fmMatch[1];
   const body = fmMatch[2] || "";
 
-  const attrs: any = {};
+  const attrs: Record<string, string | boolean> = {};
   fm.split(/\r?\n/).forEach((line) => {
     const [k, ...rest] = line.split(":");
     if (!k) return;
@@ -50,7 +45,7 @@ function readContentDir(): RawPost[] {
     if (!fs.existsSync(contentDir)) return [];
     const files = fs.readdirSync(contentDir).filter((f) => /\.mdx?$|\.markdown$/.test(f));
     return files.map((f) => ({ slug: f.replace(/\.mdx?$|\.markdown$/, ""), content: fs.readFileSync(path.join(contentDir, f), "utf-8") }));
-  } catch (e) {
+  } catch {
     return [];
   }
 }
@@ -82,15 +77,5 @@ export async function getPostBySlug(slug: string): Promise<Post | null> {
   const posts = getAllPosts();
   const found = posts.find((p) => p.slug === slug);
   if (!found) return null;
-
-  // render markdown body to sanitized HTML
-  try {
-    const processor = unified() as any;
-    const file = await processor.use(remarkParse as any).use(remarkRehype as any).use(rehypeSanitize as any).use(rehypeStringify as any).process(found.body || "");
-    found.body = String(file);
-  } catch (e) {
-    // fallback to raw body
-  }
-
   return found;
 }

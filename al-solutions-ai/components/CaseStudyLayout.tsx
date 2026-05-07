@@ -166,7 +166,7 @@ export function CaseStudyLayout({ data }: { data: CaseStudyData }) {
             </svg>
 
             <blockquote className="mt-6 text-xl font-medium leading-relaxed text-text-primary sm:mt-8 sm:text-2xl md:text-3xl">
-              "{data.testimonial.quote}"
+              &ldquo;{data.testimonial.quote}&rdquo;
             </blockquote>
 
             <div className="mt-8 flex items-center gap-4 sm:mt-10">

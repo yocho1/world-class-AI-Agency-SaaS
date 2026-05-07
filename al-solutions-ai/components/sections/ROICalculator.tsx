@@ -170,7 +170,7 @@ export function ROICalculator() {
                 Get your free estimate
               </Link>
               <p className="text-xs text-text-tertiary mt-4">
-                We'll tailor a solution based on your specific metrics.
+                We&apos;ll tailor a solution based on your specific metrics.
               </p>
             </div>
           </div>

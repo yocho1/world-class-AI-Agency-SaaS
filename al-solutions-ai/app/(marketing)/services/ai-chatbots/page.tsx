@@ -1,9 +1,8 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
-import { Card, Reveal } from "@/components/ui";
+import { Reveal } from "@/components/ui";
 
 // =======================
 // 1. HERO SECTION DATA
