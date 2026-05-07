@@ -14,7 +14,7 @@ export type BlogCardProps = {
   slug: string;
   date: string; // ISO or readable
   author: Author;
-  readTime: number; // minutes
+  readTime: string | number; // minutes or formatted text
   excerpt: string;
   coverImageSrc?: string | null;
   category?: string;
@@ -95,7 +95,9 @@ export function BlogCard({
 
               <div>
                 <p className="text-sm font-medium text-text-primary">{author.name}</p>
-                <p className="text-xs text-text-tertiary">{formattedDate} • {readTime} min read</p>
+                <p className="text-xs text-text-tertiary">
+                  {formattedDate} • {typeof readTime === "number" ? `${readTime} min read` : readTime}
+                </p>
               </div>
             </div>
 

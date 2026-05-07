@@ -4,6 +4,9 @@ import { Reveal } from "@/components/ui";
 
 interface ProblemStatementProps {
   painPoints?: string[];
+  title?: string;
+  descriptionOne?: string;
+  descriptionTwo?: string;
 }
 
 const DEFAULT_PAIN_POINTS = [
@@ -12,17 +15,18 @@ const DEFAULT_PAIN_POINTS = [
   "No owner for launch KPIs after handoff.",
 ];
 
-export function ProblemStatement({ painPoints = DEFAULT_PAIN_POINTS }: ProblemStatementProps) {
+export function ProblemStatement({
+  painPoints = DEFAULT_PAIN_POINTS,
+  title = "Most AI projects die in the prototype phase.",
+  descriptionOne = "You&apos;ve probably hired an agency that delivered a demo. Or a consultant who delivered a roadmap. Neither shipped anything real.",
+  descriptionTwo = "Teams overpay for prototypes, weeks vanish in vendor handoffs, and nothing reaches production. Our sprint model merges product, AI engineering, and growth execution into one accountable team.",
+}: ProblemStatementProps) {
   return (
     <section className="container py-10">
       <Reveal>
-        <h2 className="max-w-3xl text-3xl font-medium text-text-primary md:text-4xl">Most AI projects die in the prototype phase.</h2>
-        <p className="mt-4 max-w-3xl text-text-secondary">
-          You&apos;ve probably hired an agency that delivered a demo. Or a consultant who delivered a roadmap. Neither shipped anything real.
-        </p>
-        <p className="mt-4 max-w-3xl text-text-secondary">
-          Teams overpay for prototypes, weeks vanish in vendor handoffs, and nothing reaches production. Our sprint model merges product, AI engineering, and growth execution into one accountable team.
-        </p>
+        <h2 className="max-w-3xl text-3xl font-medium text-text-primary md:text-4xl">{title}</h2>
+        <p className="mt-4 max-w-3xl text-text-secondary">{descriptionOne}</p>
+        <p className="mt-4 max-w-3xl text-text-secondary">{descriptionTwo}</p>
 
         <div className="mt-8 grid gap-4 md:grid-cols-3">
           {painPoints.map((painPoint) => (

@@ -6,9 +6,19 @@ import { EmbeddedChatDemo } from "@/components/chatbot/EmbeddedChatDemo";
 
 interface LiveAIDemoProps {
   readonly title?: string;
+  readonly eyebrow?: string;
+  readonly intro?: string;
+  readonly outcomesLabel?: string;
+  readonly ctaText?: string;
 }
 
-export function LiveAIDemo({ title = "See the AI Working — Live" }: LiveAIDemoProps) {
+export function LiveAIDemo({
+  title = "See the AI Working — Live",
+  eyebrow = "Live AI demo",
+  intro = "Explore how our assistant qualifies leads, answers service questions, and routes hot opportunities directly into your CRM in under 90 seconds.",
+  outcomesLabel = "Outcomes from this flow",
+  ctaText = "Request Your Demo Build",
+}: LiveAIDemoProps) {
   const outcomes = [
     {
       stat: "+38%",
@@ -32,11 +42,9 @@ export function LiveAIDemo({ title = "See the AI Working — Live" }: LiveAIDemo
       <Reveal>
         <Card className="relative overflow-hidden border-primary-700/50 bg-[radial-gradient(circle_at_80%_10%,rgba(22,163,74,0.12),transparent_35%),radial-gradient(circle_at_15%_85%,rgba(108,99,255,0.15),transparent_30%)]">
           <div>
-            <p className="text-xs uppercase tracking-[0.18em] text-accent-400">Live AI demo</p>
+            <p className="text-xs uppercase tracking-[0.18em] text-accent-400">{eyebrow}</p>
             <h2 className="mt-3 max-w-3xl text-2xl font-medium text-text-primary md:text-3xl">{title}</h2>
-            <p className="mt-3 max-w-2xl text-text-secondary">
-              Explore how our assistant qualifies leads, answers service questions, and routes hot opportunities directly into your CRM in under 90 seconds.
-            </p>
+            <p className="mt-3 max-w-2xl text-text-secondary">{intro}</p>
           </div>
 
           <div className="mt-8">
@@ -49,7 +57,7 @@ export function LiveAIDemo({ title = "See the AI Working — Live" }: LiveAIDemo
 
           <div className="mt-6 flex flex-col gap-4 rounded-xl border border-border-subtle bg-bg-overlay p-5 md:flex-row md:items-center md:justify-between">
             <div>
-              <p className="text-sm text-text-tertiary">Outcomes from this flow</p>
+              <p className="text-sm text-text-tertiary">{outcomesLabel}</p>
               <ul className="mt-3 space-y-3 text-sm text-text-secondary">
                 {outcomes.map((item) => (
                   <li key={item.label}>
@@ -63,7 +71,7 @@ export function LiveAIDemo({ title = "See the AI Working — Live" }: LiveAIDemo
               </ul>
             </div>
             <Link className="inline-flex h-11 items-center rounded-lg border border-border-default px-6 text-sm font-medium text-text-primary transition-colors hover:bg-bg-elevated" href="/free-ai-audit">
-              Request Your Demo Build
+              {ctaText}
             </Link>
           </div>
         </Card>

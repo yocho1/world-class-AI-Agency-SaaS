@@ -5,6 +5,7 @@ import type { Database } from "@/types/database";
 
 const SUPPORTED_LOCALES = ["en", "ar", "fr"] as const;
 const DEFAULT_LOCALE = "en";
+const LOCALE_COOKIE = "NEXT_LOCALE";
 const PROTECTED_PATHS = ["/dashboard"];
 const PASSTHROUGH_PATHS = ["/api", "/_next", "/favicon.ico", "/robots.txt", "/sitemap.xml"];
 const AUTH_PATHS = ["/login", "/signup"];
@@ -40,6 +41,19 @@ function buildPrefixedPath(locale: string, pathname: string) {
   return pathname === "/" ? `/${locale}` : `/${locale}${pathname}`;
 }
 
+function resolvePreferredLocale(request: NextRequest) {
+  const fromCookie = request.cookies.get(LOCALE_COOKIE)?.value;
+  if (fromCookie && SUPPORTED_LOCALES.includes(fromCookie as (typeof SUPPORTED_LOCALES)[number])) {
+    return fromCookie as (typeof SUPPORTED_LOCALES)[number];
+  }
+
+  const acceptLanguage = request.headers.get("accept-language") || "";
+  const normalized = acceptLanguage.toLowerCase();
+  if (normalized.includes("ar")) return "ar";
+  if (normalized.includes("fr")) return "fr";
+  return DEFAULT_LOCALE;
+}
+
 export async function middleware(request: NextRequest) {
   const pathname = request.nextUrl.pathname;
 
@@ -48,7 +62,8 @@ export async function middleware(request: NextRequest) {
   }
 
   const localized = getLocaleConfig(pathname);
-  const locale = localized?.locale ?? DEFAULT_LOCALE;
+  const preferredLocale = resolvePreferredLocale(request);
+  const locale = localized?.locale ?? preferredLocale;
   const dir = localized?.dir ?? "ltr";
   const effectivePathname = localized?.pathname ?? pathname;
   const requestHeaders = new Headers(request.headers);
@@ -60,9 +75,9 @@ export async function middleware(request: NextRequest) {
   const anonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
 
   if (!url || !anonKey) {
-    if (!localized && !isProtectedPath(pathname) && !isAuthPath(pathname) && pathname !== "/") {
+    if (!localized && !isProtectedPath(pathname) && !isAuthPath(pathname)) {
       const redirectUrl = request.nextUrl.clone();
-      redirectUrl.pathname = buildPrefixedPath(DEFAULT_LOCALE, pathname);
+      redirectUrl.pathname = buildPrefixedPath(locale, pathname);
       return NextResponse.redirect(redirectUrl);
     }
 
@@ -72,6 +87,11 @@ export async function middleware(request: NextRequest) {
 
     fallbackResponse.headers.set("x-locale", locale);
     fallbackResponse.headers.set("x-dir", dir);
+    fallbackResponse.cookies.set(LOCALE_COOKIE, locale, {
+      path: "/",
+      sameSite: "lax",
+      maxAge: 60 * 60 * 24 * 365,
+    });
     return fallbackResponse;
   }
 
@@ -112,7 +132,7 @@ export async function middleware(request: NextRequest) {
     return NextResponse.redirect(redirectUrl);
   }
 
-  if (!localized && !isProtectedPath(pathname) && !isAuthPath(pathname) && pathname !== "/") {
+  if (!localized && !isProtectedPath(pathname) && !isAuthPath(pathname)) {
     const redirectUrl = request.nextUrl.clone();
     redirectUrl.pathname = buildPrefixedPath(locale, pathname);
     return NextResponse.redirect(redirectUrl);
@@ -120,6 +140,11 @@ export async function middleware(request: NextRequest) {
 
   response.headers.set("x-locale", locale);
   response.headers.set("x-dir", dir);
+  response.cookies.set(LOCALE_COOKIE, locale, {
+    path: "/",
+    sameSite: "lax",
+    maxAge: 60 * 60 * 24 * 365,
+  });
 
   return response;
 }

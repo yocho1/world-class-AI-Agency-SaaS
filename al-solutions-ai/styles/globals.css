@@ -28,6 +28,10 @@ body {
   font-family: var(--font-plus-jakarta), Inter, system-ui, sans-serif;
 }
 
+html[lang="ar"] body {
+  font-family: var(--font-cairo), "Noto Sans Arabic", var(--font-plus-jakarta), system-ui, sans-serif;
+}
+
 .container {
   margin-inline: auto;
   width: min(100% - 40px, 1200px);

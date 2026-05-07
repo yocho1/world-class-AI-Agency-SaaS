@@ -34,34 +34,45 @@ function HeroSection() {
 function ContactInfoBlock() {
   return (
     <div className="space-y-6">
-      {/* Email */}
-      <div className="flex gap-4">
-        <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-bg-surface border border-border-subtle">
-          <svg className="h-5 w-5 text-accent-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-          </svg>
+      <div className="grid gap-4 sm:grid-cols-2">
+        {/* Email */}
+        <div className="rounded-2xl border border-border-subtle bg-bg-surface p-5">
+          <div className="flex items-start gap-4">
+            <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-border-subtle bg-bg-default">
+              <svg className="h-5 w-5 text-accent-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+              </svg>
+            </div>
+            <div>
+              <p className="text-xs font-semibold uppercase tracking-wider text-text-tertiary">Email</p>
+              <a href="mailto:hello@alsolutionsai.online" className="mt-1 block text-base font-medium text-text-primary transition-colors hover:text-accent-400">
+                hello@alsolutionsai.online
+              </a>
+            </div>
+          </div>
         </div>
-        <div>
-          <p className="text-xs uppercase tracking-wider text-text-tertiary font-semibold">Email</p>
-          <a href="mailto:hello@alsolutionsai.online" className="mt-1 text-base font-medium text-text-primary hover:text-accent-400 transition-colors">
-            hello@alsolutionsai.online
-          </a>
-        </div>
-      </div>
 
-      {/* WhatsApp */}
-      <div className="flex gap-4">
-        <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-bg-surface border border-border-subtle">
-          <svg className="h-5 w-5 text-accent-400" fill="currentColor" viewBox="0 0 24 24">
-            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.67-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.076 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421-7.403h-.004a9.87 9.87 0 00-4.98 1.514 9.843 9.843 0 003.514-7.047c5.476 0 9.926 4.45 9.926 9.927 0 5.477-4.45 9.927-9.927 9.927s-9.928-4.45-9.928-9.927c0-1.881.608-3.623 1.635-5.074" />
-          </svg>
-        </div>
-        <div>
-          <p className="text-xs uppercase tracking-wider text-text-tertiary font-semibold">WhatsApp</p>
-          <a href="https://wa.me/YOUR_NUMBER_HERE" target="_blank" rel="noreferrer" className="mt-1 text-base font-medium text-text-primary hover:text-accent-400 transition-colors">
-            Message us on WhatsApp
-          </a>
-          <p className="mt-1 text-xs text-text-tertiary">(Replace YOUR_NUMBER_HERE in code)</p>
+        {/* WhatsApp */}
+        <div className="rounded-2xl border border-border-subtle bg-bg-surface p-5">
+          <div className="flex items-start gap-4">
+            <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-border-subtle bg-bg-default">
+              <svg className="h-5 w-5 text-[#25D366]" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.67-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.076 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421-7.403h-.004a9.87 9.87 0 00-4.98 1.514 9.843 9.843 0 003.514-7.047c5.476 0 9.926 4.45 9.926 9.927 0 5.477-4.45 9.927-9.927 9.927s-9.928-4.45-9.928-9.927c0-1.881.608-3.623 1.635-5.074" />
+              </svg>
+            </div>
+            <div>
+              <p className="text-xs font-semibold uppercase tracking-wider text-text-tertiary">WhatsApp</p>
+              <a
+                href="https://wa.me/212674147995?text=Hi%2C%20I%27d%20like%20to%20learn%20about%20your%20AI%20services"
+                target="_blank"
+                rel="noreferrer"
+                className="mt-1 block text-base font-medium text-text-primary transition-colors hover:text-[#25D366]"
+              >
+                Chat on WhatsApp
+              </a>
+              <p className="mt-1 text-xs text-text-tertiary">We typically reply within 2 hours</p>
+            </div>
+          </div>
         </div>
       </div>
 

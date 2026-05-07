@@ -44,13 +44,17 @@ const FAQ_ITEMS: FaqItem[] = [
   },
 ];
 
-export function FaqSection() {
+interface FaqSectionProps {
+  title?: string;
+}
+
+export function FaqSection({ title = "Frequently asked questions" }: FaqSectionProps) {
   const [openId, setOpenId] = useState<number | null>(1);
 
   return (
     <section className="container py-10">
       <Reveal>
-        <h2 className="text-3xl font-medium text-text-primary">Frequently asked questions</h2>
+        <h2 className="text-3xl font-medium text-text-primary">{title}</h2>
         <div className="mt-6 space-y-3">
           {FAQ_ITEMS.map((item) => (
             <details className="rounded-2xl border border-border-subtle bg-bg-surface p-5" key={item.id} open={openId === item.id} onToggle={(event) => setOpenId(event.currentTarget.open ? item.id : null)}>

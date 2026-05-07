@@ -15,6 +15,7 @@ interface ServiceItem {
 
 interface ServicesOverviewProps {
   services?: ServiceItem[];
+  title?: string;
 }
 
 const SERVICES: ServiceItem[] = [
@@ -78,7 +79,7 @@ function getServiceCtaText(title: string) {
 }
 
 export function ServicesOverview(props: Readonly<ServicesOverviewProps>) {
-  const { services = SERVICES } = props;
+  const { services = SERVICES, title = "AI Solutions That Ship" } = props;
   const posthog = usePostHog();
 
   const onServiceClick = (service: string, position: number) => {
@@ -93,7 +94,7 @@ export function ServicesOverview(props: Readonly<ServicesOverviewProps>) {
     <section className="container py-10">
       <Reveal>
         <div className="mb-8 max-w-2xl">
-          <h2 className="text-3xl font-medium text-text-primary md:text-4xl">AI Solutions That Ship</h2>
+          <h2 className="text-3xl font-medium text-text-primary md:text-4xl">{title}</h2>
         </div>
 
         <div className="grid gap-4 md:grid-cols-2">

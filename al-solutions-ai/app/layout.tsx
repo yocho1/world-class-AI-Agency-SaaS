@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
 import { Suspense } from "react";
 import { headers } from "next/headers";
-import { Plus_Jakarta_Sans } from "next/font/google";
+import { Cairo, Plus_Jakarta_Sans } from "next/font/google";
 import { PostHogProvider } from "@/components/analytics/PostHogProvider";
 import { PageViewTracker } from "@/components/analytics/PageViewTracker";
+import { WhatsAppButton } from "@/components/layout/WhatsAppButton";
 import "./globals.css";
 
 const siteUrl = "https://www.alsolutionsai.online";
@@ -22,6 +23,12 @@ const plusJakartaSans = Plus_Jakarta_Sans({
   variable: "--font-plus-jakarta",
   subsets: ["latin"],
   weight: ["400", "500"],
+});
+
+const cairo = Cairo({
+  variable: "--font-cairo",
+  subsets: ["arabic", "latin"],
+  weight: ["400", "500", "600"],
 });
 
 export const metadata: Metadata = {
@@ -46,7 +53,7 @@ export default function RootLayout({
   const lang = supportedLocales.has(localeHeader) ? localeHeader : "en";
 
   return (
-    <html dir={dirHeader} lang={lang} className={`${plusJakartaSans.variable} h-full antialiased`}>
+    <html dir={dirHeader} lang={lang} className={`${plusJakartaSans.variable} ${cairo.variable} h-full antialiased`}>
       <head>
         <link rel="icon" href="/images/Favicon.svg" type="image/svg+xml" />
         <link rel="apple-touch-icon" href="/images/Favicon.svg" />
@@ -57,6 +64,7 @@ export default function RootLayout({
           <Suspense fallback={null}>
             <PageViewTracker />
           </Suspense>
+          <WhatsAppButton />
           {children}
         </PostHogProvider>
       </body>

@@ -1,6 +1,6 @@
 "use client";
 
-import { TestimonialGrid, type TestimonialGridProps } from "./TestimonialGrid";
+import { TestimonialGrid } from "./TestimonialGrid";
 
 interface TestimonialItem {
   readonly id: number;
@@ -17,6 +17,8 @@ interface TestimonialItem {
 
 interface TestimonialsProps {
   readonly items?: TestimonialItem[];
+  readonly title?: string;
+  readonly description?: string;
 }
 
 const DEFAULT_ITEMS: TestimonialItem[] = [
@@ -87,7 +89,11 @@ const DEFAULT_ITEMS: TestimonialItem[] = [
   },
 ];
 
-export function Testimonials({ items = DEFAULT_ITEMS }: TestimonialsProps) {
+export function Testimonials({
+  items = DEFAULT_ITEMS,
+  title = "What Our Clients Say",
+  description = "Real results from teams that shipped customer-facing AI systems in production.",
+}: TestimonialsProps) {
   const gridItems = items.map((item) => ({
     id: item.id,
     quote: item.quote,
@@ -104,8 +110,8 @@ export function Testimonials({ items = DEFAULT_ITEMS }: TestimonialsProps) {
   return (
     <TestimonialGrid
       items={gridItems}
-      title="What Our Clients Say"
-      description="Real results from teams that shipped customer-facing AI systems in production."
+      title={title}
+      description={description}
     />
   );
 }

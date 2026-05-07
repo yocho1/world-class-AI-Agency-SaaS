@@ -16,8 +16,8 @@ export type Post = {
   slug: string;
   date: string;
   author: { name: string; avatar?: string };
-  readTime?: string;
-  excerpt?: string;
+  readTime: string;
+  excerpt: string;
   coverImageSrc?: string | null;
   category?: string;
   featured?: boolean;
@@ -85,7 +85,8 @@ export async function getPostBySlug(slug: string): Promise<Post | null> {
 
   // render markdown body to sanitized HTML
   try {
-    const file = await unified().use(remarkParse).use(remarkRehype).use(rehypeSanitize).use(rehypeStringify).process(found.body || "");
+    const processor = unified() as any;
+    const file = await processor.use(remarkParse as any).use(remarkRehype as any).use(rehypeSanitize as any).use(rehypeStringify as any).process(found.body || "");
     found.body = String(file);
   } catch (e) {
     // fallback to raw body

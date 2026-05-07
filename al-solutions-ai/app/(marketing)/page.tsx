@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { headers } from "next/headers";
 import {
   CaseStudySpotlight,
   FaqSection,
@@ -14,6 +15,7 @@ import {
   WhyCompare,
 } from "@/components/sections";
 import LeadCaptureModal from "@/components/forms/LeadCaptureModal";
+import arMessages from "@/messages/ar.json";
 
 const siteUrl = "https://www.alsolutionsai.online";
 
@@ -168,6 +170,10 @@ const FAQ_SCHEMA = {
 const STRUCTURED_DATA = [FAQ_SCHEMA, ...SERVICE_SCHEMA];
 
 export default function MarketingHomePage() {
+  const requestHeaders = headers();
+  const locale = requestHeaders.get("x-locale") ?? "en";
+  const home = locale === "ar" ? arMessages.homepage : null;
+
   return (
     <main className="space-y-16 pb-16 md:space-y-24 md:pb-24">
       {STRUCTURED_DATA.map((schema, index) => (
@@ -177,18 +183,27 @@ export default function MarketingHomePage() {
           type="application/ld+json"
         />
       ))}
-      <Hero />
+      <Hero
+        title={home?.hero.headline}
+        description={home?.hero.subheadline}
+        ctaPrimaryText={home?.hero.ctaPrimary}
+        stats={home ? [
+          { value: home.stats.contractToLive.value, label: home.stats.contractToLive.label, attribution: "" },
+          { value: home.stats.conversionLift.value, label: home.stats.conversionLift.label, attribution: "" },
+          { value: home.stats.companiesLive.value, label: home.stats.companiesLive.label, attribution: "" },
+        ] : undefined}
+      />
       <SocialProofBar />
-      <ProblemStatement />
-      <ServicesOverview />
+      <ProblemStatement title={home?.sections.problemStatement} />
+      <ServicesOverview title={home?.sections.servicesOverview} />
       <ROICalculator />
-      <LiveAIDemo />
-      <CaseStudySpotlight />
-      <HowItWorks />
-      <Testimonials />
-      <WhyCompare />
-      <FaqSection />
-      <FinalCTA />
+      <LiveAIDemo title={home?.sections.liveDemo} />
+      <CaseStudySpotlight title={home?.sections.caseStudySpotlight} />
+      <HowItWorks title={home?.sections.howItWorks} />
+      <Testimonials title={home?.sections.testimonials} />
+      <WhyCompare title={home?.sections.comparison} />
+      <FaqSection title={home?.sections.faq} />
+      <FinalCTA title={home?.sections.finalCta} />
       <LeadCaptureModal />
     </main>
   );

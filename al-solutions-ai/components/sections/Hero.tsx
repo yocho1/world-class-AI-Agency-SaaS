@@ -9,6 +9,9 @@ interface HeroProps {
   eyebrow?: string;
   title?: string;
   description?: string;
+  ctaPrimaryText?: string;
+  ctaSecondaryText?: string;
+  stats?: typeof STATS;
 }
 
 const STATS = [
@@ -33,6 +36,9 @@ export function Hero({
   eyebrow = "Production AI shipped in 30 days",
   title = "Your competitors just went live with AI. Here's how to do it in 30 days.",
   description = "AL Solutions AI builds and deploys AI chatbots and automation systems that are live, working, and generating leads — not sitting in a deck.",
+  ctaPrimaryText = "See the AI Working",
+  ctaSecondaryText = "Get Free AI Audit",
+  stats = STATS,
 }: Readonly<HeroProps>) {
   const posthog = usePostHog();
 
@@ -64,18 +70,18 @@ export function Hero({
         <div className="mt-9 flex flex-wrap gap-3">
           <Link href="#live-demo" aria-label="See the AI working — view live demo" onClick={() => trackClick("primary")}>
             <span className="inline-flex h-11 items-center rounded-lg bg-primary-600 px-6 text-sm font-medium text-white transition-colors hover:bg-primary-700">
-              See the AI Working
+              {ctaPrimaryText}
             </span>
           </Link>
           <Link href="/free-ai-audit" aria-label="Get your free AI audit — no commitment required" onClick={() => trackClick("secondary")}>
             <span className="inline-flex h-11 items-center rounded-lg border border-border-default px-6 text-sm font-medium text-text-primary transition-colors hover:bg-bg-elevated">
-              Get Free AI Audit
+              {ctaSecondaryText}
             </span>
           </Link>
         </div>
 
         <div className="mt-10 grid gap-4 sm:grid-cols-3">
-          {STATS.map((stat) => (
+          {stats.map((stat) => (
             <div className="rounded-2xl border border-border-subtle bg-bg-surface p-5" key={stat.label}>
               <p className="text-2xl font-medium text-text-primary" data-attribution={stat.attribution} title={stat.attribution}>
                 {stat.value}

@@ -12,7 +12,17 @@ const FEATURES = [
   "Pricing transparency",
 ];
 
-export function WhyCompare() {
+interface WhyCompareProps {
+  title?: string;
+  subtitle?: string;
+  ctaText?: string;
+}
+
+export function WhyCompare({
+  title = "Why AL Solutions?",
+  subtitle = "Compare AL Solutions against common alternatives",
+  ctaText = "See case studies",
+}: WhyCompareProps) {
   const [showAll, setShowAll] = useState(false);
 
   const columns = [
@@ -76,8 +86,8 @@ export function WhyCompare() {
   return (
     <section className="container mx-auto px-4 py-12">
       <div className="mb-6 flex items-center justify-between">
-        <h2 className="text-2xl font-semibold">Why AL Solutions?</h2>
-        <div className="hidden sm:block text-sm text-text-secondary">Compare AL Solutions against common alternatives</div>
+        <h2 className="text-2xl font-semibold">{title}</h2>
+        <div className="hidden sm:block text-sm text-text-secondary">{subtitle}</div>
       </div>
 
       <div className="mb-4 sm:hidden">
@@ -140,7 +150,7 @@ export function WhyCompare() {
 
       <p className="mt-6 text-sm text-text-secondary">
         120+ companies chose us over both alternatives.{' '}
-        <Link href="/case-studies" className="text-accent-400 font-medium">See case studies</Link>
+        <Link href="/case-studies" className="text-accent-400 font-medium">{ctaText}</Link>
       </p>
     </section>
   );

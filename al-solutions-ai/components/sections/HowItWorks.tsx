@@ -9,6 +9,7 @@ interface Step {
 
 interface HowItWorksProps {
   steps?: Step[];
+  title?: string;
 }
 
 const STEPS: Step[] = [
@@ -26,11 +27,11 @@ const STEPS: Step[] = [
   },
 ];
 
-export function HowItWorks({ steps = STEPS }: HowItWorksProps) {
+export function HowItWorks({ steps = STEPS, title = "How We Build and Deploy Your AI in 30 Days" }: HowItWorksProps) {
   return (
     <section className="container py-10">
       <Reveal>
-        <h2 className="text-3xl font-medium text-text-primary">How We Build and Deploy Your AI in 30 Days</h2>
+        <h2 className="text-3xl font-medium text-text-primary">{title}</h2>
         <ol className="mt-8 grid gap-4 md:grid-cols-3">
           {steps.map((step, index) => (
             <li
