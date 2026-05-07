@@ -1,5 +1,10 @@
 import fs from "fs";
 import path from "path";
+import { unified } from "unified";
+import remarkParse from "remark-parse";
+import remarkRehype from "remark-rehype";
+import rehypeStringify from "rehype-stringify";
+import rehypeSanitize from "rehype-sanitize";
 
 type RawPost = {
   slug: string;
@@ -77,5 +82,22 @@ export async function getPostBySlug(slug: string): Promise<Post | null> {
   const posts = getAllPosts();
   const found = posts.find((p) => p.slug === slug);
   if (!found) return null;
+
+  // render markdown body to sanitized HTML
+  try {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const processor: any = unified();
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const file = await processor
+      .use(remarkParse)
+      .use(remarkRehype)
+      .use(rehypeSanitize)
+      .use(rehypeStringify)
+      .process(found.body || "");
+    found.body = String(file);
+  } catch {
+    // fallback to raw body
+  }
+
   return found;
 }
