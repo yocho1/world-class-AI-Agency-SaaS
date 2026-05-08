@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import Image from "next/image";
 import Link from "next/link";
@@ -10,6 +10,8 @@ import { cn } from "@/lib/utils";
 const LOCALE_STORAGE_KEY = "preferredLocale";
 const LOCALE_COOKIE_KEY = "NEXT_LOCALE";
 const LOCALES = ["en", "ar", "fr"] as const;
+
+const ARABIC_READY = false;
 
 const NAV_ITEMS = [
   { label: "Services", href: "/services" },
@@ -112,18 +114,22 @@ export function Header() {
             >
               EN
             </button>
-            <span className="px-1 text-text-tertiary">/</span>
-            <button
-              type="button"
-              onClick={() => switchLocale("ar")}
-              className={cn(
-                "rounded px-2 py-1 font-medium transition-colors",
-                activeLocale === "ar" ? "bg-bg-elevated text-text-primary" : "text-text-secondary hover:text-text-primary",
-              )}
-              aria-label="Switch language to Arabic"
-            >
-              عربي
-            </button>
+            {ARABIC_READY && (
+              <>
+                <span className="px-1 text-text-tertiary">/</span>
+                <button
+                  type="button"
+                  onClick={() => switchLocale("ar")}
+                  className={cn(
+                    "rounded px-2 py-1 font-medium transition-colors",
+                    activeLocale === "ar" ? "bg-bg-elevated text-text-primary" : "text-text-secondary hover:text-text-primary",
+                  )}
+                  aria-label="Switch language to Arabic"
+                >
+                  عربي
+                </button>
+              </>
+            )}
           </div>
           <Link
             className={cn(
@@ -142,3 +148,4 @@ export function Header() {
     </header>
   );
 }
+
