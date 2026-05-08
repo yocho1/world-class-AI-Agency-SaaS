@@ -1,6 +1,19 @@
 import Image from "next/image";
 import Link from "next/link";
-import { Card } from "@/components/ui";
+import { Card, Reveal } from "@/components/ui";
+
+export const metadata = {
+  title: "About AL Solutions AI — AI Agency Founded in England, Serving MENA & Europe",
+  description:
+    "AL Solutions AI (Reg. No. 11521309) was founded by Asim Jan in 2018. We build and deploy AI chatbots, WhatsApp automation, and lead conversion systems for growth companies across MENA and Europe — live in 30 days.",
+  canonical: "https://www.alsolutionsai.online/about",
+  openGraph: {
+    url: "https://www.alsolutionsai.online/about",
+    title: "About AL Solutions AI — AI Agency Founded in England, Serving MENA & Europe",
+    description:
+      "AL Solutions AI (Reg. No. 11521309) was founded by Asim Jan in 2018. We build and deploy AI chatbots, WhatsApp automation, and lead conversion systems for growth companies across MENA and Europe — live in 30 days.",
+  },
+};
 
 function LinkedInIcon() {
   return (
@@ -10,8 +23,52 @@ function LinkedInIcon() {
   );
 }
 
+function MapPinIcon() {
+  return (
+    <svg className="h-4 w-4 inline mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+    </svg>
+  );
+}
+
 const avatarBlurDataURL =
   "data:image/svg+xml;base64,PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHZpZXdCb3g9JzAgMCAzMiAzMic+PHJlY3Qgd2lkdGg9JzMyJyBoZWlnaHQ9JzMyJyByeD0nMTYnIGZpbGw9JyNEMUQ1REInLz48Y2lyY2xlIGN4PScxNicgY3k9JzEyJyByPSc2JyBmaWxsPScjRjVCODREJy8+PHBhdGggZD0nTTEwIDIyYzAtMy4zMSAyLjY5LTYgNi02czYgMi42OSA2IDZ2MkgxMHonIGZpbGw9JyNGNUI4NEQnIG9wYWNpdHk9Jy4xOScvPjwvc3ZnPg==";
+
+// Team member placeholder data for cards 2 & 3
+type TeamMember = {
+  initials: string;
+  name: string;
+  role: string;
+  bio: string;
+  bgColor: string;
+};
+
+const teamMembers: TeamMember[] = [
+  {
+    initials: "AJ",
+    name: "Asim Jan",
+    role: "Founder & Director",
+    bio: "7 years building AI automation systems for MENA and European growth companies.",
+    bgColor: "bg-accent-400",
+  },
+  {
+    // TODO: Replace with Team Member 2 data
+    initials: "TM",
+    name: "[Team Member 2]",
+    role: "[Role]",
+    bio: "[1-line bio]",
+    bgColor: "bg-blue-500",
+  },
+  {
+    // TODO: Replace with Team Member 3 data
+    initials: "TM",
+    name: "[Team Member 3]",
+    role: "[Role]",
+    bio: "[1-line bio]",
+    bgColor: "bg-purple-500",
+  },
+];
 
 export default function AboutPage() {
   return (
@@ -22,7 +79,7 @@ export default function AboutPage() {
           <div className="flex justify-center md:justify-start">
             <div className="relative h-28 w-28 overflow-hidden rounded-full border-4 border-bg-elevated shadow-lg shadow-black/10 sm:h-32 sm:w-32">
               <Image
-                alt="Founder avatar placeholder"
+                alt="Founder avatar"
                 className="object-cover"
                 fill
                 placeholder="blur"
@@ -35,11 +92,11 @@ export default function AboutPage() {
 
           <div>
             <div className="flex flex-wrap items-center gap-3">
-              <h1 className="text-4xl font-medium tracking-tight text-text-primary md:text-5xl">[Your Name]</h1>
+              <h1 className="text-4xl font-medium tracking-tight text-text-primary md:text-5xl">Asim Jan</h1>
               <Link
                 aria-label="LinkedIn profile"
                 className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-border-subtle text-text-secondary transition-colors hover:border-accent-400 hover:text-accent-400"
-                href="https://www.linkedin.com"
+                href="https://www.linkedin.com/in/asimjan"
                 rel="noreferrer"
                 target="_blank"
               >
@@ -47,11 +104,19 @@ export default function AboutPage() {
               </Link>
             </div>
 
-            <p className="mt-2 text-sm font-medium uppercase tracking-[0.16em] text-accent-400">Founder & CEO, AL Solutions AI</p>
+            <p className="mt-2 text-sm font-medium uppercase tracking-[0.16em] text-accent-400">Founder & Director, AL Solutions AI</p>
 
-            <p className="mt-5 max-w-2xl text-text-secondary">
-              Placeholder origin story text: I started AL Solutions AI after seeing too many teams lose momentum between strategy, design, and delivery. I wanted to build a studio that could move fast without sacrificing clarity, so clients could go from idea to production with fewer handoffs and less uncertainty. Replace this paragraph with your real founding story, the specific problem you saw, and why you chose this work.
-            </p>
+            <div className="mt-5 max-w-2xl space-y-4 text-text-secondary">
+              <p>
+                AL Solutions AI was founded in 2018 with one observation: most businesses were spending months and significant budget on AI projects that never reached production. Too many handoffs, too little accountability, and no clear owner for go-live.
+              </p>
+              <p>
+                We built a different kind of studio — one where product strategy, AI engineering, and CRM integration sit in a single accountable team. Our clients get a working system live in 30 days, not a slide deck six months later.
+              </p>
+              <p>
+                Today we serve growth-stage companies across MENA and Europe, deploying AI chatbots, WhatsApp automation, and lead conversion systems that generate measurable revenue from day one.
+              </p>
+            </div>
           </div>
         </div>
       </section>
@@ -67,6 +132,84 @@ export default function AboutPage() {
             <p className="mt-2 text-text-secondary">{body}</p>
           </Card>
         ))}
+      </section>
+
+      {/* SECTION 3: Leadership Team */}
+      <section className="mt-16">
+        <Reveal>
+          <div className="mx-auto max-w-4xl">
+            <h2 className="text-3xl font-bold tracking-tight text-text-primary sm:text-4xl">Our team</h2>
+            <p className="mt-3 text-base text-text-secondary">
+              A small, senior team that ships production AI — no juniors, no hand-off chains.
+            </p>
+            <div className="mt-8 grid gap-6 md:grid-cols-3 sm:grid-cols-2">
+              {teamMembers.map((member) => (
+                <div
+                  key={member.name}
+                  className="group rounded-2xl border border-border-subtle bg-bg-surface p-6 transition-all duration-300 hover:border-accent-400 hover:shadow-lg hover:shadow-accent-400/5 hover:-translate-y-0.5"
+                >
+                  <div className={`inline-flex h-12 w-12 items-center justify-center rounded-full ${member.bgColor} text-sm font-bold text-white`}>
+                    {member.initials}
+                  </div>
+                  <h3 className="mt-4 text-lg font-semibold text-text-primary">{member.name}</h3>
+                  <p className="text-xs font-medium uppercase tracking-wider text-accent-400">{member.role}</p>
+                  <p className="mt-3 text-sm text-text-secondary">{member.bio}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </Reveal>
+      </section>
+
+      {/* SECTION 4: Location Line */}
+      <section className="mt-12 text-center">
+        <p className="inline-flex items-center gap-2 text-sm text-text-secondary">
+          <MapPinIcon />
+          Registered in England & Wales · Serving MENA and Europe
+        </p>
+      </section>
+
+      {/* SECTION 5: Why We Exist */}
+      <section className="mt-16 border-t border-border-subtle pt-16">
+        <Reveal>
+          <div className="mx-auto max-w-4xl">
+            <div className="grid gap-8 md:grid-cols-2">
+              <div className="border-l-2 border-accent-400 pl-6">
+                <p className="text-3xl font-bold text-text-primary sm:text-4xl">
+                  3 of 4 AI projects never reach production.
+                </p>
+                <p className="mt-3 text-xs uppercase tracking-wider text-text-tertiary font-semibold">
+                  Execution — not ideas — is the bottleneck.
+                </p>
+              </div>
+              <div className="flex flex-col justify-center">
+                <p className="text-base text-text-secondary leading-relaxed">
+                  We exist to close that gap: AI systems that ship to production, integrate with your existing stack, and generate measurable revenue within 30 days of contract. No prototypes. No decks. Live systems only.
+                </p>
+              </div>
+            </div>
+          </div>
+        </Reveal>
+      </section>
+
+      {/* SECTION 6: Company Credentials */}
+      <section className="mt-16">
+        <div className="flex flex-wrap justify-center gap-3">
+          {[
+            { icon: "🏢", text: "Registered in England & Wales" },
+            { icon: "📋", text: "Company No. 11521309" },
+            { icon: "📅", text: "Founded 2018" },
+            { icon: "🌍", text: "Serving MENA & Europe" },
+          ].map(({ icon, text }) => (
+            <div
+              key={text}
+              className="inline-flex items-center gap-2 rounded-full border border-border-subtle bg-bg-overlay px-3.5 py-1.5 text-xs font-medium text-text-secondary"
+            >
+              <span>{icon}</span>
+              <span>{text}</span>
+            </div>
+          ))}
+        </div>
       </section>
     </main>
   );
