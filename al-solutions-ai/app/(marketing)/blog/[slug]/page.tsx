@@ -35,8 +35,36 @@ export default async function PostPage({ params }: Props) {
     .join("")
     .toUpperCase() || "AA";
 
+  // BlogPosting Schema
+  const blogPostingSchema = {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    headline: post.title,
+    description: post.excerpt,
+    image: post.coverImageSrc || "https://www.alsolutionsai.online/images/al-solutions-ai-logo.svg",
+    datePublished: new Date(post.date).toISOString(),
+    dateModified: new Date(post.date).toISOString(),
+    author: {
+      "@type": "Person",
+      name: post.author?.name || "AL Solutions AI",
+    },
+    publisher: {
+      "@type": "Organization",
+      name: "AL Solutions AI",
+      logo: {
+        "@type": "ImageObject",
+        url: "https://www.alsolutionsai.online/images/al-solutions-ai-logo.svg",
+      },
+    },
+  };
+
   return (
     <main className="min-h-screen bg-bg-default">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(blogPostingSchema) }}
+      />
+
       {/* Breadcrumb */}
       <div className="container py-6 sm:py-8 border-b border-border-subtle">
         <Link

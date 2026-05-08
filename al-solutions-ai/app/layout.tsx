@@ -14,9 +14,19 @@ const organizationSchema = {
   "@type": "Organization",
   name: "AL Solutions AI",
   url: siteUrl,
-  description: "AI agency specializing in custom chatbots, automation systems, and lead conversion tools for SMBs in MENA and Europe.",
-  areaServed: ["Middle East", "North Africa", "Europe"],
+  logo: `${siteUrl}/images/al-solutions-ai-logo.svg`,
+  description: "AI chatbot and automation agency serving MENA and Europe. Production-ready in 30 days.",
+  foundingDate: "2024",
+  areaServed: ["MENA", "Europe"],
   serviceType: ["AI Chatbot Development", "Business Process Automation", "Lead Conversion Systems"],
+  sameAs: [
+    "https://www.linkedin.com/company/al-solutions-ai",
+  ],
+  contactPoint: {
+    "@type": "ContactPoint",
+    contactType: "customer service",
+    availableLanguage: ["English", "Arabic", "French"],
+  },
 };
 
 const plusJakartaSans = Plus_Jakarta_Sans({

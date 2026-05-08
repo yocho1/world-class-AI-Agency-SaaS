@@ -21,9 +21,34 @@ const SERVICE_LINKS = [
   { title: "Web + AI Solutions", href: "/services/web-ai-solutions", summary: "Bundle a high-converting site with AI capabilities." },
 ];
 
+// Service ItemList Schema
+const servicesSchema = {
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  itemListElement: SERVICE_LINKS.map((service, index) => ({
+    "@type": "ListItem",
+    position: index + 1,
+    item: {
+      "@type": "Service",
+      name: service.title,
+      description: service.summary,
+      url: `https://www.alsolutionsai.online${service.href}`,
+      provider: {
+        "@type": "Organization",
+        name: "AL Solutions AI",
+      },
+    },
+  })),
+};
+
 export default function ServicesHubPage() {
   return (
     <main className="container py-20">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(servicesSchema) }}
+      />
+
       <div className="max-w-3xl">
         <p className="text-xs uppercase tracking-[0.18em] text-accent-400">Services</p>
         <h1 className="mt-4 text-4xl font-medium tracking-tight text-text-primary md:text-5xl">Choose the implementation track that matches your next outcome.</h1>
