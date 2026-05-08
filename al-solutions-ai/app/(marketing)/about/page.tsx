@@ -3,15 +3,15 @@ import Link from "next/link";
 import { Card, Reveal } from "@/components/ui";
 
 export const metadata = {
-  title: "About AL Solutions AI — AI Agency Founded in England, Serving MENA & Europe",
+  title: "About AL Solutions AI — AI Agency Founded in Hayes, Serving MENA & Europe",
   description:
-    "AL Solutions AI (Reg. No. 11521309) was founded by Asim Jan in 2018. We build and deploy AI chatbots, WhatsApp automation, and lead conversion systems for growth companies across MENA and Europe — live in 30 days.",
+    "Meet the team behind AL Solutions AI. We build production-ready AI chatbots and automation systems for growth companies across MENA and Europe — shipped in 30 days.",
   canonical: "https://www.alsolutionsai.online/about",
   openGraph: {
     url: "https://www.alsolutionsai.online/about",
-    title: "About AL Solutions AI — AI Agency Founded in England, Serving MENA & Europe",
+    title: "About AL Solutions AI — AI Agency Founded in Hayes, Serving MENA & Europe",
     description:
-      "AL Solutions AI (Reg. No. 11521309) was founded by Asim Jan in 2018. We build and deploy AI chatbots, WhatsApp automation, and lead conversion systems for growth companies across MENA and Europe — live in 30 days.",
+      "Meet the team behind AL Solutions AI. We build production-ready AI chatbots and automation systems for growth companies across MENA and Europe — shipped in 30 days.",
   },
 };
 
