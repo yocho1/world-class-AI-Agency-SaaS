@@ -7,7 +7,7 @@ type Props = {
   posts: BlogCardProps[];
 };
 
-const CATEGORIES = ["All", "Automation", "Case Studies", "How-to"];
+const CATEGORIES = ["All", "AI Chatbots", "Automation", "Case Studies", "How-to"];
 
 export default function BlogListing({ posts }: Props) {
   const [category, setCategory] = useState<string>("All");
@@ -23,25 +23,34 @@ export default function BlogListing({ posts }: Props) {
 
   return (
     <section>
-      <div className="mb-6 flex flex-wrap gap-3">
+      {/* Category Filters */}
+      <div className="mb-10 flex flex-wrap gap-3">
         {CATEGORIES.map((c) => (
           <button
             key={c}
             onClick={() => setCategory(c)}
-            className={`px-3 py-1 rounded-full text-sm font-medium transition-colors ${category === c ? "bg-accent-400 text-bg-default" : "bg-bg-surface text-text-primary border border-border-subtle"}`}
+            className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 ${
+              category === c
+                ? "bg-accent-400 text-bg-default shadow-lg shadow-accent-400/20"
+                : "bg-bg-surface text-text-primary border border-border-subtle hover:border-accent-400 hover:bg-bg-default"
+            }`}
           >
             {c}
           </button>
         ))}
       </div>
 
-      <div className="grid grid-cols-1 gap-6 lg:grid-cols-3 md:grid-cols-2">
+      {/* Featured Post (Full Width) */}
+      <div className="mb-12">
         {featured && (
           <div className="lg:col-span-3 md:col-span-2">
             <BlogCard {...featured} featured />
           </div>
         )}
+      </div>
 
+      {/* Grid Posts */}
+      <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
         {rest.map((p) => (
           <BlogCard key={p.slug} {...p} />
         ))}

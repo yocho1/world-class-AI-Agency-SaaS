@@ -77,31 +77,42 @@ export function BlogCard({
 
         {/* Body */}
         <div className="p-5 md:p-6">
-          <h3 className="text-lg md:text-xl font-semibold text-text-primary mb-2 leading-tight">{title}</h3>
+          {category && (
+            <div className="inline-flex mb-3 rounded-full bg-accent-400/10 px-2.5 py-1 text-xs font-semibold uppercase tracking-wider text-accent-400">
+              {category}
+            </div>
+          )}
 
-          <p className="text-sm text-text-secondary mb-4" style={{ display: "-webkit-box", WebkitLineClamp: 2, WebkitBoxOrient: "vertical", overflow: "hidden" }}>
+          <h3 className="text-lg md:text-xl font-semibold text-text-primary mb-2 leading-tight line-clamp-2">
+            {title}
+          </h3>
+
+          <p className="text-sm text-text-secondary mb-4 line-clamp-2">
             {excerpt}
           </p>
 
-          <div className="mt-4 flex items-center justify-between">
+          <div className="mt-4 flex items-center justify-between pt-4 border-t border-border-subtle">
             <div className="flex items-center gap-3">
-              <div className="relative h-10 w-10 rounded-full overflow-hidden bg-bg-default flex-shrink-0">
+              <div className="relative h-10 w-10 rounded-full overflow-hidden bg-accent-400 flex-shrink-0 flex items-center justify-center text-xs font-semibold text-bg-default">
                 {author.avatar ? (
                   <Image src={author.avatar} alt={author.name} fill className="object-cover object-center" />
                 ) : (
-                  <div className="flex h-full w-full items-center justify-center bg-accent-50 text-accent-400 font-semibold">{initials}</div>
+                  initials
                 )}
               </div>
 
-              <div>
-                <p className="text-sm font-medium text-text-primary">{author.name}</p>
+              <div className="min-w-0">
+                <p className="text-xs font-medium text-text-tertiary uppercase tracking-wide">{author.name}</p>
                 <p className="text-xs text-text-tertiary">
-                  {formattedDate} • {typeof readTime === "number" ? `${readTime} min read` : readTime}
+                  {formattedDate}
                 </p>
               </div>
             </div>
 
-            <div className="text-xs text-text-tertiary hidden sm:block">Read →</div>
+
+            <div className="flex-shrink-0 text-xs font-medium text-text-tertiary">
+              {typeof readTime === "number" ? `${readTime} min` : readTime}
+            </div>
           </div>
         </div>
       </Link>

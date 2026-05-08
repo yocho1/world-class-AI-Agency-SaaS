@@ -10,13 +10,13 @@ type Props = {
 export default function RelatedPosts({ posts }: Props) {
   if (!posts || posts.length === 0) return null;
   return (
-    <aside className="mt-10">
-      <h4 className="mb-4 text-lg font-semibold">Related articles</h4>
-      <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
+    <section className="mt-16 border-t border-border-subtle pt-12">
+      <h2 className="mb-8 text-2xl font-bold text-text-primary">More from the blog</h2>
+      <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
         {posts.map((p) => (
           <BlogCard key={p.slug} {...p} />
         ))}
       </div>
-    </aside>
+    </section>
   );
 }
