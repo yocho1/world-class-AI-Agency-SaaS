@@ -36,6 +36,11 @@ export interface CaseStudyData {
     avatarSrc: string;
   };
   companyName: string;
+  relatedCaseStudies?: Array<{
+    title: string;
+    metric: string;
+    slug: string;
+  }>;
 }
 
 export function CaseStudyLayout({ data }: { data: CaseStudyData }) {
@@ -189,6 +194,29 @@ export function CaseStudyLayout({ data }: { data: CaseStudyData }) {
           </div>
         </div>
       </section>
+
+      {/* Related Case Studies Section */}
+      {data.relatedCaseStudies && data.relatedCaseStudies.length > 0 && (
+        <section className="border-t border-border-subtle bg-bg-surface py-12 sm:py-16 md:py-20">
+          <div className="container">
+            <h2 className="text-2xl font-bold text-text-primary sm:text-3xl md:text-4xl">Related case studies</h2>
+            <div className="mt-10 grid gap-4 md:grid-cols-2">
+              {data.relatedCaseStudies.map((study) => (
+                <div
+                  key={study.slug}
+                  className="rounded-2xl border border-border-subtle bg-bg-default p-6 sm:p-8 transition-all duration-300 hover:border-accent-400 hover:shadow-lg hover:shadow-accent-400/5"
+                >
+                  <p className="text-xs uppercase tracking-[0.16em] font-semibold text-text-tertiary">{study.metric}</p>
+                  <h3 className="mt-3 text-xl font-medium text-text-primary">{study.title}</h3>
+                  <Link className="mt-6 inline-flex text-sm text-accent-400 hover:text-accent-300 transition-colors" href={`/case-studies/${study.slug}`}>
+                    Read story
+                  </Link>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* CTA Section */}
       <section className="py-12 sm:py-16 md:py-20">
