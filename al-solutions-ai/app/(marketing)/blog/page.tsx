@@ -20,11 +20,28 @@ export default async function BlogPage() {
   const posts = getAllPosts();
 
   return (
-    <main className="container mx-auto px-4 py-12">
-      <h1 className="mb-4 text-3xl font-bold">Insights & Case Studies</h1>
-      <p className="mb-8 text-lg text-text-secondary">Latest thinking on AI-driven growth, automation and conversions.</p>
+    <main className="min-h-screen bg-bg-default">
+      {/* Hero Section */}
+      <section className="border-b border-border-subtle bg-gradient-to-b from-bg-surface to-bg-default py-16 md:py-24">
+        <div className="container">
+          <div className="mx-auto max-w-3xl">
+            <p className="text-xs uppercase tracking-[0.18em] text-accent-400">Resources</p>
+            <h1 className="mt-4 text-4xl font-medium tracking-tight text-text-primary md:text-5xl">
+              AI Insights for Growth Teams
+            </h1>
+            <p className="mt-6 text-lg text-text-secondary">
+              Practical guides on deploying AI chatbots, automating business workflows, and capturing leads 24/7. Built for MENA growth teams and SME founders.
+            </p>
+          </div>
+        </div>
+      </section>
 
-      <BlogListing posts={posts} />
+      {/* Blog Listing Section */}
+      <section className="py-12 md:py-16">
+        <div className="container">
+          <BlogListing posts={posts} />
+        </div>
+      </section>
     </main>
   );
 }
