@@ -1,6 +1,19 @@
 import Link from "next/link";
 import { Card } from "@/components/ui";
 
+export const metadata = {
+  title: "AI Chatbot Case Studies — Real Results in Production | AL Solutions AI",
+  description:
+    "See how AL Solutions AI deployed AI chatbots and automation for hospitality, fintech, and retail clients in MENA. Real metrics, real timelines, real deployments.",
+  alternates: { canonical: "https://www.alsolutionsai.online/case-studies" },
+  openGraph: {
+    url: "https://www.alsolutionsai.online/case-studies",
+    title: "AI Chatbot Case Studies — Real Results in Production | AL Solutions AI",
+    description:
+      "See how AL Solutions AI deployed AI chatbots and automation for hospitality, fintech, and retail clients in MENA. Real metrics, real timelines, real deployments.",
+  },
+};
+
 const CASE_STUDIES = [
   { title: "Hospitality AI concierge", metric: "-62% response time", slug: "hospitality-concierge" },
   { title: "Retail lead routing", metric: "+44% capture rate", slug: "retail-routing" },

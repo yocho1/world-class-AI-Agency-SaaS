@@ -3,8 +3,16 @@ import { Reveal } from "@/components/ui";
 import ContactForm from "@/components/forms/ContactForm";
 
 export const metadata: Metadata = {
-  title: "Contact AL Solutions AI",
-  description: "Get in touch with AL Solutions AI. We respond within 4 business hours. Schedule a consultation or reach out via email, WhatsApp, or phone.",
+  title: "Contact AL Solutions AI — Book a Free AI Audit",
+  description:
+    "Get in touch with the AL Solutions AI team. Book a free 30-minute AI audit, WhatsApp us directly, or send us your project details.",
+  alternates: { canonical: "https://www.alsolutionsai.online/contact" },
+  openGraph: {
+    url: "https://www.alsolutionsai.online/contact",
+    title: "Contact AL Solutions AI — Book a Free AI Audit",
+    description:
+      "Get in touch with the AL Solutions AI team. Book a free 30-minute AI audit, WhatsApp us directly, or send us your project details.",
+  },
 };
 
 // =======================

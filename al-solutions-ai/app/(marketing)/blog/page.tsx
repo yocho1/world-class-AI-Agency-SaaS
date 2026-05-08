@@ -4,8 +4,16 @@ import type { Metadata } from "next";
 import { getAllPosts } from "@/lib/posts";
 
 export const metadata: Metadata = {
-  title: "Blog - AI Solutions",
-  description: "Insights, case studies and how-tos on AI for growth.",
+  title: "AI Automation & Chatbot Blog for MENA Businesses | AL Solutions AI",
+  description:
+    "Practical guides on deploying AI chatbots, automating business workflows, and growing revenue with AI. Written for MENA and European growth teams.",
+  alternates: { canonical: "https://www.alsolutionsai.online/blog" },
+  openGraph: {
+    url: "https://www.alsolutionsai.online/blog",
+    title: "AI Automation & Chatbot Blog for MENA Businesses | AL Solutions AI",
+    description:
+      "Practical guides on deploying AI chatbots, automating business workflows, and growing revenue with AI. Written for MENA and European growth teams.",
+  },
 };
 
 export default async function BlogPage() {

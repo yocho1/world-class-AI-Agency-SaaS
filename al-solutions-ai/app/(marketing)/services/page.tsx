@@ -1,6 +1,19 @@
 import Link from "next/link";
 import { Card } from "@/components/ui";
 
+export const metadata = {
+  title: "AI Chatbot & Automation Services | AL Solutions AI",
+  description:
+    "Custom AI chatbots, lead automation, WhatsApp AI, and web+AI bundles. Production-ready in 30 days for SMBs across MENA and Europe.",
+  alternates: { canonical: "https://www.alsolutionsai.online/services" },
+  openGraph: {
+    url: "https://www.alsolutionsai.online/services",
+    title: "AI Chatbot & Automation Services | AL Solutions AI",
+    description:
+      "Custom AI chatbots, lead automation, WhatsApp AI, and web+AI bundles. Production-ready in 30 days for SMBs across MENA and Europe.",
+  },
+};
+
 const SERVICE_LINKS = [
   { title: "AI Chatbots", href: "/services/ai-chatbots", summary: "Customer-facing assistants that qualify, route, and convert." },
   { title: "Automation Systems", href: "/services/automation", summary: "Reduce manual ops with connected AI workflows." },
