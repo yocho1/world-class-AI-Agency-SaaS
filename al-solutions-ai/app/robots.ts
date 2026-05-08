@@ -1,6 +1,6 @@
 import type { MetadataRoute } from "next";
 
-const baseUrl = process.env.NEXT_PUBLIC_APP_URL || "https://alsolutionsai.com";
+const baseUrl = process.env.NEXT_PUBLIC_APP_URL || "https://www.alsolutionsai.online";
 
 export default function robots(): MetadataRoute.Robots {
   return {
@@ -8,10 +8,9 @@ export default function robots(): MetadataRoute.Robots {
       {
         userAgent: "*",
         allow: "/",
-        disallow: ["/dashboard", "/dashboard/", "/api/", "/auth/", "/_next/", "/private/"],
+        disallow: ["/api/", "/free-ai-audit/confirmation", "/dashboard", "/_next/", "/private/"],
       },
     ],
     sitemap: `${baseUrl}/sitemap.xml`,
-    host: baseUrl,
   };
 }

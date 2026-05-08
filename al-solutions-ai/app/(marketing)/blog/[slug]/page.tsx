@@ -12,6 +12,9 @@ export async function generateMetadata({ params }: Props) {
   return {
     title: `${post.title} | AL Solutions AI`,
     description: post.excerpt,
+     alternates: {
+       canonical: `https://www.alsolutionsai.online/blog/${params.slug}`,
+     },
   };
 }
 
