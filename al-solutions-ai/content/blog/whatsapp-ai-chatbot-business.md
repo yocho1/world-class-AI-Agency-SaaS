@@ -6,7 +6,6 @@ readTime: "9 min"
 excerpt: "WhatsApp has 2 billion users — and MENA businesses are its most active market. Here's how to set up a WhatsApp AI chatbot that qualifies and converts leads."
 category: "How-to"
 featured: false
-coverImageSrc: null
 ---
 
 # How to Use WhatsApp AI Chatbots to Capture Leads 24/7

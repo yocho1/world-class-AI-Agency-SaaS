@@ -6,7 +6,6 @@ readTime: "8 min"
 excerpt: "Wondering what an AI chatbot costs in 2026? This guide breaks down real pricing for MENA businesses — from $500 prototype to $10,000+ production systems."
 category: "How-to"
 featured: true
-coverImageSrc: null
 ---
 
 # How Much Does an AI Chatbot Cost in the MENA Region? (2025 Pricing Guide)

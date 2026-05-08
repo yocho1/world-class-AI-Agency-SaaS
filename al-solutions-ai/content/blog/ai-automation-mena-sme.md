@@ -6,7 +6,6 @@ readTime: "10 min"
 excerpt: "AI automation is no longer just for enterprise. This guide shows MENA SMEs exactly where to start, what processes to automate first, and realistic results."
 category: "Automation"
 featured: false
-coverImageSrc: null
 ---
 
 # AI Automation for SMEs in MENA: Where to Start and What to Expect
