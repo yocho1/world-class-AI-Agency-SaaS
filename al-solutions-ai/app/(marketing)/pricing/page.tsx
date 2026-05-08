@@ -1,4 +1,15 @@
-"use client";
+export const metadata = {
+  title: "AI Chatbot Pricing — From $2,500 | AL Solutions AI",
+  description:
+    "Transparent, one-time project pricing for custom AI chatbots and automation. Launch plan from $2,500. Growth plan from $6,500. No retainers, no surprises.",
+  canonical: "https://www.alsolutionsai.online/pricing",
+  openGraph: {
+    url: "https://www.alsolutionsai.online/pricing",
+    title: "AI Chatbot Pricing — From $2,500 | AL Solutions AI",
+    description:
+      "Transparent, one-time project pricing for custom AI chatbots and automation. Launch plan from $2,500. Growth plan from $6,500. No retainers, no surprises.",
+  },
+};
 
 import Link from "next/link";
 import { Reveal } from "@/components/ui";
