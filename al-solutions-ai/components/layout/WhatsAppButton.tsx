@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
+import { trackEvent } from "@/lib/analytics";
 
 const WHATSAPP_URL =
   "https://wa.me/212674147995?text=Hi%2C%20I%27d%20like%20to%20learn%20about%20your%20AI%20services";
@@ -62,6 +63,7 @@ export function WhatsAppButton() {
 
   const handleClick = () => {
     if (typeof window !== "undefined") {
+      trackEvent("whatsapp_click", { button_location: "floating_button" });
       window.sessionStorage.setItem(HIDE_KEY, String(Date.now()));
       setIsVisible(false);
     }

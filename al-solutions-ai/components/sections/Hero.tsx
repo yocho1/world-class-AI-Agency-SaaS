@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { trackHeroCTAClick } from "@/lib/analytics/events";
+import { trackEvent } from "@/lib/analytics";
 import { usePostHog } from "@/hooks/usePostHog";
 import { Reveal } from "@/components/ui";
 
@@ -73,7 +74,14 @@ export function Hero({
               {ctaPrimaryText}
             </span>
           </Link>
-          <Link href="/free-ai-audit" aria-label="Get your free AI audit — no commitment required" onClick={() => trackClick("secondary")}>
+          <Link
+            href="/free-ai-audit"
+            aria-label="Get your free AI audit — no commitment required"
+            onClick={() => {
+              trackEvent("audit_cta_click", { button_location: "hero" });
+              trackClick("secondary");
+            }}
+          >
             <span className="inline-flex h-11 items-center rounded-lg border border-border-default px-6 text-sm font-medium text-text-primary transition-colors hover:bg-bg-elevated">
               {ctaSecondaryText}
             </span>

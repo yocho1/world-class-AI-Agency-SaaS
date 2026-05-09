@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useState } from "react";
 
@@ -53,75 +53,79 @@ export default function ContactForm() {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-4">
+    <form onSubmit={handleSubmit} className="space-y-5">
       {/* Honeypot field - hidden from users */}
       <input type="text" name="honeypot" value={formData.honeypot} onChange={handleChange} style={{ display: "none" }} />
 
-      {/* Name */}
-      <div>
-        <label className="block text-sm font-medium text-text-primary mb-2">Name *</label>
-        <input
-          type="text"
-          name="name"
-          value={formData.name}
-          onChange={handleChange}
-          required
-          className="w-full px-4 py-3 rounded-lg border border-border-subtle bg-bg-surface text-text-primary placeholder-text-tertiary focus:outline-none focus:border-accent-400 transition-colors"
-          placeholder="Your name"
-        />
+      <div className="grid gap-4 sm:grid-cols-2">
+        {/* Name */}
+        <div>
+          <label className="block text-xs font-semibold uppercase tracking-wider text-text-tertiary mb-2">Name *</label>
+          <input
+            type="text"
+            name="name"
+            value={formData.name}
+            onChange={handleChange}
+            required
+            className="w-full rounded-lg border border-border-subtle bg-bg-default px-4 py-3 text-sm text-text-primary placeholder-text-tertiary transition-colors focus:border-accent-400 focus:outline-none focus:ring-2 focus:ring-accent-400/20"
+            placeholder="Your name"
+          />
+        </div>
+
+        {/* Company */}
+        <div>
+          <label className="block text-xs font-semibold uppercase tracking-wider text-text-tertiary mb-2">Company *</label>
+          <input
+            type="text"
+            name="company"
+            value={formData.company}
+            onChange={handleChange}
+            required
+            className="w-full rounded-lg border border-border-subtle bg-bg-default px-4 py-3 text-sm text-text-primary placeholder-text-tertiary transition-colors focus:border-accent-400 focus:outline-none focus:ring-2 focus:ring-accent-400/20"
+            placeholder="Your company"
+          />
+        </div>
       </div>
 
-      {/* Company */}
-      <div>
-        <label className="block text-sm font-medium text-text-primary mb-2">Company *</label>
-        <input
-          type="text"
-          name="company"
-          value={formData.company}
-          onChange={handleChange}
-          required
-          className="w-full px-4 py-3 rounded-lg border border-border-subtle bg-bg-surface text-text-primary placeholder-text-tertiary focus:outline-none focus:border-accent-400 transition-colors"
-          placeholder="Your company"
-        />
-      </div>
+      <div className="grid gap-4 sm:grid-cols-2">
+        {/* Email */}
+        <div>
+          <label className="block text-xs font-semibold uppercase tracking-wider text-text-tertiary mb-2">Email *</label>
+          <input
+            type="email"
+            name="email"
+            value={formData.email}
+            onChange={handleChange}
+            required
+            className="w-full rounded-lg border border-border-subtle bg-bg-default px-4 py-3 text-sm text-text-primary placeholder-text-tertiary transition-colors focus:border-accent-400 focus:outline-none focus:ring-2 focus:ring-accent-400/20"
+            placeholder="you@company.com"
+          />
+        </div>
 
-      {/* Email */}
-      <div>
-        <label className="block text-sm font-medium text-text-primary mb-2">Email *</label>
-        <input
-          type="email"
-          name="email"
-          value={formData.email}
-          onChange={handleChange}
-          required
-          className="w-full px-4 py-3 rounded-lg border border-border-subtle bg-bg-surface text-text-primary placeholder-text-tertiary focus:outline-none focus:border-accent-400 transition-colors"
-          placeholder="you@company.com"
-        />
-      </div>
-
-      {/* Phone (Optional) */}
-      <div>
-        <label className="block text-sm font-medium text-text-primary mb-2">Phone (optional)</label>
-        <input
-          type="tel"
-          name="phone"
-          value={formData.phone}
-          onChange={handleChange}
-          className="w-full px-4 py-3 rounded-lg border border-border-subtle bg-bg-surface text-text-primary placeholder-text-tertiary focus:outline-none focus:border-accent-400 transition-colors"
-          placeholder="+1 (555) 123-4567"
-        />
+        {/* Phone (Optional) */}
+        <div>
+          <label className="block text-xs font-semibold uppercase tracking-wider text-text-tertiary mb-2">Phone (optional)</label>
+          <input
+            type="tel"
+            name="phone"
+            value={formData.phone}
+            onChange={handleChange}
+            className="w-full rounded-lg border border-border-subtle bg-bg-default px-4 py-3 text-sm text-text-primary placeholder-text-tertiary transition-colors focus:border-accent-400 focus:outline-none focus:ring-2 focus:ring-accent-400/20"
+            placeholder="+1 (555) 123-4567"
+          />
+        </div>
       </div>
 
       {/* Message */}
       <div>
-        <label className="block text-sm font-medium text-text-primary mb-2">What are you looking to build? *</label>
+        <label className="block text-xs font-semibold uppercase tracking-wider text-text-tertiary mb-2">What are you looking to build? *</label>
         <textarea
           name="message"
           value={formData.message}
           onChange={handleChange}
           required
-          rows={5}
-          className="w-full px-4 py-3 rounded-lg border border-border-subtle bg-bg-surface text-text-primary placeholder-text-tertiary focus:outline-none focus:border-accent-400 transition-colors resize-none"
+          rows={6}
+          className="w-full rounded-lg border border-border-subtle bg-bg-default px-4 py-3 text-sm text-text-primary placeholder-text-tertiary transition-colors focus:border-accent-400 focus:outline-none focus:ring-2 focus:ring-accent-400/20 resize-none"
           placeholder="Tell us about your project, timeline, and goals..."
         />
       </div>
@@ -129,7 +133,7 @@ export default function ContactForm() {
       {/* Submit Button */}
       <button
         type="submit"
-        className="w-full h-11 rounded-lg bg-accent-400 text-bg-default font-semibold transition-all hover:bg-accent-300 hover:shadow-lg hover:shadow-accent-400/20"
+        className="h-12 w-full rounded-lg bg-accent-400 text-sm font-semibold text-bg-default transition-all hover:bg-accent-300 hover:shadow-lg hover:shadow-accent-400/20"
       >
         Send message
       </button>

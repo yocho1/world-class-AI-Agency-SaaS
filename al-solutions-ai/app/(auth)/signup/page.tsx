@@ -16,8 +16,7 @@ export default function SignupPage() {
       fullName: String(form.get("full-name") || ""),
       company: String(form.get("company") || ""),
       email: String(form.get("email") || ""),
-      password: String(form.get("password") || ""),
-    }
+      password: String(form.get("password") || ""),    }
 
     try {
       const res = await fetch("/api/auth/signup", {

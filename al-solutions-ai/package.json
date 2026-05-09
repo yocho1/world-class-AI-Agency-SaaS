@@ -12,6 +12,7 @@
     "prepare": "husky"
   },
   "dependencies": {
+    "@next/third-parties": "^16.2.6",
     "@sendgrid/mail": "^8.1.6",
     "@sentry/nextjs": "^10.51.0",
     "@supabase/ssr": "^0.5.2",
@@ -26,15 +27,15 @@
     "posthog-js": "^1.260.2",
     "react": "18.3.1",
     "react-dom": "18.3.1",
-    "resend": "^6.12.2",
-    "tailwind-merge": "^2.5.2",
-    "uuid": "^14.0.0",
-    "zod": "^3.24.2",
-    "unified": "^11.0.0",
+    "rehype-sanitize": "^6.0.0",
+    "rehype-stringify": "^9.0.3",
     "remark-parse": "^10.0.2",
     "remark-rehype": "^10.0.2",
-    "rehype-stringify": "^9.0.3",
-    "rehype-sanitize": "^6.0.0"
+    "resend": "^6.12.2",
+    "tailwind-merge": "^2.5.2",
+    "unified": "^11.0.0",
+    "uuid": "^14.0.0",
+    "zod": "^3.24.2"
   },
   "devDependencies": {
     "@types/node": "^20.16.5",

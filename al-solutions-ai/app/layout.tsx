@@ -2,12 +2,14 @@ import type { Metadata } from "next";
 import { Suspense } from "react";
 import { headers } from "next/headers";
 import { Cairo, Plus_Jakarta_Sans } from "next/font/google";
+import { GoogleAnalytics } from "@next/third-parties/google";
 import { PostHogProvider } from "@/components/analytics/PostHogProvider";
 import { PageViewTracker } from "@/components/analytics/PageViewTracker";
 import { WhatsAppButton } from "@/components/layout/WhatsAppButton";
 import "./globals.css";
 
 const siteUrl = "https://www.alsolutionsai.online";
+const googleAnalyticsId = process.env.NEXT_PUBLIC_GA_ID ?? "G-XXXXXXXXXX";
 const supportedLocales = new Set(["en", "ar", "fr"]);
 const organizationSchema = {
   "@context": "https://schema.org",
@@ -70,6 +72,7 @@ export default function RootLayout({
         <script dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }} type="application/ld+json" />
       </head>
       <body className="min-h-full">
+        <GoogleAnalytics gaId={googleAnalyticsId} />
         <PostHogProvider>
           <Suspense fallback={null}>
             <PageViewTracker />

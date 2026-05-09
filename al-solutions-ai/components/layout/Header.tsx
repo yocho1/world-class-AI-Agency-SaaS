@@ -5,6 +5,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { MobileNav } from "@/components/layout/MobileNav";
+import { trackEvent } from "@/lib/analytics";
 import { cn } from "@/lib/utils";
 
 const LOCALE_STORAGE_KEY = "preferredLocale";
@@ -139,6 +140,7 @@ export function Header() {
                 : "bg-primary-600 text-white hover:bg-primary-700"
             )}
             href="/free-ai-audit"
+            onClick={() => trackEvent("audit_cta_click", { button_location: "header" })}
           >
             Get Free AI Audit
           </Link>

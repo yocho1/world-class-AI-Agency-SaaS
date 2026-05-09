@@ -3,6 +3,7 @@
 import { useState, useMemo } from "react";
 import Link from "next/link";
 import { Reveal } from "@/components/ui";
+import { trackEvent } from "@/lib/analytics";
 
 export function ROICalculator() {
   // State for inputs
@@ -166,6 +167,7 @@ export function ROICalculator() {
               <Link
                 href={auditUrl}
                 className="inline-flex h-12 items-center rounded-lg bg-accent-400 px-8 font-semibold text-bg-default transition-all hover:bg-accent-300 hover:shadow-lg hover:shadow-accent-400/20"
+                onClick={() => trackEvent("roi_cta_click")}
               >
                 Get your free estimate
               </Link>

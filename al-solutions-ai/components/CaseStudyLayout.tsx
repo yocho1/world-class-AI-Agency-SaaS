@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import AuditCtaLink from "@/components/analytics/AuditCtaLink";
 
 export interface CaseStudyData {
   slug: string;
@@ -226,12 +227,13 @@ export function CaseStudyLayout({ data }: { data: CaseStudyData }) {
             <p className="mt-4 text-base leading-relaxed text-text-secondary sm:mt-6 sm:text-lg">
               Start with a free AI audit to identify your fastest path to production.
             </p>
-            <Link
+            <AuditCtaLink
               className="mt-6 inline-flex h-12 items-center rounded-lg bg-accent-400 px-6 text-sm font-semibold text-bg-default transition-all duration-300 hover:bg-accent-300 hover:shadow-lg hover:shadow-accent-400/20 sm:mt-8 sm:h-13 sm:px-8 sm:text-base"
               href="/free-ai-audit"
+              buttonLocation="case_study"
             >
               Book Free AI Audit
-            </Link>
+            </AuditCtaLink>
           </div>
         </div>
       </section>

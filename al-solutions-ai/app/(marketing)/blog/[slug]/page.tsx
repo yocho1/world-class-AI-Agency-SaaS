@@ -3,6 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getPostBySlug, getAllPosts } from "@/lib/posts";
 import RelatedPosts from "@/components/blog/RelatedPosts";
+import AuditCtaLink from "@/components/analytics/AuditCtaLink";
 
 type Props = { params: { slug: string } };
 
@@ -189,12 +190,13 @@ export default async function PostPage({ params }: Props) {
             <p className="mt-4 text-base leading-relaxed text-text-secondary sm:text-lg">
               Get a free AI audit and discover exactly what an AI system would look like for your business.
             </p>
-            <Link
+            <AuditCtaLink
               href="/contact"
               className="mt-6 inline-flex h-12 items-center rounded-lg bg-accent-400 px-6 text-sm font-semibold text-bg-default transition-all duration-300 hover:bg-accent-300 hover:shadow-lg hover:shadow-accent-400/20 sm:mt-8 sm:h-13 sm:px-8 sm:text-base"
+              buttonLocation="blog_post"
             >
               Book Free AI Audit
-            </Link>
+            </AuditCtaLink>
           </div>
         </div>
       </section>

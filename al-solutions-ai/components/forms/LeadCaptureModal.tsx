@@ -1,6 +1,7 @@
 "use client";
 
 import { FormEvent, useEffect, useMemo, useRef, useState } from "react";
+import { trackEvent } from "@/lib/analytics";
 
 const CLOSED_FLAG = "leadCaptureClosedThisSession";
 const SUBMITTED_FLAG = "leadCaptureSubmitted";
@@ -164,6 +165,8 @@ export default function LeadCaptureModal() {
     if (typeof window !== "undefined") {
       sessionStorage.setItem(SUBMITTED_FLAG, "1");
     }
+
+    trackEvent("lead_magnet_submit");
 
     setShowThanks(true);
     setIsVisible(false);
