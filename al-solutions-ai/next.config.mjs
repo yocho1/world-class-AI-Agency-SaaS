@@ -19,6 +19,10 @@ const cspDirectives = [
 const nextConfig = {
   poweredByHeader: false,
   reactStrictMode: true,
+  experimental: {
+    optimizePackageImports: ["lucide-react", "@radix-ui/react-icons", "framer-motion"],
+    browsersListForSwc: true,
+  },
   images: {
     remotePatterns: [
       {
