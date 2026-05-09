@@ -6,7 +6,7 @@ export function Footer() {
     <footer className="border-t border-border-subtle bg-bg-surface py-12">
       <div className="container grid gap-8 text-sm text-text-secondary md:grid-cols-[1.4fr_0.8fr_0.8fr_1fr]">
         <div>
-          <Link href="/" className="relative inline-block h-14 w-56 overflow-hidden">
+          <Link href="/" aria-label="AL Solutions AI — home" className="relative inline-block h-14 w-56 overflow-hidden">
             <Image
               alt="AL Solutions AI logo"
               fill

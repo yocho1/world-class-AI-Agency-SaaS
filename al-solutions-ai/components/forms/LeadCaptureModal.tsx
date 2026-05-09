@@ -186,6 +186,7 @@ export default function LeadCaptureModal() {
         <button
           aria-label="Close lead capture panel"
           className="absolute right-3 top-2 text-lg text-text-tertiary hover:text-text-primary"
+          tabIndex={isVisible ? 0 : -1}
           onClick={handleClose}
           type="button"
         >
@@ -200,8 +201,12 @@ export default function LeadCaptureModal() {
         </p>
 
         <form className="mt-4 space-y-3" onSubmit={handleSubmit}>
+          <label htmlFor="lead-email" className="sr-only">Email address</label>
           <input
+            id="lead-email"
+            aria-label="Your email address"
             className="w-full rounded-lg border border-border-subtle bg-bg-default px-3 py-2 text-sm text-text-primary outline-none transition-colors placeholder:text-text-tertiary focus:border-accent-400"
+            tabIndex={isVisible ? 0 : -1}
             name="email"
             onChange={(event) => setEmail(event.target.value)}
             placeholder="you@company.com"
@@ -216,6 +221,7 @@ export default function LeadCaptureModal() {
               className="mt-0.5 h-4 w-4 accent-accent-400"
               onChange={(event) => setIncludeScopeTemplate(event.target.checked)}
               type="checkbox"
+              tabIndex={isVisible ? 0 : -1}
             />
             Also send me the free AI audit scope template
           </label>
@@ -224,6 +230,7 @@ export default function LeadCaptureModal() {
             className="w-full rounded-lg bg-accent-400 px-4 py-2 text-sm font-semibold text-bg-default transition-colors hover:bg-accent-300"
             type="submit"
             disabled={isSubmitting}
+            tabIndex={isVisible ? 0 : -1}
           >
             {isSubmitting ? "Sending..." : "Send me the checklist"}
           </button>

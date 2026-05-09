@@ -5,7 +5,12 @@ export const metadata = {
   title: "AI Chatbot & Automation Services | AL Solutions AI",
   description:
     "Custom AI chatbots, lead automation, WhatsApp AI, and web+AI bundles. Production-ready in 30 days for SMBs across MENA and Europe.",
-  alternates: { canonical: "https://www.alsolutionsai.online/services" },
+  alternates: {
+    canonical: "https://www.alsolutionsai.online/services",
+    languages: {
+      en: "https://www.alsolutionsai.online/en/services",
+    },
+  },
   openGraph: {
     url: "https://www.alsolutionsai.online/services",
     title: "AI Chatbot & Automation Services | AL Solutions AI",

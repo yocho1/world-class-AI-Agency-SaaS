@@ -15,6 +15,9 @@ export async function generateMetadata({ params }: Props) {
     description: post.excerpt,
      alternates: {
        canonical: `https://www.alsolutionsai.online/blog/${params.slug}`,
+       languages: {
+         en: `https://www.alsolutionsai.online/en/blog/${params.slug}`,
+       },
      },
   };
 }

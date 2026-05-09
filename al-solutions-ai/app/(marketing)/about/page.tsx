@@ -6,7 +6,12 @@ export const metadata = {
   title: "About AL Solutions AI — AI Agency Founded in Hayes, Serving MENA & Europe",
   description:
     "Meet the team behind AL Solutions AI. We build production-ready AI chatbots and automation systems for growth companies across MENA and Europe — shipped in 30 days.",
-  canonical: "https://www.alsolutionsai.online/about",
+  alternates: {
+    canonical: "https://www.alsolutionsai.online/about",
+    languages: {
+      en: "https://www.alsolutionsai.online/en/about",
+    },
+  },
   openGraph: {
     url: "https://www.alsolutionsai.online/about",
     title: "About AL Solutions AI — AI Agency Founded in Hayes, Serving MENA & Europe",

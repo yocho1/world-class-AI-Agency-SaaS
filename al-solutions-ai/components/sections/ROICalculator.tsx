@@ -62,17 +62,19 @@ export function ROICalculator() {
 
                 {/* Visitors Slider */}
                 <div className="mb-8">
-                  <label className="flex justify-between items-center mb-3">
+                  <label htmlFor="roi-visitors" className="flex justify-between items-center mb-3">
                     <span className="text-sm font-medium text-text-primary">Monthly website visitors</span>
                     <span className="text-accent-400 font-semibold">{visitors.toLocaleString()}</span>
                   </label>
                   <input
+                    id="roi-visitors"
                     type="range"
                     min="500"
                     max="50000"
                     step="500"
                     value={visitors}
                     onChange={(e) => setVisitors(Number(e.target.value))}
+                    aria-valuetext={`${visitors.toLocaleString()} visitors`}
                     className="w-full h-2 bg-border-subtle rounded-lg appearance-none cursor-pointer accent-accent-400"
                   />
                   <div className="flex justify-between text-xs text-text-tertiary mt-2">
@@ -83,17 +85,19 @@ export function ROICalculator() {
 
                 {/* Conversion Rate Slider */}
                 <div className="mb-8">
-                  <label className="flex justify-between items-center mb-3">
+                  <label htmlFor="roi-conversion" className="flex justify-between items-center mb-3">
                     <span className="text-sm font-medium text-text-primary">Current lead conversion rate</span>
                     <span className="text-accent-400 font-semibold">{conversionRate.toFixed(1)}%</span>
                   </label>
                   <input
+                    id="roi-conversion"
                     type="range"
                     min="0.5"
                     max="10"
                     step="0.1"
                     value={conversionRate}
                     onChange={(e) => setConversionRate(Number(e.target.value))}
+                    aria-valuetext={`${conversionRate.toFixed(1)}%`}
                     className="w-full h-2 bg-border-subtle rounded-lg appearance-none cursor-pointer accent-accent-400"
                   />
                   <div className="flex justify-between text-xs text-text-tertiary mt-2">
@@ -104,16 +108,18 @@ export function ROICalculator() {
 
                 {/* Deal Value Input */}
                 <div className="mb-2">
-                  <label className="text-sm font-medium text-text-primary mb-3 block">Average deal value</label>
+                  <label htmlFor="roi-deal-value" className="text-sm font-medium text-text-primary mb-3 block">Average deal value</label>
                   <div className="relative">
                     <span className="absolute left-4 top-1/2 -translate-y-1/2 text-text-tertiary">$</span>
                     <input
+                      id="roi-deal-value"
                       type="number"
                       value={dealValue}
                       onChange={(e) => setDealValue(Number(e.target.value) || 0)}
                       className="w-full pl-7 pr-4 py-3 rounded-lg border border-border-subtle bg-bg-default text-text-primary focus:outline-none focus:border-accent-400 transition-colors"
                       min="0"
                       step="100"
+                      aria-label="Average deal value in USD"
                     />
                   </div>
                 </div>

@@ -5,7 +5,12 @@ export const metadata = {
   title: "AI Chatbot Case Studies — Real Results in Production | AL Solutions AI",
   description:
     "See how AL Solutions AI deployed AI chatbots and automation for hospitality, fintech, and retail clients in MENA. Real metrics, real timelines, real deployments.",
-  alternates: { canonical: "https://www.alsolutionsai.online/case-studies" },
+  alternates: {
+    canonical: "https://www.alsolutionsai.online/case-studies",
+    languages: {
+      en: "https://www.alsolutionsai.online/en/case-studies",
+    },
+  },
   openGraph: {
     url: "https://www.alsolutionsai.online/case-studies",
     title: "AI Chatbot Case Studies — Real Results in Production | AL Solutions AI",

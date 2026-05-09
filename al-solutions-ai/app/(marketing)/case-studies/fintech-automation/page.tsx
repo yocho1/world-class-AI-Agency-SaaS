@@ -7,6 +7,9 @@ export const metadata: Metadata = {
     "How FinEdge cut operational costs by 31% through AI-powered customer support automation. From implementation delay to live production in under 4 weeks.",
   alternates: {
     canonical: "https://www.alsolutionsai.online/case-studies/fintech-automation",
+    languages: {
+      en: "https://www.alsolutionsai.online/en/case-studies/fintech-automation",
+    },
   },
   openGraph: {
     url: "https://www.alsolutionsai.online/case-studies/fintech-automation",

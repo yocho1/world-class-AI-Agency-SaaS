@@ -7,6 +7,9 @@ export const metadata: Metadata = {
     "How Nexora Hotels Group replaced 3 failed vendors with a live AI concierge system on web and WhatsApp in just 28 days. +44% lead capture rate.",
   alternates: {
     canonical: "https://www.alsolutionsai.online/case-studies/hospitality-concierge",
+    languages: {
+      en: "https://www.alsolutionsai.online/en/case-studies/hospitality-concierge",
+    },
   },
   openGraph: {
     url: "https://www.alsolutionsai.online/case-studies/hospitality-concierge",

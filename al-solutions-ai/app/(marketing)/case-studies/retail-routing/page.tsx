@@ -7,6 +7,9 @@ export const metadata: Metadata = {
     "How Atlas Retail increased lead capture rate by 44% with intelligent lead routing and WhatsApp automation. From concept to live in 35 days.",
   alternates: {
     canonical: "https://www.alsolutionsai.online/case-studies/retail-routing",
+    languages: {
+      en: "https://www.alsolutionsai.online/en/case-studies/retail-routing",
+    },
   },
   openGraph: {
     url: "https://www.alsolutionsai.online/case-studies/retail-routing",

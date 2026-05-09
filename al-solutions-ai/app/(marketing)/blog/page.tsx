@@ -7,7 +7,12 @@ export const metadata: Metadata = {
   title: "AI Automation & Chatbot Blog for MENA Businesses | AL Solutions AI",
   description:
     "Practical guides on deploying AI chatbots, automating business workflows, and growing revenue with AI. Written for MENA and European growth teams.",
-  alternates: { canonical: "https://www.alsolutionsai.online/blog" },
+  alternates: {
+    canonical: "https://www.alsolutionsai.online/blog",
+    languages: {
+      en: "https://www.alsolutionsai.online/en/blog",
+    },
+  },
   openGraph: {
     url: "https://www.alsolutionsai.online/blog",
     title: "AI Automation & Chatbot Blog for MENA Businesses | AL Solutions AI",
