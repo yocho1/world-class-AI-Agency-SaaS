@@ -13,16 +13,16 @@ const FEATURES = [
 ];
 
 interface WhyCompareProps {
-  title?: string;
-  subtitle?: string;
-  ctaText?: string;
+  readonly title?: string;
+  readonly subtitle?: string;
+  readonly ctaText?: string;
 }
 
 export function WhyCompare({
   title = "Why AL Solutions?",
   subtitle = "Compare AL Solutions against common alternatives",
   ctaText = "See case studies",
-}: WhyCompareProps) {
+}: Readonly<WhyCompareProps>) {
   const [showAll, setShowAll] = useState(false);
 
   const columns = [
@@ -84,7 +84,7 @@ export function WhyCompare({
   ];
 
   return (
-    <section className="container mx-auto px-4 py-12">
+    <section className="section-padding container mx-auto px-4">
       <div className="mb-6 flex items-center justify-between">
         <h2 className="text-2xl font-semibold">{title}</h2>
         <div className="hidden sm:block text-sm text-text-secondary">{subtitle}</div>
@@ -108,9 +108,14 @@ export function WhyCompare({
           const isAL = col.key === "alsolutions";
 
           // Mobile-first: show AL column always; other columns collapsed on mobile until `showAll` true.
-          const mobileCollapse = isAL
-            ? ""
-            : `${showAll ? "max-h-[1000px] opacity-100 translate-y-0 scale-100" : "max-h-0 opacity-0 translate-y-2 scale-95"} overflow-hidden transform-gpu transition-all duration-300 ease-in-out`;
+          let mobileCollapse = "";
+          if (!isAL) {
+            if (showAll) {
+              mobileCollapse = "max-h-[1000px] opacity-100 translate-y-0 scale-100 overflow-hidden transform-gpu transition-all duration-300 ease-in-out";
+            } else {
+              mobileCollapse = "max-h-0 opacity-0 translate-y-2 scale-95 overflow-hidden transform-gpu transition-all duration-300 ease-in-out";
+            }
+          }
 
           return (
             <div
@@ -119,7 +124,7 @@ export function WhyCompare({
             >
               <div className={`mb-4 flex items-center gap-3 ${isAL ? "pb-4" : "pb-3"}`}>
                 <div className={`${isAL ? "text-accent-400" : "text-text-secondary"}`}>{col.icon}</div>
-                <div className={`text-lg font-semibold ${isAL ? "text-text-primary" : "text-text-primary"}`}>{col.title}</div>
+                <div className="text-lg font-semibold text-text-primary">{col.title}</div>
               </div>
 
               <div className="space-y-3">

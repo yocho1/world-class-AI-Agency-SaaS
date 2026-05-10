@@ -103,7 +103,7 @@ export default async function PostPage({ params }: Props) {
 
             {/* Excerpt */}
             {post.excerpt && (
-              <p className="mt-6 text-lg text-text-secondary leading-relaxed">
+              <p className="mt-6 max-w-prose text-lg text-text-secondary leading-relaxed">
                 {post.excerpt}
               </p>
             )}
@@ -136,11 +136,11 @@ export default async function PostPage({ params }: Props) {
                 prose-headings:font-semibold prose-headings:text-text-primary
                 prose-h1:text-3xl prose-h2:text-2xl prose-h3:text-xl
                 prose-h2:mt-10 prose-h2:mb-4 prose-h3:mt-8 prose-h3:mb-3
-                prose-p:text-text-secondary prose-p:leading-relaxed prose-p:mb-6
+                prose-p:max-w-prose prose-p:text-text-secondary prose-p:leading-relaxed prose-p:mb-6
                 prose-a:text-accent-400 prose-a:underline hover:prose-a:text-accent-300
                 prose-strong:text-text-primary prose-strong:font-semibold
-                prose-code:bg-bg-surface prose-code:text-text-primary prose-code:px-2 prose-code:py-1 prose-code:rounded
-                prose-pre:bg-bg-surface prose-pre:border prose-pre:border-border-subtle prose-pre:rounded-lg prose-pre:overflow-x-auto
+                prose-code:bg-bg-surface prose-code:text-text-primary prose-code:px-2 prose-code:py-1 prose-code:rounded-sm
+                prose-pre:bg-bg-surface prose-pre:border prose-pre:border-border-subtle prose-pre:rounded-sm prose-pre:overflow-x-auto
                 prose-ul:list-disc prose-ul:pl-6 prose-ul:text-text-secondary
                 prose-li:mb-2
                 prose-blockquote:border-l-4 prose-blockquote:border-accent-400 prose-blockquote:pl-4 prose-blockquote:italic prose-blockquote:text-text-secondary
@@ -165,7 +165,7 @@ export default async function PostPage({ params }: Props) {
                 </div>
                 <div className="min-w-0 flex-1">
                   <h3 className="text-lg font-semibold text-text-primary">{post.author?.name || "Guest Author"}</h3>
-                  <p className="mt-2 text-sm text-text-secondary leading-relaxed">
+                  <p className="mt-2 max-w-prose text-sm text-text-secondary leading-relaxed">
                     Writes about AI implementation, automation, and growth strategies for MENA businesses. Learn from real case studies and practical guides.
                   </p>
                 </div>
@@ -190,7 +190,7 @@ export default async function PostPage({ params }: Props) {
         <div className="container">
           <div className="mx-auto max-w-2xl rounded-2xl border border-accent-400/20 bg-gradient-to-br from-accent-400/5 to-transparent p-8 text-center sm:p-10 md:p-12">
             <h2 className="text-2xl font-bold text-text-primary sm:text-3xl">Ready to implement AI?</h2>
-            <p className="mt-4 text-base leading-relaxed text-text-secondary sm:text-lg">
+            <p className="mx-auto mt-4 max-w-prose text-base leading-relaxed text-text-secondary sm:text-lg">
               Get a free AI audit and discover exactly what an AI system would look like for your business.
             </p>
             <AuditCtaLink

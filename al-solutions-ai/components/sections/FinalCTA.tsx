@@ -5,10 +5,10 @@ import { Reveal } from "@/components/ui";
 import { trackEvent } from "@/lib/analytics";
 
 interface FinalCTAProps {
-  title?: string;
-  description?: string;
-  primaryText?: string;
-  secondaryText?: string;
+  readonly title?: string;
+  readonly description?: string;
+  readonly primaryText?: string;
+  readonly secondaryText?: string;
 }
 
 export function FinalCTA({
@@ -16,9 +16,9 @@ export function FinalCTA({
   description = "Book a free AI audit and get a practical implementation roadmap with timeline, integration scope, and exact pricing for your use case.",
   primaryText = "Book Free Audit",
   secondaryText = "View Pricing",
-}: FinalCTAProps) {
+}: Readonly<FinalCTAProps>) {
   return (
-    <section className="container pb-16 pt-10">
+    <section className="section-padding container">
       <Reveal>
         <div className="rounded-2xl border border-border-default bg-bg-overlay p-10 text-center">
           <h2 className="text-3xl font-medium text-text-primary">{title}</h2>

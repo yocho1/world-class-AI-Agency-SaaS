@@ -61,7 +61,7 @@ export function LiveAIDemo({
               <ul className="mt-3 space-y-3 text-sm text-text-secondary">
                 {outcomes.map((item) => (
                   <li key={item.label}>
-                    <span className="block text-base font-medium text-text-primary">{item.stat}</span>
+                    <span className="text-metric block text-base font-semibold text-[#00D97E]">{item.stat}</span>
                     <span className="block text-sm text-text-secondary">{item.label}</span>
                     {item.attribution ? (
                       <span className="mt-1 block text-xs text-muted-foreground">{item.attribution}</span>

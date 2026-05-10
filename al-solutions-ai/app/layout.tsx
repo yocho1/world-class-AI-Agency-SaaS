@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import { Suspense } from "react";
 import { headers } from "next/headers";
-import { Cairo, Plus_Jakarta_Sans } from "next/font/google";
+import { Plus_Jakarta_Sans } from "next/font/google";
+import { GeistMono } from "geist/font/mono";
 import { GoogleAnalytics } from "@next/third-parties/google";
 import { PostHogProvider } from "@/components/analytics/PostHogProvider";
 import { PageViewTracker } from "@/components/analytics/PageViewTracker";
@@ -31,17 +32,14 @@ const organizationSchema = {
   },
 };
 
-const plusJakartaSans = Plus_Jakarta_Sans({
-  variable: "--font-plus-jakarta",
+const jakartaSans = Plus_Jakarta_Sans({
   subsets: ["latin"],
-  weight: ["400", "500"],
+  weight: ["400", "500", "600", "700", "800"],
+  variable: "--font-jakarta",
+  display: "swap",
 });
 
-const cairo = Cairo({
-  variable: "--font-cairo",
-  subsets: ["arabic", "latin"],
-  weight: ["400", "500", "600"],
-});
+const geistMono = GeistMono;
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
@@ -65,7 +63,7 @@ export default function RootLayout({
   const lang = supportedLocales.has(localeHeader) ? localeHeader : "en";
 
   return (
-    <html dir={dirHeader} lang={lang} className={`${plusJakartaSans.variable} ${cairo.variable} h-full antialiased`}>
+    <html dir={dirHeader} lang={lang} className={`${jakartaSans.variable} ${geistMono.variable} h-full antialiased`}>
       <head>
         <link rel="icon" href="/images/Favicon.svg" type="image/svg+xml" />
         <link rel="apple-touch-icon" href="/images/Favicon.svg" />

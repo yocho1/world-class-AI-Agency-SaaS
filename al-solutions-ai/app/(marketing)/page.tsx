@@ -170,7 +170,10 @@ const FAQ_SCHEMA = {
   ],
 };
 
-const STRUCTURED_DATA = [FAQ_SCHEMA, ...SERVICE_SCHEMA];
+const STRUCTURED_DATA = [
+  { key: "faq", schema: FAQ_SCHEMA },
+  ...SERVICE_SCHEMA.map((schema) => ({ key: schema.name, schema })),
+];
 
 export default function MarketingHomePage() {
   const requestHeaders = headers();
@@ -179,9 +182,9 @@ export default function MarketingHomePage() {
 
   return (
     <main className="space-y-16 pb-16 md:space-y-24 md:pb-24">
-      {STRUCTURED_DATA.map((schema, index) => (
+      {STRUCTURED_DATA.map(({ key, schema }) => (
         <script
-          key={`schema-${index}`}
+          key={key}
           dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
           type="application/ld+json"
         />
@@ -196,16 +199,20 @@ export default function MarketingHomePage() {
           { value: home.stats.companiesLive.value, label: home.stats.companiesLive.label, attribution: "" },
         ] : undefined}
       />
+      <div className="gradient-divider" />
       <SocialProofBar />
+      <div className="gradient-divider" />
       <ProblemStatement title={home?.sections.problemStatement} />
       <ServicesOverview title={home?.sections.servicesOverview} />
       <ROICalculator />
       <LiveAIDemo title={home?.sections.liveDemo} />
       <CaseStudySpotlight title={home?.sections.caseStudySpotlight} />
+      <div className="gradient-divider" />
       <HowItWorks title={home?.sections.howItWorks} />
       <Testimonials title={home?.sections.testimonials} />
       <WhyCompare title={home?.sections.comparison} />
       <FaqSection title={home?.sections.faq} />
+      <div className="gradient-divider" />
       <FinalCTA title={home?.sections.finalCta} />
       <LeadCaptureModal />
     </main>

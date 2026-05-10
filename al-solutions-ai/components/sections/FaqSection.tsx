@@ -45,14 +45,14 @@ const FAQ_ITEMS: FaqItem[] = [
 ];
 
 interface FaqSectionProps {
-  title?: string;
+  readonly title?: string;
 }
 
-export function FaqSection({ title = "Frequently asked questions" }: FaqSectionProps) {
+export function FaqSection({ title = "Frequently asked questions" }: Readonly<FaqSectionProps>) {
   const [openId, setOpenId] = useState<number | null>(1);
 
   return (
-    <section className="container py-10">
+    <section className="section-padding container">
       <Reveal>
         <h2 className="text-3xl font-medium text-text-primary">{title}</h2>
         <div className="mt-6 space-y-3">

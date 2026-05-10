@@ -31,7 +31,7 @@ export function SocialProofBar({ clients = DEFAULT_CLIENTS }: SocialProofBarProp
   }));
 
   return (
-    <section className="border-y border-border-subtle bg-bg-surface py-6">
+    <section className="section-padding-sm border-y border-border-subtle bg-bg-surface">
       <div className="container">
         <LogoStrip items={items} />
       </div>

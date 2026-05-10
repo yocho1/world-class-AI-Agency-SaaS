@@ -12,8 +12,8 @@ export function TestimonialGrid({
   title = "What Our Clients Say",
   description,
 }: TestimonialGridProps) {
-  return (
-    <section className="container py-16 sm:py-20 md:py-24">
+    return (
+      <section className="section-padding container">
       <Reveal>
         <div className="mx-auto max-w-4xl text-center">
           <h2 className="text-3xl font-bold text-text-primary sm:text-4xl md:text-5xl">{title}</h2>

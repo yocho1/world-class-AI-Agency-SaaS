@@ -112,13 +112,13 @@ export default function AboutPage() {
             <p className="mt-2 text-sm font-medium uppercase tracking-[0.16em] text-accent-400">Founder & Director, AL Solutions AI</p>
 
             <div className="mt-5 max-w-2xl space-y-4 text-text-secondary">
-              <p>
+              <p className="max-w-prose">
                 AL Solutions AI was founded in 2018 with one observation: most businesses were spending months and significant budget on AI projects that never reached production. Too many handoffs, too little accountability, and no clear owner for go-live.
               </p>
-              <p>
+              <p className="max-w-prose">
                 We built a different kind of studio — one where product strategy, AI engineering, and CRM integration sit in a single accountable team. Our clients get a working system live in 30 days, not a slide deck six months later.
               </p>
-              <p>
+              <p className="max-w-prose">
                 Today we serve growth-stage companies across MENA and Europe, deploying AI chatbots, WhatsApp automation, and lead conversion systems that generate measurable revenue from day one.
               </p>
             </div>
@@ -134,7 +134,7 @@ export default function AboutPage() {
         ].map(([title, body]) => (
           <Card key={title}>
             <h2 className="text-xl font-medium text-text-primary">{title}</h2>
-            <p className="mt-2 text-text-secondary">{body}</p>
+            <p className="mt-2 max-w-prose text-text-secondary">{body}</p>
           </Card>
         ))}
       </section>
@@ -144,7 +144,7 @@ export default function AboutPage() {
         <Reveal>
           <div className="mx-auto max-w-4xl">
             <h2 className="text-3xl font-bold tracking-tight text-text-primary sm:text-4xl">Our team</h2>
-            <p className="mt-3 text-base text-text-secondary">
+            <p className="mt-3 max-w-prose text-base text-text-secondary">
               A small, senior team that ships production AI — no juniors, no hand-off chains.
             </p>
             <div className="mt-8 grid gap-6 md:grid-cols-3 sm:grid-cols-2">
@@ -158,7 +158,7 @@ export default function AboutPage() {
                   </div>
                   <h3 className="mt-4 text-lg font-semibold text-text-primary">{member.name}</h3>
                   <p className="text-xs font-medium uppercase tracking-wider text-accent-400">{member.role}</p>
-                  <p className="mt-3 text-sm text-text-secondary">{member.bio}</p>
+                  <p className="mt-3 max-w-prose text-sm text-text-secondary">{member.bio}</p>
                 </div>
               ))}
             </div>
@@ -188,7 +188,7 @@ export default function AboutPage() {
                 </p>
               </div>
               <div className="flex flex-col justify-center">
-                <p className="text-base text-text-secondary leading-relaxed">
+                <p className="max-w-prose text-base text-text-secondary leading-relaxed">
                   We exist to close that gap: AI systems that ship to production, integrate with your existing stack, and generate measurable revenue within 30 days of contract. No prototypes. No decks. Live systems only.
                 </p>
               </div>

@@ -91,7 +91,7 @@ export function ServicesOverview(props: Readonly<ServicesOverviewProps>) {
   };
 
   return (
-    <section className="container py-10">
+    <section className="section-padding container">
       <Reveal>
         <div className="mb-8 max-w-2xl">
           <h2 className="text-3xl font-medium text-text-primary md:text-4xl">{title}</h2>
@@ -101,8 +101,8 @@ export function ServicesOverview(props: Readonly<ServicesOverviewProps>) {
           {services.map((service, index) => (
             <Card className="h-full hover:border-primary-600/60 hover:shadow-[0_0_0_1px_rgba(108,99,255,0.2)]" key={service.title}>
               <h3 className="text-xl font-medium text-text-primary">{service.title}</h3>
-              <p className="mt-2 text-text-secondary">{service.summary}</p>
-              <p className="mt-5 text-sm font-medium text-accent-400" data-attribution={service.metricAttribution} title={service.metricAttribution}>
+              <p className="mt-2 max-w-prose text-text-secondary">{service.summary}</p>
+              <p className="mt-5 inline-flex rounded-pill border-[0.5px] border-[rgba(0,217,126,0.3)] bg-[rgba(0,217,126,0.1)] px-3 py-1.5 text-sm font-semibold text-[#00D97E]" data-attribution={service.metricAttribution} title={service.metricAttribution}>
                 {service.metric}
               </p>
               <p className="mt-1 text-xs text-text-tertiary">{service.metricAttribution}</p>

@@ -16,14 +16,14 @@ export default function AiChatbotForHotelsMenaPage() {
           <h1 className="text-4xl font-medium tracking-tight text-text-primary md:text-5xl">
             AI Chatbot for Hotels in MENA: A Complete Guide
           </h1>
-          <p className="text-base text-text-secondary md:text-lg">
+          <p className="max-w-prose text-base text-text-secondary md:text-lg">
             Hotel teams across MENA are facing the same pattern: higher guest expectations, more inbound channels, and
             smaller operations teams. A modern AI chatbot closes that gap by answering faster, capturing qualified leads,
             and keeping service consistent across Arabic, English, and French. This guide breaks down why now is the right
             time, the most valuable use cases, realistic cost and ROI benchmarks, and how to launch a production chatbot
             in 30 days without disrupting your current stack.
           </p>
-          <p className="text-base text-text-secondary md:text-lg">
+          <p className="max-w-prose text-base text-text-secondary md:text-lg">
             The goal is not to replace your team. The goal is to give them leverage. A production grade assistant handles
             repetitive, high volume questions so your staff can focus on complex requests, VIP guests, and revenue
             opportunities. When implemented correctly, the chatbot becomes a reliable front door to your hotel brand, not
@@ -31,7 +31,7 @@ export default function AiChatbotForHotelsMenaPage() {
           </p>
         </header>
 
-        <section className="space-y-4">
+        <section className="space-y-4 [&_p]:max-w-prose">
           <h2 className="text-2xl font-medium text-text-primary">Why MENA hotels need AI chatbots in 2025</h2>
           <p>
             MENA hospitality is growing fast, but guest expectations are growing even faster. Travelers now expect instant
@@ -58,7 +58,7 @@ export default function AiChatbotForHotelsMenaPage() {
           </p>
         </section>
 
-        <section className="space-y-4">
+        <section className="space-y-4 [&_p]:max-w-prose">
           <h2 className="text-2xl font-medium text-text-primary">Key use cases: check-in, concierge, WhatsApp support</h2>
           <p>
             The most valuable chatbot use cases map directly to revenue or guest experience. When you focus on the right
@@ -99,7 +99,7 @@ export default function AiChatbotForHotelsMenaPage() {
           </p>
         </section>
 
-        <section className="space-y-4">
+        <section className="space-y-4 [&_p]:max-w-prose">
           <h2 className="text-2xl font-medium text-text-primary">Costs and ROI benchmarks</h2>
           <p>
             The cost of an AI chatbot for hotels depends on the scope, integrations, and number of channels. A focused
@@ -126,7 +126,7 @@ export default function AiChatbotForHotelsMenaPage() {
           </p>
         </section>
 
-        <section className="space-y-4">
+        <section className="space-y-4 [&_p]:max-w-prose">
           <h2 className="text-2xl font-medium text-text-primary">Case study: How Nexora Hotels cut response time by 62%</h2>
           <p>
             Nexora Hotels Group launched a bilingual AI concierge across web chat and WhatsApp. The assistant handled
@@ -143,7 +143,7 @@ export default function AiChatbotForHotelsMenaPage() {
           </p>
         </section>
 
-        <section className="space-y-4">
+        <section className="space-y-4 [&_p]:max-w-prose">
           <h2 className="text-2xl font-medium text-text-primary">How to get started in 30 days</h2>
           <p>
             A successful launch does not start with a chatbot. It starts with a plan. You need to define the core guest
@@ -181,7 +181,7 @@ export default function AiChatbotForHotelsMenaPage() {
 
         <section className="rounded-2xl border border-border-subtle bg-bg-surface p-6 text-center">
           <h2 className="text-2xl font-medium text-text-primary">Ready to launch your hotel AI assistant?</h2>
-          <p className="mt-3 text-sm text-text-secondary">
+          <p className="mx-auto mt-3 max-w-prose text-sm text-text-secondary">
             Book a free AI audit to map your top guest journeys, define the integration scope, and launch in 30 days.
           </p>
           <Link className="mt-5 inline-flex text-sm font-medium text-accent-400 hover:text-accent-300" href="/free-ai-audit">

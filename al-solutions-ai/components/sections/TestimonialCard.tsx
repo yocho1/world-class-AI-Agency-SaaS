@@ -27,8 +27,8 @@ export function TestimonialCard({ data }: TestimonialCardProps) {
       </blockquote>
 
       {/* Metric badge */}
-      <div className="mt-6 inline-flex rounded-full bg-green-500/15 px-3 py-1.5 sm:px-4">
-        <span className="text-xs font-semibold text-green-600">{data.metric}</span>
+      <div className="mt-6 inline-flex rounded-pill border-[0.5px] border-[rgba(0,217,126,0.3)] bg-[rgba(0,217,126,0.1)] px-3 py-1.5 sm:px-4">
+        <span className="text-metric text-xs font-semibold text-[#00D97E]">{data.metric}</span>
       </div>
 
       {/* Divider */}

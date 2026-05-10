@@ -31,7 +31,7 @@ export function CaseStudySpotlight({
   const posthog = usePostHog();
 
   return (
-    <section className="container py-10">
+    <section className="section-padding container">
       <Reveal>
         <div className="rounded-2xl border border-border-subtle bg-bg-surface p-8">
           <h2 className="text-2xl font-medium text-text-primary md:text-3xl">{title}</h2>
@@ -40,17 +40,17 @@ export function CaseStudySpotlight({
           <div className="mt-6 grid gap-3 sm:grid-cols-3">
             <div className="rounded-xl border border-border-subtle px-4 py-3">
               <p className="text-xs text-text-tertiary">Lead capture</p>
-              <p className="mt-1 text-xl font-medium text-text-primary" data-attribution="Nexora Hotels Group, 60 days post-launch" title="Nexora Hotels Group, 60 days post-launch">{metrics.leadCapture}</p>
+              <p className="text-metric mt-1 text-xl font-semibold text-[#00D97E]" data-attribution="Nexora Hotels Group, 60 days post-launch" title="Nexora Hotels Group, 60 days post-launch">{metrics.leadCapture}</p>
               <p className="mt-1 text-xs text-text-tertiary">Nexora Hotels Group, 60 days post-launch</p>
             </div>
             <div className="rounded-xl border border-border-subtle px-4 py-3">
               <p className="text-xs text-text-tertiary">First response speed</p>
-              <p className="mt-1 text-xl font-medium text-text-primary" data-attribution="Nexora Hotels Group, 60 days post-launch" title="Nexora Hotels Group, 60 days post-launch">{metrics.firstResponseSpeed}</p>
+              <p className="text-metric mt-1 text-xl font-semibold text-[#00D97E]" data-attribution="Nexora Hotels Group, 60 days post-launch" title="Nexora Hotels Group, 60 days post-launch">{metrics.firstResponseSpeed}</p>
               <p className="mt-1 text-xs text-text-tertiary">Nexora Hotels Group, 60 days post-launch</p>
             </div>
             <div className="rounded-xl border border-border-subtle px-4 py-3">
               <p className="text-xs text-text-tertiary">Go-live time</p>
-              <p className="mt-1 text-xl font-medium text-text-primary" data-attribution="Nexora Hotels Group, 60 days post-launch" title="Nexora Hotels Group, 60 days post-launch">{metrics.goLiveTime}</p>
+              <p className="text-metric mt-1 text-xl font-semibold text-[#00D97E]" data-attribution="Nexora Hotels Group, 60 days post-launch" title="Nexora Hotels Group, 60 days post-launch">{metrics.goLiveTime}</p>
               <p className="mt-1 text-xs text-text-tertiary">Nexora Hotels Group, 60 days post-launch</p>
             </div>
           </div>

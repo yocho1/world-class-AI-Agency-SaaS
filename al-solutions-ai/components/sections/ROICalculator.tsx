@@ -40,7 +40,7 @@ export function ROICalculator() {
   const auditUrl = `/free-ai-audit?visitors=${visitors}&conversion=${conversionRate}&dealValue=${dealValue}`;
 
   return (
-    <section className="py-12 sm:py-16 md:py-20 bg-gradient-to-b from-bg-default to-bg-surface border-y border-border-subtle">
+    <section className="section-padding bg-gradient-to-b from-bg-default to-bg-surface border-y border-border-subtle">
       <div className="container">
         <Reveal>
           <div className="max-w-4xl mx-auto">
@@ -133,30 +133,30 @@ export function ROICalculator() {
                   {/* Current Monthly Leads */}
                   <div className="mb-6 pb-6 border-b border-border-subtle">
                     <p className="text-sm text-text-tertiary mb-1">Current monthly leads</p>
-                    <p className="text-3xl sm:text-4xl font-bold text-text-primary">
+                    <p className="text-metric text-3xl sm:text-4xl font-bold text-text-primary">
                       {metrics.currentLeads.toLocaleString()}
                     </p>
                   </div>
 
                   {/* Projected Leads (Green highlight) */}
-                  <div className="mb-6 pb-6 border-b border-border-subtle bg-green-500/10 -mx-6 px-6 py-4">
-                    <p className="text-sm text-green-600 font-semibold mb-1">Projected leads with AI (+44%)</p>
-                    <p className="text-3xl sm:text-4xl font-bold text-green-600">
+                  <div className="mb-6 pb-6 border-b border-border-subtle bg-[rgba(0,217,126,0.1)] -mx-6 px-6 py-4">
+                    <p className="text-sm text-[#00D97E] font-semibold mb-1">Projected leads with AI (+44%)</p>
+                    <p className="text-metric text-3xl sm:text-4xl font-bold text-[#00D97E]">
                       {metrics.projectedLeads.toLocaleString()}
                     </p>
-                    <p className="text-sm text-green-600 mt-2">
-                      <span className="font-semibold">+{metrics.extraLeads.toLocaleString()}</span> extra leads/month
+                    <p className="text-sm text-[#00D97E] mt-2">
+                      <span className="text-metric font-semibold">+{metrics.extraLeads.toLocaleString()}</span> extra leads/month
                     </p>
                   </div>
 
                   {/* Extra Revenue */}
                   <div>
                     <p className="text-sm text-text-tertiary mb-2">Extra monthly revenue potential</p>
-                    <p className="text-4xl sm:text-5xl font-bold text-accent-400">
+                    <p className="text-metric text-4xl sm:text-5xl font-bold text-[#00D97E]">
                       {formatCurrency(metrics.extraRevenue)}
                     </p>
                     <p className="text-sm text-text-tertiary mt-2">
-                      = {metrics.extraLeads} extra leads × {formatCurrency(dealValue)} avg deal
+                      = <span className="text-metric">{metrics.extraLeads}</span> extra leads × <span className="text-metric">{formatCurrency(dealValue)}</span> avg deal
                     </p>
                   </div>
                 </div>
