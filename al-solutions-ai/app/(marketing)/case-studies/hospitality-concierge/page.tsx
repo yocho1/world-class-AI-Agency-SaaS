@@ -16,6 +16,19 @@ export const metadata: Metadata = {
     title: "Nexora Hotels: -62% Response Time in 28 Days | AL Solutions AI",
     description:
       "How Nexora Hotels Group replaced 3 failed vendors with a live AI concierge system on web and WhatsApp in just 28 days. +44% lead capture rate.",
+    images: [
+      {
+        url: "https://www.alsolutionsai.online/og?title=Nexora Hotels -62% Response Time in 28 Days&subtitle=Live AI concierge on web and WhatsApp. +44% lead capture.&tag=Case Study",
+        width: 1200,
+        height: 630,
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    images: [
+      "https://www.alsolutionsai.online/og?title=Nexora Hotels -62% Response Time in 28 Days&subtitle=Live AI concierge on web and WhatsApp. +44% lead capture.&tag=Case Study",
+    ],
   },
 };
 

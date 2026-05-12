@@ -1,7 +1,7 @@
 export const metadata = {
-  title: "AI Chatbot Pricing — From $2,500 | AL Solutions AI",
+  title: "AI Chatbot Pricing: From $2,500 One-Time | No Retainers | AL Solutions AI",
   description:
-    "Transparent, one-time project pricing for custom AI chatbots and automation. Launch plan from $2,500. Growth plan from $6,500. No retainers, no surprises.",
+    "Transparent one-time project pricing. Launch $2,500. Growth $6,500. No monthly retainers. Free AI audit included for MENA and Europe growth teams.",
   alternates: {
     canonical: "https://www.alsolutionsai.online/pricing",
     languages: {
@@ -10,14 +10,28 @@ export const metadata = {
   },
   openGraph: {
     url: "https://www.alsolutionsai.online/pricing",
-    title: "AI Chatbot Pricing — From $2,500 | AL Solutions AI",
+    title: "AI Chatbot Pricing: From $2,500 One-Time | No Retainers | AL Solutions AI",
     description:
-      "Transparent, one-time project pricing for custom AI chatbots and automation. Launch plan from $2,500. Growth plan from $6,500. No retainers, no surprises.",
+      "Transparent one-time project pricing. Launch $2,500. Growth $6,500. No monthly retainers. Free AI audit included for MENA and Europe growth teams.",
+    images: [
+      {
+        url: "https://www.alsolutionsai.online/og?title=AI Chatbot Pricing from $2,500&subtitle=One-time pricing. No retainers. Free audit included.&tag=Pricing",
+        width: 1200,
+        height: 630,
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    images: [
+      "https://www.alsolutionsai.online/og?title=AI Chatbot Pricing from $2,500&subtitle=One-time pricing. No retainers. Free audit included.&tag=Pricing",
+    ],
   },
 };
 
 import Link from "next/link";
 import { Reveal } from "@/components/ui";
+import Script from "next/script";
 
 // =======================
 // PRICING PLANS DATA
@@ -105,14 +119,62 @@ const PRICING_PLANS: PricingPlan[] = [
   },
 ];
 
+const PRICING_FAQ_SCHEMA = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: [
+    {
+      "@type": "Question",
+      name: "Do you charge monthly or one-time?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "All pricing is one-time project fees. After your project launches, you can purchase ongoing support or optimization on a retainer basis."
+      }
+    },
+    {
+      "@type": "Question",
+      name: "What if the project goes over 30 days?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "We aim to deliver on timeline. If a project exceeds the planned timeline due to scope creep, we discuss it with you first."
+      }
+    },
+    {
+      "@type": "Question",
+      name: "Can I upgrade my plan later?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Yes. If you start with Launch and want to add AI workflows later, we can scope additional work as separate projects or expand the engagement."
+      }
+    },
+    {
+      "@type": "Question",
+      name: "Do you offer refunds?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "We don't offer refunds on completed work. If a deliverable doesn't meet quality standards, we'll iterate at no extra charge until you're satisfied."
+      }
+    },
+    {
+      "@type": "Question",
+      name: "What currencies do you accept?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "We quote in USD. We accept wire transfers, credit cards (via Stripe), and international payment methods. Contact us for invoicing in a different currency."
+      }
+    }
+  ]
+};
+
 // =======================
 // PLAN CARD COMPONENT
 // =======================
 interface PlanCardProps {
-  plan: PricingPlan;
+  readonly plan: PricingPlan;
 }
 
-function PlanCard({ plan }: PlanCardProps) {
+function PlanCard(props: Readonly<PlanCardProps>) {
+  const { plan } = props;
   return (
     <div
       className={`group relative rounded-2xl border transition-all duration-300 ${
@@ -210,11 +272,12 @@ function PlanCard({ plan }: PlanCardProps) {
 // FAQ ITEM COMPONENT
 // =======================
 interface PricingFaqItemProps {
-  question: string;
-  answer: string;
+  readonly question: string;
+  readonly answer: string;
 }
 
-function PricingFaqItem({ question, answer }: PricingFaqItemProps) {
+function PricingFaqItem(props: Readonly<PricingFaqItemProps>) {
+  const { question, answer } = props;
   return (
     <details className="rounded-2xl border border-border-subtle bg-bg-surface p-5 group">
       <summary className="flex cursor-pointer list-none items-center justify-between gap-4 text-left font-medium text-text-primary hover:text-accent-400 transition-colors">
@@ -234,6 +297,12 @@ function PricingFaqItem({ question, answer }: PricingFaqItemProps) {
 export default function PricingPage() {
   return (
     <main className="min-h-screen bg-bg-default">
+      <Script
+        id="pricing-faq-schema"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(PRICING_FAQ_SCHEMA) }}
+        strategy="afterInteractive"
+      />
       {/* Hero Section */}
       <section className="border-b border-border-subtle bg-gradient-to-b from-bg-surface to-bg-default py-12 sm:py-16 md:py-20">
         <div className="container">
@@ -282,8 +351,7 @@ export default function PricingPage() {
                     <th className="text-left py-4 px-4 font-bold text-text-primary bg-bg-surface/50">Feature</th>
                     <th className="text-center py-4 px-4 font-bold text-text-primary bg-bg-surface/50">Launch</th>
                     <th className="text-center py-4 px-4 font-bold text-text-primary bg-bg-surface/50 border-l border-r border-accent-400/30">
-                      Growth
-                      <span className="block text-xs font-normal text-accent-400 mt-1">Most Popular</span>
+                      Growth <span className="block text-xs font-normal text-accent-400 mt-1">Most Popular</span>
                     </th>
                     <th className="text-center py-4 px-4 font-bold text-text-primary bg-bg-surface/50">Scale</th>
                   </tr>

@@ -9,7 +9,7 @@ interface TestimonialGridProps {
 
 export function TestimonialGrid({
   items,
-  title = "What Our Clients Say",
+  title = "What MENA & European Clients Say About Our AI Chatbots",
   description,
 }: TestimonialGridProps) {
     return (

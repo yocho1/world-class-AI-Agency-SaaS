@@ -1,1 +1,0 @@
-Store blog MDX content here.

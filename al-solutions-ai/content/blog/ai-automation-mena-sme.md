@@ -1,7 +1,8 @@
 ---
 title: "AI Automation for SMEs in MENA: Where to Start and What to Expect"
 date: "2026-02-05"
-author: "Rashid Al-Mansouri"
+author: "Asim Jan"
+authorTitle: "Founder & Director, AL Solutions AI"
 readTime: "10 min"
 excerpt: "AI automation is no longer just for enterprise. This guide shows MENA SMEs exactly where to start, what processes to automate first, and realistic results."
 category: "Automation"

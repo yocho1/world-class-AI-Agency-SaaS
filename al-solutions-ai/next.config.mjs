@@ -9,9 +9,10 @@ const cspDirectives = [
   "form-action 'self'",
   "img-src 'self' data: blob: https:",
   "font-src 'self' https://fonts.gstatic.com data:",
-  "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
-  "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://*.posthog.com https://*.i.posthog.com https://us.i.posthog.com https://app.posthog.com https://*.sentry.io https://*.vercel-scripts.com",
-  "connect-src 'self' https://*.supabase.co wss://*.supabase.co https://*.posthog.com https://*.i.posthog.com https://us.i.posthog.com https://app.posthog.com https://*.sentry.io https://*.vercel-insights.com https://*.upstash.io https://*.redis.upstash.io https://vitals.vercel-insights.com",
+  "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://assets.calendly.com",
+  "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://*.posthog.com https://*.i.posthog.com https://us.i.posthog.com https://app.posthog.com https://*.sentry.io https://*.vercel-scripts.com https://assets.calendly.com",
+  "connect-src 'self' https://*.supabase.co wss://*.supabase.co https://*.posthog.com https://*.i.posthog.com https://us.i.posthog.com https://app.posthog.com https://*.sentry.io https://*.vercel-insights.com https://*.upstash.io https://*.redis.upstash.io https://vitals.vercel-insights.com https://calendly.com https://*.calendly.com",
+  "frame-src 'self' https://calendly.com https://*.calendly.com",
   "worker-src 'self' blob:",
   "upgrade-insecure-requests",
 ].join("; ");
@@ -34,6 +35,12 @@ const nextConfig = {
         hostname: "avatars.githubusercontent.com",
       },
     ],
+  },
+  async redirects() {
+    return [
+      { source: "/blog/README", destination: "/blog", permanent: true },
+      { source: "/blog/readme", destination: "/blog", permanent: true },
+    ];
   },
   async headers() {
     return [

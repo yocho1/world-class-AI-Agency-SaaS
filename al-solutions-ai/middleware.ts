@@ -7,7 +7,7 @@ const SUPPORTED_LOCALES = ["en", "ar", "fr"] as const;
 const DEFAULT_LOCALE = "en";
 const LOCALE_COOKIE = "NEXT_LOCALE";
 const PROTECTED_PATHS = ["/dashboard"];
-const PASSTHROUGH_PATHS = ["/api", "/_next", "/favicon.ico", "/robots.txt", "/sitemap.xml"];
+const PASSTHROUGH_PATHS = ["/api", "/_next", "/favicon.ico", "/robots.txt", "/sitemap.xml", "/og"];
 const AUTH_PATHS = ["/login", "/signup"];
 
 function getLocaleConfig(pathname: string) {
@@ -71,16 +71,18 @@ export async function middleware(request: NextRequest) {
   requestHeaders.set("x-dir", dir);
   requestHeaders.set("x-internal-path", effectivePathname);
 
+  const needsAuthCheck = isProtectedPath(effectivePathname) || isAuthPath(effectivePathname);
+
+  if (!localized && !needsAuthCheck) {
+    const redirectUrl = request.nextUrl.clone();
+    redirectUrl.pathname = buildPrefixedPath(locale, pathname);
+    return NextResponse.redirect(redirectUrl);
+  }
+
   const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
   const anonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
 
   if (!url || !anonKey) {
-    if (!localized && !isProtectedPath(pathname) && !isAuthPath(pathname)) {
-      const redirectUrl = request.nextUrl.clone();
-      redirectUrl.pathname = buildPrefixedPath(locale, pathname);
-      return NextResponse.redirect(redirectUrl);
-    }
-
     const fallbackResponse = localized
       ? NextResponse.rewrite(new URL(effectivePathname, request.url), { request: { headers: requestHeaders } })
       : NextResponse.next({ request: { headers: requestHeaders } });
@@ -98,6 +100,17 @@ export async function middleware(request: NextRequest) {
   const response = localized
     ? NextResponse.rewrite(new URL(effectivePathname, request.url), { request: { headers: requestHeaders } })
     : NextResponse.next({ request: { headers: requestHeaders } });
+
+  if (!needsAuthCheck) {
+    response.headers.set("x-locale", locale);
+    response.headers.set("x-dir", dir);
+    response.cookies.set(LOCALE_COOKIE, locale, {
+      path: "/",
+      sameSite: "lax",
+      maxAge: 60 * 60 * 24 * 365,
+    });
+    return response;
+  }
 
   const supabase = createServerClient<Database>(url, anonKey, {
     cookies: {
@@ -129,12 +142,6 @@ export async function middleware(request: NextRequest) {
   if (isAuthPath(effectivePathname) && user) {
     const redirectUrl = request.nextUrl.clone();
     redirectUrl.pathname = buildPrefixedPath(locale, "/dashboard");
-    return NextResponse.redirect(redirectUrl);
-  }
-
-  if (!localized && !isProtectedPath(pathname) && !isAuthPath(pathname)) {
-    const redirectUrl = request.nextUrl.clone();
-    redirectUrl.pathname = buildPrefixedPath(locale, pathname);
     return NextResponse.redirect(redirectUrl);
   }
 

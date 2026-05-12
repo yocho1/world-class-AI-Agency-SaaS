@@ -79,7 +79,7 @@ function getServiceCtaText(title: string) {
 }
 
 export function ServicesOverview(props: Readonly<ServicesOverviewProps>) {
-  const { services = SERVICES, title = "AI Solutions That Ship" } = props;
+  const { services = SERVICES, title = "AI Chatbot & Automation Services for MENA and Europe" } = props;
   const posthog = usePostHog();
 
   const onServiceClick = (service: string, position: number) => {

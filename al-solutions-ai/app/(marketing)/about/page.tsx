@@ -3,9 +3,9 @@ import Link from "next/link";
 import { Card, Reveal } from "@/components/ui";
 
 export const metadata = {
-  title: "About AL Solutions AI — AI Agency Founded in Hayes, Serving MENA & Europe",
+  title: "About AL Solutions AI | Founded 2018 | Asim Jan | UK AI Agency",
   description:
-    "Meet the team behind AL Solutions AI. We build production-ready AI chatbots and automation systems for growth companies across MENA and Europe — shipped in 30 days.",
+    "AL Solutions AI (Reg. No. 11521309) founded by Asim Jan in 2018. Production-ready AI chatbots and automation for MENA and European businesses.",
   alternates: {
     canonical: "https://www.alsolutionsai.online/about",
     languages: {
@@ -14,9 +14,22 @@ export const metadata = {
   },
   openGraph: {
     url: "https://www.alsolutionsai.online/about",
-    title: "About AL Solutions AI — AI Agency Founded in Hayes, Serving MENA & Europe",
+    title: "About AL Solutions AI | Founded 2018 | Asim Jan | UK AI Agency",
     description:
-      "Meet the team behind AL Solutions AI. We build production-ready AI chatbots and automation systems for growth companies across MENA and Europe — shipped in 30 days.",
+      "AL Solutions AI (Reg. No. 11521309) founded by Asim Jan in 2018. Production-ready AI chatbots and automation for MENA and European businesses.",
+    images: [
+      {
+        url: "https://www.alsolutionsai.online/og?title=About AL Solutions AI&subtitle=Founded 2018 by Asim Jan. AI for MENA and Europe.&tag=About",
+        width: 1200,
+        height: 630,
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    images: [
+      "https://www.alsolutionsai.online/og?title=About AL Solutions AI&subtitle=Founded 2018 by Asim Jan. AI for MENA and Europe.&tag=About",
+    ],
   },
 };
 
@@ -58,7 +71,6 @@ const teamMembers: TeamMember[] = [
     bgColor: "bg-accent-400",
   },
   {
-    // TODO: Replace with Team Member 2 data
     initials: "TM",
     name: "[Team Member 2]",
     role: "[Role]",
@@ -66,7 +78,6 @@ const teamMembers: TeamMember[] = [
     bgColor: "bg-blue-500",
   },
   {
-    // TODO: Replace with Team Member 3 data
     initials: "TM",
     name: "[Team Member 3]",
     role: "[Role]",
@@ -79,6 +90,7 @@ export default function AboutPage() {
   return (
     <main className="container py-20">
       <section className="mx-auto max-w-4xl">
+        <h1 className="sr-only">About AL Solutions AI</h1>
         <p className="text-xs uppercase tracking-[0.18em] text-accent-400">About</p>
         <div className="mt-6 grid gap-8 rounded-3xl border border-border-subtle bg-bg-surface p-8 md:grid-cols-[auto,1fr] md:items-center md:p-10">
           <div className="flex justify-center md:justify-start">
@@ -102,7 +114,7 @@ export default function AboutPage() {
                 aria-label="LinkedIn profile"
                 className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-border-subtle text-text-secondary transition-colors hover:border-accent-400 hover:text-accent-400"
                 href="https://www.linkedin.com/in/asimjan"
-                rel="noreferrer"
+                rel="noopener noreferrer"
                 target="_blank"
               >
                 <LinkedInIcon />

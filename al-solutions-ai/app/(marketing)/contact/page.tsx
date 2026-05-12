@@ -3,6 +3,7 @@ import { Reveal } from "@/components/ui";
 import ContactForm from "@/components/forms/ContactForm";
 import CopyEmailButton from "@/components/contact/CopyEmailButton";
 import WhatsAppLink from "@/components/contact/WhatsAppLink";
+import CalendlyEmbed from "@/components/contact/CalendlyEmbed";
 
 export const metadata: Metadata = {
   title: "Contact AL Solutions AI — Book a Free AI Audit",
@@ -14,6 +15,19 @@ export const metadata: Metadata = {
     title: "Contact AL Solutions AI — Book a Free AI Audit",
     description:
       "Get in touch with the AL Solutions AI team. Book a free 30-minute AI audit, WhatsApp us directly, or send us your project details.",
+    images: [
+      {
+        url: "https://www.alsolutionsai.online/og?title=Contact AL Solutions AI&subtitle=Book a free AI audit, WhatsApp us, or send your project details.&tag=Contact",
+        width: 1200,
+        height: 630,
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    images: [
+      "https://www.alsolutionsai.online/og?title=Contact AL Solutions AI&subtitle=Book a free AI audit, WhatsApp us, or send your project details.&tag=Contact",
+    ],
   },
 };
 
@@ -90,7 +104,7 @@ function ContactInfoBlock() {
               <WhatsAppLink
                 href="https://wa.me/212674147995?text=Hi%2C%20I%27d%20like%20to%20learn%20about%20your%20AI%20services"
                 target="_blank"
-                rel="noreferrer"
+                rel="noopener noreferrer"
                 className="mt-1 block text-sm font-medium text-text-primary transition-colors hover:text-[#25D366]"
                 buttonLocation="contact_page"
               >
@@ -114,7 +128,7 @@ function ContactInfoBlock() {
               <a
                 href="https://linkedin.com/company/al-solutions-ai"
                 target="_blank"
-                rel="noreferrer"
+                rel="noopener noreferrer"
                 className="mt-1 inline-flex items-center text-sm font-medium text-text-primary transition-colors hover:text-[#0A66C2]"
               >
                 Follow AL Solutions AI
@@ -181,25 +195,20 @@ function CalendlySection() {
                 <li>• Clear next steps and estimated ROI</li>
               </ul>
               <a
-                href="https://calendly.com/YOUR_CALENDLY_LINK"
+                href="https://calendly.com/achraflachgar/15min"
                 target="_blank"
-                rel="noreferrer"
+                rel="noopener noreferrer"
                 className="mt-8 inline-flex h-12 items-center rounded-lg bg-accent-400 px-8 text-sm font-semibold text-bg-default transition-all hover:bg-accent-300 hover:shadow-lg hover:shadow-accent-400/20"
               >
                 Schedule a call
               </a>
-              <p className="mt-4 text-xs text-text-tertiary">(Replace YOUR_CALENDLY_LINK in code)</p>
+              <p className="mt-4 text-xs text-text-tertiary">Calendly opens in a new tab.</p>
             </div>
-            <div className="rounded-3xl border border-border-subtle bg-bg-default p-3 shadow-sm">
-              <div className="overflow-hidden rounded-2xl border border-border-subtle bg-bg-surface">
-                <iframe
-                  title="Schedule a call"
-                  src="https://calendly.com/YOUR_CALENDLY_LINK?hide_landing_page_details=1&hide_gdpr_banner=1"
-                  className="h-[520px] w-full"
-                  loading="lazy"
-                />
-              </div>
-              <p className="mt-3 text-xs text-text-tertiary">Embed your Calendly once ready.</p>
+            <div className="rounded-3xl border border-border-subtle bg-bg-default shadow-sm overflow-hidden">
+              <CalendlyEmbed
+                url="https://calendly.com/achraflachgar/15min?hide_event_type_details=1&hide_gdpr_banner=1"
+                height={600}
+              />
             </div>
           </div>
         </Reveal>

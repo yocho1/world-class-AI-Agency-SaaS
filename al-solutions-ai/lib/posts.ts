@@ -1,5 +1,5 @@
-import fs from "fs";
-import path from "path";
+import fs from "node:fs";
+import path from "node:path";
 import { unified } from "unified";
 import remarkParse from "remark-parse";
 import remarkRehype from "remark-rehype";
@@ -16,8 +16,10 @@ export type Post = {
   slug: string;
   date: string;
   author: { name: string; avatar?: string };
+  authorTitle?: string;
   readTime: string;
   excerpt: string;
+  published?: boolean;
   coverImageSrc?: string | null;
   category?: string;
   featured?: boolean;
@@ -25,7 +27,7 @@ export type Post = {
 };
 
 function parseFrontmatter(raw: string): { attrs: Partial<Post>; body: string } {
-  const fmMatch = raw.match(/^---\s*([\s\S]*?)\s*---\s*([\s\S]*)$/);
+  const fmMatch = /^---\s*([\s\S]*?)\s*---\s*([\s\S]*)$/.exec(raw);
   if (!fmMatch) return { attrs: {}, body: raw };
   const fm = fmMatch[1];
   const body = fmMatch[2] || "";
@@ -38,7 +40,7 @@ function parseFrontmatter(raw: string): { attrs: Partial<Post>; body: string } {
     const val = rest.join(":").trim();
     if (val === "true") attrs[key] = true;
     else if (val === "false") attrs[key] = false;
-    else attrs[key] = val.replace(/^"|"$/g, "").replace(/^'|'$/g, "");
+    else attrs[key] = val.replaceAll(/^"|"$/g, "").replaceAll(/^'|'$/g, "");
   });
 
   return { attrs, body };
@@ -60,12 +62,14 @@ export function getAllPosts(): Post[] {
   const posts = raws.map((r) => {
     const { attrs, body } = parseFrontmatter(r.content);
     return {
-      title: attrs.title || r.slug.replace(/[-_]/g, " "),
+      title: attrs.title || r.slug.replaceAll(/[-_]/g, " "),
       slug: r.slug,
       date: attrs.date || new Date().toISOString(),
-      author: { name: attrs.author || "Team" },
+      author: { name: attrs.author || "Asim Jan" },
+      authorTitle: attrs.authorTitle || "Founder & Director, AL Solutions AI",
       readTime: attrs.readTime || "4 min",
       excerpt: attrs.excerpt || "",
+      published: attrs.published,
       coverImageSrc: attrs.coverImageSrc || null,
       category: attrs.category || "How-to",
       featured: !!attrs.featured,

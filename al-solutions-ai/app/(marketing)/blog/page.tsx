@@ -4,9 +4,9 @@ import type { Metadata } from "next";
 import { getAllPosts } from "@/lib/posts";
 
 export const metadata: Metadata = {
-  title: "AI Automation & Chatbot Blog for MENA Businesses | AL Solutions AI",
+  title: "AI Chatbot & Automation Blog for MENA Businesses | AL Solutions AI",
   description:
-    "Practical guides on deploying AI chatbots, automating business workflows, and growing revenue with AI. Written for MENA and European growth teams.",
+    "Practical guides on AI chatbots, WhatsApp automation, and lead conversion for MENA and European teams. By Asim Jan, AL Solutions AI — updated weekly.",
   alternates: {
     canonical: "https://www.alsolutionsai.online/blog",
     languages: {
@@ -15,14 +15,30 @@ export const metadata: Metadata = {
   },
   openGraph: {
     url: "https://www.alsolutionsai.online/blog",
-    title: "AI Automation & Chatbot Blog for MENA Businesses | AL Solutions AI",
+    title: "AI Chatbot & Automation Blog for MENA Businesses | AL Solutions AI",
     description:
-      "Practical guides on deploying AI chatbots, automating business workflows, and growing revenue with AI. Written for MENA and European growth teams.",
+      "Practical guides on AI chatbots, WhatsApp automation, and lead conversion for MENA and European teams. By Asim Jan, AL Solutions AI — updated weekly.",
+    images: [
+      {
+        url: "https://www.alsolutionsai.online/og?title=AI Automation Blog for MENA&subtitle=Guides on AI chatbots, WhatsApp automation, lead conversion.&tag=Blog",
+        width: 1200,
+        height: 630,
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    images: [
+      "https://www.alsolutionsai.online/og?title=AI Automation Blog for MENA&subtitle=Guides on AI chatbots, WhatsApp automation, lead conversion.&tag=Blog",
+    ],
   },
 };
 
 export default async function BlogPage() {
-  const posts = getAllPosts();
+  const allPosts = getAllPosts();
+  const posts = allPosts.filter(
+    (post) => post.published !== false && !["README", "DRAFT", "TEST"].includes(post.slug.toUpperCase()),
+  );
 
   return (
     <main className="min-h-screen bg-bg-default">

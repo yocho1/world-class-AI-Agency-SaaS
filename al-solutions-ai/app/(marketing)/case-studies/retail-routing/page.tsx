@@ -16,6 +16,19 @@ export const metadata: Metadata = {
     title: "Atlas Retail: +44% Lead Capture in 35 Days | AL Solutions AI",
     description:
       "How Atlas Retail increased lead capture rate by 44% with intelligent lead routing and WhatsApp automation. From concept to live in 35 Days.",
+    images: [
+      {
+        url: "https://www.alsolutionsai.online/og?title=Atlas Retail +44% Lead Capture in 35 Days&subtitle=Intelligent lead routing and WhatsApp automation.&tag=Case Study",
+        width: 1200,
+        height: 630,
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    images: [
+      "https://www.alsolutionsai.online/og?title=Atlas Retail +44% Lead Capture in 35 Days&subtitle=Intelligent lead routing and WhatsApp automation.&tag=Case Study",
+    ],
   },
 };
 

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Suspense } from "react";
 import { headers } from "next/headers";
+import Script from "next/script";
 import { Plus_Jakarta_Sans } from "next/font/google";
 import { GeistMono } from "geist/font/mono";
 import { GoogleAnalytics } from "@next/third-parties/google";
@@ -67,9 +68,13 @@ export default function RootLayout({
       <head>
         <link rel="icon" href="/images/Favicon.svg" type="image/svg+xml" />
         <link rel="apple-touch-icon" href="/images/Favicon.svg" />
-        <script dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }} type="application/ld+json" />
       </head>
       <body className="min-h-full">
+        <Script
+          id="org-schema"
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
+        />
         <GoogleAnalytics gaId={googleAnalyticsId} />
         <PostHogProvider>
           <Suspense fallback={null}>

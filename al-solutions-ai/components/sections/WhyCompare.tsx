@@ -19,7 +19,7 @@ interface WhyCompareProps {
 }
 
 export function WhyCompare({
-  title = "Why AL Solutions?",
+  title = "Why Choose AL Solutions AI Over Other AI Agencies?",
   subtitle = "Compare AL Solutions against common alternatives",
   ctaText = "See case studies",
 }: Readonly<WhyCompareProps>) {

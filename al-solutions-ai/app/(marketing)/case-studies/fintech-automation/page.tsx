@@ -16,6 +16,19 @@ export const metadata: Metadata = {
     title: "FinEdge: 31% Lower Ops Cost in 22 Days | AL Solutions AI",
     description:
       "How FinEdge cut operational costs by 31% through AI-powered customer support automation. From implementation delay to live production in under 4 weeks.",
+    images: [
+      {
+        url: "https://www.alsolutionsai.online/og?title=FinEdge 31% Lower Ops Cost in 22 Days&subtitle=AI-powered support automation live in under 4 weeks.&tag=Case Study",
+        width: 1200,
+        height: 630,
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    images: [
+      "https://www.alsolutionsai.online/og?title=FinEdge 31% Lower Ops Cost in 22 Days&subtitle=AI-powered support automation live in under 4 weeks.&tag=Case Study",
+    ],
   },
 };
 

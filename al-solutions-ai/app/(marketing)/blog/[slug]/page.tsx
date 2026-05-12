@@ -1,15 +1,17 @@
 import React from "react";
 import Link from "next/link";
+import Script from "next/script";
 import { notFound } from "next/navigation";
 import { getPostBySlug, getAllPosts } from "@/lib/posts";
 import RelatedPosts from "@/components/blog/RelatedPosts";
 import AuditCtaLink from "@/components/analytics/AuditCtaLink";
 
-type Props = { params: { slug: string } };
+type Props = { readonly params: { readonly slug: string } };
 
-export async function generateMetadata({ params }: Props) {
+export async function generateMetadata({ params }: Readonly<Props>) {
   const post = await getPostBySlug(params.slug);
   if (!post) return {};
+  const ogUrl = `https://www.alsolutionsai.online/og?title=${encodeURIComponent(post.title)}&subtitle=${encodeURIComponent(post.excerpt)}&tag=Blog`;
   return {
     title: `${post.title} | AL Solutions AI`,
     description: post.excerpt,
@@ -19,12 +21,28 @@ export async function generateMetadata({ params }: Props) {
          en: `https://www.alsolutionsai.online/en/blog/${params.slug}`,
        },
      },
+    openGraph: {
+      url: `https://www.alsolutionsai.online/blog/${params.slug}`,
+      title: `${post.title} | AL Solutions AI`,
+      description: post.excerpt,
+      images: [
+        {
+          url: ogUrl,
+          width: 1200,
+          height: 630,
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      images: [ogUrl],
+    },
   };
 }
 
-export default async function PostPage({ params }: Props) {
+export default async function PostPage({ params }: Readonly<Props>) {
   const post = await getPostBySlug(params.slug);
-  if (!post) return notFound();
+  if (!post || post.published === false) return notFound();
 
   const all = getAllPosts();
   const related = all.filter((p) => p.slug !== post.slug).slice(0, 3);
@@ -35,12 +53,9 @@ export default async function PostPage({ params }: Props) {
     day: "numeric",
   });
 
-  const initials = post.author?.name
-    ?.split(" ")
-    .map((n) => n[0])
-    .slice(0, 2)
-    .join("")
-    .toUpperCase() || "AA";
+  const authorName = post.author?.name || "Asim Jan";
+  const authorTitle = post.authorTitle || "Founder & Director, AL Solutions AI";
+  const initials = "AJ";
 
   // BlogPosting Schema
   const blogPostingSchema = {
@@ -67,9 +82,11 @@ export default async function PostPage({ params }: Props) {
 
   return (
     <main className="min-h-screen bg-bg-default">
-      <script
+      <Script
+        id="blogposting-schema"
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(blogPostingSchema) }}
+        strategy="afterInteractive"
       />
 
       {/* Breadcrumb */}
@@ -101,27 +118,25 @@ export default async function PostPage({ params }: Props) {
               {post.title}
             </h1>
 
+            <div className="flex items-center gap-3 py-4 border-b border-gray-100 mb-8">
+              <div className="w-10 h-10 rounded-full bg-gradient-to-br from-violet-600 
+    to-indigo-600 flex items-center justify-center text-white font-bold text-sm">
+                AJ
+              </div>
+              <div>
+                <div className="text-sm font-semibold text-gray-900">{authorName}</div>
+                <div className="text-xs text-gray-500">
+                  {authorTitle} · {formattedDate} · {post.readTime} min read
+                </div>
+              </div>
+            </div>
+
             {/* Excerpt */}
             {post.excerpt && (
               <p className="mt-6 max-w-prose text-lg text-text-secondary leading-relaxed">
                 {post.excerpt}
               </p>
             )}
-
-            {/* Metadata */}
-            <div className="mt-8 flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
-              <div className="flex items-center gap-4">
-                <div className="flex h-12 w-12 items-center justify-center rounded-full bg-accent-400 text-sm font-semibold text-bg-default">
-                  {initials}
-                </div>
-                <div>
-                  <p className="font-semibold text-text-primary">{post.author?.name || "Guest Author"}</p>
-                  <p className="text-sm text-text-tertiary">
-                    {formattedDate} • {post.readTime}
-                  </p>
-                </div>
-              </div>
-            </div>
           </div>
         </div>
       </section>

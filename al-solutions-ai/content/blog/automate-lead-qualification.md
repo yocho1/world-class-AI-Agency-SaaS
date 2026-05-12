@@ -1,7 +1,8 @@
 ---
 title: "How to Automate Lead Qualification with AI"
 date: "2024-03-12"
-author: "Alex Martin"
+author: "Asim Jan"
+authorTitle: "Founder & Director, AL Solutions AI"
 readTime: "6 min"
 excerpt: "A practical guide to using AI to prioritize your leads and increase conversions."
 category: "Automation"

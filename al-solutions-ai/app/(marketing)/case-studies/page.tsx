@@ -2,9 +2,9 @@ import Link from "next/link";
 import { Card } from "@/components/ui";
 
 export const metadata = {
-  title: "AI Chatbot Case Studies — Real Results in Production | AL Solutions AI",
+  title: "AI Chatbot Case Studies — Real MENA Deployments | AL Solutions AI",
   description:
-    "See how AL Solutions AI deployed AI chatbots and automation for hospitality, fintech, and retail clients in MENA. Real metrics, real timelines, real deployments.",
+    "Real AI deployments: +44% lead capture for hospitality, 31% cost reduction for fintech, +44% conversion for retail. Live in 28-30 days across MENA.",
   alternates: {
     canonical: "https://www.alsolutionsai.online/case-studies",
     languages: {
@@ -13,9 +13,22 @@ export const metadata = {
   },
   openGraph: {
     url: "https://www.alsolutionsai.online/case-studies",
-    title: "AI Chatbot Case Studies — Real Results in Production | AL Solutions AI",
+    title: "AI Chatbot Case Studies — Real MENA Deployments | AL Solutions AI",
     description:
-      "See how AL Solutions AI deployed AI chatbots and automation for hospitality, fintech, and retail clients in MENA. Real metrics, real timelines, real deployments.",
+      "Real AI deployments: +44% lead capture for hospitality, 31% cost reduction for fintech, +44% conversion for retail. Live in 28-30 days across MENA.",
+    images: [
+      {
+        url: "https://www.alsolutionsai.online/og?title=AI Chatbot Case Studies&subtitle=Real deployments. Real results. 28-30 days.&tag=Case Studies",
+        width: 1200,
+        height: 630,
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    images: [
+      "https://www.alsolutionsai.online/og?title=AI Chatbot Case Studies&subtitle=Real deployments. Real results. 28-30 days.&tag=Case Studies",
+    ],
   },
 };
 

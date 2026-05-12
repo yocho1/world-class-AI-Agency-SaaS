@@ -91,7 +91,7 @@ const DEFAULT_ITEMS: TestimonialItem[] = [
 
 export function Testimonials({
   items = DEFAULT_ITEMS,
-  title = "What Our Clients Say",
+  title = "What MENA & European Clients Say About Our AI Chatbots",
   description = "Real results from teams that shipped customer-facing AI systems in production.",
 }: TestimonialsProps) {
   const gridItems = items.map((item) => ({

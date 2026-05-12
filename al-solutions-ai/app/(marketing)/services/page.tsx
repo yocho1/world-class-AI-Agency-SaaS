@@ -1,10 +1,11 @@
 import Link from "next/link";
 import { Card } from "@/components/ui";
+import Script from "next/script";
 
 export const metadata = {
-  title: "AI Chatbot & Automation Services | AL Solutions AI",
+  title: "AI Chatbot & Automation Services | WhatsApp AI | AL Solutions AI",
   description:
-    "Custom AI chatbots, lead automation, WhatsApp AI, and web+AI bundles. Production-ready in 30 days for SMBs across MENA and Europe.",
+    "Custom AI chatbots, WhatsApp automation, lead qualification, web+AI bundles. Production-ready in 30 days for MENA, UAE, Saudi Arabia, and Europe.",
   alternates: {
     canonical: "https://www.alsolutionsai.online/services",
     languages: {
@@ -13,9 +14,22 @@ export const metadata = {
   },
   openGraph: {
     url: "https://www.alsolutionsai.online/services",
-    title: "AI Chatbot & Automation Services | AL Solutions AI",
+    title: "AI Chatbot & Automation Services | WhatsApp AI | AL Solutions AI",
     description:
-      "Custom AI chatbots, lead automation, WhatsApp AI, and web+AI bundles. Production-ready in 30 days for SMBs across MENA and Europe.",
+      "Custom AI chatbots, WhatsApp automation, lead qualification, web+AI bundles. Production-ready in 30 days for MENA, UAE, Saudi Arabia, and Europe.",
+    images: [
+      {
+        url: "https://www.alsolutionsai.online/og?title=AI Chatbot and Automation Services&subtitle=Custom AI chatbots, WhatsApp AI, live in 30 days.&tag=Services",
+        width: 1200,
+        height: 630,
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    images: [
+      "https://www.alsolutionsai.online/og?title=AI Chatbot and Automation Services&subtitle=Custom AI chatbots, WhatsApp AI, live in 30 days.&tag=Services",
+    ],
   },
 };
 
@@ -49,9 +63,11 @@ const servicesSchema = {
 export default function ServicesHubPage() {
   return (
     <main className="container py-20">
-      <script
+      <Script
+        id="services-schema"
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(servicesSchema) }}
+        strategy="afterInteractive"
       />
 
       <div className="max-w-3xl">

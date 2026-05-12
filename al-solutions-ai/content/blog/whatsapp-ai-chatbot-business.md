@@ -1,7 +1,8 @@
 ---
 title: "How to Use WhatsApp AI Chatbots to Capture Leads 24/7"
 date: "2026-01-22"
-author: "Sarah Chen"
+author: "Asim Jan"
+authorTitle: "Founder & Director, AL Solutions AI"
 readTime: "9 min"
 excerpt: "WhatsApp has 2 billion users — and MENA businesses are its most active market. Here's how to set up a WhatsApp AI chatbot that qualifies and converts leads."
 category: "How-to"

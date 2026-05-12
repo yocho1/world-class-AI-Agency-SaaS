@@ -16,14 +16,15 @@ import {
 } from "@/components/sections";
 import LeadCaptureModal from "@/components/forms/LeadCaptureModal";
 import arMessages from "@/messages/ar.json";
+import Script from "next/script";
 
 const siteUrl = "https://www.alsolutionsai.online";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
-  title: "AI Chatbot & Automation Agency for SMBs | AL Solutions AI",
+  title: "AI Chatbot Agency for MENA & Europe | AL Solutions AI",
   description:
-    "AL Solutions AI builds and deploys custom AI chatbots, automation systems, and lead conversion tools for growth-stage companies across MENA and Europe. Production-ready in 30 days.",
+    "AL Solutions AI builds custom AI chatbots, WhatsApp automation, and lead conversion systems. Production-ready in 30 days. Free AI audit included.",
   keywords: [
     "AI chatbot agency",
     "AI automation agency",
@@ -39,9 +40,9 @@ export const metadata: Metadata = {
     "lead qualification AI",
   ],
   openGraph: {
-    title: "AI Chatbots & Automation That Ship in 30 Days | AL Solutions AI",
+    title: "AI Chatbot Agency for MENA & Europe | AL Solutions AI",
     description:
-      "Build and deploy a real AI product — not a prototype. Custom chatbots, automation systems, and lead conversion tools for growth teams in MENA and Europe.",
+      "AL Solutions AI builds custom AI chatbots, WhatsApp automation, and lead conversion systems. Production-ready in 30 days. Free AI audit included.",
     url: siteUrl,
     siteName: "AL Solutions AI",
     images: [
@@ -57,9 +58,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "AI Chatbots & Automation That Ship in 30 Days | AL Solutions AI",
+    title: "AI Chatbot Agency for MENA & Europe | AL Solutions AI",
     description:
-      "Custom AI chatbots, automation systems, and lead conversion tools. Production-ready in 30 days.",
+      "AL Solutions AI builds custom AI chatbots, WhatsApp automation, and lead conversion systems. Production-ready in 30 days. Free AI audit included.",
     images: [`${siteUrl}/og/homepage.png`],
   },
   alternates: {
@@ -170,10 +171,7 @@ const FAQ_SCHEMA = {
   ],
 };
 
-const STRUCTURED_DATA = [
-  { key: "faq", schema: FAQ_SCHEMA },
-  ...SERVICE_SCHEMA.map((schema) => ({ key: schema.name, schema })),
-];
+const STRUCTURED_DATA = SERVICE_SCHEMA.map((schema) => ({ key: schema.name, schema }));
 
 export default function MarketingHomePage() {
   const requestHeaders = headers();
@@ -182,6 +180,12 @@ export default function MarketingHomePage() {
 
   return (
     <main className="space-y-16 pb-16 md:space-y-24 md:pb-24">
+      <Script
+        id="faq-schema"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(FAQ_SCHEMA) }}
+        strategy="afterInteractive"
+      />
       {STRUCTURED_DATA.map(({ key, schema }) => (
         <script
           key={key}

@@ -1,7 +1,8 @@
 ---
 title: "Quick Wins: AI Prompts for Better Landing Pages"
 date: "2024-01-10"
-author: "Team"
+author: "Asim Jan"
+authorTitle: "Founder & Director, AL Solutions AI"
 readTime: "3 min"
 excerpt: "Simple prompts to get higher quality hero copy and CTAs instantly."
 category: "How-to"

@@ -60,7 +60,7 @@ export function TestimonialCard({ data }: TestimonialCardProps) {
             aria-label={`${data.name} on LinkedIn`}
             className="shrink-0 text-text-tertiary transition-colors hover:text-accent-400"
             href={data.linkedinUrl}
-            rel="noreferrer"
+            rel="noopener noreferrer"
             target="_blank"
           >
             <svg className="h-5 w-5 sm:h-6 sm:w-6" fill="currentColor" viewBox="0 0 24 24">
