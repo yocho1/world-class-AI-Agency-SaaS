@@ -64,7 +64,7 @@ export async function GET(req: NextRequest) {
           }}
         >
           <div style={{ color: "#FFFFFF", fontSize: "18px", fontWeight: 700 }}>AL Solutions AI</div>
-          <div style={{ color: "#00D97E", fontSize: "14px", fontWeight: 600 }}>30 days · 2.3x leads · 120+ live</div>
+          <div style={{ color: "#00D97E", fontSize: "14px", fontWeight: 600 }}>30 days · 2.3x leads · 12 deployments</div>
         </div>
       </div>
     ),

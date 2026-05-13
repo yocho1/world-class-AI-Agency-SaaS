@@ -10,6 +10,7 @@ const FEATURES = [
   "CRM integration",
   "Post-launch optimization",
   "Pricing transparency",
+  "Best for tiny one-off prototypes",
 ];
 
 interface WhyCompareProps {
@@ -42,6 +43,7 @@ export function WhyCompare({
         "Depends on internal stack",
         "Hard to scale",
         "Expensive / opaque",
+        "Overkill",
       ],
     },
 
@@ -60,6 +62,7 @@ export function WhyCompare({
         "HubSpot, Salesforce, custom CRMs",
         "Continuous post-launch optimization",
         "Transparent pricing & SLAs",
+        "Not our sweet spot — try a freelancer",
       ],
     },
 
@@ -79,6 +82,7 @@ export function WhyCompare({
         "Integration risk",
         "No optimization guarantee",
         "Pricing unclear / one-off",
+        "Often the right call",
       ],
     },
   ];
@@ -130,7 +134,7 @@ export function WhyCompare({
               <div className="space-y-3">
                 {FEATURES.map((f, i) => {
                   const val = col.values[i] || "";
-                  const positive = /production-ready|Accountable|Native|HubSpot|Continuous|Transparent|Fast/i.test(val);
+                  const positive = /production-ready|Accountable|Native|HubSpot|Continuous|Transparent|Fast|Often the right call/i.test(val);
                   return (
                     <div key={f} className="flex items-start gap-3">
                       <div className="mt-0.5 text-lg flex-shrink-0">
@@ -154,7 +158,7 @@ export function WhyCompare({
       </div>
 
       <p className="mt-6 text-sm text-text-secondary">
-        120+ companies chose us over both alternatives.{' '}
+        Honest take: if you need a quick throwaway prototype, hire a freelancer. If you need a production system that integrates with your CRM and stays live, that&apos;s us.{' '}
         <Link href="/case-studies" className="text-accent-400 font-medium">{ctaText}</Link>
       </p>
     </section>

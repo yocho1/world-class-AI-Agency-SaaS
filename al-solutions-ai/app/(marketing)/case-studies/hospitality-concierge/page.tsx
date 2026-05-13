@@ -119,7 +119,6 @@ const caseStudyData: CaseStudyData = {
     author: "Amina Nasser",
     title: "Chief Marketing Officer",
     company: "Nexora Hotels Group",
-    avatarSrc: "/images/testimonial-amina.svg",
   },
   relatedCaseStudies: [
     {

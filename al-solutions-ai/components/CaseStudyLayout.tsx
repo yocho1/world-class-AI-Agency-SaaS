@@ -34,7 +34,7 @@ export interface CaseStudyData {
     author: string;
     title: string;
     company: string;
-    avatarSrc: string;
+    avatarSrc?: string;
   };
   companyName: string;
   relatedCaseStudies?: Array<{
@@ -177,13 +177,24 @@ export function CaseStudyLayout({ data }: { data: CaseStudyData }) {
 
             <div className="mt-8 flex items-center gap-4 sm:mt-10">
               <div className="relative h-14 w-14 shrink-0 overflow-hidden rounded-full border-2 border-border-subtle sm:h-16 sm:w-16">
-                <Image
-                  alt={data.testimonial.author}
-                  className="object-cover"
-                  fill
-                  sizes="64px"
-                  src={data.testimonial.avatarSrc}
-                />
+                {data.testimonial.avatarSrc ? (
+                  <Image
+                    alt={data.testimonial.author}
+                    className="object-cover"
+                    fill
+                    sizes="64px"
+                    src={data.testimonial.avatarSrc}
+                  />
+                ) : (
+                  <div className="flex h-full w-full items-center justify-center bg-gradient-to-br from-accent-400/20 to-accent-400/10 text-base font-semibold text-accent-400 sm:text-lg">
+                    {data.testimonial.author
+                      .split(" ")
+                      .map((n) => n[0])
+                      .slice(0, 2)
+                      .join("")
+                      .toUpperCase()}
+                  </div>
+                )}
               </div>
               <div className="min-w-0">
                 <p className="font-semibold text-text-primary">{data.testimonial.author}</p>

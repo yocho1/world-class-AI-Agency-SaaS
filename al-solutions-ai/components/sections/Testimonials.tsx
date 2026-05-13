@@ -30,10 +30,8 @@ const DEFAULT_ITEMS: TestimonialItem[] = [
     title: "Chief Marketing Officer",
     company: "Nexora Hotels Group",
     initials: "AN",
-    linkedinUrl: "https://www.linkedin.com",
     metric: "+62% faster first response",
     metricNote: "Nexora Hotels, 60 days post-launch",
-    avatarSrc: "/images/testimonial-amina.svg",
   },
   {
     id: 2,
@@ -43,10 +41,8 @@ const DEFAULT_ITEMS: TestimonialItem[] = [
     title: "VP of Operations",
     company: "FinEdge",
     initials: "SM",
-    linkedinUrl: "https://www.linkedin.com",
     metric: "22-day deployment",
     metricNote: "after 6 months of stall with previous vendor",
-    avatarSrc: "/images/testimonial-sara.svg",
   },
   {
     id: 3,
@@ -56,10 +52,8 @@ const DEFAULT_ITEMS: TestimonialItem[] = [
     title: "Founder & CEO",
     company: "Atlas Retail",
     initials: "KR",
-    linkedinUrl: "https://www.linkedin.com",
     metric: "-40% operational cost",
     metricNote: "after automation deployment",
-    avatarSrc: "/images/testimonial-khaled.svg",
   },
   {
     id: 4,
@@ -69,10 +63,8 @@ const DEFAULT_ITEMS: TestimonialItem[] = [
     title: "Head of Digital Strategy",
     company: "Zain Mobility",
     initials: "FZ",
-    linkedinUrl: "https://www.linkedin.com",
     metric: "+150% lead qualified rate",
     metricNote: "first 30 days post-launch",
-    avatarSrc: "/images/testimonial-fatima.svg",
   },
   {
     id: 5,
@@ -82,10 +74,8 @@ const DEFAULT_ITEMS: TestimonialItem[] = [
     title: "Operations Director",
     company: "Sahara Foods",
     initials: "MH",
-    linkedinUrl: "https://www.linkedin.com",
     metric: "+3x support capacity",
     metricNote: "same team size post-deployment",
-    avatarSrc: "/images/testimonial-mohammed.svg",
   },
 ];
 

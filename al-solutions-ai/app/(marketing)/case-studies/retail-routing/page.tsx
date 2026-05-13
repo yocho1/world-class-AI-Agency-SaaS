@@ -119,7 +119,6 @@ const caseStudyData: CaseStudyData = {
     author: "Khaled Al-Rashid",
     title: "Founder & CEO",
     company: "Atlas Retail",
-    avatarSrc: "/images/testimonial-khaled.svg",
   },
   relatedCaseStudies: [
     {

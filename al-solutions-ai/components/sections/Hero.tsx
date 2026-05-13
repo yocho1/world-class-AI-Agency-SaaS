@@ -27,9 +27,9 @@ const STATS = [
     attribution: "Average across 12 client deployments, 2024",
   },
   {
-    label: "Companies live in production",
-    value: "120+",
-    attribution: "Current production deployments across client accounts",
+    label: "Production deployments",
+    value: "12",
+    attribution: "Live client systems shipped in 2024",
   },
 ];
 

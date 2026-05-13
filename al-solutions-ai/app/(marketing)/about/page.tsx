@@ -44,8 +44,18 @@ function LinkedInIcon() {
 function MapPinIcon() {
   return (
     <svg className="h-4 w-4 inline mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth={2}
+        d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
+      />
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth={2}
+        d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
+      />
     </svg>
   );
 }
@@ -71,18 +81,25 @@ const teamMembers: TeamMember[] = [
     bgColor: "bg-accent-400",
   },
   {
-    initials: "TM",
-    name: "[Team Member 2]",
-    role: "[Role]",
-    bio: "[1-line bio]",
+    initials: "HL",
+    name: "Hamza Laaich",
+    role: "AI Engineer",
+    bio: "Builds production LLM pipelines, RAG systems, and chatbot orchestration for client deployments.",
     bgColor: "bg-blue-500",
   },
   {
-    initials: "TM",
-    name: "[Team Member 3]",
-    role: "[Role]",
-    bio: "[1-line bio]",
+    initials: "AS",
+    name: "Abderrahmane Sadak",
+    role: "AI Engineer",
+    bio: "Designs multilingual NLP workflows and CRM integrations across HubSpot, Salesforce, and WhatsApp.",
     bgColor: "bg-purple-500",
+  },
+  {
+    initials: "AW",
+    name: "Antoine Willerval",
+    role: "Developer",
+    bio: "Ships the web platforms and dashboards that put our AI systems in front of customers.",
+    bgColor: "bg-emerald-500",
   },
 ];
 
@@ -109,7 +126,9 @@ export default function AboutPage() {
 
           <div>
             <div className="flex flex-wrap items-center gap-3">
-              <h1 className="text-4xl font-medium tracking-tight text-text-primary md:text-5xl">Asim Jan</h1>
+              <h1 className="text-4xl font-medium tracking-tight text-text-primary md:text-5xl">
+                Asim Jan
+              </h1>
               <Link
                 aria-label="LinkedIn profile"
                 className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-border-subtle text-text-secondary transition-colors hover:border-accent-400 hover:text-accent-400"
@@ -121,17 +140,25 @@ export default function AboutPage() {
               </Link>
             </div>
 
-            <p className="mt-2 text-sm font-medium uppercase tracking-[0.16em] text-accent-400">Founder & Director, AL Solutions AI</p>
+            <p className="mt-2 text-sm font-medium uppercase tracking-[0.16em] text-accent-400">
+              Founder & Director, AL Solutions AI
+            </p>
 
             <div className="mt-5 max-w-2xl space-y-4 text-text-secondary">
               <p className="max-w-prose">
-                AL Solutions AI was founded in 2018 with one observation: most businesses were spending months and significant budget on AI projects that never reached production. Too many handoffs, too little accountability, and no clear owner for go-live.
+                AL Solutions AI was founded in 2018 with one observation: most businesses were
+                spending months and significant budget on AI projects that never reached production.
+                Too many handoffs, too little accountability, and no clear owner for go-live.
               </p>
               <p className="max-w-prose">
-                We built a different kind of studio — one where product strategy, AI engineering, and CRM integration sit in a single accountable team. Our clients get a working system live in 30 days, not a slide deck six months later.
+                We built a different kind of studio — one where product strategy, AI engineering,
+                and CRM integration sit in a single accountable team. Our clients get a working
+                system live in 30 days, not a slide deck six months later.
               </p>
               <p className="max-w-prose">
-                Today we serve growth-stage companies across MENA and Europe, deploying AI chatbots, WhatsApp automation, and lead conversion systems that generate measurable revenue from day one.
+                Today we serve growth-stage companies across MENA and Europe, deploying AI chatbots,
+                WhatsApp automation, and lead conversion systems that generate measurable revenue
+                from day one.
               </p>
             </div>
           </div>
@@ -155,21 +182,27 @@ export default function AboutPage() {
       <section className="mt-16">
         <Reveal>
           <div className="mx-auto max-w-4xl">
-            <h2 className="text-3xl font-bold tracking-tight text-text-primary sm:text-4xl">Our team</h2>
+            <h2 className="text-3xl font-bold tracking-tight text-text-primary sm:text-4xl">
+              Our team
+            </h2>
             <p className="mt-3 max-w-prose text-base text-text-secondary">
               A small, senior team that ships production AI — no juniors, no hand-off chains.
             </p>
-            <div className="mt-8 grid gap-6 md:grid-cols-3 sm:grid-cols-2">
+            <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
               {teamMembers.map((member) => (
                 <div
                   key={member.name}
                   className="group rounded-2xl border border-border-subtle bg-bg-surface p-6 transition-all duration-300 hover:border-accent-400 hover:shadow-lg hover:shadow-accent-400/5 hover:-translate-y-0.5"
                 >
-                  <div className={`inline-flex h-12 w-12 items-center justify-center rounded-full ${member.bgColor} text-sm font-bold text-white`}>
+                  <div
+                    className={`inline-flex h-12 w-12 items-center justify-center rounded-full ${member.bgColor} text-sm font-bold text-white`}
+                  >
                     {member.initials}
                   </div>
                   <h3 className="mt-4 text-lg font-semibold text-text-primary">{member.name}</h3>
-                  <p className="text-xs font-medium uppercase tracking-wider text-accent-400">{member.role}</p>
+                  <p className="text-xs font-medium uppercase tracking-wider text-accent-400">
+                    {member.role}
+                  </p>
                   <p className="mt-3 max-w-prose text-sm text-text-secondary">{member.bio}</p>
                 </div>
               ))}
@@ -201,7 +234,9 @@ export default function AboutPage() {
               </div>
               <div className="flex flex-col justify-center">
                 <p className="max-w-prose text-base text-text-secondary leading-relaxed">
-                  We exist to close that gap: AI systems that ship to production, integrate with your existing stack, and generate measurable revenue within 30 days of contract. No prototypes. No decks. Live systems only.
+                  We exist to close that gap: AI systems that ship to production, integrate with
+                  your existing stack, and generate measurable revenue within 30 days of contract.
+                  No prototypes. No decks. Live systems only.
                 </p>
               </div>
             </div>

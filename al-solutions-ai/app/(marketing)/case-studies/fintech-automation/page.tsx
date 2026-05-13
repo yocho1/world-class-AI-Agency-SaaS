@@ -119,7 +119,6 @@ const caseStudyData: CaseStudyData = {
     author: "Sara Mensah",
     title: "VP of Operations",
     company: "FinEdge",
-    avatarSrc: "/images/testimonial-sara.svg",
   },
   relatedCaseStudies: [
     {

@@ -65,7 +65,7 @@ export default async function Image() {
           {[
             { val: "30 days", label: "to production" },
             { val: "+2.3x", label: "avg. conversion lift" },
-            { val: "120+", label: "companies live" },
+            { val: "12", label: "production deployments" },
           ].map((item) => (
             <div key={item.label} style={{ display: "flex", flexDirection: "column" }}>
               <span style={{ fontSize: 32, fontWeight: 500, color: "#6C63FF" }}>{item.val}</span>
