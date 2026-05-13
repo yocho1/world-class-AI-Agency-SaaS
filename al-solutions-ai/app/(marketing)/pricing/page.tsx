@@ -149,7 +149,7 @@ const PRICING_FAQ_SCHEMA = {
       name: "Do you offer refunds?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "We don't offer refunds on completed work. If a deliverable doesn't meet quality standards, we'll iterate at no extra charge until you're satisfied."
+        text: "Every project is backed by a 30-day go-live guarantee with 50% deposit and 50% paid at go-live, so risk is capped at the deposit until the system is in production. If we miss the 30-day window we keep working at no extra cost until it's live. Once a deliverable is live and accepted we don't refund completed work, but we iterate at no extra charge until it meets the agreed scope."
       }
     },
     {
@@ -317,6 +317,32 @@ export default function PricingPage() {
         </div>
       </section>
 
+      {/* Risk Reversal Banner */}
+      <section className="border-b border-border-subtle bg-bg-surface/40 py-6">
+        <div className="container">
+          <Reveal>
+            <div className="mx-auto flex max-w-5xl flex-col gap-4 rounded-2xl border border-accent-400/30 bg-gradient-to-br from-accent-400/10 to-accent-400/5 p-5 sm:flex-row sm:items-center sm:justify-between sm:p-6">
+              <div className="flex items-start gap-4">
+                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-accent-400/20 text-accent-400">
+                  <svg className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24" aria-hidden>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                  </svg>
+                </div>
+                <div>
+                  <p className="text-sm font-semibold uppercase tracking-wider text-accent-400">Our 30-day go-live guarantee</p>
+                  <p className="mt-1 text-base font-medium text-text-primary">
+                    If your AI system isn&apos;t live in production within 30 days of project start, we keep working — at no extra cost — until it is.
+                  </p>
+                  <p className="mt-1 text-sm text-text-secondary">
+                    Pay 50% on signing, 50% at go-live. Your risk is capped at the deposit until you see it working.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
       {/* Pricing Cards */}
       <section className="py-12 sm:py-16 md:py-20">
         <div className="container">
@@ -413,7 +439,7 @@ export default function PricingPage() {
               />
               <PricingFaqItem
                 question="Do you offer refunds?"
-                answer="We don&apos;t offer refunds on completed work. However, if a deliverable doesn&apos;t meet our quality standards or your requirements, we&apos;ll iterate at no extra charge until you&apos;re satisfied."
+                answer="We back every project with a 30-day go-live guarantee. You pay 50% on signing and 50% at go-live, so your risk is capped at the deposit until the system is in production. If we miss the 30-day window, we keep working at no extra cost until it&apos;s live. Once a deliverable is live and accepted, we don&apos;t refund completed work — but we&apos;ll iterate at no extra charge until it meets the agreed scope."
               />
               <PricingFaqItem
                 question="What currencies do you accept?"

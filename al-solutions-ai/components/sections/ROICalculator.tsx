@@ -172,13 +172,30 @@ export function ROICalculator() {
             <div className="text-center">
               <Link
                 href={auditUrl}
-                className="inline-flex h-12 items-center rounded-lg bg-accent-400 px-8 font-semibold text-bg-default transition-all hover:bg-accent-300 hover:shadow-lg hover:shadow-accent-400/20"
-                onClick={() => trackEvent("roi_cta_click")}
+                className="inline-flex h-12 items-center rounded-lg bg-accent-400 px-8 font-semibold text-bg-default shadow-lg shadow-accent-400/20 transition-all hover:bg-accent-300 hover:shadow-xl hover:shadow-accent-400/30"
+                onClick={() =>
+                  trackEvent("roi_cta_click", {
+                    extra_revenue: metrics.extraRevenue,
+                    extra_leads: metrics.extraLeads,
+                  })
+                }
               >
-                Get your free estimate
+                {metrics.extraRevenue > 0
+                  ? `Book free audit — unlock ${formatCurrency(metrics.extraRevenue)}/mo`
+                  : "Book your free audit"}
+                <svg
+                  className="ml-2 h-4 w-4"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth={2.5}
+                  viewBox="0 0 24 24"
+                  aria-hidden
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                </svg>
               </Link>
               <p className="text-xs text-text-tertiary mt-4">
-                We&apos;ll tailor a solution based on your specific metrics.
+                30-min call · Written scope report · No commitment
               </p>
             </div>
           </div>

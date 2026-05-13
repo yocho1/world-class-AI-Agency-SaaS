@@ -37,8 +37,8 @@ export function Hero({
   eyebrow = "Production AI shipped in 30 days",
   title = "Your competitors just went live with AI. Here's how to do it in 30 days.",
   description = "AL Solutions AI builds and deploys AI chatbots and automation systems that are live, working, and generating leads — not sitting in a deck.",
-  ctaPrimaryText = "See the AI Working",
-  ctaSecondaryText = "Get Free AI Audit",
+  ctaPrimaryText = "Get Free AI Audit",
+  ctaSecondaryText = "See the AI Working",
   stats = STATS,
 }: Readonly<HeroProps>) {
   const posthog = usePostHog();
@@ -73,24 +73,39 @@ export function Hero({
           <p className="mt-6 max-w-prose text-base text-[#94A3B8] md:text-lg">
             {description}
           </p>
-          <div className="mt-9 flex flex-wrap gap-3">
-            <Link href="#live-demo" aria-label="See the AI working — view live demo" onClick={() => trackClick("primary")}>
-              <span className="inline-flex h-11 items-center rounded-lg bg-primary-600 px-6 text-sm font-medium text-white transition-colors hover:bg-primary-700">
-                {ctaPrimaryText}
-              </span>
-            </Link>
-            <Link
-              href="/free-ai-audit"
-              aria-label="Get your free AI audit — no commitment required"
-              onClick={() => {
-                trackEvent("audit_cta_click", { button_location: "hero" });
-                trackClick("secondary");
-              }}
-            >
-              <span className="inline-flex h-11 items-center rounded-lg border border-border-default px-6 text-sm font-medium text-text-primary transition-colors hover:bg-bg-elevated">
-                {ctaSecondaryText}
-              </span>
-            </Link>
+          <div className="mt-9 flex flex-col gap-3">
+            <div className="flex flex-wrap gap-3">
+              <Link
+                href="/free-ai-audit"
+                aria-label="Get your free AI audit — no commitment required"
+                onClick={() => {
+                  trackEvent("audit_cta_click", { button_location: "hero" });
+                  trackClick("primary");
+                }}
+              >
+                <span className="inline-flex h-12 items-center rounded-lg bg-accent-400 px-7 text-base font-semibold text-bg-default shadow-lg shadow-accent-400/20 transition-all hover:bg-accent-300 hover:shadow-xl hover:shadow-accent-400/30">
+                  {ctaPrimaryText}
+                  <svg
+                    className="ml-2 h-4 w-4"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth={2.5}
+                    viewBox="0 0 24 24"
+                    aria-hidden
+                  >
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                  </svg>
+                </span>
+              </Link>
+              <Link href="#live-demo" aria-label="See the AI working — view live demo" onClick={() => trackClick("secondary")}>
+                <span className="inline-flex h-12 items-center rounded-lg border border-border-default px-6 text-sm font-medium text-text-primary transition-colors hover:bg-bg-elevated">
+                  {ctaSecondaryText}
+                </span>
+              </Link>
+            </div>
+            <p className="text-xs text-[#94A3B8]">
+              30-min call · Written scope report · No commitment
+            </p>
           </div>
 
           <div className="mt-10 grid gap-4 sm:grid-cols-3">

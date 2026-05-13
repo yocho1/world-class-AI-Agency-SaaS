@@ -1,8 +1,37 @@
 "use client";
 
+import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
+import dynamic from "next/dynamic";
 import { Card, Reveal } from "@/components/ui";
-import { EmbeddedChatDemo } from "@/components/chatbot/EmbeddedChatDemo";
+
+// Lazy-load the heavy chat widget so it never blocks first paint.
+// Combined with IntersectionObserver below, it only initialises when the
+// section enters the viewport.
+const EmbeddedChatDemo = dynamic(
+  () =>
+    import("@/components/chatbot/EmbeddedChatDemo").then((mod) => ({
+      default: mod.EmbeddedChatDemo,
+    })),
+  {
+    ssr: false,
+    loading: () => <ChatDemoSkeleton />,
+  },
+);
+
+function ChatDemoSkeleton() {
+  return (
+    <div
+      aria-hidden
+      className="flex h-[420px] w-full animate-pulse flex-col gap-3 rounded-2xl border border-border-subtle bg-bg-overlay p-6"
+    >
+      <div className="h-3 w-32 rounded bg-border-subtle" />
+      <div className="mt-4 h-4 w-3/4 rounded bg-border-subtle" />
+      <div className="h-4 w-2/3 rounded bg-border-subtle" />
+      <div className="mt-auto h-10 w-full rounded-lg bg-border-subtle" />
+    </div>
+  );
+}
 
 interface LiveAIDemoProps {
   readonly title?: string;
@@ -37,8 +66,30 @@ export function LiveAIDemo({
     },
   ];
 
+  const sectionRef = useRef<HTMLElement | null>(null);
+  const [shouldLoadDemo, setShouldLoadDemo] = useState(false);
+
+  useEffect(() => {
+    if (shouldLoadDemo || typeof IntersectionObserver === "undefined") {
+      return;
+    }
+    const node = sectionRef.current;
+    if (!node) return;
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries.some((e) => e.isIntersecting)) {
+          setShouldLoadDemo(true);
+          observer.disconnect();
+        }
+      },
+      { rootMargin: "300px 0px" },
+    );
+    observer.observe(node);
+    return () => observer.disconnect();
+  }, [shouldLoadDemo]);
+
   return (
-    <section className="container py-10" id="live-demo">
+    <section ref={sectionRef} className="container py-10" id="live-demo">
       <Reveal>
         <Card className="relative overflow-hidden border-primary-700/50 bg-[radial-gradient(circle_at_80%_10%,rgba(22,163,74,0.12),transparent_35%),radial-gradient(circle_at_15%_85%,rgba(108,99,255,0.15),transparent_30%)]">
           <div>
@@ -48,7 +99,7 @@ export function LiveAIDemo({
           </div>
 
           <div className="mt-8">
-            <EmbeddedChatDemo />
+            {shouldLoadDemo ? <EmbeddedChatDemo /> : <ChatDemoSkeleton />}
           </div>
 
           <p className="mt-4 text-center text-sm italic text-muted-foreground">

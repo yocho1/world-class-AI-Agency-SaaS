@@ -26,16 +26,19 @@ export function FinalCTA({
           <div className="mt-8 flex flex-wrap justify-center gap-3">
             <Link
               aria-label="Book a free AI audit"
-              className="inline-flex h-11 items-center rounded-lg bg-primary-600 px-6 text-sm font-medium text-white transition-colors hover:bg-primary-700"
+              className="inline-flex h-12 items-center rounded-lg bg-accent-400 px-7 text-base font-semibold text-bg-default shadow-lg shadow-accent-400/20 transition-all hover:bg-accent-300 hover:shadow-xl hover:shadow-accent-400/30"
               href="/free-ai-audit"
               onClick={() => trackEvent("audit_cta_click", { button_location: "final_cta" })}
             >
               {primaryText}
             </Link>
-            <Link aria-label="View pricing for custom AI projects" className="inline-flex h-11 items-center rounded-lg border border-border-default px-6 text-sm font-medium text-text-primary transition-colors hover:bg-bg-elevated" href="/pricing">
+            <Link aria-label="View pricing for custom AI projects" className="inline-flex h-12 items-center rounded-lg border border-border-default px-6 text-sm font-medium text-text-primary transition-colors hover:bg-bg-elevated" href="/pricing">
               {secondaryText}
             </Link>
           </div>
+          <p className="mt-4 text-xs text-text-tertiary">
+            30-min call · Written scope report · No commitment
+          </p>
         </div>
       </Reveal>
     </section>
