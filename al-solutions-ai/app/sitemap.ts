@@ -20,6 +20,12 @@ const staticPaths = [
   { path: "/blog", changeFrequency: "weekly" as const, priority: 0.8 },
   { path: "/contact", changeFrequency: "yearly" as const, priority: 0.5 },
   { path: "/free-ai-audit", changeFrequency: "monthly" as const, priority: 0.9 },
+  { path: "/ai-chatbot-agency-dubai", changeFrequency: "monthly" as const, priority: 0.9 },
+  { path: "/ai-chatbot-agency-london", changeFrequency: "monthly" as const, priority: 0.9 },
+  { path: "/ai-automation-agency-saudi-arabia", changeFrequency: "monthly" as const, priority: 0.9 },
+  { path: "/industries/hospitality", changeFrequency: "monthly" as const, priority: 0.8 },
+  { path: "/industries/fintech", changeFrequency: "monthly" as const, priority: 0.8 },
+  { path: "/industries/retail", changeFrequency: "monthly" as const, priority: 0.8 },
 ] as const;
 
 function localeUrl(locale: string, path: string) {

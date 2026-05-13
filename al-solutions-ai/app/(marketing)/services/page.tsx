@@ -82,6 +82,56 @@ export default function ServicesHubPage() {
           </Card>
         ))}
       </section>
+
+      <section className="mt-16">
+        <h2 className="text-2xl font-medium tracking-tight text-text-primary">By industry</h2>
+        <p className="mt-2 max-w-2xl text-text-secondary">
+          See how we deploy AI for the specific workflows in your sector.
+        </p>
+        <div className="mt-6 grid gap-4 sm:grid-cols-3">
+          {[
+            { title: "Hospitality & Travel", href: "/industries/hospitality", summary: "AI concierge for hotels, F&B, and tourism — multilingual on web and WhatsApp." },
+            { title: "Fintech & Financial Services", href: "/industries/fintech", summary: "Compliance-first AI support with KYC pre-screening and audit logging." },
+            { title: "Retail & E-Commerce", href: "/industries/retail", summary: "Pre-purchase Q&A, abandoned-cart recovery on WhatsApp, and post-purchase support." },
+          ].map((item) => (
+            <Link
+              key={item.href}
+              href={item.href}
+              className="group rounded-2xl border border-border-subtle bg-bg-surface p-5 transition-all hover:border-accent-400 hover:shadow-lg hover:shadow-accent-400/5"
+            >
+              <h3 className="text-base font-semibold text-text-primary group-hover:text-accent-400">
+                {item.title}
+              </h3>
+              <p className="mt-2 text-sm text-text-secondary">{item.summary}</p>
+            </Link>
+          ))}
+        </div>
+      </section>
+
+      <section className="mt-16">
+        <h2 className="text-2xl font-medium tracking-tight text-text-primary">By location</h2>
+        <p className="mt-2 max-w-2xl text-text-secondary">
+          Local engagement detail for the markets we work in most.
+        </p>
+        <div className="mt-6 grid gap-4 sm:grid-cols-3">
+          {[
+            { title: "AI Chatbot Agency · Dubai", href: "/ai-chatbot-agency-dubai", summary: "Arabic and English AI for UAE businesses, WhatsApp-first, live in 30 days." },
+            { title: "AI Chatbot Agency · London", href: "/ai-chatbot-agency-london", summary: "UK-registered, GDPR-first AI for London growth teams." },
+            { title: "AI Automation · Saudi Arabia", href: "/ai-automation-agency-saudi-arabia", summary: "Native Arabic AI for Riyadh, Jeddah, and Eastern Province businesses." },
+          ].map((item) => (
+            <Link
+              key={item.href}
+              href={item.href}
+              className="group rounded-2xl border border-border-subtle bg-bg-surface p-5 transition-all hover:border-accent-400 hover:shadow-lg hover:shadow-accent-400/5"
+            >
+              <h3 className="text-base font-semibold text-text-primary group-hover:text-accent-400">
+                {item.title}
+              </h3>
+              <p className="mt-2 text-sm text-text-secondary">{item.summary}</p>
+            </Link>
+          ))}
+        </div>
+      </section>
     </main>
   );
 }

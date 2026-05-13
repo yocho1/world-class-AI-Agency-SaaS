@@ -9,8 +9,8 @@ import { Reveal } from "@/components/ui";
 // =======================
 const HERO_DATA = {
   service: "Lead Conversion",
-  headline: "Turn high-intent web traffic into real sales conversations.",
-  subheadline: "Optimize every step of your funnel with AI-powered qualification and fast response. Booked meetings are 3x higher.",
+  headline: "Turn Website Visitors into Qualified Demos — Automatically, 24/7.",
+  subheadline: "AI qualifies, scores, and books meetings the moment a visitor lands. Hot leads route straight to your reps with full context. Booked-demo rate up to 3x higher.",
   metric: "+150% qualified lead rate",
   cta: "Book Free Audit",
 };

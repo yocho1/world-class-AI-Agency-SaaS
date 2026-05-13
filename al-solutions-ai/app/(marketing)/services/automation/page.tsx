@@ -9,8 +9,8 @@ import { Reveal } from "@/components/ui";
 // =======================
 const HERO_DATA = {
   service: "Automation Systems",
-  headline: "Remove repetitive ops work without breaking the process.",
-  subheadline: "Connect your existing tools and turn manual steps into tracked, measurable workflows in 30 days.",
+  headline: "Eliminate 200+ Hours of Manual Work Per Month — Without Hiring.",
+  subheadline: "Connect your existing CRM, helpdesk, and messaging tools into AI-driven workflows that ship in 30 days. Tracked, measurable, and owned by your team — not by us.",
   metric: "-40% operational cost",
   cta: "Book Free Audit",
 };

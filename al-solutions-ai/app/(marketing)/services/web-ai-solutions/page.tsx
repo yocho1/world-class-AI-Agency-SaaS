@@ -9,8 +9,8 @@ import { Reveal } from "@/components/ui";
 // =======================
 const HERO_DATA = {
   service: "Web + AI Solutions",
-  headline: "Launch a high-converting website and AI layer in one sprint.",
-  subheadline: "Bundle a modern marketing site with an embedded AI chatbot. No integration friction. One vendor. Unified messaging.",
+  headline: "One Team. One Timeline. Website + AI System, Live in 30 Days Flat.",
+  subheadline: "A high-converting marketing site bundled with an embedded AI chatbot — from the same team, on the same timeline. No vendor handoffs, no integration friction.",
   metric: "45 days to launch",
   cta: "Book Free Audit",
 };

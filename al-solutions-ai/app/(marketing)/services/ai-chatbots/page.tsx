@@ -9,8 +9,8 @@ import { Reveal } from "@/components/ui";
 // =======================
 const HERO_DATA = {
   service: "AI Chatbots",
-  headline: "Customer-facing AI that answers, qualifies, and converts.",
-  subheadline: "Deploy a multilingual chatbot in 28 days. No prototypes, no integrations to fix later.",
+  headline: "AI Chatbots That Qualify Leads in Arabic, English & French — Live in 14 Days.",
+  subheadline: "Native multilingual AI deployed across web, WhatsApp, and SMS. CRM-integrated from day one. No prototypes, no half-built integrations to clean up later.",
   metric: "+62% faster first response",
   cta: "Book Free Audit",
 };
