@@ -2,19 +2,15 @@ import React from "react";
 import BlogListing from "@/components/blog/BlogListing";
 import type { Metadata } from "next";
 import { getAllPosts } from "@/lib/posts";
+import { alternatesFor, canonicalUrl } from "@/lib/seo";
 
 export const metadata: Metadata = {
   title: "AI Chatbot & Automation Blog for MENA Businesses | AL Solutions AI",
   description:
     "Practical guides on AI chatbots, WhatsApp automation, and lead conversion for MENA and European teams. By Asim Jan, AL Solutions AI — updated weekly.",
-  alternates: {
-    canonical: "https://www.alsolutionsai.online/blog",
-    languages: {
-      en: "https://www.alsolutionsai.online/en/blog",
-    },
-  },
+  alternates: alternatesFor("/blog"),
   openGraph: {
-    url: "https://www.alsolutionsai.online/blog",
+    url: canonicalUrl("/blog"),
     title: "AI Chatbot & Automation Blog for MENA Businesses | AL Solutions AI",
     description:
       "Practical guides on AI chatbots, WhatsApp automation, and lead conversion for MENA and European teams. By Asim Jan, AL Solutions AI — updated weekly.",

@@ -1,18 +1,14 @@
 import Link from "next/link";
 import { Card } from "@/components/ui";
+import { alternatesFor, canonicalUrl } from "@/lib/seo";
 
 export const metadata = {
   title: "AI Chatbot Case Studies — Real MENA Deployments | AL Solutions AI",
   description:
     "Real AI deployments: +44% lead capture for hospitality, 31% cost reduction for fintech, +44% conversion for retail. Live in 28-30 days across MENA.",
-  alternates: {
-    canonical: "https://www.alsolutionsai.online/case-studies",
-    languages: {
-      en: "https://www.alsolutionsai.online/en/case-studies",
-    },
-  },
+  alternates: alternatesFor("/case-studies"),
   openGraph: {
-    url: "https://www.alsolutionsai.online/case-studies",
+    url: canonicalUrl("/case-studies"),
     title: "AI Chatbot Case Studies — Real MENA Deployments | AL Solutions AI",
     description:
       "Real AI deployments: +44% lead capture for hospitality, 31% cost reduction for fintech, +44% conversion for retail. Live in 28-30 days across MENA.",

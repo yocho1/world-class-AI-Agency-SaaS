@@ -4,14 +4,15 @@ import ContactForm from "@/components/forms/ContactForm";
 import CopyEmailButton from "@/components/contact/CopyEmailButton";
 import WhatsAppLink from "@/components/contact/WhatsAppLink";
 import CalendlyEmbed from "@/components/contact/CalendlyEmbed";
+import { alternatesFor, canonicalUrl } from "@/lib/seo";
 
 export const metadata: Metadata = {
   title: "Contact AL Solutions AI — Book a Free AI Audit",
   description:
     "Get in touch with the AL Solutions AI team. Book a free 30-minute AI audit, WhatsApp us directly, or send us your project details.",
-  alternates: { canonical: "https://www.alsolutionsai.online/contact" },
+  alternates: alternatesFor("/contact"),
   openGraph: {
-    url: "https://www.alsolutionsai.online/contact",
+    url: canonicalUrl("/contact"),
     title: "Contact AL Solutions AI — Book a Free AI Audit",
     description:
       "Get in touch with the AL Solutions AI team. Book a free 30-minute AI audit, WhatsApp us directly, or send us your project details.",

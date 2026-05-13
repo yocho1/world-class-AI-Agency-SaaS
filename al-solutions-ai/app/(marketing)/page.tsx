@@ -22,9 +22,9 @@ const siteUrl = "https://www.alsolutionsai.online";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
-  title: "AI Chatbot Agency for MENA & Europe | AL Solutions AI",
+  title: "AI Chatbot Agency UK | Arabic, English & French AI in 30 Days | AL Solutions AI",
   description:
-    "AL Solutions AI builds custom AI chatbots, WhatsApp automation, and lead conversion systems. Production-ready in 30 days. Free AI audit included.",
+    "UK-based AI chatbot agency specialising in Arabic, English & French AI for MENA and European businesses. Live in 30 days. HubSpot, Salesforce & WhatsApp integration. Free AI audit included.",
   keywords: [
     "AI chatbot agency",
     "AI automation agency",
@@ -40,10 +40,10 @@ export const metadata: Metadata = {
     "lead qualification AI",
   ],
   openGraph: {
-    title: "AI Chatbot Agency for MENA & Europe | AL Solutions AI",
+    title: "AI Chatbot Agency UK | Arabic, English & French AI in 30 Days",
     description:
-      "AL Solutions AI builds custom AI chatbots, WhatsApp automation, and lead conversion systems. Production-ready in 30 days. Free AI audit included.",
-    url: siteUrl,
+      "UK-based AI chatbot agency specialising in Arabic, English & French AI for MENA and European businesses. Live in 30 days. HubSpot, Salesforce & WhatsApp integration. Free AI audit included.",
+    url: `${siteUrl}/en`,
     siteName: "AL Solutions AI",
     images: [
       {
@@ -58,15 +58,18 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "AI Chatbot Agency for MENA & Europe | AL Solutions AI",
+    title: "AI Chatbot Agency UK | Arabic, English & French AI in 30 Days",
     description:
-      "AL Solutions AI builds custom AI chatbots, WhatsApp automation, and lead conversion systems. Production-ready in 30 days. Free AI audit included.",
+      "UK-based AI chatbot agency specialising in Arabic, English & French AI for MENA and European businesses. Live in 30 days. HubSpot, Salesforce & WhatsApp integration. Free AI audit included.",
     images: [`${siteUrl}/og/homepage.png`],
   },
   alternates: {
-    canonical: siteUrl,
+    canonical: `${siteUrl}/en`,
     languages: {
-      en: "https://www.alsolutionsai.online/en",
+      en: `${siteUrl}/en`,
+      ar: `${siteUrl}/ar`,
+      fr: `${siteUrl}/fr`,
+      "x-default": `${siteUrl}/en`,
     },
   },
   robots: {

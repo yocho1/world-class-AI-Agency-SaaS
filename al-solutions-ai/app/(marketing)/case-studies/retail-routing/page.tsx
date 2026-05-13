@@ -1,18 +1,14 @@
 import type { Metadata } from "next";
 import { CaseStudyLayout, type CaseStudyData } from "@/components/CaseStudyLayout";
+import { alternatesFor, canonicalUrl } from "@/lib/seo";
 
 export const metadata: Metadata = {
   title: "Atlas Retail: +44% Lead Capture in 35 Days | AL Solutions AI",
   description:
     "How Atlas Retail increased lead capture rate by 44% with intelligent lead routing and WhatsApp automation. From concept to live in 35 days.",
-  alternates: {
-    canonical: "https://www.alsolutionsai.online/case-studies/retail-routing",
-    languages: {
-      en: "https://www.alsolutionsai.online/en/case-studies/retail-routing",
-    },
-  },
+  alternates: alternatesFor("/case-studies/retail-routing"),
   openGraph: {
-    url: "https://www.alsolutionsai.online/case-studies/retail-routing",
+    url: canonicalUrl("/case-studies/retail-routing"),
     title: "Atlas Retail: +44% Lead Capture in 35 Days | AL Solutions AI",
     description:
       "How Atlas Retail increased lead capture rate by 44% with intelligent lead routing and WhatsApp automation. From concept to live in 35 Days.",

@@ -1,18 +1,14 @@
 import type { Metadata } from "next";
 import { CaseStudyLayout, type CaseStudyData } from "@/components/CaseStudyLayout";
+import { alternatesFor, canonicalUrl } from "@/lib/seo";
 
 export const metadata: Metadata = {
   title: "Nexora Hotels: -62% Response Time in 28 Days | AL Solutions AI",
   description:
     "How Nexora Hotels Group replaced 3 failed vendors with a live AI concierge system on web and WhatsApp in just 28 days. +44% lead capture rate.",
-  alternates: {
-    canonical: "https://www.alsolutionsai.online/case-studies/hospitality-concierge",
-    languages: {
-      en: "https://www.alsolutionsai.online/en/case-studies/hospitality-concierge",
-    },
-  },
+  alternates: alternatesFor("/case-studies/hospitality-concierge"),
   openGraph: {
-    url: "https://www.alsolutionsai.online/case-studies/hospitality-concierge",
+    url: canonicalUrl("/case-studies/hospitality-concierge"),
     title: "Nexora Hotels: -62% Response Time in 28 Days | AL Solutions AI",
     description:
       "How Nexora Hotels Group replaced 3 failed vendors with a live AI concierge system on web and WhatsApp in just 28 days. +44% lead capture rate.",

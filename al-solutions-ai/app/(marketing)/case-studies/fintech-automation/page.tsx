@@ -1,18 +1,14 @@
 import type { Metadata } from "next";
 import { CaseStudyLayout, type CaseStudyData } from "@/components/CaseStudyLayout";
+import { alternatesFor, canonicalUrl } from "@/lib/seo";
 
 export const metadata: Metadata = {
   title: "FinEdge: 31% Lower Ops Cost in 22 Days | AL Solutions AI",
   description:
     "How FinEdge cut operational costs by 31% through AI-powered customer support automation. From implementation delay to live production in under 4 weeks.",
-  alternates: {
-    canonical: "https://www.alsolutionsai.online/case-studies/fintech-automation",
-    languages: {
-      en: "https://www.alsolutionsai.online/en/case-studies/fintech-automation",
-    },
-  },
+  alternates: alternatesFor("/case-studies/fintech-automation"),
   openGraph: {
-    url: "https://www.alsolutionsai.online/case-studies/fintech-automation",
+    url: canonicalUrl("/case-studies/fintech-automation"),
     title: "FinEdge: 31% Lower Ops Cost in 22 Days | AL Solutions AI",
     description:
       "How FinEdge cut operational costs by 31% through AI-powered customer support automation. From implementation delay to live production in under 4 weeks.",

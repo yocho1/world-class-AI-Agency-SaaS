@@ -5,6 +5,7 @@ import { notFound } from "next/navigation";
 import { getPostBySlug, getAllPosts } from "@/lib/posts";
 import RelatedPosts from "@/components/blog/RelatedPosts";
 import AuditCtaLink from "@/components/analytics/AuditCtaLink";
+import { alternatesFor, canonicalUrl } from "@/lib/seo";
 
 type Props = { readonly params: { readonly slug: string } };
 
@@ -12,17 +13,13 @@ export async function generateMetadata({ params }: Readonly<Props>) {
   const post = await getPostBySlug(params.slug);
   if (!post) return {};
   const ogUrl = `https://www.alsolutionsai.online/og?title=${encodeURIComponent(post.title)}&subtitle=${encodeURIComponent(post.excerpt)}&tag=Blog`;
+  const path = `/blog/${params.slug}`;
   return {
     title: `${post.title} | AL Solutions AI`,
     description: post.excerpt,
-     alternates: {
-       canonical: `https://www.alsolutionsai.online/blog/${params.slug}`,
-       languages: {
-         en: `https://www.alsolutionsai.online/en/blog/${params.slug}`,
-       },
-     },
+    alternates: alternatesFor(path),
     openGraph: {
-      url: `https://www.alsolutionsai.online/blog/${params.slug}`,
+      url: canonicalUrl(path),
       title: `${post.title} | AL Solutions AI`,
       description: post.excerpt,
       images: [

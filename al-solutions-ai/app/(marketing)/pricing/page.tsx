@@ -1,15 +1,12 @@
+import { alternatesFor, canonicalUrl } from "@/lib/seo";
+
 export const metadata = {
   title: "AI Chatbot Pricing: From $2,500 One-Time | No Retainers | AL Solutions AI",
   description:
     "Transparent one-time project pricing. Launch $2,500. Growth $6,500. No monthly retainers. Free AI audit included for MENA and Europe growth teams.",
-  alternates: {
-    canonical: "https://www.alsolutionsai.online/pricing",
-    languages: {
-      en: "https://www.alsolutionsai.online/en/pricing",
-    },
-  },
+  alternates: alternatesFor("/pricing"),
   openGraph: {
-    url: "https://www.alsolutionsai.online/pricing",
+    url: canonicalUrl("/pricing"),
     title: "AI Chatbot Pricing: From $2,500 One-Time | No Retainers | AL Solutions AI",
     description:
       "Transparent one-time project pricing. Launch $2,500. Growth $6,500. No monthly retainers. Free AI audit included for MENA and Europe growth teams.",

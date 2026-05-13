@@ -1,19 +1,15 @@
 import Link from "next/link";
 import { Card } from "@/components/ui";
 import Script from "next/script";
+import { alternatesFor, canonicalUrl } from "@/lib/seo";
 
 export const metadata = {
   title: "AI Chatbot & Automation Services | WhatsApp AI | AL Solutions AI",
   description:
     "Custom AI chatbots, WhatsApp automation, lead qualification, web+AI bundles. Production-ready in 30 days for MENA, UAE, Saudi Arabia, and Europe.",
-  alternates: {
-    canonical: "https://www.alsolutionsai.online/services",
-    languages: {
-      en: "https://www.alsolutionsai.online/en/services",
-    },
-  },
+  alternates: alternatesFor("/services"),
   openGraph: {
-    url: "https://www.alsolutionsai.online/services",
+    url: canonicalUrl("/services"),
     title: "AI Chatbot & Automation Services | WhatsApp AI | AL Solutions AI",
     description:
       "Custom AI chatbots, WhatsApp automation, lead qualification, web+AI bundles. Production-ready in 30 days for MENA, UAE, Saudi Arabia, and Europe.",

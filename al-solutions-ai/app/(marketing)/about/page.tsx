@@ -1,19 +1,15 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Card, Reveal } from "@/components/ui";
+import { alternatesFor, canonicalUrl } from "@/lib/seo";
 
 export const metadata = {
   title: "About AL Solutions AI | Founded 2018 | Asim Jan | UK AI Agency",
   description:
     "AL Solutions AI (Reg. No. 11521309) founded by Asim Jan in 2018. Production-ready AI chatbots and automation for MENA and European businesses.",
-  alternates: {
-    canonical: "https://www.alsolutionsai.online/about",
-    languages: {
-      en: "https://www.alsolutionsai.online/en/about",
-    },
-  },
+  alternates: alternatesFor("/about"),
   openGraph: {
-    url: "https://www.alsolutionsai.online/about",
+    url: canonicalUrl("/about"),
     title: "About AL Solutions AI | Founded 2018 | Asim Jan | UK AI Agency",
     description:
       "AL Solutions AI (Reg. No. 11521309) founded by Asim Jan in 2018. Production-ready AI chatbots and automation for MENA and European businesses.",
