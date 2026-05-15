@@ -21,6 +21,14 @@ type Lead = {
   updated_at?: string | null;
 };
 
+const PIPELINE_STAGES = [
+  { key: "new", label: "New", color: "bg-blue-500" },
+  { key: "contacted", label: "Contacted", color: "bg-amber-500" },
+  { key: "qualified", label: "Qualified", color: "bg-emerald-500" },
+  { key: "proposal", label: "Proposal", color: "bg-violet-500" },
+  { key: "closed", label: "Closed", color: "bg-slate-500" },
+] as const;
+
 export default function LeadsTable() {
   const [leads, setLeads] = useState<Lead[]>([]);
   const [loading, setLoading] = useState(false);
@@ -31,6 +39,7 @@ export default function LeadsTable() {
   const [search, setSearch] = useState("");
   const [status, setStatus] = useState("");
   const [selectedLeadId, setSelectedLeadId] = useState<string | null>(null);
+  const [pipelineCounts, setPipelineCounts] = useState<Record<string, number>>({});
 
   const fetchLeads = useCallback(async () => {
     setLoading(true);
@@ -55,8 +64,29 @@ export default function LeadsTable() {
     }
   }, [page, limit, search, status]);
 
+  const fetchPipelineCounts = useCallback(async () => {
+    try {
+      const res = await fetch("/api/leads?limit=1");
+      const json = await res.json();
+      if (!json.ok) return;
+      // Fetch counts per status via separate queries
+      const counts: Record<string, number> = {};
+      await Promise.all(
+        PIPELINE_STAGES.map(async (stage) => {
+          const r = await fetch(`/api/leads?status=${stage.key}&limit=1`);
+          const j = await r.json();
+          counts[stage.key] = j.count ?? 0;
+        })
+      );
+      setPipelineCounts(counts);
+    } catch {
+      // silently fail
+    }
+  }, []);
+
   useEffect(() => {
     void fetchLeads();
+    void fetchPipelineCounts();
 
     const supabase = createSupabaseBrowserClient();
 
@@ -68,6 +98,7 @@ export default function LeadsTable() {
         (payload: RealtimePostgresInsertPayload<Lead>) => {
           setLeads((prev) => [payload.new, ...prev]);
           setTotal((t) => t + 1);
+          void fetchPipelineCounts();
         }
       )
       .on(
@@ -75,6 +106,7 @@ export default function LeadsTable() {
         { event: "UPDATE", schema: "public", table: "leads" },
         (payload: RealtimePostgresUpdatePayload<Lead>) => {
           setLeads((prev) => prev.map((l) => (l.id === payload.new.id ? payload.new : l)));
+          void fetchPipelineCounts();
         }
       )
       .on(
@@ -91,7 +123,7 @@ export default function LeadsTable() {
       // eslint-disable-next-line @typescript-eslint/no-floating-promises
       supabase.removeChannel(leadChannel);
     };
-  }, [fetchLeads]);
+  }, [fetchLeads, fetchPipelineCounts]);
 
   async function changeStatus(id: string, newStatus: string) {
     try {
@@ -139,6 +171,34 @@ export default function LeadsTable() {
 
   return (
     <div className="space-y-4">
+      {/* Pipeline Summary */}
+      <div className="grid grid-cols-2 gap-3 sm:grid-cols-5">
+        {PIPELINE_STAGES.map((stage) => {
+          const count = pipelineCounts[stage.key] ?? 0;
+          const isActive = status === stage.key;
+          return (
+            <button
+              key={stage.key}
+              type="button"
+              onClick={() => setStatus(isActive ? "" : stage.key)}
+              className={`rounded-2xl border p-4 text-left transition-all ${
+                isActive
+                  ? "border-accent-400 bg-accent-400/10"
+                  : "border-border-subtle bg-bg-surface hover:border-border-default"
+              }`}
+            >
+              <div className="flex items-center gap-2">
+                <span className={`inline-block h-2.5 w-2.5 rounded-full ${stage.color}`} />
+                <span className="text-xs font-medium uppercase tracking-wider text-text-tertiary">
+                  {stage.label}
+                </span>
+              </div>
+              <p className="mt-2 text-2xl font-bold text-text-primary">{count}</p>
+            </button>
+          );
+        })}
+      </div>
+
       <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
         <input
           aria-label="Search leads"
@@ -154,10 +214,9 @@ export default function LeadsTable() {
           className="h-11 w-full bg-bg-elevated border border-border-subtle rounded-2xl px-3 text-sm text-text-primary sm:w-auto"
         >
           <option value="">All statuses</option>
-          <option value="new">New</option>
-          <option value="contacted">Contacted</option>
-          <option value="qualified">Qualified</option>
-          <option value="closed">Closed</option>
+          {PIPELINE_STAGES.map((s) => (
+            <option key={s.key} value={s.key}>{s.label}</option>
+          ))}
         </select>
 
         <select
@@ -224,10 +283,9 @@ export default function LeadsTable() {
                       onChange={(e) => changeStatus(lead.id, e.target.value)}
                       className="h-11 min-w-[132px] bg-bg-elevated border border-border-subtle rounded px-3 text-sm"
                     >
-                      <option value="new">New</option>
-                      <option value="contacted">Contacted</option>
-                      <option value="qualified">Qualified</option>
-                      <option value="closed">Closed</option>
+                      {PIPELINE_STAGES.map((s) => (
+                        <option key={s.key} value={s.key}>{s.label}</option>
+                      ))}
                     </select>
                   </td>
                   <td className="px-4 py-3 text-sm text-text-tertiary">{lead.created_at ? new Date(lead.created_at).toLocaleString() : "—"}</td>

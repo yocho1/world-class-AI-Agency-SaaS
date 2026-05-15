@@ -1,0 +1,35 @@
+{
+  "homepage": {
+    "hero": {
+      "headline": "Agence de chatbots IA au Royaume-Uni — Arabe, Anglais & Français en 30 jours",
+      "subheadline": "Nous construisons et déployons des chatbots IA et des systèmes d'automatisation qui fonctionnent réellement et génèrent des leads — pas des présentations.",
+      "ctaPrimary": "Obtenir un audit IA gratuit"
+    },
+    "stats": {
+      "contractToLive": {
+        "value": "30 jours",
+        "label": "Du contrat au lancement"
+      },
+      "conversionLift": {
+        "value": "+2,3x",
+        "label": "Augmentation moyenne de conversion"
+      },
+      "companiesLive": {
+        "value": "12",
+        "label": "Déploiements en production"
+      }
+    },
+    "sections": {
+      "problemStatement": "Le problème que nous voyons constamment",
+      "servicesOverview": "Nos services",
+      "roiCalculator": "Calculez votre retour sur investissement",
+      "liveDemo": "Voir l'IA en action",
+      "caseStudySpotlight": "Études de cas",
+      "howItWorks": "Comment ça marche",
+      "testimonials": "Ce que disent nos clients",
+      "comparison": "Pourquoi nous sommes différents",
+      "faq": "Questions fréquentes",
+      "finalCta": "Commencez aujourd'hui"
+    }
+  }
+}
