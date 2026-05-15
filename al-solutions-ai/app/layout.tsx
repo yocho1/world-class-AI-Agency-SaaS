@@ -7,6 +7,7 @@ import { GeistMono } from "geist/font/mono";
 import { GoogleAnalytics } from "@next/third-parties/google";
 import { PostHogProvider } from "@/components/analytics/PostHogProvider";
 import { PageViewTracker } from "@/components/analytics/PageViewTracker";
+import { ScrollDepthTracker } from "@/components/analytics/ScrollDepthTracker";
 import { WhatsAppButton } from "@/components/layout/WhatsAppButton";
 import "./globals.css";
 
@@ -102,6 +103,7 @@ export default function RootLayout({
         <PostHogProvider>
           <Suspense fallback={null}>
             <PageViewTracker />
+            <ScrollDepthTracker />
           </Suspense>
           <WhatsAppButton />
           {children}

@@ -64,6 +64,7 @@ function getChatErrorType(errorMessage: string): string {
 export function Chatbot() {
   const [isOpen, setIsOpen] = useState(false);
   const [hasAutoOpened, setHasAutoOpened] = useState(false);
+  const [hasExitIntentFired, setHasExitIntentFired] = useState(false);
   const [isQuickReplyTransitioning, setIsQuickReplyTransitioning] = useState(false);
   const [isAssistantTypingVisible, setIsAssistantTypingVisible] = useState(false);
   const [showHandoffBanner, setShowHandoffBanner] = useState(false);
@@ -92,6 +93,27 @@ export function Chatbot() {
       return () => clearTimeout(timer);
     }
   }, [hasAutoOpened, posthog]);
+
+  // Exit-intent trigger (desktop only — mouse leaving viewport toward top)
+  useEffect(() => {
+    if (typeof window === "undefined" || hasExitIntentFired || isOpen) return;
+
+    const handleMouseLeave = (e: MouseEvent) => {
+      if (e.clientY <= 10 && !hasExitIntentFired && !isOpen) {
+        setIsOpen(true);
+        setHasAutoOpened(true);
+        setHasExitIntentFired(true);
+        posthog?.capture("chatbot_opened", {
+          trigger: "exit_intent",
+          page: window.location.pathname,
+          time_on_page: Math.round((Date.now() - performance.now()) / 1000),
+        });
+      }
+    };
+
+    document.addEventListener("mouseleave", handleMouseLeave);
+    return () => document.removeEventListener("mouseleave", handleMouseLeave);
+  }, [hasExitIntentFired, isOpen, posthog]);
 
   useEffect(() => {
     if (chat.leadCaptured && !hasTrackedLeadCapture.current) {

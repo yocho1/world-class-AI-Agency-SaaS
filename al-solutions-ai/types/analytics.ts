@@ -27,3 +27,9 @@ export interface GenericPageEvent {
   referrer: string;
   session_id?: string;
 }
+
+export interface ScrollDepthEvent {
+  page: string;
+  depth: number; // 0–100
+  milestone: 25 | 50 | 75 | 100;
+}

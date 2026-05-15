@@ -3,6 +3,7 @@ import type {
   CaseStudyClickedEvent,
   GenericPageEvent,
   HeroCTAEvent,
+  ScrollDepthEvent,
   ServiceCardClickedEvent,
   TestimonialViewedEvent,
 } from "@/types/analytics";
@@ -57,4 +58,35 @@ export function trackCaseStudyClick(posthog: PosthogLike, payload: CaseStudyClic
 export function trackTestimonialViewed(posthog: PosthogLike, payload: TestimonialViewedEvent) {
   posthog.capture("testimonial_viewed", payload);
   void mirrorAnalyticsEvent("testimonial_viewed", payload as unknown as AnalyticsPayload);
+}
+
+export function trackPricingTabSwitched(
+  posthog: PosthogLike,
+  payload: { from: "monthly" | "annual"; to: "monthly" | "annual" }
+) {
+  posthog.capture("pricing_tab_switched", payload);
+  void mirrorAnalyticsEvent("pricing_tab_switched", payload as unknown as AnalyticsPayload);
+}
+
+export function trackPricingTierSelected(
+  posthog: PosthogLike,
+  payload: { tier: string; billing: string }
+) {
+  posthog.capture("pricing_tier_selected", payload);
+  void mirrorAnalyticsEvent("pricing_tier_selected", payload as unknown as AnalyticsPayload);
+}
+
+export function trackPricingFaqExpanded(posthog: PosthogLike, payload: { question_id: string }) {
+  posthog.capture("pricing_faq_expanded", payload);
+  void mirrorAnalyticsEvent("pricing_faq_expanded", payload as unknown as AnalyticsPayload);
+}
+
+export function trackFooterCTAClicked(posthog: PosthogLike, payload: { source: string }) {
+  posthog.capture("footer_cta_clicked", payload);
+  void mirrorAnalyticsEvent("footer_cta_clicked", payload as unknown as AnalyticsPayload);
+}
+
+export function trackScrollDepth(posthog: PosthogLike, payload: ScrollDepthEvent) {
+  posthog.capture("scroll_depth_reached", payload);
+  void mirrorAnalyticsEvent("scroll_depth_reached", payload as unknown as AnalyticsPayload);
 }
