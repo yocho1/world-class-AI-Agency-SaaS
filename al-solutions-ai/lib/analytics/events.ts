@@ -1,6 +1,8 @@
 import type { PostHog } from "posthog-js";
 import type {
   CaseStudyClickedEvent,
+  ExperimentConvertedEvent,
+  ExperimentViewedEvent,
   GenericPageEvent,
   HeroCTAEvent,
   ScrollDepthEvent,
@@ -89,4 +91,14 @@ export function trackFooterCTAClicked(posthog: PosthogLike, payload: { source: s
 export function trackScrollDepth(posthog: PosthogLike, payload: ScrollDepthEvent) {
   posthog.capture("scroll_depth_reached", payload);
   void mirrorAnalyticsEvent("scroll_depth_reached", payload as unknown as AnalyticsPayload);
+}
+
+export function trackExperimentViewed(posthog: PosthogLike, payload: ExperimentViewedEvent) {
+  posthog.capture("$experiment_viewed", payload);
+  void mirrorAnalyticsEvent("$experiment_viewed", payload as unknown as AnalyticsPayload);
+}
+
+export function trackExperimentConverted(posthog: PosthogLike, payload: ExperimentConvertedEvent) {
+  posthog.capture("$experiment_converted", payload);
+  void mirrorAnalyticsEvent("$experiment_converted", payload as unknown as AnalyticsPayload);
 }

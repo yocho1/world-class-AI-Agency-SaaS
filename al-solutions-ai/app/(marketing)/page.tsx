@@ -4,7 +4,6 @@ import {
   CaseStudySpotlight,
   FaqSection,
   FinalCTA,
-  Hero,
   HowItWorks,
   LiveAIDemo,
   ProblemStatement,
@@ -14,6 +13,7 @@ import {
   Testimonials,
   WhyCompare,
 } from "@/components/sections";
+import { HomepageHero } from "@/components/sections/HomepageHero";
 import LeadCaptureModal from "@/components/forms/LeadCaptureModal";
 import arMessages from "@/messages/ar.json";
 import Script from "next/script";
@@ -196,7 +196,7 @@ export default function MarketingHomePage() {
           type="application/ld+json"
         />
       ))}
-      <Hero
+      <HomepageHero
         title={home?.hero.headline}
         description={home?.hero.subheadline}
         ctaPrimaryText={home?.hero.ctaPrimary}

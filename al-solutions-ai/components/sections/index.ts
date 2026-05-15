@@ -2,6 +2,7 @@ export * from "./CaseStudySpotlight";
 export * from "./FaqSection";
 export * from "./FinalCTA";
 export * from "./Hero";
+export * from "./HomepageHero";
 export * from "./HowItWorks";
 export * from "./LiveAIDemo";
 export * from "./ProblemStatement";

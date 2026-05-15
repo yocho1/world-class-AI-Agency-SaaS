@@ -33,3 +33,14 @@ export interface ScrollDepthEvent {
   depth: number; // 0–100
   milestone: 25 | 50 | 75 | 100;
 }
+
+export interface ExperimentViewedEvent {
+  experiment_id: string;
+  variant: string;
+}
+
+export interface ExperimentConvertedEvent {
+  experiment_id: string;
+  variant: string;
+  conversion_type: "hero_cta" | "audit_booking" | "chatbot_lead";
+}

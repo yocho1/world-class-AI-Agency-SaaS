@@ -22,9 +22,10 @@ const nextConfig = {
   reactStrictMode: true,
   experimental: {
     optimizePackageImports: ["lucide-react", "@radix-ui/react-icons", "framer-motion"],
-    browsersListForSwc: true,
+    // browsersListForSwc removed — not valid in Next.js 14.2
   },
   images: {
+    formats: ["image/avif", "image/webp"],
     remotePatterns: [
       {
         protocol: "https",
@@ -44,6 +45,15 @@ const nextConfig = {
   },
   async headers() {
     return [
+      {
+        source: "/_next/static/(.*)",
+        headers: [
+          {
+            key: "Cache-Control",
+            value: "public, max-age=31536000, immutable",
+          },
+        ],
+      },
       {
         source: "/(.*)",
         headers: [

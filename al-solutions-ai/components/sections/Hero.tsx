@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { trackHeroCTAClick } from "@/lib/analytics/events";
+import { trackHeroCTAClick, trackExperimentConverted } from "@/lib/analytics/events";
 import { trackEvent } from "@/lib/analytics";
 import { usePostHog } from "@/hooks/usePostHog";
 import { Reveal } from "@/components/ui";
@@ -13,6 +13,7 @@ interface HeroProps {
   ctaPrimaryText?: string;
   ctaSecondaryText?: string;
   stats?: typeof STATS;
+  experimentVariant?: string;
 }
 
 const STATS = [
@@ -40,18 +41,27 @@ export function Hero({
   ctaPrimaryText = "Get Free AI Audit",
   ctaSecondaryText = "See the AI Working",
   stats = STATS,
+  experimentVariant,
 }: Readonly<HeroProps>) {
   const posthog = usePostHog();
 
-  const trackClick = (variant: "primary" | "secondary") => {
+  const trackClick = (ctaVariant: "primary" | "secondary") => {
     if (!posthog) {
       return;
     }
 
     trackHeroCTAClick(posthog, {
-      cta_variant: variant,
+      cta_variant: ctaVariant,
       scroll_depth: Math.round(window.scrollY),
     });
+
+    if (experimentVariant) {
+      trackExperimentConverted(posthog, {
+        experiment_id: "homepage_hero_v1",
+        variant: experimentVariant,
+        conversion_type: "hero_cta",
+      });
+    }
   };
 
   return (
