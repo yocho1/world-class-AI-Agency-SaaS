@@ -104,4 +104,4 @@ The right AI chatbot investment for a MENA business in 2026 is somewhere between
 
 If you want to know exactly what a chatbot would cost for your specific use case, our free AI audit gives you a written scope and price estimate within 48 hours.
 
-→ [Get your free AI audit and pricing estimate](/contact)
+→ [Get your free AI audit and pricing estimate](/free-ai-audit)

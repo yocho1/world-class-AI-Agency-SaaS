@@ -375,6 +375,29 @@ export default function AIChatbotsPage() {
         </div>
       </section>
 
+      {/* Related Resources */}
+      <section className="border-b border-border-subtle py-12 sm:py-16 md:py-20">
+        <div className="container">
+          <Reveal>
+            <h2 className="text-3xl font-bold tracking-tight text-text-primary sm:text-4xl md:text-5xl">Related resources</h2>
+            <div className="mt-10 grid gap-6 md:grid-cols-3">
+              <Link href="/case-studies/hospitality-concierge" className="group rounded-2xl border border-border-subtle bg-bg-surface p-6 transition-all hover:border-accent-400 hover:shadow-lg hover:shadow-accent-400/5">
+                <h3 className="text-base font-bold text-text-primary group-hover:text-accent-400">Nexora Hotels case study</h3>
+                <p className="mt-2 text-sm text-text-secondary">How a multilingual AI concierge on web and WhatsApp cut response time by 62% in 28 days.</p>
+              </Link>
+              <Link href="/blog/whatsapp-ai-chatbot-business" className="group rounded-2xl border border-border-subtle bg-bg-surface p-6 transition-all hover:border-accent-400 hover:shadow-lg hover:shadow-accent-400/5">
+                <h3 className="text-base font-bold text-text-primary group-hover:text-accent-400">WhatsApp AI chatbot guide</h3>
+                <p className="mt-2 text-sm text-text-secondary">Complete playbook for deploying WhatsApp AI that captures leads 24/7 in Arabic and English.</p>
+              </Link>
+              <Link href="/industries/hospitality" className="group rounded-2xl border border-border-subtle bg-bg-surface p-6 transition-all hover:border-accent-400 hover:shadow-lg hover:shadow-accent-400/5">
+                <h3 className="text-base font-bold text-text-primary group-hover:text-accent-400">Hospitality AI solutions</h3>
+                <p className="mt-2 text-sm text-text-secondary">AI concierge, booking qualification, and guest support automation for hotels and tourism.</p>
+              </Link>
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
       {/* ===== 7. FAQ ===== */}
       <section className="border-b border-border-subtle py-12 sm:py-16 md:py-20">
         <div className="container">

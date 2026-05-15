@@ -112,4 +112,4 @@ AI automation in 2026 is not a future investment — it's a present competitive 
 
 The best place to start is a free AI audit: a 30-minute call where we map your highest-value automation opportunities and give you a written scope with estimated ROI and timeline — no commitment required.
 
-→ [Book your free AI automation audit](/contact)
+→ [Book your free AI automation audit](/free-ai-audit)

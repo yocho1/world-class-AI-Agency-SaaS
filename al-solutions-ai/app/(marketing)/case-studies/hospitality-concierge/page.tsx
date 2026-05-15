@@ -116,6 +116,81 @@ const caseStudyData: CaseStudyData = {
     title: "Chief Marketing Officer",
     company: "Nexora Hotels Group",
   },
+  processSteps: [
+    {
+      step: 1,
+      title: "Discovery and knowledge-base audit (Days 1–5)",
+      body:
+        "We started by interviewing the front-desk, reservations, and marketing teams separately. Each team had a different view of what guests actually asked. The front desk saw check-in and policy questions. Reservations saw booking modifications and group inquiries. Marketing saw pre-booking research questions about amenities and location. We consolidated these into a single master question taxonomy of 67 distinct guest intents, then mapped each intent to a resolution type: fully automated, partially automated with human handoff, or fully human. We also audited the existing knowledge base — PDFs, FAQ pages, and internal SOPs — and found that 40% of the content was outdated or contradicted other sources. We cleaned this up before training the model.",
+    },
+    {
+      step: 2,
+      title: "AI training and multilingual conversation design (Days 6–14)",
+      body:
+        "We built the conversation flows around real guest behaviour, not theoretical personas. For example, we discovered that Arabic-speaking guests often started in English and switched to Arabic mid-conversation when the topic became personal (room preferences, dietary restrictions). The AI needed to handle this code-switching naturally. We trained the model on Modern Standard Arabic, Khaleeji dialect, and English, with French as a secondary language for European guests. We also built right-to-left UI components for the web widget and tested them across iOS Safari, Android Chrome, and desktop browsers. During this phase, we ran daily QA sessions with the Nexora team, refining responses based on their feedback until the brand voice matched their hospitality standards.",
+    },
+    {
+      step: 3,
+      title: "WhatsApp Business API and HubSpot integration (Days 15–21)",
+      body:
+        "Meta Business verification and WhatsApp Business API approval took 4 business days — faster than average because we prepared the business documentation in advance. We configured message templates for booking confirmations, check-in reminders, and post-stay feedback requests. The integration with HubSpot was the critical piece: every conversation created or updated a contact, wrote the transcript to the timeline, and moved the lifecycle stage when booking intent was detected. We built a custom property mapping for hospitality-specific fields: check-in date, room type preference, number of guests, special requests, and loyalty programme status. We also configured owner assignment rules so that leads from specific properties were routed to the correct reservations manager automatically.",
+    },
+    {
+      step: 4,
+      title: "Pilot launch and live optimisation (Days 22–28)",
+      body:
+        "We launched the system to 25% of website traffic and all WhatsApp inquiries for a single property. The front-desk team monitored conversations in real time via a shared dashboard, flagging responses that needed correction. In the first 72 hours, we identified 12 edge cases that the AI had not seen during training — mostly around unusual room requests and multi-city itineraries. We updated the model within 24 hours of each finding. By day 28, the system was handling 78% of conversations without human intervention, with a 4.2/5 guest satisfaction rating on automated responses. We then rolled it out to all properties.",
+    },
+  ],
+  technicalDetails: {
+    intro:
+      "The Nexora deployment used a three-layer architecture: a React-based web chat widget, a Node.js AI orchestration service, and HubSpot as the CRM backbone. WhatsApp messages were handled via the Meta Business API through an approved BSP.",
+    items: [
+      {
+        title: "Conversational AI layer",
+        description:
+          "GPT-4-class model with custom prompts for hospitality context, brand voice guardrails, and multilingual handling. Conversation state managed via Redis with 24-hour TTL for active sessions.",
+      },
+      {
+        title: "HubSpot CRM connector",
+        description:
+          "Custom Node.js service using HubSpot Private App OAuth. Handles deduplication by email/phone, selective property updates (PATCH), and timeline note creation for full transcript logging.",
+      },
+      {
+        title: "WhatsApp Business API",
+        description:
+          "Meta-approved BSP connection with sandbox testing, template approval for outbound messages, and webhook-based inbound message handling. Message queue processed via BullMQ on Redis.",
+      },
+      {
+        title: "Knowledge base and RAG",
+        description:
+          "Retrieval-augmented generation using chunked hotel documentation, policies, and local area guides. Vector store powered by Pinecone with semantic search for contextually relevant responses.",
+      },
+    ],
+  },
+  lessonsLearned: [
+    "The most important factor in a successful hotel AI deployment is not the model choice — it is the quality of the knowledge base. Outdated or contradictory information will surface quickly in guest conversations and damage trust.",
+    "Multilingual QA needs to include real guest conversations, not just translated test scripts. Arabic dialect variation and code-switching patterns are impossible to predict without live data.",
+    "Front-desk team buy-in is essential. The AI should augment their work, not replace it. We involved the team in daily QA sessions during the pilot, which turned skeptics into advocates.",
+    "WhatsApp template approval is a bottleneck that most projects underestimate. Preparing business documentation and template wording before kickoff saves 1–2 weeks.",
+    "Integration with the existing CRM is where most value is captured. A chatbot that captures leads but does not write them to the CRM is a chatbot that sales teams ignore.",
+  ],
+  ctaSections: [
+    {
+      title: "Deploy an AI concierge for your hotel",
+      body:
+        "See how a hospitality-focused AI chatbot would work for your property. We map your guest journeys, audit your knowledge base, and deliver a written scope report with timeline and pricing.",
+      linkHref: "/free-ai-audit",
+      linkText: "Book a free AI audit for your hotel",
+    },
+    {
+      title: "Read the WhatsApp automation guide",
+      body:
+        "Learn how WhatsApp Business API works, what it costs, and how to set it up for a hotel or hospitality business — based on real deployments across the MENA region.",
+      linkHref: "/blog/whatsapp-ai-chatbot-business",
+      linkText: "Read the WhatsApp AI guide",
+    },
+  ],
   relatedCaseStudies: [
     {
       title: "Atlas Retail: +44% lead capture rate",

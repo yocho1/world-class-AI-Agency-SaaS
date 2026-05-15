@@ -373,6 +373,29 @@ export default function LeadConversionPage() {
         </div>
       </section>
 
+      {/* Related Resources */}
+      <section className="border-b border-border-subtle py-12 sm:py-16 md:py-20">
+        <div className="container">
+          <Reveal>
+            <h2 className="text-3xl font-bold tracking-tight text-text-primary sm:text-4xl md:text-5xl">Related resources</h2>
+            <div className="mt-10 grid gap-6 md:grid-cols-3">
+              <Link href="/case-studies/retail-routing" className="group rounded-2xl border border-border-subtle bg-bg-surface p-6 transition-all hover:border-accent-400 hover:shadow-lg hover:shadow-accent-400/5">
+                <h3 className="text-base font-bold text-text-primary group-hover:text-accent-400">Atlas Retail case study</h3>
+                <p className="mt-2 text-sm text-text-secondary">How Atlas Retail increased lead capture by 44% with intelligent AI routing across 8 stores in 35 days.</p>
+              </Link>
+              <Link href="/blog/ai-lead-qualification-guide" className="group rounded-2xl border border-border-subtle bg-bg-surface p-6 transition-all hover:border-accent-400 hover:shadow-lg hover:shadow-accent-400/5">
+                <h3 className="text-base font-bold text-text-primary group-hover:text-accent-400">Lead qualification guide</h3>
+                <p className="mt-2 text-sm text-text-secondary">How to build an AI qualification flow that scores, routes, and books meetings automatically.</p>
+              </Link>
+              <Link href="/industries/retail" className="group rounded-2xl border border-border-subtle bg-bg-surface p-6 transition-all hover:border-accent-400 hover:shadow-lg hover:shadow-accent-400/5">
+                <h3 className="text-base font-bold text-text-primary group-hover:text-accent-400">Retail AI solutions</h3>
+                <p className="mt-2 text-sm text-text-secondary">Pre-purchase Q&A, abandoned-cart recovery, and lead routing for e-commerce and retail brands.</p>
+              </Link>
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
       {/* ===== 7. FAQ ===== */}
       <section className="border-b border-border-subtle py-12 sm:py-16 md:py-20">
         <div className="container">

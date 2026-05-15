@@ -42,6 +42,29 @@ export interface CaseStudyData {
     metric: string;
     slug: string;
   }>;
+  /** Optional: detailed step-by-step process narrative */
+  processSteps?: Array<{
+    step: number;
+    title: string;
+    body: string;
+  }>;
+  /** Optional: technical architecture / implementation details */
+  technicalDetails?: {
+    intro: string;
+    items: Array<{
+      title: string;
+      description: string;
+    }>;
+  };
+  /** Optional: lessons learned and key takeaways */
+  lessonsLearned?: string[];
+  /** Optional: mid-page CTA sections with links */
+  ctaSections?: Array<{
+    title: string;
+    body: string;
+    linkHref: string;
+    linkText: string;
+  }>;
 }
 
 export function CaseStudyLayout({ data }: { data: CaseStudyData }) {
@@ -162,6 +185,102 @@ export function CaseStudyLayout({ data }: { data: CaseStudyData }) {
           </div>
         </div>
       </section>
+
+      {/* Process Steps Section */}
+      {data.processSteps && data.processSteps.length > 0 && (
+        <section className="border-b border-border-subtle py-12 sm:py-16 md:py-20">
+          <div className="container">
+            <div className="mx-auto max-w-4xl">
+              <h2 className="text-2xl font-bold text-text-primary sm:text-3xl md:text-4xl">How we delivered it</h2>
+              <div className="mt-10 space-y-8 max-w-4xl">
+                {data.processSteps.map((step) => (
+                  <div key={step.step} className="flex gap-6 sm:gap-8">
+                    <div className="flex flex-col items-center gap-4">
+                      <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full border-2 border-accent-400 bg-bg-surface text-sm font-bold text-accent-400">
+                        {step.step}
+                      </div>
+                    </div>
+                    <div>
+                      <h3 className="text-lg font-bold text-text-primary">{step.title}</h3>
+                      <p className="mt-2 text-base leading-relaxed text-text-secondary">{step.body}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* Technical Details Section */}
+      {data.technicalDetails && (
+        <section className="border-b border-border-subtle py-12 sm:py-16 md:py-20">
+          <div className="container">
+            <div className="mx-auto max-w-4xl">
+              <h2 className="text-2xl font-bold text-text-primary sm:text-3xl md:text-4xl">Technical implementation</h2>
+              <p className="mt-4 max-w-2xl text-base leading-relaxed text-text-secondary sm:text-lg">
+                {data.technicalDetails.intro}
+              </p>
+              <div className="mt-10 grid gap-6 md:grid-cols-2">
+                {data.technicalDetails.items.map((item, idx) => (
+                  <div
+                    key={idx}
+                    className="rounded-2xl border border-border-subtle bg-bg-surface p-6 transition-all hover:border-accent-400 hover:shadow-lg hover:shadow-accent-400/5"
+                  >
+                    <h3 className="text-base font-bold text-text-primary">{item.title}</h3>
+                    <p className="mt-3 text-sm leading-relaxed text-text-secondary sm:text-base">{item.description}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* CTA Sections */}
+      {data.ctaSections && data.ctaSections.length > 0 && (
+        <section className="border-b border-border-subtle bg-bg-surface py-12 sm:py-16">
+          <div className="container">
+            <div className="mx-auto max-w-4xl space-y-6">
+              {data.ctaSections.map((cta, idx) => (
+                <div
+                  key={idx}
+                  className="rounded-2xl border border-accent-400/20 bg-gradient-to-br from-accent-400/5 to-transparent p-6 sm:p-8"
+                >
+                  <h3 className="text-lg font-bold text-text-primary">{cta.title}</h3>
+                  <p className="mt-2 text-sm leading-relaxed text-text-secondary sm:text-base">{cta.body}</p>
+                  <Link
+                    className="mt-4 inline-flex items-center gap-2 text-sm font-medium text-accent-400 transition-colors hover:text-accent-300"
+                    href={cta.linkHref}
+                  >
+                    {cta.linkText}
+                    <span aria-hidden>→</span>
+                  </Link>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* Lessons Learned Section */}
+      {data.lessonsLearned && data.lessonsLearned.length > 0 && (
+        <section className="border-b border-border-subtle py-12 sm:py-16 md:py-20">
+          <div className="container">
+            <div className="mx-auto max-w-4xl">
+              <h2 className="text-2xl font-bold text-text-primary sm:text-3xl md:text-4xl">What we learned</h2>
+              <ul className="mt-10 space-y-4">
+                {data.lessonsLearned.map((lesson, idx) => (
+                  <li key={idx} className="flex gap-3 text-base leading-relaxed text-text-secondary sm:text-lg">
+                    <span className="mt-2 inline-block h-2 w-2 shrink-0 rounded-full bg-accent-400" />
+                    <span>{lesson}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* Testimonial Section */}
       <section className="border-b border-border-subtle py-12 sm:py-16 md:py-20">

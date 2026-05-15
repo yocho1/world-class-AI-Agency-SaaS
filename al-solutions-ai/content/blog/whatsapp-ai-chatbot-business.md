@@ -103,4 +103,4 @@ With a specialist agency, a WhatsApp AI system can go from contract to live in 2
 
 WhatsApp AI is the highest-ROI channel investment available to most MENA businesses right now. The combination of near-universal adoption, customer comfort with the channel, and the ability to deploy sophisticated AI on top of it creates a genuine competitive advantage for businesses that move first.
 
-→ [Book a free audit to see what a WhatsApp AI system would look like for your business](/contact)
+→ [Book a free audit to see what a WhatsApp AI system would look like for your business](/free-ai-audit)

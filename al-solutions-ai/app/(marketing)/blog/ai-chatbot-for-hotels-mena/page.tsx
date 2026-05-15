@@ -139,7 +139,7 @@ export default function AiChatbotForHotelsMenaPage() {
             the questions that mattered most.
           </p>
           <p>
-            Read the full case study here: <Link className="text-accent-400 hover:text-accent-300" href="/case-studies/nexora-hotels">Nexora Hotels case study</Link>.
+            Read the full case study here: <Link className="text-accent-400 hover:text-accent-300" href="/case-studies/hospitality-concierge">Nexora Hotels case study</Link>.
           </p>
         </section>
 

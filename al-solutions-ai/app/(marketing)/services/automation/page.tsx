@@ -373,6 +373,29 @@ export default function AutomationPage() {
         </div>
       </section>
 
+      {/* Related Resources */}
+      <section className="border-b border-border-subtle py-12 sm:py-16 md:py-20">
+        <div className="container">
+          <Reveal>
+            <h2 className="text-3xl font-bold tracking-tight text-text-primary sm:text-4xl md:text-5xl">Related resources</h2>
+            <div className="mt-10 grid gap-6 md:grid-cols-3">
+              <Link href="/case-studies/fintech-automation" className="group rounded-2xl border border-border-subtle bg-bg-surface p-6 transition-all hover:border-accent-400 hover:shadow-lg hover:shadow-accent-400/5">
+                <h3 className="text-base font-bold text-text-primary group-hover:text-accent-400">FinEdge case study</h3>
+                <p className="mt-2 text-sm text-text-secondary">How FinEdge cut operational support costs by 31% with AI-powered tier-1 automation in 22 days.</p>
+              </Link>
+              <Link href="/blog/ai-automation-mena-sme" className="group rounded-2xl border border-border-subtle bg-bg-surface p-6 transition-all hover:border-accent-400 hover:shadow-lg hover:shadow-accent-400/5">
+                <h3 className="text-base font-bold text-text-primary group-hover:text-accent-400">AI automation for SMEs</h3>
+                <p className="mt-2 text-sm text-text-secondary">Where to start, what to automate first, and realistic ROI benchmarks for MENA small businesses.</p>
+              </Link>
+              <Link href="/blog/hubspot-ai-integration-guide" className="group rounded-2xl border border-border-subtle bg-bg-surface p-6 transition-all hover:border-accent-400 hover:shadow-lg hover:shadow-accent-400/5">
+                <h3 className="text-base font-bold text-text-primary group-hover:text-accent-400">HubSpot AI integration guide</h3>
+                <p className="mt-2 text-sm text-text-secondary">Step-by-step playbook for connecting an AI chatbot to HubSpot CRM without breaking your pipeline.</p>
+              </Link>
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
       {/* ===== 7. FAQ ===== */}
       <section className="border-b border-border-subtle py-12 sm:py-16 md:py-20">
         <div className="container">
