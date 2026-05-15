@@ -10,6 +10,8 @@ const UpdateLeadSchema = z.object({
   name: z.string().min(1).optional(),
   company: z.string().min(1).optional(),
   industry: z.string().min(1).optional(),
+  notes: z.string().optional(),
+  followUpDate: z.string().optional(),
 });
 
 export async function PUT(request: NextRequest, { params }: { params: { id: string } }) {
@@ -36,7 +38,7 @@ export async function PUT(request: NextRequest, { params }: { params: { id: stri
 
     const { data: lead, error: fetchError } = await sb
       .from("leads")
-      .select("id, tenant_id")
+      .select("id, tenant_id, qualification_data")
       .or(orExpr)
       .maybeSingle();
 
@@ -49,6 +51,16 @@ export async function PUT(request: NextRequest, { params }: { params: { id: stri
     if (parsed.name) updates.name = parsed.name;
     if (parsed.company) updates.company = parsed.company;
     if (parsed.industry) updates.industry = parsed.industry;
+
+    // Merge notes and followUpDate into qualification_data without overwriting existing data
+    const qualificationData: Record<string, unknown> = { ...(leadRow as unknown as Record<string, unknown>).qualification_data || {} };
+    if (parsed.notes !== undefined) qualificationData.notes = parsed.notes;
+    if (parsed.followUpDate !== undefined) qualificationData.followUpDate = parsed.followUpDate;
+    if (Object.keys(qualificationData).length > 0) {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      (updates as any).qualification_data = qualificationData;
+    }
+
     // If lead was unclaimed, claim it for this tenant when updating
     if (!leadRow.tenant_id) {
       updates.tenant_id = tenant.tenantId as string;
@@ -61,7 +73,7 @@ export async function PUT(request: NextRequest, { params }: { params: { id: stri
       .from("leads")
       .update(updates)
       .eq("id", params.id)
-      .select("id, name, email, company, industry, status, created_at, updated_at, tenant_id")
+      .select("id, name, email, company, industry, status, budget_range, timeline, messages_sent, chat_initiated, source, lead_captured_at, qualification_data, created_at, updated_at, tenant_id")
       .single();
 
     if (updateError) throw updateError;
@@ -94,7 +106,7 @@ export async function GET(request: NextRequest, { params }: { params: { id: stri
 
     const { data, error } = await sb
       .from("leads")
-      .select("id, name, email, company, industry, status, qualification_data, created_at, updated_at, tenant_id")
+      .select("id, name, email, company, industry, status, budget_range, timeline, messages_sent, chat_initiated, source, lead_captured_at, qualification_data, created_at, updated_at, tenant_id")
       .or(orExpr)
       .maybeSingle();
 

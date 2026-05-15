@@ -1,7 +1,11 @@
 import type { ReactNode } from "react";
+import dynamic from "next/dynamic";
 import { Footer } from "./Footer";
 import { Header } from "./Header";
-import { Chatbot } from "../chatbot/Chatbot";
+
+const Chatbot = dynamic(() => import("../chatbot/Chatbot").then((mod) => ({ default: mod.Chatbot })), {
+  ssr: false,
+});
 
 export function Layout({ children }: { children: ReactNode }) {
   return (

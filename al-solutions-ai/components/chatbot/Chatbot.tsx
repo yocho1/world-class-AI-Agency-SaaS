@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { useChat } from "@/hooks/useChat";
+import type { ChatMessage } from "@/types/chat";
 import { ChatbotTrigger } from "./ChatbotTrigger";
 import { ChatPanel } from "./ChatPanel";
 import { ChatInput } from "./ChatInput";
@@ -10,11 +11,23 @@ import { QuickReplies } from "./QuickReplies";
 import { TypingIndicator } from "./TypingIndicator";
 import { usePostHog } from "@/hooks/usePostHog";
 
-const QUICK_REPLIES = [
+const QUICK_REPLIES_INITIAL = [
   "Tell me about AI chatbots",
   "How does automation work?",
   "What's your pricing?",
   "I'd like a free audit",
+];
+
+const QUICK_REPLIES_PRICING = [
+  "What industries do you serve?",
+  "How long does implementation take?",
+  "Book a free audit",
+];
+
+const QUICK_REPLIES_GENERAL = [
+  "See case studies",
+  "Book free audit",
+  "Speak to a human",
 ];
 
 const HANDOFF_INTENT_TERMS = [
@@ -33,6 +46,15 @@ const HANDOFF_INTENT_TERMS = [
 function isHandoffIntent(message: string): boolean {
   const lowered = message.toLowerCase();
   return HANDOFF_INTENT_TERMS.some((term) => lowered.includes(term));
+}
+
+function getContextualQuickReplies(messages: ChatMessage[]): string[] {
+  if (messages.length === 0) return QUICK_REPLIES_INITIAL;
+  const lastUserMessage = messages.filter((m) => m.role === "user").pop()?.content.toLowerCase() || "";
+  if (lastUserMessage.includes("pricing") || lastUserMessage.includes("cost") || lastUserMessage.includes("price")) {
+    return QUICK_REPLIES_PRICING;
+  }
+  return QUICK_REPLIES_GENERAL;
 }
 
 function trackChatbotEvent(
@@ -209,9 +231,10 @@ export function Chatbot() {
 
   const handleQuickReply = (reply: string) => {
     setIsQuickReplyTransitioning(true);
+    const allReplies = [...QUICK_REPLIES_INITIAL, ...QUICK_REPLIES_PRICING, ...QUICK_REPLIES_GENERAL];
     posthog?.capture("chatbot_quick_reply_selected", {
       option: reply,
-      position: QUICK_REPLIES.indexOf(reply),
+      position: allReplies.indexOf(reply),
     });
 
     if (isHandoffIntent(reply)) {
@@ -243,6 +266,35 @@ export function Chatbot() {
     chat.sendMessage(content);
   };
 
+  const handleManualHandoff = () => {
+    setShowHandoffBanner(true);
+    trackChatbotEvent(posthog, "chatbot_handoff_triggered", {
+      reason: "manual_button",
+    });
+  };
+
+  const handleDownloadTranscript = () => {
+    const lines = chat.messages.map((m) => {
+      const role = m.role === "user" ? "You" : "AL Assistant";
+      return `[${role}] ${m.content}`;
+    });
+    const transcript = lines.join("\n\n");
+    const blob = new Blob([transcript], { type: "text/plain" });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = `chat-transcript-${new Date().toISOString().slice(0, 10)}.txt`;
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+    URL.revokeObjectURL(url);
+    posthog?.capture("chatbot_transcript_downloaded", {
+      message_count: chat.messages.length,
+    });
+  };
+
+  const contextualQuickReplies = getContextualQuickReplies(chat.messages);
+
   return (
     <>
       {/* Trigger Button */}
@@ -263,13 +315,37 @@ export function Chatbot() {
                   Online · AI-powered
                 </p>
               </div>
-              <button
-                onClick={handleClose}
-                className="text-lg text-text-secondary hover:text-text-primary"
-                aria-label="Close chat"
-              >
-                ✕
-              </button>
+              <div className="flex items-center gap-1">
+                {chat.messages.length > 0 && (
+                  <button
+                    onClick={handleDownloadTranscript}
+                    className="inline-flex h-8 items-center rounded-md px-2 text-xs text-text-tertiary hover:bg-bg-elevated hover:text-text-secondary"
+                    aria-label="Download transcript"
+                    title="Download transcript"
+                  >
+                    <svg className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                    </svg>
+                  </button>
+                )}
+                <button
+                  onClick={handleManualHandoff}
+                  className="inline-flex h-8 items-center rounded-md px-2 text-xs text-text-tertiary hover:bg-bg-elevated hover:text-text-secondary"
+                  aria-label="Talk to a human"
+                  title="Talk to a human"
+                >
+                  <svg className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2h-2v4l-4-4H9a1 1 0 01-1-1v-6a1 1 0 011-1h8a2 2 0 012-2zM7 8H5a2 2 0 00-2 2v6a2 2 0 002 2h2v4l4-4h1" />
+                  </svg>
+                </button>
+                <button
+                  onClick={handleClose}
+                  className="inline-flex h-8 w-8 items-center justify-center rounded-md text-lg text-text-secondary hover:text-text-primary"
+                  aria-label="Close chat"
+                >
+                  ✕
+                </button>
+              </div>
             </div>
 
             {/* Messages Area */}
@@ -282,7 +358,7 @@ export function Chatbot() {
                   </div>
                   <div className={isQuickReplyTransitioning ? "pointer-events-none opacity-60 transition-all duration-200" : "transition-all duration-200"}>
                     <QuickReplies
-                      options={QUICK_REPLIES}
+                      options={contextualQuickReplies}
                       onSelect={handleQuickReply}
                       disabled={isQuickReplyTransitioning}
                     />
@@ -306,11 +382,29 @@ export function Chatbot() {
               )}
 
               {showHandoffBanner && !chat.leadCaptured ? (
-                <div className="mt-4 rounded-2xl border border-accent-400/20 bg-accent-400/10 p-3 text-xs text-text-secondary" aria-live="polite">
-                  <p className="font-medium text-text-primary">Routing this to a specialist</p>
-                  <p className="mt-1">We&apos;ve got enough context to move beyond chat. Share your email when you&apos;re ready and we&apos;ll follow up with the next step.</p>
+                <div className="mt-4 rounded-2xl border border-accent-400/20 bg-accent-400/10 p-4 text-sm text-text-secondary" aria-live="polite">
+                  <p className="font-medium text-text-primary">We&apos;re routing this to a specialist</p>
+                  <p className="mt-1">Share your email when you&apos;re ready and we&apos;ll follow up within 24 hours.</p>
+                  <button
+                    type="button"
+                    onClick={() => handleSendMessage("I'd like to speak to a human")}
+                    className="mt-3 inline-flex h-9 items-center rounded-lg bg-accent-400 px-4 text-xs font-semibold text-bg-default hover:bg-accent-300"
+                  >
+                    Request human follow-up
+                  </button>
                 </div>
               ) : null}
+
+              {/* Contextual quick replies after conversation */}
+              {chat.messages.length > 0 && !chat.isLoading && !isAssistantTypingVisible && (
+                <div className={isQuickReplyTransitioning ? "pointer-events-none opacity-60 transition-all duration-200" : "transition-all duration-200"}>
+                  <QuickReplies
+                    options={contextualQuickReplies}
+                    onSelect={handleQuickReply}
+                    disabled={isQuickReplyTransitioning}
+                  />
+                </div>
+              )}
             </div>
 
             {/* Error Message */}

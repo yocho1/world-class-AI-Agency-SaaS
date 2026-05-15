@@ -190,10 +190,12 @@ export default function MarketingHomePage() {
         strategy="afterInteractive"
       />
       {STRUCTURED_DATA.map(({ key, schema }) => (
-        <script
+        <Script
           key={key}
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+          id={`service-schema-${key}`}
+          strategy="afterInteractive"
           type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
         />
       ))}
       <HomepageHero

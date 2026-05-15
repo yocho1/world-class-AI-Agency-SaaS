@@ -340,7 +340,7 @@ export default function LeadsTable() {
 
       {error ? <div className="text-sm text-error">{error}</div> : null}
       {selectedLeadId ? (
-        <LeadDetailDrawer id={selectedLeadId} onClose={() => setSelectedLeadId(null)} />
+        <LeadDetailDrawer id={selectedLeadId} onCloseAction={() => setSelectedLeadId(null)} />
       ) : null}
     </div>
   );

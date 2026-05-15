@@ -125,6 +125,20 @@ export function InviteTeamCard({
           <p className="mt-1 text-sm text-text-secondary">Invite teammates by email. They will join the workspace after accepting the link.</p>
         </div>
       </div>
+      <div className="grid gap-2 text-xs text-text-tertiary sm:grid-cols-3">
+        <div className="rounded-lg border border-border-subtle bg-bg-elevated p-2">
+          <span className="font-medium text-text-primary">Owner</span>
+          <p className="mt-0.5">Full access, billing, deletion</p>
+        </div>
+        <div className="rounded-lg border border-border-subtle bg-bg-elevated p-2">
+          <span className="font-medium text-text-primary">Admin</span>
+          <p className="mt-0.5">Manage members, leads, settings</p>
+        </div>
+        <div className="rounded-lg border border-border-subtle bg-bg-elevated p-2">
+          <span className="font-medium text-text-primary">Member</span>
+          <p className="mt-0.5">View leads, conversations, analytics</p>
+        </div>
+      </div>
 
       {canInvite ? (
         <form className="space-y-4" onSubmit={handleSubmit}>

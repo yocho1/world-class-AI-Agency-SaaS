@@ -92,10 +92,13 @@ export default function RootLayout({
       <head>
         <link rel="icon" href="/images/Favicon.svg" type="image/svg+xml" />
         <link rel="apple-touch-icon" href="/images/Favicon.svg" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
       </head>
       <body className="min-h-full">
         <Script
           id="org-schema"
+          strategy="afterInteractive"
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
         />

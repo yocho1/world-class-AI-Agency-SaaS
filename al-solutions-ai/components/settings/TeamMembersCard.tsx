@@ -81,6 +81,20 @@ export function TeamMembersCard({
       <div>
         <h2 className="text-lg font-medium text-text-primary">Team members</h2>
         <p className="mt-1 text-sm text-text-secondary">View and manage members who already joined this workspace.</p>
+        <div className="mt-3 grid gap-2 text-xs text-text-tertiary sm:grid-cols-3">
+          <div className="rounded-lg border border-border-subtle bg-bg-elevated p-2">
+            <span className="font-medium text-text-primary">Owner</span>
+            <p className="mt-0.5">Full access, billing, deletion</p>
+          </div>
+          <div className="rounded-lg border border-border-subtle bg-bg-elevated p-2">
+            <span className="font-medium text-text-primary">Admin</span>
+            <p className="mt-0.5">Manage members, leads, settings</p>
+          </div>
+          <div className="rounded-lg border border-border-subtle bg-bg-elevated p-2">
+            <span className="font-medium text-text-primary">Member</span>
+            <p className="mt-0.5">View leads, conversations, analytics</p>
+          </div>
+        </div>
       </div>
 
       {members.length > 0 ? (
