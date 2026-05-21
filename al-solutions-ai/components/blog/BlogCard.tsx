@@ -53,13 +53,13 @@ export function BlogCard({
     <article className={`group ${cardClass}`}>
       <Link href={`/blog/${slug}`} className="block rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-200 bg-bg-surface border border-border-subtle">
         {/* Cover */}
-        <div className="relative w-full bg-gradient-to-r from-slate-200 via-slate-100 to-slate-50">
+        <div className="relative w-full bg-gradient-to-r from-bg-elevated via-bg-surface to-bg-default">
           {coverImageSrc ? (
             <div className="aspect-video relative w-full">
               <Image src={coverImageSrc} alt={title} fill className="object-cover object-center" />
             </div>
           ) : (
-            <div className="aspect-video flex items-center justify-center bg-gradient-to-br from-gray-100 to-gray-50">
+            <div className="aspect-video flex items-center justify-center bg-gradient-to-br from-bg-elevated to-bg-surface">
               <div className="h-32 w-full" />
             </div>
           )}

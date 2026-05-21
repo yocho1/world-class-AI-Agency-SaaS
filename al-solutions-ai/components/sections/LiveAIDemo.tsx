@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import Link from "next/link";
 import dynamic from "next/dynamic";
 import { Card, Reveal } from "@/components/ui";
 
@@ -33,6 +32,13 @@ function ChatDemoSkeleton() {
   );
 }
 
+const PROMPT_CHIPS = [
+  { label: "Can this integrate with HubSpot?", message: "Can this integrate with HubSpot?" },
+  { label: "How fast can you go live?", message: "How fast can you go live?" },
+  { label: "Do you support Arabic?", message: "Do you support Arabic?" },
+  { label: "I'd like a free audit", message: "I'd like a free audit", isAudit: true },
+];
+
 interface LiveAIDemoProps {
   readonly title?: string;
   readonly eyebrow?: string;
@@ -42,26 +48,26 @@ interface LiveAIDemoProps {
 }
 
 export function LiveAIDemo({
-  title = "See the AI Working — Live",
-  eyebrow = "Live AI demo",
-  intro = "Explore how our assistant qualifies leads, answers service questions, and routes hot opportunities directly into your CRM in under 90 seconds.",
-  outcomesLabel = "Outcomes from this flow",
-  ctaText = "Request Your Demo Build",
+  title = "This is what we'd build for you",
+  eyebrow = "See it working",
+  intro = "The assistant below is the exact system we deploy for clients. It qualifies leads, answers product questions, routes to booking, and switches between Arabic, French, and English.",
+  outcomesLabel = "In 90 seconds you will see:",
+  ctaText = "Want this for your business?",
 }: LiveAIDemoProps) {
   const outcomes = [
     {
-      stat: "+38%",
-      label: "qualified meetings booked",
-      attribution: "avg. across 2024 client deployments",
+      stat: "1",
+      label: "How the AI qualifies a lead in under 60 seconds",
+      attribution: null as string | null,
     },
     {
-      stat: "-52%",
-      label: "support ticket volume",
-      attribution: "Nexora Hotels, 90 days post-launch",
+      stat: "2",
+      label: "Multilingual switching between Arabic, French, and English",
+      attribution: null as string | null,
     },
     {
-      stat: "24/7",
-      label: "lead capture in Arabic, English, and French",
+      stat: "3",
+      label: "Automatic routing to a free audit booking when intent is detected",
       attribution: null as string | null,
     },
   ];
@@ -98,32 +104,70 @@ export function LiveAIDemo({
             <p className="mt-3 max-w-2xl text-text-secondary">{intro}</p>
           </div>
 
-          <div className="mt-8">
+          <div className="mt-6 rounded-xl border border-border-subtle bg-bg-overlay p-4">
+            <p className="text-center text-sm text-text-tertiary">
+              This is the exact system we&apos;d build for your business. It runs on the same stack we deploy for clients.
+            </p>
+            <div className="mt-4 flex flex-wrap justify-center gap-2">
+              {PROMPT_CHIPS.map((chip) =>
+                chip.isAudit ? (
+                  <a
+                    key={chip.label}
+                    href="https://calendly.com/achraflachgar/15min"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center rounded-full border border-accent-400/30 bg-accent-400/10 px-3 py-1.5 text-xs font-medium text-accent-400 transition-colors hover:bg-accent-400/20"
+                  >
+                    {chip.label}
+                  </a>
+                ) : (
+                  <button
+                    key={chip.label}
+                    type="button"
+                    className="inline-flex items-center rounded-full border border-border-subtle bg-bg-surface px-3 py-1.5 text-xs font-medium text-text-secondary transition-colors hover:border-accent-400 hover:text-text-primary"
+                    onClick={() => {
+                      const input = document.querySelector("[data-chat-input]") as HTMLInputElement | null;
+                      const form = input?.closest("form");
+                      if (input && form) {
+                        input.value = chip.message;
+                        input.focus();
+                        form.requestSubmit();
+                      }
+                    }}
+                  >
+                    {chip.label}
+                  </button>
+                )
+              )}
+            </div>
+          </div>
+
+          <div className="mt-6">
             {shouldLoadDemo ? <EmbeddedChatDemo /> : <ChatDemoSkeleton />}
           </div>
 
-          <p className="mt-4 text-center text-sm italic text-muted-foreground">
-            This is the same AI we&apos;d deploy for your business.
-          </p>
-
           <div className="mt-6 flex flex-col gap-4 rounded-xl border border-border-subtle bg-bg-overlay p-5 md:flex-row md:items-center md:justify-between">
             <div>
-              <p className="text-sm text-text-tertiary">{outcomesLabel}</p>
-              <ul className="mt-3 space-y-3 text-sm text-text-secondary">
+              <p className="text-sm font-medium text-text-primary">{outcomesLabel}</p>
+              <ul className="mt-3 space-y-2 text-sm text-text-secondary">
                 {outcomes.map((item) => (
-                  <li key={item.label}>
-                    <span className="text-metric block text-base font-semibold text-[#00D97E]">{item.stat}</span>
-                    <span className="block text-sm text-text-secondary">{item.label}</span>
-                    {item.attribution ? (
-                      <span className="mt-1 block text-xs text-muted-foreground">{item.attribution}</span>
-                    ) : null}
+                  <li key={item.label} className="flex items-start gap-2">
+                    <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-accent-400/10 text-[10px] font-bold text-accent-400">
+                      {item.stat}
+                    </span>
+                    <span>{item.label}</span>
                   </li>
                 ))}
               </ul>
             </div>
-            <Link className="inline-flex h-11 items-center rounded-lg border border-border-default px-6 text-sm font-medium text-text-primary transition-colors hover:bg-bg-elevated" href="/free-ai-audit">
-              {ctaText}
-            </Link>
+            <a
+              href="https://calendly.com/achraflachgar/15min"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex h-11 items-center rounded-lg bg-accent-400 px-6 text-sm font-semibold text-bg-default shadow-lg shadow-accent-400/20 transition-all hover:bg-accent-300 hover:shadow-xl hover:shadow-accent-400/30"
+            >
+              {ctaText} <span className="ml-1">→</span>
+            </a>
           </div>
         </Card>
       </Reveal>

@@ -1,18 +1,19 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { Card } from "@/components/ui";
 import Script from "next/script";
 import { alternatesFor, canonicalUrl } from "@/lib/seo";
 
-export const metadata = {
-  title: "AI Chatbot & Automation Services | WhatsApp AI | AL Solutions AI",
+export const metadata: Metadata = {
+  title: "AI Lead Qualification, CRM Automation & WhatsApp AI | AL Solutions AI",
   description:
-    "Custom AI chatbots, WhatsApp automation, lead qualification, web+AI bundles. Production-ready in 30 days for MENA, UAE, Saudi Arabia, and Europe.",
+    "AI agents that qualify leads, automate CRM updates, and handle customer support in Arabic, French, and English. HubSpot, Salesforce, and WhatsApp Business API integration. Live in 21–30 days.",
   alternates: alternatesFor("/services"),
   openGraph: {
     url: canonicalUrl("/services"),
-    title: "AI Chatbot & Automation Services | WhatsApp AI | AL Solutions AI",
+    title: "AI Lead Qualification, CRM Automation & WhatsApp AI | AL Solutions AI",
     description:
-      "Custom AI chatbots, WhatsApp automation, lead qualification, web+AI bundles. Production-ready in 30 days for MENA, UAE, Saudi Arabia, and Europe.",
+      "AI agents that qualify leads, automate CRM updates, and handle customer support in Arabic, French, and English. HubSpot, Salesforce, and WhatsApp Business API integration. Live in 21–30 days.",
     images: [
       {
         url: "https://www.alsolutionsai.online/og?title=AI Chatbot and Automation Services&subtitle=Custom AI chatbots, WhatsApp AI, live in 30 days.&tag=Services",

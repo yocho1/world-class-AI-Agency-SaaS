@@ -9,5 +9,7 @@ export * from "./ProblemStatement";
 export * from "./ROICalculator";
 export * from "./ServicesOverview";
 export * from "./SocialProofBar";
+export * from "./TeamSection";
+export * from "./TechStackBar";
 export * from "./Testimonials";
 export * from "./WhyCompare";

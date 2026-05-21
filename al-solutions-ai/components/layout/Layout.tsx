@@ -9,10 +9,14 @@ const Chatbot = dynamic(() => import("../chatbot/Chatbot").then((mod) => ({ defa
 
 export function Layout({ children }: { children: ReactNode }) {
   return (
-    <div className="flex min-h-screen flex-col bg-bg-base text-text-primary">
-      <Header />
-      <div className="flex-1">{children}</div>
-      <Footer />
+    <div className="relative flex min-h-screen flex-col bg-bg-base text-text-primary">
+      {/* Subtle dot-grid texture for premium feel */}
+      <div className="pointer-events-none fixed inset-0 z-0 bg-dot-pattern opacity-50" aria-hidden="true" />
+      <div className="relative z-10 flex min-h-screen flex-col">
+        <Header />
+        <div className="flex-1">{children}</div>
+        <Footer />
+      </div>
       <Chatbot />
     </div>
   );

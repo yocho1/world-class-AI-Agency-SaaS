@@ -1,18 +1,21 @@
+import type { Metadata } from "next";
+import Script from "next/script";
+import { Reveal } from "@/components/ui";
 import { alternatesFor, canonicalUrl } from "@/lib/seo";
 
-export const metadata = {
-  title: "AI Chatbot Pricing: From $2,500 One-Time | No Retainers | AL Solutions AI",
+export const metadata: Metadata = {
+  title: "AI Pricing — Transparent Project Pricing, No Retainers | AL Solutions AI",
   description:
-    "Transparent one-time project pricing. Launch $2,500. Growth $6,500. No monthly retainers. Free AI audit included for MENA and Europe growth teams.",
+    "Honest project pricing for production AI: Starter from £4,500, Growth from £9,500, Enterprise custom. 30-day go-live guarantee. 50/50 payment. No retainer lock-in.",
   alternates: alternatesFor("/pricing"),
   openGraph: {
     url: canonicalUrl("/pricing"),
-    title: "AI Chatbot Pricing: From $2,500 One-Time | No Retainers | AL Solutions AI",
+    title: "AI Pricing — Transparent Project Pricing, No Retainers | AL Solutions AI",
     description:
-      "Transparent one-time project pricing. Launch $2,500. Growth $6,500. No monthly retainers. Free AI audit included for MENA and Europe growth teams.",
+      "Honest project pricing for production AI: Starter from £4,500, Growth from £9,500, Enterprise custom. 30-day go-live guarantee. 50/50 payment. No retainer lock-in.",
     images: [
       {
-        url: "https://www.alsolutionsai.online/og?title=AI Chatbot Pricing from $2,500&subtitle=One-time pricing. No retainers. Free audit included.&tag=Pricing",
+        url: "https://www.alsolutionsai.online/og?title=AI Pricing&subtitle=Honest project pricing. No retainers. 30-day go-live guarantee.&tag=Pricing",
         width: 1200,
         height: 630,
       },
@@ -21,14 +24,12 @@ export const metadata = {
   twitter: {
     card: "summary_large_image",
     images: [
-      "https://www.alsolutionsai.online/og?title=AI Chatbot Pricing from $2,500&subtitle=One-time pricing. No retainers. Free audit included.&tag=Pricing",
+      "https://www.alsolutionsai.online/og?title=AI Pricing&subtitle=Honest project pricing. No retainers. 30-day go-live guarantee.&tag=Pricing",
     ],
   },
 };
 
-import Link from "next/link";
-import { Reveal } from "@/components/ui";
-import Script from "next/script";
+const CALENDLY_URL = "https://calendly.com/achraflachgar/15min";
 
 // =======================
 // PRICING PLANS DATA
@@ -48,71 +49,78 @@ interface PricingPlan {
 
 const PRICING_PLANS: PricingPlan[] = [
   {
-    name: "Launch",
-    price: "$2,500",
-    description: "For teams validating one AI use case with a fast, focused scope.",
-    timeline: "14 days",
+    name: "Starter",
+    price: "From £4,500",
+    description: "For one specific, scoped problem — a WhatsApp lead-qualifier, a single-channel support agent, or a focused automation.",
+    timeline: "21 days",
     isPopular: false,
     includedFeatures: [
-      "1 AI workflow",
-      "Lead capture setup",
-      "Web chat deployment",
-      "Basic analytics",
-      "Weekly check-ins",
-      "30 days post-launch support",
-      "Email notifications",
-      "Brand customization",
+      "1 production AI agent on 1 channel",
+      "Custom prompt engineering & guardrails",
+      "Knowledge base ingestion (up to 100 docs)",
+      "1 CRM or tool integration (HubSpot / Pipedrive / Sheets)",
+      "Multilingual: English + 1 (Arabic / French)",
+      "PostHog analytics dashboard",
+      "30 days of post-launch iteration",
+      "Senior engineer on every call",
     ],
-    excludedFeatures: ["CRM integration", "Multiple workflows", "Priority support", "Advanced analytics"],
-    notIncluded: "CRM integration, mobile channels, multi-workflow routing",
-    cta: "Book free audit",
-    ctaHref: "/free-ai-audit",
+    excludedFeatures: [
+      "Multiple channels (WhatsApp + Web + Voice)",
+      "Salesforce / Zoho integration",
+      "Custom Arabic dialect tuning",
+      "SLA-backed uptime guarantees",
+    ],
+    notIncluded: "WhatsApp Business API fees (paid directly to Meta), OpenAI API usage at cost.",
+    cta: "Book free 30-min audit",
+    ctaHref: CALENDLY_URL,
   },
   {
     name: "Growth",
-    price: "$6,500",
-    description: "For companies ready to bundle chatbot, automation, and reporting in one launch.",
+    price: "From £9,500",
+    description: "The plan most clients buy. Multi-channel AI agents, CRM automation, and the systems behind real −70% admin / +40% conversion outcomes.",
     timeline: "30 days",
     isPopular: true,
     includedFeatures: [
-      "3 AI workflows",
-      "CRM integration (HubSpot, Salesforce, Zoho)",
-      "Analytics dashboard",
-      "WhatsApp & SMS deployment",
-      "Priority support (24-48hr response)",
-      "60 days post-launch support",
-      "Custom brand tone & guardrails",
-      "Advanced routing logic",
-      "Performance optimization",
-      "Conversation audit",
+      "Up to 3 connected AI agents (lead, support, CRM)",
+      "WhatsApp Business API + Web + 1 more channel",
+      "HubSpot / Salesforce / Pipedrive deep integration",
+      "Multilingual: Arabic (MSA + Gulf), French, English",
+      "Voice transcription & one-click CRM logging",
+      "Custom routing logic + human-handoff workflow",
+      "Conversation analytics + weekly performance review",
+      "60 days of post-launch iteration",
+      "Direct Slack/WhatsApp line to your engineer",
     ],
-    excludedFeatures: ["Multiple team workspaces", "Dedicated strategy team", "White-label options"],
-    notIncluded: "Multiple team workspaces, ongoing monthly optimization, white-label resale",
-    cta: "Start Growth Plan",
-    ctaHref: "/free-ai-audit",
+    excludedFeatures: [
+      "Multi-region / multi-brand deployments",
+      "Custom on-prem hosting",
+      "Dedicated 24/7 SLA",
+    ],
+    notIncluded: "Third-party API costs (OpenAI, WhatsApp, Twilio) billed at cost with no markup.",
+    cta: "Book free 30-min audit",
+    ctaHref: CALENDLY_URL,
   },
   {
-    name: "Scale",
+    name: "Enterprise",
     price: "Custom",
-    description: "For multi-team deployments and deeper operational automation.",
-    timeline: "Custom",
+    description: "For multi-region, multi-brand, or compliance-heavy deployments. Trading platforms, large real estate networks, regulated services.",
+    timeline: "6–12 weeks",
     isPopular: false,
     includedFeatures: [
-      "Unlimited AI workflows",
-      "Custom integrations (any API)",
-      "Dedicated strategy session",
-      "Enterprise support (priority)",
-      "Multiple team workspaces",
-      "Advanced compliance & security",
-      "White-label options",
-      "Ongoing quarterly optimization",
-      "SLA guarantees",
-      "Custom training program",
+      "Unlimited agents and workflows",
+      "Multi-region / multi-brand deployment",
+      "Custom dialect & compliance tuning",
+      "On-prem or private-cloud hosting (AWS / Azure)",
+      "SOC 2 / FCA / DFSA-aligned audit trails",
+      "Dedicated engineering pod (2–3 senior engineers)",
+      "24/7 SLA-backed uptime",
+      "Quarterly optimisation roadmap",
+      "Direct line to founder for the duration",
     ],
     excludedFeatures: [],
-    notIncluded: "Discussed during consultation",
-    cta: "Contact sales",
-    ctaHref: "/free-ai-audit",
+    notIncluded: "Defined together in scoping. We will not start without a written statement of work.",
+    cta: "Talk to the founder",
+    ctaHref: CALENDLY_URL,
   },
 ];
 
@@ -122,42 +130,58 @@ const PRICING_FAQ_SCHEMA = {
   mainEntity: [
     {
       "@type": "Question",
-      name: "Do you charge monthly or one-time?",
+      name: "Why one-time project pricing instead of a monthly retainer?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "All pricing is one-time project fees. After your project launches, you can purchase ongoing support or optimization on a retainer basis."
+        text: "Most AI agencies charge £2,000–£6,000/month indefinitely because the system never quite works. We charge a one-time project fee because our job is to make the system work, hand it over, and walk away. If you want ongoing optimisation after go-live, that's an optional, opt-in retainer — not a lock-in."
       }
     },
     {
       "@type": "Question",
-      name: "What if the project goes over 30 days?",
+      name: "Why are you cheaper than McKinsey, Deloitte, and the big AI consultancies?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "We aim to deliver on timeline. If a project exceeds the planned timeline due to scope creep, we discuss it with you first."
+        text: "Three reasons. First, we are a small senior team — no associate consultants billing at £400/hour to learn on your project. Second, we ship production code, not 80-page strategy decks. Third, we specialise: WhatsApp AI, multilingual agents, and CRM automation. Specialisation means we have already solved the hard parts of your project."
       }
     },
     {
       "@type": "Question",
-      name: "Can I upgrade my plan later?",
+      name: "What is the 30-day go-live guarantee?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Yes. If you start with Launch and want to add AI workflows later, we can scope additional work as separate projects or expand the engagement."
+        text: "You pay 50% on signing. If your AI system is not in production within 30 days of project start (or the agreed timeline for Enterprise), we keep working at no extra cost until it is. The remaining 50% is only invoiced once the system is live and accepted by you."
       }
     },
     {
       "@type": "Question",
-      name: "Do you offer refunds?",
+      name: "What happens if my requirements change mid-project?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Every project is backed by a 30-day go-live guarantee with 50% deposit and 50% paid at go-live, so risk is capped at the deposit until the system is in production. If we miss the 30-day window we keep working at no extra cost until it's live. Once a deliverable is live and accepted we don't refund completed work, but we iterate at no extra charge until it meets the agreed scope."
+        text: "Small changes (rewording, prompt tuning, new edge cases) are covered. Significant scope changes (new channels, new integrations, new languages) are scoped as a written change order so you decide whether to add them now or in a follow-up phase."
       }
     },
     {
       "@type": "Question",
-      name: "What currencies do you accept?",
+      name: "Are third-party costs like OpenAI and WhatsApp included?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "We quote in USD. We accept wire transfers, credit cards (via Stripe), and international payment methods. Contact us for invoicing in a different currency."
+        text: "No — and we will not mark them up. OpenAI, WhatsApp Business API, Twilio, and any other infrastructure costs are billed directly by those providers to your account. We will give you a written estimate of monthly running costs before you sign."
+      }
+    },
+    {
+      "@type": "Question",
+      name: "What if I'm not sure which plan I need?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Book a free 30-minute audit. We will tell you honestly which tier fits — or whether your problem is better solved without AI at all. We have turned away projects that did not need us."
+      }
+    },
+    {
+      "@type": "Question",
+      name: "What currencies and payment methods do you accept?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "We quote in GBP, USD, AED, or EUR depending on your jurisdiction. We accept bank transfer (preferred), Stripe card payments, and Wise. UK VAT registered."
       }
     }
   ]
@@ -208,16 +232,18 @@ function PlanCard(props: Readonly<PlanCardProps>) {
         </div>
 
         {/* CTA Button */}
-        <Link
+        <a
           className={`mt-6 inline-flex w-full h-11 items-center justify-center rounded-lg text-sm font-semibold transition-all ${
             plan.isPopular
               ? "bg-accent-400 text-bg-default hover:bg-accent-300 hover:shadow-lg hover:shadow-accent-400/20"
               : "bg-bg-surface border border-border-subtle text-text-primary hover:border-accent-400 hover:bg-bg-overlay"
           }`}
           href={plan.ctaHref}
+          target="_blank"
+          rel="noopener noreferrer"
         >
           {plan.cta}
-        </Link>
+        </a>
 
         {/* Divider */}
         <div className="mt-8 border-t border-border-subtle" />
@@ -307,11 +333,17 @@ export default function PricingPage() {
             <div className="mx-auto max-w-4xl">
               <p className="text-xs uppercase tracking-[0.18em] text-accent-400">Pricing</p>
               <h1 className="mt-4 text-4xl font-bold tracking-tight text-text-primary sm:text-5xl md:text-6xl">
-                Transparent pricing for production AI work.
+                Honest project pricing. No retainers. No surprises.
               </h1>
-              <p className="mt-6 max-w-2xl text-base text-text-secondary sm:text-lg md:text-lg">
-                Choose the engagement model that matches your rollout speed, internal bandwidth, and integration depth. All prices are one-time project fees.
+              <p className="mt-6 max-w-2xl text-base text-text-secondary sm:text-lg">
+                Pay once for a working system. Three tiers, every one tied to a written scope. The price you see covers the engineering, not a discovery phase that bills by the hour.
               </p>
+              <div className="mt-6 flex flex-wrap items-center gap-x-6 gap-y-3 text-sm text-text-secondary">
+                <span className="inline-flex items-center gap-2"><span aria-hidden className="text-accent-400">✓</span> 50/50 payment terms</span>
+                <span className="inline-flex items-center gap-2"><span aria-hidden className="text-accent-400">✓</span> 30-day go-live guarantee</span>
+                <span className="inline-flex items-center gap-2"><span aria-hidden className="text-accent-400">✓</span> Senior engineer on every call</span>
+                <span className="inline-flex items-center gap-2"><span aria-hidden className="text-accent-400">✓</span> No retainer lock-in</span>
+              </div>
             </div>
           </Reveal>
         </div>
@@ -372,27 +404,29 @@ export default function PricingPage() {
                 <thead>
                   <tr className="border-b border-border-subtle">
                     <th className="text-left py-4 px-4 font-bold text-text-primary bg-bg-surface/50">Feature</th>
-                    <th className="text-center py-4 px-4 font-bold text-text-primary bg-bg-surface/50">Launch</th>
+                    <th className="text-center py-4 px-4 font-bold text-text-primary bg-bg-surface/50">Starter</th>
                     <th className="text-center py-4 px-4 font-bold text-text-primary bg-bg-surface/50 border-l border-r border-accent-400/30">
                       Growth <span className="block text-xs font-normal text-accent-400 mt-1">Most Popular</span>
                     </th>
-                    <th className="text-center py-4 px-4 font-bold text-text-primary bg-bg-surface/50">Scale</th>
+                    <th className="text-center py-4 px-4 font-bold text-text-primary bg-bg-surface/50">Enterprise</th>
                   </tr>
                 </thead>
                 <tbody>
                   {[
-                    { feature: "AI Workflows", launch: "1", growth: "3", scale: "Unlimited" },
-                    { feature: "Delivery Timeline", launch: "14 days", growth: "30 days", scale: "Custom" },
-                    { feature: "CRM Integration", launch: "—", growth: "✓", scale: "✓" },
-                    { feature: "Web Chat", launch: "✓", growth: "✓", scale: "✓" },
-                    { feature: "WhatsApp & SMS", launch: "—", growth: "✓", scale: "✓" },
-                    { feature: "Analytics Dashboard", launch: "Basic", growth: "✓", scale: "Advanced" },
-                    { feature: "Custom Integrations", launch: "—", growth: "—", scale: "✓" },
-                    { feature: "Multiple Workspaces", launch: "—", growth: "—", scale: "✓" },
-                    { feature: "White-Label Options", launch: "—", growth: "—", scale: "✓" },
-                    { feature: "Post-Launch Support", launch: "30 days", growth: "60 days", scale: "Ongoing" },
-                    { feature: "Priority Support", launch: "—", growth: "24-48hr", scale: "Dedicated" },
-                    { feature: "Ongoing Optimization", launch: "—", growth: "—", scale: "Quarterly" },
+                    { feature: "Production AI agents", launch: "1", growth: "Up to 3", scale: "Unlimited" },
+                    { feature: "Delivery timeline", launch: "21 days", growth: "30 days", scale: "6–12 weeks" },
+                    { feature: "Web chat", launch: "✓", growth: "✓", scale: "✓" },
+                    { feature: "WhatsApp Business API", launch: "—", growth: "✓", scale: "✓" },
+                    { feature: "Voice / call transcription", launch: "—", growth: "✓", scale: "✓" },
+                    { feature: "CRM integration", launch: "1 (HubSpot/Pipedrive)", growth: "HubSpot/Salesforce/Pipedrive", scale: "Any (custom API)" },
+                    { feature: "Languages supported", launch: "English + 1", growth: "AR / FR / EN", scale: "Any + dialect tuning" },
+                    { feature: "Arabic dialect tuning", launch: "—", growth: "MSA + Gulf", scale: "Custom" },
+                    { feature: "Analytics (PostHog)", launch: "✓", growth: "✓ + weekly review", scale: "✓ + quarterly roadmap" },
+                    { feature: "Hosting", launch: "Our cloud", growth: "Our cloud", scale: "On-prem / private" },
+                    { feature: "Compliance audit trail", launch: "—", growth: "Basic", scale: "SOC 2 / FCA / DFSA" },
+                    { feature: "Post-launch iteration", launch: "30 days", growth: "60 days", scale: "Ongoing in scope" },
+                    { feature: "Direct line to engineer", launch: "Email", growth: "Slack/WhatsApp", scale: "Dedicated pod" },
+                    { feature: "30-day go-live guarantee", launch: "✓", growth: "✓", scale: "Per agreed timeline" },
                   ].map((row, idx) => (
                     <tr key={row.feature} className={`border-b border-border-subtle/50 ${idx % 2 === 0 ? "bg-bg-default" : "bg-bg-surface/30"}`}>
                       <td className="py-4 px-4 text-text-primary font-medium">{row.feature}</td>
@@ -416,43 +450,86 @@ export default function PricingPage() {
         </div>
       </section>
 
+      {/* Why no retainer trust band */}
+      <section className="border-t border-border-subtle py-12 sm:py-16">
+        <div className="container">
+          <Reveal>
+            <div className="mx-auto max-w-4xl">
+              <h2 className="text-2xl font-bold tracking-tight text-text-primary sm:text-3xl">
+                Why we refuse to charge a monthly retainer.
+              </h2>
+              <div className="mt-6 grid gap-6 md:grid-cols-3">
+                <div className="rounded-2xl border border-border-subtle bg-bg-surface p-6">
+                  <p className="text-xs uppercase tracking-wider font-bold text-accent-400">The retainer trap</p>
+                  <p className="mt-3 text-sm text-text-secondary leading-relaxed">
+                    Most AI agencies charge £2k–£6k per month indefinitely. They are incentivised to make the system <em>almost</em> work — because if it ever fully works, the retainer ends.
+                  </p>
+                </div>
+                <div className="rounded-2xl border border-border-subtle bg-bg-surface p-6">
+                  <p className="text-xs uppercase tracking-wider font-bold text-accent-400">Our model</p>
+                  <p className="mt-3 text-sm text-text-secondary leading-relaxed">
+                    Fixed price. Written scope. Production-grade system delivered, documented, and handed over to your team. We get paid once and walk away.
+                  </p>
+                </div>
+                <div className="rounded-2xl border border-border-subtle bg-bg-surface p-6">
+                  <p className="text-xs uppercase tracking-wider font-bold text-accent-400">Want ongoing help?</p>
+                  <p className="mt-3 text-sm text-text-secondary leading-relaxed">
+                    Optional optimisation retainer (£1,500–£3,000/mo) is available <em>after</em> go-live, opt-in, cancellable any month. Most clients do not buy it.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
       {/* Pricing FAQ */}
       <section className="border-t border-border-subtle py-12 sm:py-16 md:py-20">
         <div className="container">
           <Reveal>
             <h2 className="text-3xl font-bold tracking-tight text-text-primary sm:text-4xl md:text-5xl">
-              Pricing questions?
+              Pricing questions, answered honestly.
             </h2>
 
             <div className="mt-12 max-w-3xl space-y-4">
               <PricingFaqItem
-                question="Do you charge monthly or one-time?"
-                answer="All pricing is one-time project fees. After your project launches, you can purchase ongoing support or optimization on a retainer basis, but the core delivery cost is paid once at project start."
+                question="Why one-time project pricing instead of a monthly retainer?"
+                answer="Most AI agencies charge £2,000–£6,000/month indefinitely because the system never quite works. We charge a one-time project fee because our job is to make the system work, hand it over, and walk away. If you want ongoing optimisation after go-live, that&apos;s an optional, opt-in retainer — not a lock-in."
               />
               <PricingFaqItem
-                question="What if the project goes over 30 days?"
-                answer="We aim to deliver on timeline. If a project exceeds the planned timeline due to scope creep, we discuss it with you first. Most delays are avoided through clear requirements and weekly check-ins. Custom plans include flexibility for timeline adjustments."
+                question="Why are you cheaper than McKinsey, Deloitte, and the big AI consultancies?"
+                answer="Three reasons. First, we are a small senior team — no associate consultants billing at £400/hour to learn on your project. Second, we ship production code, not 80-page strategy decks. Third, we specialise: WhatsApp AI, multilingual agents, and CRM automation. Specialisation means we have already solved the hard parts of your project."
               />
               <PricingFaqItem
-                question="Can I upgrade my plan later?"
-                answer="Yes. If you start with Launch and want to add AI workflows later, we can scope additional work as separate projects or fold it into an expanded engagement. Talk to our team about your growth plans."
+                question="What is the 30-day go-live guarantee?"
+                answer="You pay 50% on signing. If your AI system is not in production within 30 days of project start (or the agreed timeline for Enterprise), we keep working at no extra cost until it is. The remaining 50% is only invoiced once the system is live and accepted by you."
               />
               <PricingFaqItem
-                question="Do you offer refunds?"
-                answer="We back every project with a 30-day go-live guarantee. You pay 50% on signing and 50% at go-live, so your risk is capped at the deposit until the system is in production. If we miss the 30-day window, we keep working at no extra cost until it&apos;s live. Once a deliverable is live and accepted, we don&apos;t refund completed work — but we&apos;ll iterate at no extra charge until it meets the agreed scope."
+                question="What happens if my requirements change mid-project?"
+                answer="Small changes (rewording, prompt tuning, new edge cases) are covered. Significant scope changes (new channels, new integrations, new languages) are scoped as a written change order so you decide whether to add them now or in a follow-up phase. No surprise invoices."
               />
               <PricingFaqItem
-                question="What currencies do you accept?"
-                answer="We quote in USD. We accept wire transfers, credit cards (via Stripe), and international payment methods. Contact us if you need invoicing in a different currency."
+                question="Are third-party costs like OpenAI and WhatsApp included?"
+                answer="No — and we will not mark them up. OpenAI, WhatsApp Business API, Twilio, and any other infrastructure costs are billed directly by those providers to your account. We will give you a written estimate of monthly running costs before you sign. For most clients this is £150–£800/month depending on volume."
+              />
+              <PricingFaqItem
+                question="What if I'm not sure which plan I need?"
+                answer="Book a free 30-minute audit. We will tell you honestly which tier fits — or whether your problem is better solved without AI at all. We have turned away projects that did not need us. Our reputation is worth more than one bad-fit deal."
+              />
+              <PricingFaqItem
+                question="What currencies and payment methods do you accept?"
+                answer="We quote in GBP, USD, AED, or EUR depending on your jurisdiction. We accept bank transfer (preferred), Stripe card payments, and Wise. UK VAT registered. Invoices include a clear breakdown so your finance team has no surprises."
               />
             </div>
 
-            <Link
+            <a
               className="mt-8 inline-flex text-sm font-medium text-accent-400 hover:text-accent-300"
-              href="/free-ai-audit"
+              href={CALENDLY_URL}
+              target="_blank"
+              rel="noopener noreferrer"
             >
-              Still have questions? Talk to our team →
-            </Link>
+              Still unsure? Book a free 30-minute audit →
+            </a>
           </Reveal>
         </div>
       </section>
@@ -463,19 +540,24 @@ export default function PricingPage() {
           <Reveal>
             <div className="mx-auto max-w-2xl rounded-2xl border border-accent-400/20 bg-gradient-to-br from-accent-400/5 to-accent-400/0 p-8 sm:p-12 text-center">
               <h2 className="text-3xl font-bold text-text-primary sm:text-4xl">
-                Not sure which plan is right for you?
+                Not sure which tier fits?
               </h2>
 
               <p className="mt-4 text-base text-text-secondary sm:text-lg">
-                Let&apos;s discuss your project scope, timeline, and goals. We&apos;ll recommend the best plan during a free 30-minute consultation.
+                A 30-minute call with a senior engineer (not a sales rep) tells you which tier you need — or whether AI is the wrong fit right now. We will tell you either way.
               </p>
 
-              <Link
-                className="mt-8 inline-flex h-12 items-center justify-center rounded-lg bg-accent-400 px-8 text-sm font-semibold text-bg-default transition-all hover:bg-accent-300 hover:shadow-lg hover:shadow-accent-400/20"
-                href="/free-ai-audit"
+              <a
+                className="mt-8 inline-flex h-12 items-center justify-center rounded-lg bg-accent-400 px-8 text-sm font-semibold text-bg-default shadow-lg shadow-accent-400/20 transition-all hover:bg-accent-300 hover:shadow-xl hover:shadow-accent-400/30"
+                href={CALENDLY_URL}
+                target="_blank"
+                rel="noopener noreferrer"
               >
-                Book Free Consultation
-              </Link>
+                Book free 30-min audit →
+              </a>
+              <p className="mt-4 text-xs text-text-tertiary">
+                No sales pitch. No follow-up spam. Written summary in your inbox within 48 hours.
+              </p>
             </div>
           </Reveal>
         </div>

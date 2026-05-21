@@ -10,6 +10,8 @@ import {
   ROICalculator,
   ServicesOverview,
   SocialProofBar,
+  TeamSection,
+  TechStackBar,
   Testimonials,
   WhyCompare,
 } from "@/components/sections";
@@ -22,27 +24,27 @@ const siteUrl = "https://www.alsolutionsai.online";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
-  title: "AI Chatbot Agency UK | Arabic, English & French AI in 30 Days | AL Solutions AI",
+  title: "AI Chatbot & Automation Agency | UK & MENA | AL Solutions AI",
   description:
-    "UK-based AI chatbot agency specialising in Arabic, English & French AI for MENA and European businesses. Live in 30 days. HubSpot, Salesforce & WhatsApp integration. Free AI audit included.",
+    "We build AI agents that qualify leads, automate CRM, and support customers in Arabic, French, and English. UK-registered. Live in 30 days. Book a free audit.",
   keywords: [
-    "AI chatbot agency",
-    "AI automation agency",
-    "custom AI chatbot development",
+    "AI chatbot agency UK",
+    "WhatsApp AI chatbot for real estate",
+    "Arabic AI chatbot UK",
+    "AI lead qualification agent UK",
+    "CRM automation agency UK",
+    "AI chatbot for trading platform",
     "AI agency MENA",
-    "business automation AI",
-    "AI chatbot for SMB",
-    "AI lead generation",
-    "chatbot development company",
-    "AI automation MENA",
-    "WhatsApp AI chatbot",
-    "Arabic AI chatbot",
-    "lead qualification AI",
+    "AI automation agency",
+    "multilingual AI chatbot",
+    "HubSpot AI integration",
+    "WhatsApp Business API AI",
+    "AI customer support agent",
   ],
   openGraph: {
-    title: "AI Chatbot Agency UK | Arabic, English & French AI in 30 Days",
+    title: "AI Chatbot & Automation Agency | UK & MENA | AL Solutions AI",
     description:
-      "UK-based AI chatbot agency specialising in Arabic, English & French AI for MENA and European businesses. Live in 30 days. HubSpot, Salesforce & WhatsApp integration. Free AI audit included.",
+      "We build AI agents that qualify leads, automate CRM, and support customers in Arabic, French, and English. UK-registered. Live in 30 days. Book a free audit.",
     url: `${siteUrl}/en`,
     siteName: "AL Solutions AI",
     images: [
@@ -58,9 +60,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "AI Chatbot Agency UK | Arabic, English & French AI in 30 Days",
+    title: "AI Chatbot & Automation Agency | UK & MENA | AL Solutions AI",
     description:
-      "UK-based AI chatbot agency specialising in Arabic, English & French AI for MENA and European businesses. Live in 30 days. HubSpot, Salesforce & WhatsApp integration. Free AI audit included.",
+      "We build AI agents that qualify leads, automate CRM, and support customers in Arabic, French, and English. UK-registered. Live in 30 days. Book a free audit.",
     images: [`${siteUrl}/og/homepage.png`],
   },
   alternates: {
@@ -125,26 +127,26 @@ const FAQ_SCHEMA = {
   mainEntity: [
     {
       "@type": "Question",
-      name: "How long does it take to launch an AI chatbot?",
+      name: "How long does it take to build and launch an AI chatbot with AL Solutions AI?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Our standard launch cycle is 30 days from contract signing to production deployment.",
+        text: "Most projects go live within 21–30 days from the signed agreement. The timeline depends on the complexity of integrations required (e.g. CRM sync, WhatsApp Business API approval, custom knowledge base). We provide a written go-live timeline after the free audit call.",
       },
     },
     {
       "@type": "Question",
-      name: "What languages does your AI support?",
+      name: "Do you build AI chatbots that work in Arabic?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Our chatbots support Arabic, English, and French natively, with full RTL support for Arabic interfaces.",
+        text: "Yes. Arabic is a core language for our AI systems, not an add-on. Our chatbots handle Modern Standard Arabic and major Gulf dialects, switch seamlessly between Arabic and English mid-conversation, and render correctly in right-to-left layouts. This is one of the areas where we have deeper experience than most UK AI agencies.",
       },
     },
     {
       "@type": "Question",
-      name: "Do you integrate with existing CRM systems?",
+      name: "Which CRM systems do you integrate with?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Yes — we integrate with HubSpot, Salesforce, Zoho, and custom CRM systems via API. WhatsApp integrations included in all plans.",
+        text: "We integrate with HubSpot, Salesforce, Pipedrive, and custom CRM systems via API. Our AI agents can log conversations, update contact records, extract deal context from calls, and trigger automated workflows — all reviewed and approved by your team before any data is written.",
       },
     },
     {
@@ -152,23 +154,15 @@ const FAQ_SCHEMA = {
       name: "What is included in the free AI audit?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "A 30-minute strategy call, analysis of your current operations, and a written report identifying 3 specific automation opportunities with estimated ROI and timeline.",
+        text: "The free audit is a 30-minute call with a senior member of our team (not a sales rep). You will receive a written scope report within 48 hours that identifies the highest-ROI automation opportunities for your specific business, a recommended tech stack, a realistic timeline, and an honest assessment of whether AI is the right investment at this stage.",
       },
     },
     {
       "@type": "Question",
-      name: "How much does a custom AI chatbot cost?",
+      name: "Do you offer ongoing support after the system goes live?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Projects start at $2,500 for a single-workflow implementation. Full pricing at alsolutionsai.online/pricing.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "Do you provide support after launch?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "All plans include 60 days of post-launch support. Enterprise plans include monthly performance reviews and an optimization log.",
+        text: "Yes. Every project includes a 30-day post-launch support window. After that, we offer optional monthly maintenance and optimisation packages, or hand over full documentation so your team can manage the system independently. We do not lock clients into retainers — this is a deliberate choice.",
       },
     },
   ],
@@ -211,6 +205,8 @@ export default function MarketingHomePage() {
       <div className="gradient-divider" />
       <SocialProofBar />
       <div className="gradient-divider" />
+      <TeamSection />
+      <div className="gradient-divider" />
       <ProblemStatement title={home?.sections.problemStatement} />
       <ServicesOverview title={home?.sections.servicesOverview} />
       <ROICalculator />
@@ -219,6 +215,7 @@ export default function MarketingHomePage() {
       <div className="gradient-divider" />
       <HowItWorks title={home?.sections.howItWorks} />
       <Testimonials title={home?.sections.testimonials} />
+      <TechStackBar />
       <WhyCompare title={home?.sections.comparison} />
       <FaqSection title={home?.sections.faq} />
       <div className="gradient-divider" />

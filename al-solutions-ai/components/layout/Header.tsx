@@ -132,18 +132,20 @@ export function Header() {
               </>
             )}
           </div>
-          <Link
+          <a
             className={cn(
               "hidden h-11 items-center rounded-lg px-6 text-sm font-medium transition-all duration-200 md:inline-flex",
               isScrolled
                 ? "bg-accent-400 text-bg-default hover:bg-accent-300 hover:shadow-lg hover:shadow-accent-400/20"
                 : "bg-primary-600 text-white hover:bg-primary-700"
             )}
-            href="/free-ai-audit"
+            href="https://calendly.com/achraflachgar/15min"
+            target="_blank"
+            rel="noopener noreferrer"
             onClick={() => trackEvent("audit_cta_click", { button_location: "header" })}
           >
-            Get Free AI Audit
-          </Link>
+            Book free 30-min audit
+          </a>
           <MobileNav navItems={NAV_ITEMS} activeLocale={activeLocale} onSwitchLocale={switchLocale} />
         </div>
       </div>

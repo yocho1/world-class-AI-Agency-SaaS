@@ -162,6 +162,37 @@ p,
   outline-offset: 2px;
 }
 
+/* Subtle dot-grid background for premium dark feel */
+.bg-dot-pattern {
+  background-image: radial-gradient(circle, rgba(108, 99, 255, 0.08) 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+
+/* Accent glow for featured cards/sections */
+.glow-accent {
+  box-shadow:
+    0 0 40px rgba(0, 229, 196, 0.06),
+    0 0 80px rgba(91, 33, 246, 0.04);
+}
+
+/* Smooth link underline animation */
+.link-underline {
+  position: relative;
+}
+.link-underline::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  width: 0;
+  height: 1px;
+  background: currentColor;
+  transition: width 0.3s ease;
+}
+.link-underline:hover::after {
+  width: 100%;
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,

@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { Card, Reveal } from "@/components/ui";
+import { Card, Reveal, StaggerReveal } from "@/components/ui";
 import { usePostHog } from "@/hooks/usePostHog";
 import { trackServiceCardClick } from "@/lib/analytics/events";
 
@@ -97,9 +97,9 @@ export function ServicesOverview(props: Readonly<ServicesOverviewProps>) {
           <h2 className="text-3xl font-medium text-text-primary md:text-4xl">{title}</h2>
         </div>
 
-        <div className="grid gap-4 md:grid-cols-2">
+        <StaggerReveal className="grid gap-4 md:grid-cols-2" staggerDelay={0.12}>
           {services.map((service, index) => (
-            <Card className="h-full hover:border-primary-600/60 hover:shadow-[0_0_0_1px_rgba(108,99,255,0.2)]" key={service.title}>
+            <Card className="h-full" key={service.title}>
               <h3 className="text-xl font-medium text-text-primary">{service.title}</h3>
               <p className="mt-2 max-w-prose text-text-secondary">{service.summary}</p>
               <p className="mt-5 inline-flex rounded-pill border-[0.5px] border-[rgba(0,217,126,0.3)] bg-[rgba(0,217,126,0.1)] px-3 py-1.5 text-sm font-semibold text-[#00D97E]" data-attribution={service.metricAttribution} title={service.metricAttribution}>
@@ -131,7 +131,7 @@ export function ServicesOverview(props: Readonly<ServicesOverviewProps>) {
               })()}
             </Card>
           ))}
-        </div>
+        </StaggerReveal>
       </Reveal>
     </section>
   );

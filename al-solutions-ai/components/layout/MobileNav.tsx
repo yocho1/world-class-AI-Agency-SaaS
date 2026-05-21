@@ -74,13 +74,15 @@ export function MobileNav(props: Readonly<MobileNavProps>) {
                 {item.label}
               </Link>
             ))}
-            <Link
+            <a
               className="mt-1 inline-flex h-11 items-center justify-center rounded-lg bg-primary-600 px-4 text-sm font-medium text-white transition-colors hover:bg-primary-700"
-              href="/free-ai-audit"
+              href="https://calendly.com/achraflachgar/15min"
+              target="_blank"
+              rel="noopener noreferrer"
               onClick={() => trackEvent("audit_cta_click", { button_location: "mobile_nav" })}
             >
-              Get Free AI Audit
-            </Link>
+              Book free 30-min audit
+            </a>
           </div>
         </div>
       ) : null}

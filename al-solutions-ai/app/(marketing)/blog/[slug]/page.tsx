@@ -1,15 +1,15 @@
 import React from "react";
+import type { Metadata } from "next";
 import Link from "next/link";
 import Script from "next/script";
 import { notFound } from "next/navigation";
 import { getPostBySlug, getAllPosts } from "@/lib/posts";
 import RelatedPosts from "@/components/blog/RelatedPosts";
-import AuditCtaLink from "@/components/analytics/AuditCtaLink";
 import { alternatesFor, canonicalUrl } from "@/lib/seo";
 
 type Props = { readonly params: { readonly slug: string } };
 
-export async function generateMetadata({ params }: Readonly<Props>) {
+export async function generateMetadata({ params }: Readonly<Props>): Promise<Metadata> {
   const post = await getPostBySlug(params.slug);
   if (!post) return {};
   const ogUrl = `https://www.alsolutionsai.online/og?title=${encodeURIComponent(post.title)}&subtitle=${encodeURIComponent(post.excerpt)}&tag=Blog`;
@@ -87,7 +87,7 @@ export default async function PostPage({ params }: Readonly<Props>) {
       />
 
       {/* Breadcrumb */}
-      <div className="container py-6 sm:py-8 border-b border-border-subtle">
+      <div className="container py-6 sm:py-8">
         <Link
           href="/blog"
           className="inline-flex items-center gap-2 text-sm text-text-secondary transition-colors hover:text-accent-400"
@@ -115,14 +115,13 @@ export default async function PostPage({ params }: Readonly<Props>) {
               {post.title}
             </h1>
 
-            <div className="flex items-center gap-3 py-4 border-b border-gray-100 mb-8">
-              <div className="w-10 h-10 rounded-full bg-gradient-to-br from-violet-600 
-    to-indigo-600 flex items-center justify-center text-white font-bold text-sm">
+            <div className="mt-8 flex items-center gap-3 py-4 border-t border-b border-border-subtle">
+              <div className="h-10 w-10 rounded-full bg-accent-400 flex items-center justify-center text-xs font-bold text-bg-default">
                 AJ
               </div>
               <div>
-                <div className="text-sm font-semibold text-gray-900">{authorName}</div>
-                <div className="text-xs text-gray-500">
+                <div className="text-sm font-semibold text-text-primary">{authorName}</div>
+                <div className="text-xs text-text-tertiary">
                   {authorTitle} · {formattedDate} · {post.readTime} min read
                 </div>
               </div>
@@ -139,23 +138,25 @@ export default async function PostPage({ params }: Readonly<Props>) {
       </section>
 
       {/* Content */}
-      <article className="py-12 sm:py-16 md:py-20">
+      <article className="py-8 sm:py-12 md:py-16">
         <div className="container">
           <div className="mx-auto max-w-3xl">
-            {/* Prose Styling */}
             <div
-              className="prose prose-sm md:prose-base max-w-none
-                prose-headings:font-semibold prose-headings:text-text-primary
+              className="prose prose-invert prose-base max-w-none
+                prose-headings:font-semibold prose-headings:text-text-primary prose-headings:tracking-tight
                 prose-h1:text-3xl prose-h2:text-2xl prose-h3:text-xl
-                prose-h2:mt-10 prose-h2:mb-4 prose-h3:mt-8 prose-h3:mb-3
-                prose-p:max-w-prose prose-p:text-text-secondary prose-p:leading-relaxed prose-p:mb-6
-                prose-a:text-accent-400 prose-a:underline hover:prose-a:text-accent-300
+                prose-h2:mt-12 prose-h2:mb-5 prose-h3:mt-10 prose-h3:mb-4
+                prose-p:text-text-secondary prose-p:leading-[1.8] prose-p:mb-6
+                prose-a:text-accent-400 prose-a:no-underline hover:prose-a:text-accent-300 hover:prose-a:underline
                 prose-strong:text-text-primary prose-strong:font-semibold
-                prose-code:bg-bg-surface prose-code:text-text-primary prose-code:px-2 prose-code:py-1 prose-code:rounded-sm
-                prose-pre:bg-bg-surface prose-pre:border prose-pre:border-border-subtle prose-pre:rounded-sm prose-pre:overflow-x-auto
-                prose-ul:list-disc prose-ul:pl-6 prose-ul:text-text-secondary
-                prose-li:mb-2
-                prose-blockquote:border-l-4 prose-blockquote:border-accent-400 prose-blockquote:pl-4 prose-blockquote:italic prose-blockquote:text-text-secondary
+                prose-code:bg-bg-surface prose-code:text-text-primary prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded prose-code:text-sm
+                prose-pre:bg-bg-surface prose-pre:border prose-pre:border-border-subtle prose-pre:rounded-xl prose-pre:overflow-x-auto prose-pre:p-5
+                prose-ul:list-disc prose-ul:pl-5 prose-ul:text-text-secondary prose-ul:my-6
+                prose-ol:list-decimal prose-ol:pl-5 prose-ol:text-text-secondary prose-ol:my-6
+                prose-li:my-1.5 prose-li:text-text-secondary
+                prose-blockquote:border-l-4 prose-blockquote:border-accent-400 prose-blockquote:pl-5 prose-blockquote:italic prose-blockquote:text-text-secondary prose-blockquote:bg-bg-surface/50 prose-blockquote:py-3 prose-blockquote:pr-4 prose-blockquote:rounded-r-lg
+                prose-hr:border-border-subtle prose-hr:my-10
+                prose-img:rounded-xl prose-img:my-8
                 prose-table:border-collapse prose-table:w-full
                 prose-th:bg-bg-surface prose-th:text-text-primary prose-th:font-semibold prose-th:p-3 prose-th:text-left prose-th:border prose-th:border-border-subtle
                 prose-td:p-3 prose-td:text-text-secondary prose-td:border prose-td:border-border-subtle
@@ -205,13 +206,14 @@ export default async function PostPage({ params }: Readonly<Props>) {
             <p className="mx-auto mt-4 max-w-prose text-base leading-relaxed text-text-secondary sm:text-lg">
               Get a free AI audit and discover exactly what an AI system would look like for your business.
             </p>
-            <AuditCtaLink
-              href="/contact"
-              className="mt-6 inline-flex h-12 items-center rounded-lg bg-accent-400 px-6 text-sm font-semibold text-bg-default transition-all duration-300 hover:bg-accent-300 hover:shadow-lg hover:shadow-accent-400/20 sm:mt-8 sm:h-13 sm:px-8 sm:text-base"
-              buttonLocation="blog_post"
+            <a
+              href="https://calendly.com/achraflachgar/15min"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-6 inline-flex h-12 items-center rounded-lg bg-accent-400 px-6 text-sm font-semibold text-bg-default shadow-lg shadow-accent-400/20 transition-all hover:bg-accent-300 hover:shadow-xl hover:shadow-accent-400/30 sm:mt-8 sm:px-8 sm:text-base"
             >
-              Book Free AI Audit
-            </AuditCtaLink>
+              Book Free AI Audit →
+            </a>
           </div>
         </div>
       </section>

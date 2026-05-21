@@ -1,6 +1,6 @@
 "use client";
 
-import { Reveal } from "@/components/ui";
+import { Reveal, StaggerReveal } from "@/components/ui";
 
 interface ProblemStatementProps {
   readonly painPoints?: string[];
@@ -10,34 +10,34 @@ interface ProblemStatementProps {
 }
 
 const DEFAULT_PAIN_POINTS = [
-  "Prototype fatigue: 3 agencies, zero deployments.",
-  "Disconnected tools that break customer experience.",
-  "No owner for launch KPIs after handoff.",
+  "You paid a big consultancy for a 12-week strategy deck. Nothing was built.",
+  "Your team receives 200+ WhatsApp enquiries daily. Hot leads wait 4+ hours. By then they have contacted 3 other agencies.",
+  "Your CRM pipeline is fiction. Reps skip updates, forecasting is guesswork, and no one knows which deals are real.",
 ];
 
 export function ProblemStatement({
   painPoints = DEFAULT_PAIN_POINTS,
-  title = "Most AI projects die in the prototype phase.",
-  descriptionOne = "You&apos;ve probably hired an agency that delivered a demo. Or a consultant who delivered a roadmap. Neither shipped anything real.",
-  descriptionTwo = "Teams overpay for prototypes, weeks vanish in vendor handoffs, and nothing reaches production. Our sprint model merges product, AI engineering, and growth execution into one accountable team.",
+  title = "Most AI projects never reach production.",
+  descriptionOne = "You have heard the promises. 'Deploy in 30 days.' 'AI that never sleeps.' Then you discover the demo was a PowerPoint, the 'live' system breaks on Arabic text, and the agency is now billing a monthly retainer for a system that does not work.",
+  descriptionTwo = "We built AL Solutions AI because we were tired of watching good businesses waste money on AI theatre. We ship production systems — ones that handle real Arabic enquiries, log real calls to real CRMs, and convert real leads while your team sleeps. Then we hand you the keys and walk away.",
 }: Readonly<ProblemStatementProps>) {
   return (
     <section className="section-padding container">
       <Reveal>
         <h2 className="max-w-3xl text-3xl font-medium text-text-primary md:text-4xl">{title}</h2>
-        <p className="mt-4 max-w-prose text-text-secondary">{descriptionOne}</p>
-        <p className="mt-4 max-w-prose text-text-secondary">{descriptionTwo}</p>
+        <p className="mt-4 max-w-prose text-text-secondary leading-relaxed">{descriptionOne}</p>
+        <p className="mt-4 max-w-prose text-text-secondary leading-relaxed">{descriptionTwo}</p>
 
-        <div className="mt-8 grid gap-4 md:grid-cols-3">
+        <StaggerReveal className="mt-8 grid gap-4 md:grid-cols-3" staggerDelay={0.12}>
           {painPoints.map((painPoint) => (
             <article
-              className="rounded-2xl border border-border-subtle bg-bg-surface p-5"
+              className="rounded-2xl border border-border-subtle bg-bg-surface p-5 transition-all duration-300 hover:border-accent-400/20 hover:bg-bg-elevated hover:-translate-y-0.5 hover:shadow-lg hover:shadow-accent-400/5"
               key={painPoint}
             >
-              <p className="text-sm text-text-secondary">{painPoint}</p>
+              <p className="text-sm text-text-secondary leading-relaxed">{painPoint}</p>
             </article>
           ))}
-        </div>
+        </StaggerReveal>
       </Reveal>
     </section>
   );

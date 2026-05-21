@@ -29,7 +29,7 @@ export function Footer() {
             <Link href="/services">Services</Link>
             <Link href="/case-studies">Case Studies</Link>
             <Link href="/blog">Blog</Link>
-            <Link href="/free-ai-audit">Free AI Audit</Link>
+            <a href="https://calendly.com/achraflachgar/15min" target="_blank" rel="noopener noreferrer">Book free 30-min audit</a>
           </div>
         </div>
 

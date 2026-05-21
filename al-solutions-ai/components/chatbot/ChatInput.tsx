@@ -27,6 +27,7 @@ export function ChatInput({ onSend, disabled = false, placeholder = "Ask about o
     >
       <div className="flex items-center gap-2">
         <input
+          data-chat-input
           className="h-12 flex-1 rounded-lg border border-border-subtle bg-bg-elevated px-4 text-sm text-text-primary placeholder-text-tertiary focus:border-primary-600 focus:outline-none focus:ring-1 focus:ring-primary-600/20 disabled:opacity-50"
           onChange={(event) => setValue(event.target.value)}
           placeholder={placeholder}

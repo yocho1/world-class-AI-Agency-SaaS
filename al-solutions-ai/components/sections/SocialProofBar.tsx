@@ -1,3 +1,7 @@
+"use client";
+
+import { StaggerReveal } from "@/components/ui";
+
 const CREDENTIALS = [
   { label: "UK Registered", value: "Co. No. 11521309" },
   { label: "Founded", value: "2018" },
@@ -29,11 +33,11 @@ export function SocialProofBar() {
           </h2>
         </div>
 
-        <div className="mt-8 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-6">
+        <StaggerReveal className="mt-8 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-6" staggerDelay={0.06}>
           {CREDENTIALS.map((item) => (
             <div
               key={item.label}
-              className="rounded-xl border border-border-subtle bg-gradient-to-br from-bg-surface to-bg-surface/50 p-4 text-center"
+              className="rounded-xl border border-border-subtle bg-gradient-to-br from-bg-surface to-bg-surface/50 p-4 text-center transition-all duration-300 hover:border-accent-400/20 hover:bg-bg-elevated hover:-translate-y-0.5 hover:shadow-lg hover:shadow-accent-400/5"
             >
               <p className="text-[10px] font-semibold uppercase tracking-wider text-text-tertiary">
                 {item.label}
@@ -41,7 +45,7 @@ export function SocialProofBar() {
               <p className="mt-1 text-sm font-semibold text-text-primary">{item.value}</p>
             </div>
           ))}
-        </div>
+        </StaggerReveal>
       </div>
     </section>
   );

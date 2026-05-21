@@ -7,7 +7,7 @@ type Props = {
   posts: BlogCardProps[];
 };
 
-const CATEGORIES = ["All", "AI Chatbots", "Automation", "Case Studies", "How-to"];
+const CATEGORIES = ["All", "Real Estate AI", "CRM Automation", "Multilingual AI", "How-to"];
 
 export default function BlogListing({ posts }: Props) {
   const [category, setCategory] = useState<string>("All");

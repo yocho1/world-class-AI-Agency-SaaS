@@ -19,27 +19,33 @@ interface HeroProps {
 const STATS = [
   {
     label: "From contract to live AI",
-    value: "30 days",
-    attribution: "Average across all 2024 deployments",
+    value: "21–30 days",
+    attribution: "Written timeline, no scope creep",
   },
   {
-    label: "Average lead conversion lift",
-    value: "+2.3x",
-    attribution: "Average across 12 client deployments, 2024",
+    label: "Average lead response time",
+    value: "60 sec",
+    attribution: "Down from 4–6 hours, UAE real estate case study",
   },
   {
-    label: "Production deployments",
-    value: "12",
-    attribution: "Live client systems shipped in 2024",
+    label: "Lead-to-viewing conversion lift",
+    value: "+41%",
+    attribution: "Month 1 result, UAE real estate agency",
   },
 ];
 
+const TRUST_SIGNALS = [
+  "UK-registered company · Co. No. 11521309",
+  "Live in 21–30 days · No retainer lock-in",
+  "Arabic, French & English · Built for UK & MENA markets",
+];
+
 export function Hero({
-  eyebrow = "Production AI shipped in 30 days",
-  title = "Your competitors just went live with AI. Here's how to do it in 30 days.",
-  description = "AL Solutions AI builds and deploys AI chatbots and automation systems that are live, working, and generating leads — not sitting in a deck.",
-  ctaPrimaryText = "Get Free AI Audit",
-  ctaSecondaryText = "See the AI Working",
+  eyebrow = "AI Chatbots & Automation for UK & MENA",
+  title = "Your leads go cold in 4 hours. We fix that in 60 seconds.",
+  description = "We built a WhatsApp AI agent for a UAE real estate agency that cut response time by 78% and grew lead-to-viewing conversion by 41%. It qualifies buyers, matches properties, and syncs to HubSpot — in Arabic and English.",
+  ctaPrimaryText = "Book free AI audit",
+  ctaSecondaryText = "See it working \u2192",
   stats = STATS,
   experimentVariant,
 }: Readonly<HeroProps>) {
@@ -72,7 +78,18 @@ export function Hero({
           "radial-gradient(ellipse 80% 50% at 50% -10%, rgba(91, 33, 246, 0.15) 0%, transparent 60%), #080812",
       }}
     >
-      <div className="container">
+      {/* Subtle ambient orbs for visual depth */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute -left-32 top-1/4 h-[400px] w-[400px] rounded-full blur-[120px] opacity-20"
+        style={{ background: "radial-gradient(circle, rgba(0,229,196,0.4) 0%, transparent 70%)" }}
+      />
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute -right-32 top-1/3 h-[500px] w-[500px] rounded-full blur-[140px] opacity-15"
+        style={{ background: "radial-gradient(circle, rgba(91,33,246,0.5) 0%, transparent 70%)" }}
+      />
+      <div className="container relative z-10">
         <Reveal>
           <p className="text-sm font-medium uppercase tracking-[0.18em] text-accent-400">
             {eyebrow}
@@ -85,9 +102,11 @@ export function Hero({
           </p>
           <div className="mt-9 flex flex-col gap-3">
             <div className="flex flex-wrap gap-3">
-              <Link
-                href="/free-ai-audit"
-                aria-label="Get your free AI audit — no commitment required"
+              <a
+                href="https://calendly.com/achraflachgar/15min"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Book your free AI audit — 30 minutes, no commitment"
                 onClick={() => {
                   trackEvent("audit_cta_click", { button_location: "hero" });
                   trackClick("primary");
@@ -106,16 +125,23 @@ export function Hero({
                     <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
                   </svg>
                 </span>
-              </Link>
+              </a>
               <Link href="#live-demo" aria-label="See the AI working — view live demo" onClick={() => trackClick("secondary")}>
                 <span className="inline-flex h-12 items-center rounded-lg border border-border-default px-6 text-sm font-medium text-text-primary transition-colors hover:bg-bg-elevated">
                   {ctaSecondaryText}
                 </span>
               </Link>
             </div>
-            <p className="text-xs text-[#94A3B8]">
-              30-min call · Written scope report · No commitment
-            </p>
+            <div className="flex flex-wrap gap-x-4 gap-y-1 text-xs text-[#94A3B8]">
+              {TRUST_SIGNALS.map((signal) => (
+                <span key={signal} className="flex items-center gap-1">
+                  <svg className="h-3 w-3 text-accent-400" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                  </svg>
+                  {signal}
+                </span>
+              ))}
+            </div>
           </div>
 
           <div className="mt-10 grid gap-4 sm:grid-cols-3">

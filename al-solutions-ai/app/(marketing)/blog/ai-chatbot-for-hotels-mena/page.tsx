@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "AI Chatbot for Hotels in MENA | AL Solutions AI",
@@ -127,11 +126,11 @@ export default function AiChatbotForHotelsMenaPage() {
         </section>
 
         <section className="space-y-4 [&_p]:max-w-prose">
-          <h2 className="text-2xl font-medium text-text-primary">Case study: How Nexora Hotels cut response time by 62%</h2>
+          <h2 className="text-2xl font-medium text-text-primary">Case study: Real results from a UAE hospitality deployment</h2>
           <p>
-            Nexora Hotels Group launched a bilingual AI concierge across web chat and WhatsApp. The assistant handled
-            booking questions, amenity details, and concierge requests while routing sales qualified leads directly to the
-            reservations team. In the first 60 days, response time dropped by 62% and lead capture increased by 44%.
+            A UAE-based hospitality group deployed a bilingual AI concierge across web chat and WhatsApp. The assistant
+            handled booking questions, amenity details, and concierge requests while routing sales-qualified leads directly
+            to the reservations team. In the first 60 days, response time dropped by 62% and lead capture increased by 44%.
           </p>
           <p>
             The key was not the model choice alone. The system was built with a clear qualification flow, a structured
@@ -139,7 +138,7 @@ export default function AiChatbotForHotelsMenaPage() {
             the questions that mattered most.
           </p>
           <p>
-            Read the full case study here: <Link className="text-accent-400 hover:text-accent-300" href="/case-studies/hospitality-concierge">Nexora Hotels case study</Link>.
+            <em>Client name protected under NDA. Full metrics and technical details available in a private briefing.</em>
           </p>
         </section>
 
@@ -184,9 +183,9 @@ export default function AiChatbotForHotelsMenaPage() {
           <p className="mx-auto mt-3 max-w-prose text-sm text-text-secondary">
             Book a free AI audit to map your top guest journeys, define the integration scope, and launch in 30 days.
           </p>
-          <Link className="mt-5 inline-flex text-sm font-medium text-accent-400 hover:text-accent-300" href="/free-ai-audit">
+          <a className="mt-5 inline-flex text-sm font-medium text-accent-400 hover:text-accent-300" href="https://calendly.com/achraflachgar/15min" target="_blank" rel="noopener noreferrer">
             Book a free AI audit for your hotel →
-          </Link>
+          </a>
         </section>
       </article>
     </main>

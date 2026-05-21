@@ -15,19 +15,19 @@ const HERO_VARIANTS: readonly ExperimentVariant<HeroPayload>[] = [
   {
     id: "control",
     payload: {
-      title: "Your competitors just went live with AI. Here's how to do it in 30 days.",
+      title: "Your leads go cold in 4 hours. We fix that in 60 seconds.",
       description:
-        "AL Solutions AI builds and deploys AI chatbots and automation systems that are live, working, and generating leads — not sitting in a deck.",
-      ctaPrimaryText: "Get Free AI Audit",
+        "We built a WhatsApp AI agent for a UAE real estate agency that cut response time by 78% and grew lead-to-viewing conversion by 41%. It qualifies buyers, matches properties, and syncs to HubSpot — in Arabic and English.",
+      ctaPrimaryText: "Book free AI audit",
     },
   },
   {
     id: "variant_b",
     payload: {
-      title: "Stop losing leads to slow response times. Deploy AI in 30 days.",
+      title: "Your competitors answer leads in 4 hours. We do it in 60 seconds.",
       description:
-        "We build production-grade AI chatbots that qualify leads, answer questions in Arabic, English & French, and route hot prospects to your sales team — live in 30 days, not 6 months.",
-      ctaPrimaryText: "Book Free AI Audit",
+        "AL Solutions AI builds multilingual AI agents that qualify leads, automate CRM updates, and handle customer support — in Arabic, French, and English. Live in 21–30 days, no retainer lock-in.",
+      ctaPrimaryText: "Book free AI audit",
     },
   },
 ];

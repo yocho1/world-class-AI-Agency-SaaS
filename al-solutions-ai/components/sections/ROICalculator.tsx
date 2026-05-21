@@ -36,8 +36,8 @@ export function ROICalculator() {
     }).format(value);
   };
 
-  // Build query params for CTA
-  const auditUrl = `/free-ai-audit?visitors=${visitors}&conversion=${conversionRate}&dealValue=${dealValue}`;
+  // Direct to Calendly — no form friction
+  const auditUrl = "https://calendly.com/achraflachgar/15min";
 
   return (
     <section className="section-padding bg-gradient-to-b from-bg-default to-bg-surface border-y border-border-subtle">
@@ -170,8 +170,10 @@ export function ROICalculator() {
 
             {/* CTA Button */}
             <div className="text-center">
-              <Link
+              <a
                 href={auditUrl}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="inline-flex h-12 items-center rounded-lg bg-accent-400 px-8 font-semibold text-bg-default shadow-lg shadow-accent-400/20 transition-all hover:bg-accent-300 hover:shadow-xl hover:shadow-accent-400/30"
                 onClick={() =>
                   trackEvent("roi_cta_click", {
@@ -193,7 +195,7 @@ export function ROICalculator() {
                 >
                   <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
                 </svg>
-              </Link>
+              </a>
               <p className="text-xs text-text-tertiary mt-4">
                 30-min call · Written scope report · No commitment
               </p>
