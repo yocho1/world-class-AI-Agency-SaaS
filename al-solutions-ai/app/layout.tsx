@@ -4,7 +4,7 @@ import { headers } from "next/headers";
 import Script from "next/script";
 import { Plus_Jakarta_Sans } from "next/font/google";
 import { GeistMono } from "geist/font/mono";
-import { GoogleAnalytics } from "@next/third-parties/google";
+// GA4 manual tag added below
 import { PostHogProvider } from "@/components/analytics/PostHogProvider";
 import { PageViewTracker } from "@/components/analytics/PageViewTracker";
 import { ScrollDepthTracker } from "@/components/analytics/ScrollDepthTracker";
@@ -12,7 +12,6 @@ import { WhatsAppButton } from "@/components/layout/WhatsAppButton";
 import "./globals.css";
 
 const siteUrl = "https://www.alsolutionsai.online";
-const googleAnalyticsId = process.env.NEXT_PUBLIC_GA_ID ?? "G-XXXXXXXXXX";
 const supportedLocales = new Set(["en", "ar", "fr"]);
 const organizationSchema = {
   "@context": "https://schema.org",
@@ -90,19 +89,47 @@ export default function RootLayout({
   return (
     <html dir={dirHeader} lang={lang} className={`${jakartaSans.variable} ${geistMono.variable} h-full antialiased`}>
       <head>
+        {/* Google Tag Manager */}
+        <Script id="gtm-head" strategy="beforeInteractive">
+          {`(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-NFRRH2N9');`}
+        </Script>
+        {/* End Google Tag Manager */}
+        {/* Google tag (gtag.js) */}
+        <Script async src="https://www.googletagmanager.com/gtag/js?id=G-WKK96E0Q1J" strategy="afterInteractive" />
+        <Script id="ga4-config" strategy="afterInteractive">
+          {`window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-WKK96E0Q1J');`}
+        </Script>
+        {/* End Google tag */}
         <link rel="icon" href="/images/Favicon.svg" type="image/svg+xml" />
         <link rel="apple-touch-icon" href="/images/Favicon.svg" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
       </head>
       <body className="min-h-full">
+        {/* Google Tag Manager (noscript) */}
+        <noscript>
+          <iframe
+            src="https://www.googletagmanager.com/ns.html?id=GTM-NFRRH2N9"
+            height="0"
+            width="0"
+            style={{ display: "none", visibility: "hidden" }}
+            title="Google Tag Manager"
+          />
+        </noscript>
+        {/* End Google Tag Manager (noscript) */}
         <Script
           id="org-schema"
           strategy="afterInteractive"
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
         />
-        <GoogleAnalytics gaId={googleAnalyticsId} />
         <PostHogProvider>
           <Suspense fallback={null}>
             <PageViewTracker />
