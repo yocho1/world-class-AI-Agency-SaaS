@@ -8,11 +8,11 @@ import { Reveal } from "@/components/ui";
 // 1. HERO SECTION DATA
 // =======================
 const HERO_DATA = {
-  service: "AI Chatbots",
-  headline: "AI Chatbots That Qualify Leads in Arabic, English & French — Live in 14 Days.",
-  subheadline: "Native multilingual AI deployed across web, WhatsApp, and SMS. CRM-integrated from day one. No prototypes, no half-built integrations to clean up later.",
-  metric: "+62% faster first response",
-  cta: "Book Free Audit",
+  service: "AI Lead Qualification Agent",
+  headline: "Your leads go cold in 4 hours. Our AI agent qualifies them in 60 seconds.",
+  subheadline: "A production-grade WhatsApp and web AI agent that qualifies real buyers in Arabic, English, and French, routes the hot ones to a named human in under 30 seconds, and syncs every conversation to HubSpot or Salesforce. Live in 21–30 days. Written timeline, no scope creep.",
+  metric: "−78% response time · +41% conversion",
+  cta: "Book free 30-min audit",
 };
 
 // =======================
@@ -20,22 +20,22 @@ const HERO_DATA = {
 // =======================
 const INDUSTRIES = [
   {
-    icon: "🏨",
-    name: "Hospitality & Travel",
+    icon: "�",
+    name: "Real estate agencies (UAE, Saudi, UK)",
     description:
-      "Qualify guests in real-time across web, WhatsApp, and SMS. Route bookings directly to team. Reduce response time from hours to seconds.",
+      "Buyers message at 10pm and need a reply before they message your competitor. The AI qualifies budget, area, and timeline, surfaces 3 matching properties, and routes hot leads to a named agent in under 30 seconds. Currently running for one UAE group at 200+ qualified leads/day.",
   },
   {
-    icon: "🛍️",
-    name: "E-Commerce & Retail",
+    icon: "�",
+    name: "Professional services firms",
     description:
-      "Answer product questions before checkout abandonment. Capture size/preference data. Hand off qualified buyers to sales team with full context.",
+      "High-value B2B leads expect a same-day response and most firms can't deliver. The AI handles initial discovery, qualifies fit against your ICP, captures the decision-maker's context, and books a meeting straight into your team's Calendly — with the conversation logged to HubSpot before the call starts.",
   },
   {
-    icon: "⚕️",
-    name: "Healthcare & B2B Services",
+    icon: "🏥",
+    name: "Healthcare and homecare operators",
     description:
-      "Screen intake forms 24/7. Qualify appointments. Route urgent cases to the right specialist. Support team during off-hours.",
+      "Out-of-hours enquiries used to die in a voicemail. The AI handles intake, triages urgency, and escalates time-critical cases to on-call staff. Currently in production for a UK homecare group handling family enquiries 24/7 in English and Arabic.",
   },
 ];
 
@@ -43,14 +43,17 @@ const INDUSTRIES = [
 // 3. WHAT'S INCLUDED (Features)
 // =======================
 const FEATURES = [
-  "Multilingual lead qualification (Arabic, English, French)",
-  "CRM integration with full context handoff",
-  "Custom brand tone and conversation guardrails",
-  "Real-time analytics and performance tracking",
-  "Web chat, WhatsApp, and SMS deployment",
-  "60 days of post-launch support and optimization",
-  "Custom workflow routing logic",
-  "Conversation audit and continuous improvement",
+  "WhatsApp Business API agent with verified business profile",
+  "Native Arabic (Gulf, Levantine, Maghrebi, MSA), English, French",
+  "Mid-conversation language switching (the buyer leads, the bot mirrors)",
+  "Lead qualification with custom criteria (budget, location, timeline, fit)",
+  "Live inventory or product matching against your database or CMS",
+  "Hot-lead routing to named human agent in under 30 seconds",
+  "HubSpot, Salesforce, or Pipedrive sync with structured fields, not freeform notes",
+  "Web chat widget on your site with the same conversation history as WhatsApp",
+  "Confidence-gated fallbacks (the AI knows when to escalate to human)",
+  "Conversation transcripts and analytics dashboard",
+  "30 days of post-launch support and weekly performance review",
 ];
 
 // =======================
@@ -59,21 +62,33 @@ const FEATURES = [
 const TIMELINE_STEPS = [
   {
     step: 1,
-    title: "Strategy & Discovery (Days 1–5)",
+    title: "Free audit & scope (Day 0, 48 hours)",
     description:
-      "We map your lead flow, identify qualification criteria, and set up integrations with your CRM and messaging channels. You provide use cases; we design the conversation logic.",
+      "30-minute call with a senior engineer (not a sales rep). We map your current lead flow, identify the highest-ROI conversation paths, and send you a written scope report inside 48 hours with a fixed price and timeline. If we don't think AI is the right answer for your business right now, we say so.",
   },
   {
     step: 2,
-    title: "Build & Deploy (Days 6–20)",
+    title: "Discovery & conversation design (Days 1–5)",
     description:
-      "Our team trains the model on your brand voice, builds custom workflows, and deploys across web, WhatsApp, and SMS. You review progress on Days 10 and 15.",
+      "We sit with your sales team to extract the qualification criteria that actually matter. We design the conversation flow against real historical lead data — not generic templates. Output: a documented conversation spec you approve before any code is written.",
   },
   {
     step: 3,
-    title: "Launch & Optimize (Days 21–28)",
+    title: "Build, integrate, and internal review (Days 6–20)",
     description:
-      "Go live. Monitor real conversations. Refine guardrails and routing rules based on live data. Train your team on analytics and handoff workflows.",
+      "WhatsApp Business API approval, CRM integration, multilingual prompt engineering, and inventory or product matching all built in parallel. You review a working demo on Day 10 and a near-final version on Day 15.",
+  },
+  {
+    step: 4,
+    title: "Go-live and 14-day calibration (Days 21–30)",
+    description:
+      "System goes live with all traffic routed through it. Daily monitoring for the first 7 days, weekly reviews for the next 30. We tune the hot-lead threshold, language-switching logic, and qualification questions based on real conversation data.",
+  },
+  {
+    step: 5,
+    title: "Handover and ongoing support (Day 30+)",
+    description:
+      "Full documentation handed over to your team. We don't lock you into a retainer. You can run the system yourself, hire us monthly for optimisation, or do a mix. Most clients choose mix.",
   },
 ];
 
@@ -81,19 +96,19 @@ const TIMELINE_STEPS = [
 // 5. KEY METRICS (Stats)
 // =======================
 const KEY_METRICS = [
-  { stat: "+62%", label: "Faster first response", note: "Average across deployed chatbots" },
-  { stat: "-40%", label: "Support operational cost", note: "Through automation of routine queries" },
-  { stat: "28", label: "Days to live production", note: "End-to-end deployment timeline" },
+  { stat: "−78%", label: "Average response time", note: "UAE real estate group, 4h 23min → 58 sec, 60 days post-launch" },
+  { stat: "+41%", label: "Lead-to-viewing conversion", note: "UAE real estate group, baseline 14.2% → 20.0% in Month 1" },
+  { stat: "26", label: "Days from contract to live", note: "Actual delivery, against a 30-day commitment" },
 ];
 
 // =======================
 // 6. RELATED CASE STUDY
 // =======================
 const RELATED_CASE_STUDY = {
-  title: "Nexora Hotels Group",
-  headline: "Multilingual AI concierge across web and WhatsApp",
-  metric: "+44% response rate",
-  metricNote: "on inquiries routed to team",
+  title: "UAE Real Estate Group (NDA)",
+  headline: "WhatsApp AI agent handling 200+ qualified leads per day in Arabic and English",
+  metric: "−78% response time · +41% conversion",
+  metricNote: "26 days from contract to live, 47,000+ conversations handled in 8 months",
   slug: "nexora-hotels",
   cta: "View full case study →",
 };
@@ -110,27 +125,33 @@ type FaqItem = {
 const FAQ_ITEMS: FaqItem[] = [
   {
     id: 1,
-    question: "How does your AI handle complex questions it doesn't know?",
+    question: "How do I know your Arabic capability is real and not Google-Translate-grade?",
     answer:
-      "The chatbot is trained to recognize knowledge gaps and routes complex questions to your team with full conversation context. This fallback is logged so you can continuously improve the AI's knowledge base.",
+      "Test it. Type a real message on our homepage live demo in whatever dialect or code-switched mix you'd use with a real buyer. Production systems we run handle Gulf, Levantine, Maghrebi, MSA, and mid-message language switching. If our demo doesn't handle your test message correctly, we've failed and you'll know in 30 seconds.",
   },
   {
     id: 2,
-    question: "Can I customize the chatbot's tone and personality?",
+    question: "What happens if the AI gets a complex question wrong?",
     answer:
-      "Absolutely. We train the model on your brand voice, company values, and desired tone. You provide examples of how you want responses phrased, and the AI learns to match your style.",
+      "The AI has a confidence threshold. If it isn't certain it can answer accurately, it says so and routes the conversation to a named human agent within 30 seconds with the full transcript. Every uncertain interaction is logged and reviewed weekly so the knowledge base improves. We never let the AI hallucinate a confident-sounding wrong answer — that's the most common failure mode in production AI.",
   },
   {
     id: 3,
-    question: "Does the chatbot work with non-English languages?",
+    question: "Will I be locked into a monthly retainer?",
     answer:
-      "Yes. Our chatbots natively support Arabic, English, and French. We can add other languages on request. Multilingual conversations (mixing languages mid-chat) are fully supported.",
+      "No. We do project pricing with 30 days of post-launch support included. After that, you can run the system yourself, hire us monthly for optimisation, or hand it off to your in-house team. We give you full documentation and credentials. This is a deliberate choice — we refuse to charge a retainer for work we're not doing.",
   },
   {
     id: 4,
-    question: "What happens to conversation data? Is it secure?",
+    question: "What CRMs and platforms do you integrate with?",
     answer:
-      "All conversation data is encrypted in transit and at rest. We comply with GDPR and regional data privacy laws. You own all conversation data and can export it anytime.",
+      "HubSpot, Salesforce, Pipedrive natively. WhatsApp Business API (Meta verified). Custom integrations via Zapier, Make, or n8n. If your stack is something else, we'll tell you in the free audit whether it's a 2-day connector or a 2-week project.",
+  },
+  {
+    id: 5,
+    question: "What data leaves my business?",
+    answer:
+      "Conversation transcripts go to your chosen LLM provider (OpenAI or Anthropic by default; we can deploy via Azure OpenAI for stricter EU residency requirements). Nothing is stored on AL Solutions AI infrastructure permanently — transcripts live in your CRM or your own cloud tenant. We're GDPR-compliant and can support a DPA on request.",
   },
 ];
 
@@ -206,12 +227,14 @@ export default function AIChatbotsPage() {
               </p>
 
               <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:items-center">
-                <Link
+                <a
                   className="inline-flex h-12 items-center justify-center rounded-lg bg-accent-400 px-8 text-sm font-semibold text-bg-default transition-all hover:bg-accent-300 hover:shadow-lg hover:shadow-accent-400/20"
-                  href="/free-ai-audit"
+                  href="https://calendly.com/achraflachgar/15min"
+                  target="_blank"
+                  rel="noopener noreferrer"
                 >
                   {HERO_DATA.cta}
-                </Link>
+                </a>
                 <span className="inline-flex rounded-full bg-green-500/15 px-4 py-2 text-xs font-semibold text-green-600">
                   {HERO_DATA.metric}
                 </span>
@@ -410,12 +433,14 @@ export default function AIChatbotsPage() {
               <FaqAccordion />
             </div>
 
-            <Link
+            <a
               className="mt-6 inline-flex text-sm font-medium text-accent-400 hover:text-accent-300"
-              href="/free-ai-audit"
+              href="https://calendly.com/achraflachgar/15min"
+              target="_blank"
+              rel="noopener noreferrer"
             >
               Still have questions? Talk to our team →
-            </Link>
+            </a>
           </Reveal>
         </div>
       </section>
@@ -433,12 +458,14 @@ export default function AIChatbotsPage() {
                 Let&apos;s talk about your specific use case and map out a 28-day deployment plan.
               </p>
 
-              <Link
+              <a
                 className="mt-8 inline-flex h-12 items-center justify-center rounded-lg bg-accent-400 px-8 text-sm font-semibold text-bg-default transition-all hover:bg-accent-300 hover:shadow-lg hover:shadow-accent-400/20"
-                href="/free-ai-audit"
+                href="https://calendly.com/achraflachgar/15min"
+                target="_blank"
+                rel="noopener noreferrer"
               >
                 Schedule Free Audit
-              </Link>
+              </a>
             </div>
           </Reveal>
         </div>

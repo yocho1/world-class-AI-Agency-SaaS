@@ -12,4 +12,5 @@ export * from "./SocialProofBar";
 export * from "./TeamSection";
 export * from "./TechStackBar";
 export * from "./Testimonials";
+export * from "./WhatsAppDemo";
 export * from "./WhyCompare";

@@ -8,11 +8,11 @@ import { Reveal } from "@/components/ui";
 // 1. HERO SECTION DATA
 // =======================
 const HERO_DATA = {
-  service: "Lead Conversion",
-  headline: "Turn Website Visitors into Qualified Demos — Automatically, 24/7.",
-  subheadline: "AI qualifies, scores, and books meetings the moment a visitor lands. Hot leads route straight to your reps with full context. Booked-demo rate up to 3x higher.",
-  metric: "+150% qualified lead rate",
-  cta: "Book Free Audit",
+  service: "WhatsApp AI Agent (MENA)",
+  headline: "Your buyers are on WhatsApp. Your competitors reply in 8 minutes. You reply in 4 hours.",
+  subheadline: "A WhatsApp Business AI agent built specifically for MENA markets. Native Arabic dialects (Gulf, Levantine, Maghrebi, MSA), mid-message code-switching with English and French, live inventory matching, and CRM sync. Currently in production for one UAE real estate group handling 200+ qualified leads/day across two cities.",
+  metric: "200+ daily enquiries handled · zero added headcount",
+  cta: "Book free 30-min audit",
 };
 
 // =======================
@@ -20,22 +20,22 @@ const HERO_DATA = {
 // =======================
 const INDUSTRIES = [
   {
-    icon: "🚀",
-    name: "SaaS & Tech Startups",
+    icon: "🏘️",
+    name: "Real estate agencies in GCC",
     description:
-      "Capture high-intent prospects on pricing and demo pages. Qualify before routing to sales. Track conversion velocity from first click to booked meeting.",
+      "UAE, Saudi, Qatar, Kuwait. Buyers enquire in mixed Arabic-English at 10pm and lose interest by 8am the next morning. The AI captures budget, area, bedroom count, and timeline in 90 seconds, then surfaces 3 matching properties — in the same WhatsApp thread.",
   },
   {
-    icon: "🏪",
-    name: "E-Commerce & Retail",
+    icon: "🛍️",
+    name: "MENA D2C and e-commerce brands",
     description:
-      "Reduce cart abandonment with targeted messaging. Answer product questions in real-time. Increase AOV through smart recommendations and checkout assistance.",
+      "Buyers in Saudi and the UAE prefer WhatsApp over website chat 4:1. The AI answers product questions, qualifies size and preference, and routes to a human for final close — in Arabic, with the right register (formal for older buyers, Gulf-conversational for younger).",
   },
   {
-    icon: "💼",
-    name: "B2B Professional Services",
+    icon: "🏥",
+    name: "UK businesses serving Arabic-speaking communities",
     description:
-      "Qualify consulting and agency leads before handoff. Disqualify early to save sales time. Route to right team based on service and deal size.",
+      "Homecare, healthcare, legal, and financial services in London, Birmingham, and Manchester serving Arabic-speaking diaspora. The AI handles enquiries in the customer's preferred language with full RTL support and dialect-appropriate responses.",
   },
 ];
 
@@ -43,14 +43,18 @@ const INDUSTRIES = [
 // 3. WHAT'S INCLUDED (Features)
 // =======================
 const FEATURES = [
-  "Full funnel analysis and conversion bottleneck identification",
-  "AI-powered lead scoring and qualification",
-  "Real-time visitor engagement and intent detection",
-  "Custom qualification sequences for different visitor profiles",
-  "Automated meeting scheduling and calendar sync",
-  "CRM integration with lead context and history",
-  "A/B testing framework for messaging and CTAs",
-  "Weekly conversion reports with actionable optimization recommendations",
+  "WhatsApp Business API account (verified, with green tick)",
+  "Native Arabic dialect handling: Gulf, Levantine, Maghrebi, Modern Standard",
+  "Mid-message language switching (the buyer drives, the bot mirrors)",
+  "Custom qualification flow: budget, location, timeline, decision-maker, financing",
+  "Live property or inventory matching against your CMS, MLS feed, or HubSpot Custom Objects",
+  "Carousel cards inside WhatsApp with photos, prices, and direct view-details buttons",
+  "Hot-lead routing to a named human agent within 30 seconds (via Slack DM + SMS)",
+  "HubSpot, Salesforce, or Pipedrive sync with structured fields per qualified lead",
+  "Arabic-Indic and Western numeral handling (٠١٢ = 012, parsed and normalised)",
+  "RTL-correct conversation summaries delivered to your team",
+  "Compliance with Meta's WhatsApp Business policy and Saudi PDPL / UAE PDPL",
+  "30 days of post-launch support and weekly conversation review",
 ];
 
 // =======================
@@ -59,21 +63,33 @@ const FEATURES = [
 const TIMELINE_STEPS = [
   {
     step: 1,
-    title: "Conversion Audit (Days 1–5)",
+    title: "Free audit & scope (Day 0, 48 hours)",
     description:
-      "We analyze your current funnel: which pages convert, where visitors drop off, which messaging resonates. We review your sales calls to understand qualification criteria.",
+      "30-minute call with a senior engineer who's shipped WhatsApp AI in MENA before. We diagnose your current enquiry-to-meeting funnel, sample 20 historical conversations to understand the language mix your buyers actually use, and send a written scope inside 48 hours.",
   },
   {
     step: 2,
-    title: "Implement & Test (Days 6–20)",
+    title: "WhatsApp Business API approval & conversation design (Days 1–10)",
     description:
-      "We deploy AI qualification flows on key pages, set up meeting automation, and configure lead scoring. You review changes on Day 12 and we refine based on your feedback.",
+      "We submit your WhatsApp Business API application (takes 5–10 working days in MENA). In parallel, we design the qualification flow against your real historical leads — not generic templates. The Meta verification process is the rate-limiting step on this project, which is why we kick it off Day 1.",
   },
   {
     step: 3,
-    title: "Optimize & Measure (Days 21–30)",
+    title: "Build, integrate, and Arabic dialect calibration (Days 11–22)",
     description:
-      "Go live. Monitor conversion rates daily. Run A/B tests on messaging and CTAs. Deliver optimization roadmap based on the first 2 weeks of live data.",
+      "Prompt engineering, dialect classifier training on your historical conversations, CRM integration, and inventory matching all built in parallel. We test extensively in Gulf and MSA against real native-speaker examples before launch — no Google-Translate-grade output reaches your buyers.",
+  },
+  {
+    step: 4,
+    title: "Go-live and calibration (Days 23–30)",
+    description:
+      "Live with all enquiries routed through the AI. Daily monitoring for 7 days, weekly reviews for 30. We tune dialect register, qualification thresholds, and hot-lead routing rules based on real Saudi and UAE buyer behaviour.",
+  },
+  {
+    step: 5,
+    title: "Handover and ongoing support (Day 30+)",
+    description:
+      "Full documentation, dialect classifiers, prompts, and credentials handed over. No retainer lock-in. Most MENA clients keep us on monthly for dialect drift monitoring and seasonal property catalogue updates, but it's optional.",
   },
 ];
 
@@ -81,19 +97,19 @@ const TIMELINE_STEPS = [
 // 5. KEY METRICS (Stats)
 // =======================
 const KEY_METRICS = [
-  { stat: "+150%", label: "Qualified lead rate", note: "Average improvement from baseline" },
-  { stat: "3x", label: "Faster response time", note: "to high-intent prospects" },
-  { stat: "22%", label: "Higher booking rate", note: "from qualified meetings routed to sales" },
+  { stat: "200+", label: "Qualified WhatsApp leads per day", note: "UAE real estate group, current production volume" },
+  { stat: "47K+", label: "Conversations handled in 8 months", note: "Zero outages, zero buyer complaints escalated" },
+  { stat: "91%", label: "Conversation completion rate", note: "After cutting from 7 questions to 4 in week 2" },
 ];
 
 // =======================
 // 6. RELATED CASE STUDY
 // =======================
 const RELATED_CASE_STUDY = {
-  title: "Nexora Hotels Group",
-  headline: "Real-time guest inquiry qualification and response",
-  metric: "+44% inquiry response rate",
-  metricNote: "web and messaging channels combined",
+  title: "UAE Real Estate Group (NDA)",
+  headline: "WhatsApp AI handling 200+ qualified leads per day in Arabic + English across Dubai and Abu Dhabi",
+  metric: "−78% response time · +41% lead-to-viewing conversion",
+  metricNote: "26 days from contract to live, 3 agents redeployed to higher-value work",
   slug: "nexora-hotels",
   cta: "View full case study →",
 };
@@ -110,27 +126,33 @@ type FaqItem = {
 const FAQ_ITEMS: FaqItem[] = [
   {
     id: 1,
-    question: "How do you determine what makes a lead qualified?",
+    question: "How do I know your Arabic is production-grade and not Google-Translate-grade?",
     answer:
-      "We start by analyzing your best customers and your sales team's qualification criteria. We review 20-30 sales calls to understand intent signals, deal size indicators, and disqualification triggers. The AI learns from this training data.",
+      "Test it. Type a message in your buyers' real dialect (Gulf, Saudi, Levantine, Egyptian, whatever) on our homepage demo. Try mid-message switching to English. Try Arabic-Indic numerals (٠١٢). Our production systems handle all of this. If our demo can't handle your test, we've failed and you've saved a call.",
   },
   {
     id: 2,
-    question: "What if someone gives the wrong answers during qualification?",
+    question: "How long does WhatsApp Business API approval take in MENA?",
     answer:
-      "Leads always get routed to your sales team. The AI score just determines the priority. A low-scored lead still reaches your team, but high-priority leads get faster response. Your team can always override scoring.",
+      "5–10 working days for UAE, Saudi, and Qatar in our experience. We submit on Day 1 of the project so it doesn't delay launch. Meta's approval requires a verified business with a phone number, business address, and website — we'll tell you exactly what they need on the first call.",
   },
   {
     id: 3,
-    question: "Can we qualify across different languages?",
+    question: "What if a buyer asks something the AI doesn't know?",
     answer:
-      "Yes. Our system supports Arabic, English, French, and others. Visitors answer qualification questions in their preferred language and all context is translated for your sales team.",
+      "The AI is built with confidence thresholds. If it isn't sure it can answer accurately (a financing-specific question, an unusual area, a property not in the inventory), it routes to a named human within 30 seconds via Slack DM and SMS. We've never had a client complaint about an AI hallucination in production because we refuse to ship a system that confidently invents answers.",
   },
   {
     id: 4,
-    question: "How fast do we see conversion rate improvement?",
+    question: "Is this PDPL-compliant (Saudi / UAE data protection)?",
     answer:
-      "Most clients see measurable improvements (5–15% higher conversion rate) by week 3. Full impact typically shows by week 6 once the AI has seen enough qualified interactions to optimize messaging.",
+      "Yes. Conversation transcripts can be stored entirely within Saudi or UAE data residency requirements if needed (we deploy via Azure OpenAI for in-region processing). We can sign DPAs and handle the buyer-consent flows required under PDPL. GDPR is also supported for UK and EU operations.",
+  },
+  {
+    id: 5,
+    question: "Will the AI replace my sales team?",
+    answer:
+      "It will replace the first 90 seconds of every conversation, which is the part your reps hate doing. The buyer's emotional decision to view a property or book a meeting still happens with a human. In our UAE deployment, the client redeployed 3 of 12 agents to higher-value outbound work; nobody was made redundant. If your model is 'AI replaces humans entirely,' we won't build it for you — it doesn't work in this market.",
   },
 ];
 
@@ -206,12 +228,14 @@ export default function LeadConversionPage() {
               </p>
 
               <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:items-center">
-                <Link
+                <a
                   className="inline-flex h-12 items-center justify-center rounded-lg bg-accent-400 px-8 text-sm font-semibold text-bg-default transition-all hover:bg-accent-300 hover:shadow-lg hover:shadow-accent-400/20"
-                  href="/free-ai-audit"
+                  href="https://calendly.com/achraflachgar/15min"
+                  target="_blank"
+                  rel="noopener noreferrer"
                 >
                   {HERO_DATA.cta}
-                </Link>
+                </a>
                 <span className="inline-flex rounded-full bg-green-500/15 px-4 py-2 text-xs font-semibold text-green-600">
                   {HERO_DATA.metric}
                 </span>
@@ -408,12 +432,14 @@ export default function LeadConversionPage() {
               <FaqAccordion />
             </div>
 
-            <Link
+            <a
               className="mt-6 inline-flex text-sm font-medium text-accent-400 hover:text-accent-300"
-              href="/free-ai-audit"
+              href="https://calendly.com/achraflachgar/15min"
+              target="_blank"
+              rel="noopener noreferrer"
             >
               Still have questions? Talk to our team →
-            </Link>
+            </a>
           </Reveal>
         </div>
       </section>
@@ -431,12 +457,14 @@ export default function LeadConversionPage() {
                 Let&apos;s review your funnel and identify 3–5 quick wins for lead conversion improvement.
               </p>
 
-              <Link
+              <a
                 className="mt-8 inline-flex h-12 items-center justify-center rounded-lg bg-accent-400 px-8 text-sm font-semibold text-bg-default transition-all hover:bg-accent-300 hover:shadow-lg hover:shadow-accent-400/20"
-                href="/free-ai-audit"
+                href="https://calendly.com/achraflachgar/15min"
+                target="_blank"
+                rel="noopener noreferrer"
               >
                 Schedule Free Audit
-              </Link>
+              </a>
             </div>
           </Reveal>
         </div>

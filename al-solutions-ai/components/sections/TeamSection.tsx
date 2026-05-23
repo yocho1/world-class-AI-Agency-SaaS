@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { StaggerReveal } from "@/components/ui";
 
 interface TeamMember {
@@ -9,6 +10,11 @@ interface TeamMember {
   bio?: string;
   built?: string;
   isFounder?: boolean;
+  /**
+   * Path to headshot image (WebP, 800x800, in /public/images/team/).
+   * If omitted, the card falls back to a gradient initials avatar.
+   */
+  photo?: string;
 }
 
 const TEAM: TeamMember[] = [
@@ -18,24 +24,31 @@ const TEAM: TeamMember[] = [
     linkedin: "https://www.linkedin.com/in/asimjan/",
     isFounder: true,
     bio: "I started AL Solutions AI after watching three clients waste six months and six figures on chatbot projects that never shipped. I personally design every system architecture and stay involved through go-live. The AI agents we build today are the ones I wish I'd had when I was running operations for SMEs across MENA.",
+    photo: "/images/team/asim-jan.webp",
   },
   {
     name: "Hamza Laaich",
     title: "AI Engineer",
     linkedin: "https://www.linkedin.com/in/hamza-laaich-253146228/",
-    built: "WhatsApp Business API AI agent with real-time Arabic dialect handling and HubSpot CRM sync",
+    built:
+      "WhatsApp Business API AI agent with real-time Arabic dialect handling and HubSpot CRM sync",
+    photo: "/images/team/hamza-laaich.webp",
   },
   {
     name: "Sadak Errahman",
     title: "AI Engineer",
     linkedin: "https://www.linkedin.com/in/sadak-errahman/",
-    built: "Multilingual RAG pipeline supporting Modern Standard Arabic, Gulf dialects, French, and English with mid-conversation language switching",
+    built:
+      "Multilingual RAG pipeline supporting Modern Standard Arabic, Gulf dialects, French, and English with mid-conversation language switching",
+    photo: "/images/team/sadak-errahman.webp",
   },
   {
     name: "Antoine Willerval",
     title: "AI Engineer",
     linkedin: "https://www.linkedin.com/in/antoine-willerval/",
-    built: "CRM automation system that extracts deal context from call recordings and auto-updates HubSpot with one-click human approval",
+    built:
+      "CRM automation system that extracts deal context from call recordings and auto-updates HubSpot with one-click human approval",
+    photo: "/images/team/antoine-willerval.webp",
   },
 ];
 
@@ -50,9 +63,22 @@ function MemberCard({ member }: { member: TeamMember }) {
     return (
       <div className="rounded-2xl border border-border-subtle bg-bg-surface p-6 sm:col-span-2 lg:col-span-2 transition-all duration-300 hover:border-accent-400/20 hover:bg-bg-elevated hover:-translate-y-0.5 hover:shadow-lg hover:shadow-accent-400/5">
         <div className="flex flex-col gap-5 sm:flex-row sm:items-start">
-          <div className="flex h-20 w-20 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br from-accent-400 to-accent-600 text-xl font-bold text-white shadow-lg shadow-accent-400/20">
-            {initials}
-          </div>
+          {member.photo ? (
+            <div className="relative h-20 w-20 shrink-0 overflow-hidden rounded-2xl ring-2 ring-accent-400/30 shadow-lg shadow-accent-400/20">
+              <Image
+                src={member.photo}
+                alt={`${member.name}, ${member.title} at AL Solutions AI`}
+                fill
+                sizes="80px"
+                priority
+                className="object-cover object-[center_top]"
+              />
+            </div>
+          ) : (
+            <div className="flex h-20 w-20 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br from-accent-400 to-accent-600 text-xl font-bold text-white shadow-lg shadow-accent-400/20">
+              {initials}
+            </div>
+          )}
           <div className="flex-1">
             <div className="flex items-center gap-2">
               <h3 className="text-lg font-semibold text-text-primary">{member.name}</h3>
@@ -85,9 +111,22 @@ function MemberCard({ member }: { member: TeamMember }) {
   return (
     <div className="rounded-2xl border border-border-subtle bg-bg-surface p-6 transition-all duration-300 hover:border-accent-400/20 hover:bg-bg-elevated hover:-translate-y-0.5 hover:shadow-lg hover:shadow-accent-400/5">
       <div className="flex items-center gap-4">
-        <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-bg-elevated to-bg-overlay text-base font-bold text-text-primary border border-border-subtle shadow-sm">
-          {initials}
-        </div>
+        {member.photo ? (
+          <div className="relative h-14 w-14 shrink-0 overflow-hidden rounded-full border border-border-subtle shadow-sm">
+            <Image
+              src={member.photo}
+              alt={`${member.name}, ${member.title} at AL Solutions AI`}
+              fill
+              sizes="56px"
+              loading="lazy"
+              className="object-cover object-[center_top]"
+            />
+          </div>
+        ) : (
+          <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-bg-elevated to-bg-overlay text-base font-bold text-text-primary border border-border-subtle shadow-sm">
+            {initials}
+          </div>
+        )}
         <div>
           <h3 className="text-base font-semibold text-text-primary">{member.name}</h3>
           <p className="text-xs text-text-tertiary">{member.title}</p>
@@ -95,8 +134,7 @@ function MemberCard({ member }: { member: TeamMember }) {
       </div>
       {member.built && (
         <p className="mt-4 text-sm text-text-secondary">
-          <span className="font-medium text-text-primary">Built:</span>{" "}
-          {member.built}
+          <span className="font-medium text-text-primary">Built:</span> {member.built}
         </p>
       )}
       <a
@@ -130,22 +168,35 @@ export function TeamSection() {
           </p>
         </div>
 
-        <StaggerReveal className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3" staggerDelay={0.12}>
+        <StaggerReveal
+          className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3"
+          staggerDelay={0.12}
+        >
           {TEAM.map((member) => (
             <MemberCard key={member.name} member={member} />
           ))}
         </StaggerReveal>
 
         <div className="mx-auto mt-12 max-w-3xl rounded-2xl border border-border-subtle bg-bg-elevated p-6 sm:p-8">
-          <h3 className="text-base font-semibold text-text-primary">Why we stay small on purpose</h3>
+          <h3 className="text-base font-semibold text-text-primary">
+            Why we stay small on purpose
+          </h3>
           <p className="mt-3 text-sm leading-relaxed text-text-secondary">
-            We have never hired a sales team, a project manager, or an account executive. When you work with AL Solutions AI, you speak directly to the engineer who designs your system and stays with it through go-live.
+            We have never hired a sales team, a project manager, or an account executive. When you
+            work with AL Solutions AI, you speak directly to the engineer who designs your system
+            and stays with it through go-live.
           </p>
           <p className="mt-3 text-sm leading-relaxed text-text-secondary">
-            This is not because we cannot afford to grow. It is because we have seen what happens when agencies scale: your project gets handed from a closer to a project manager to a junior developer who was briefed in a 15-minute call. By the time the system is live, nobody on the team remembers why a specific decision was made.
+            This is not because we cannot afford to grow. It is because we have seen what happens
+            when agencies scale: your project gets handed from a closer to a project manager to a
+            junior developer who was briefed in a 15-minute call. By the time the system is live,
+            nobody on the team remembers why a specific decision was made.
           </p>
           <p className="mt-3 text-sm leading-relaxed text-text-secondary">
-            Staying small means every project gets senior attention. It means the person you spoke to on the audit call is the same person debugging your integration at 10pm three days before launch. It means we can say no to projects that do not fit — and yes to the ones where we know we will deliver real results.
+            Staying small means every project gets senior attention. It means the person you spoke
+            to on the audit call is the same person debugging your integration at 10pm three days
+            before launch. It means we can say no to projects that do not fit — and yes to the ones
+            where we know we will deliver real results.
           </p>
         </div>
       </div>

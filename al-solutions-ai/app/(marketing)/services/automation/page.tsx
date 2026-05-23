@@ -8,11 +8,11 @@ import { Reveal } from "@/components/ui";
 // 1. HERO SECTION DATA
 // =======================
 const HERO_DATA = {
-  service: "Automation Systems",
-  headline: "Eliminate 200+ Hours of Manual Work Per Month — Without Hiring.",
-  subheadline: "Connect your existing CRM, helpdesk, and messaging tools into AI-driven workflows that ship in 30 days. Tracked, measurable, and owned by your team — not by us.",
-  metric: "-40% operational cost",
-  cta: "Book Free Audit",
+  service: "CRM AI Automation",
+  headline: "Your reps spend 45 minutes a day updating the CRM. We can give them most of that back.",
+  subheadline: "A production AI system that listens to your sales calls, extracts structured fields (stage, next step, blockers, stakeholders, competitors), and stages an update for one-click human approval in HubSpot or Salesforce. Live in 19–30 days. Mandatory human approval — the AI never writes to your CRM unsupervised.",
+  metric: "−89% CRM admin time · 61% → 94% pipeline accuracy",
+  cta: "Book free 30-min audit",
 };
 
 // =======================
@@ -20,22 +20,22 @@ const HERO_DATA = {
 // =======================
 const INDUSTRIES = [
   {
-    icon: "💰",
-    name: "Finance & Accounting",
+    icon: "�",
+    name: "B2B sales teams (10–50 reps)",
     description:
-      "Automate invoice routing, approval workflows, and reconciliation. Reduce manual entry errors by 95%. Sync data across accounting software in real-time.",
+      "Reps spending 30+ min/day on CRM admin instead of selling. The AI captures structured call notes, stages updates for approval, and gives your CRO a forecast they can actually trust. Currently in production for a UK professional services firm with 12 reps.",
   },
   {
     icon: "📞",
-    name: "Sales Operations",
+    name: "Inside sales & SDR teams",
     description:
-      "Automatic lead routing to sales reps, meeting scheduling without back-and-forth, CRM data sync. Eliminate manual data entry entirely.",
+      "High-velocity outbound teams making 60+ calls/day where the meeting notes never get logged consistently. The AI captures every call, extracts intent and next-step, and writes structured data to HubSpot — with the SDR approving in 20 seconds.",
   },
   {
     icon: "🛠️",
-    name: "Support & Ops",
+    name: "Operations & RevOps leaders",
     description:
-      "Route tickets based on expertise, automate follow-up workflows, track SLAs without spreadsheets. Give your team time back for high-value work.",
+      "Pipeline accuracy below 80%, forecasts the board doesn't trust, and clean-data initiatives that keep failing. The AI standardises stage definitions across reps, flags low-confidence extractions for review, and gives RevOps a single audit trail of every CRM change.",
   },
 ];
 
@@ -43,14 +43,17 @@ const INDUSTRIES = [
 // 3. WHAT'S INCLUDED (Features)
 // =======================
 const FEATURES = [
-  "Workflow mapping and bottleneck analysis",
-  "Integration with your existing tools (CRM, accounting, helpdesk)",
-  "Automated routing and conditional logic",
-  "Real-time data synchronization across platforms",
-  "Built-in error handling and exception logging",
-  "Measurable KPIs and time-saved tracking",
-  "Custom escalation rules and manual handoff workflows",
-  "Monthly optimization based on real usage data",
+  "Call capture from Aircall, Dialpad, Gong, Zoom, or Microsoft Teams",
+  "Whisper large-v3 transcription with speaker diarization (rep vs. prospect labeled)",
+  "GPT-4o structured extraction against your specific funnel stage definitions",
+  "Mandatory human approval in HubSpot or Salesforce (the AI never writes unsupervised)",
+  "One-click approval flow via Slack DM and CRM task (20–60 second interaction)",
+  "Confidence scoring — low-confidence extractions are flagged for review",
+  "Stakeholder, blocker, and competitor extraction with audit log",
+  "Automated CRM activity logging for short calls (under 90 sec) without rep input",
+  "GDPR-compliant: audio deleted within 24 hours, transcripts in your own tenant",
+  "Weekly accuracy review for the first 30 days to calibrate against your team",
+  "30 days of post-launch support, no retainer required",
 ];
 
 // =======================
@@ -59,21 +62,33 @@ const FEATURES = [
 const TIMELINE_STEPS = [
   {
     step: 1,
-    title: "Workflow Audit (Days 1–7)",
+    title: "Free audit & scope (Day 0, 48 hours)",
     description:
-      "We map your current process, identify manual steps and pain points, and document where data gets duplicated or lost. You provide access to tools and walk us through a typical workflow.",
+      "30-minute call with a senior engineer. We diagnose whether your problem is genuinely CRM admin time vs. something else (often it's a pipeline definition problem, not an AI problem). Written scope and fixed price inside 48 hours, or we tell you we won't build it.",
   },
   {
     step: 2,
-    title: "Build & Test (Days 8–22)",
+    title: "Funnel definition & call sampling (Days 1–7)",
     description:
-      "We configure integrations, set up automation rules, and build exception handling. You test in parallel and give feedback on Day 15. We iterate based on your team's real workflows.",
+      "We sit with your sales leadership to lock down your funnel stage definitions in writing — most companies have ambiguity here, and AI can't be more accurate than your own ground truth. Then we sample 50 historical calls to calibrate extraction accuracy before any code goes live.",
   },
   {
     step: 3,
-    title: "Deploy & Train (Days 23–30)",
+    title: "Build, integrate, and shadow test (Days 8–22)",
     description:
-      "Go live with full team training. We monitor the first week of automated workflows, fix any edge cases, and hand off monitoring dashboards so you can track ongoing savings.",
+      "Dialer integration, Whisper transcription pipeline, GPT-4o extraction, CRM staging, and Slack approval UI all built in parallel. System runs in shadow mode for the last week (extractions happen but nothing writes to CRM yet) so you can review accuracy before launch.",
+  },
+  {
+    step: 4,
+    title: "Go-live and calibration (Days 23–30)",
+    description:
+      "System goes live with all calls routed through it. Daily monitoring for the first 7 days. We tune the confidence threshold, field mappings, and approval UX based on how your reps actually use it. By Day 30 you'll be measuring time saved.",
+  },
+  {
+    step: 5,
+    title: "Handover and optional ongoing support (Day 30+)",
+    description:
+      "Full documentation handed over. No retainer lock-in. Most clients keep us on for monthly optimisation (£500–£1,500/month) but it's optional — you can take it in-house at any time.",
   },
 ];
 
@@ -81,19 +96,19 @@ const TIMELINE_STEPS = [
 // 5. KEY METRICS (Stats)
 // =======================
 const KEY_METRICS = [
-  { stat: "-40%", label: "Operational cost reduction", note: "Through automation of routine workflows" },
-  { stat: "20–30", label: "Hours saved per week", note: "Typical for mid-size ops team" },
-  { stat: "95%", label: "Fewer manual data errors", note: "Automated workflows eliminate typing mistakes" },
+  { stat: "−89%", label: "CRM admin time per rep", note: "UK professional services firm, 45 min/day → 5 min/day, 90 days post-launch" },
+  { stat: "94%", label: "Pipeline accuracy", note: "UK professional services firm, baseline 61% → 94% within 90 days" },
+  { stat: "3.5h", label: "Selling time recovered per rep per week", note: "Net of approval-flow time (20–60 sec per call)" },
 ];
 
 // =======================
 // 6. RELATED CASE STUDY
 // =======================
 const RELATED_CASE_STUDY = {
-  title: "Nexora Hotels Group",
-  headline: "Automated booking and guest routing workflow",
-  metric: "-62% support response time",
-  metricNote: "with automated handoff to team",
+  title: "UK Professional Services Firm (NDA)",
+  headline: "CRM AI for 12-person sales team — mandatory human approval, 89% time reduction",
+  metric: "−89% CRM admin time · +33pp pipeline accuracy",
+  metricNote: "19 days from contract to live, 3.5 hours/rep/week recovered",
   slug: "nexora-hotels",
   cta: "View full case study →",
 };
@@ -110,27 +125,33 @@ type FaqItem = {
 const FAQ_ITEMS: FaqItem[] = [
   {
     id: 1,
-    question: "What if a manual step can't be automated?",
+    question: "Does the AI write to my CRM automatically?",
     answer:
-      "We build workflows with exception handling. If automation hits a scenario it can't handle, it flags the task for your team with full context so someone can review it manually. Over time, these exceptions often become automatable too.",
+      "No, and we won't build it that way even if you ask. Every CRM update goes through a one-click human approval flow that takes 20–60 seconds. The reason: GPT-4o is excellent and still mis-extracts about 1 in 80 calls in our testing. If those errors got written automatically, you'd lose forecast credibility and the system would die politically inside 3 months. Approval gates prevent that.",
   },
   {
     id: 2,
-    question: "Will this break if you update your tools or APIs?",
+    question: "How accurate is the field extraction?",
     answer:
-      "No. We monitor integrations and keep them updated. For 60 days post-launch, we monitor for any API changes. After that, we provide you with a runbook so your tech team can maintain the workflows independently.",
+      "On the firm we're currently running this for, field accuracy after the 30-day calibration is 94% for stage, 96% for next-step, 91% for blocker identification. The remaining error rate is what the human approval flow catches. We benchmark against a labelled sample of 50 historical calls during week 1 so you see accuracy before launch.",
   },
   {
     id: 3,
-    question: "How long does it take for us to see ROI?",
+    question: "What dialers and CRMs do you support?",
     answer:
-      "Most teams see measurable time savings in week 2 of deployment. After month 1, you typically recover the project cost through reduced manual work. After 12 months, most clients report 200%+ ROI.",
+      "Dialers: Aircall, Dialpad, Gong, Chorus, Zoom Phone, Microsoft Teams. CRMs: HubSpot and Salesforce natively, Pipedrive on request. For other stacks we'll assess in the free audit and tell you if it's a 2-day connector or a 2-week build.",
   },
   {
     id: 4,
-    question: "Can we automate workflows across different software platforms?",
+    question: "What happens to the call audio? Is it GDPR-compliant?",
     answer:
-      "Yes. We use integration platforms (Zapier, Make, custom APIs) to connect systems. If two tools have an API, we can pass data between them automatically. We'll assess your specific tool stack during the discovery call.",
+      "Audio is processed for transcription and deleted within 24 hours by default — we can configure shorter retention on request. Transcripts and extracted fields are stored in your own CRM or your own cloud tenant; nothing lives permanently on AL Solutions AI infrastructure. We sign DPAs as standard and support EU/UK data residency via Azure OpenAI if you require it.",
+  },
+  {
+    id: 5,
+    question: "Will reps actually use this, or will they ignore it like every other CRM tool?",
+    answer:
+      "This is the right question. The reason most CRM tools get ignored is that they add work. This subtracts work — the rep approves in 20 seconds and saves 45 minutes elsewhere. In production at our current client, the rep adoption rate is 100% because skipping the approval means they have to write the notes manually themselves. We pilot with 2–3 reps before rolling out to the full team so you de-risk adoption.",
   },
 ];
 
@@ -206,12 +227,14 @@ export default function AutomationPage() {
               </p>
 
               <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:items-center">
-                <Link
+                <a
                   className="inline-flex h-12 items-center justify-center rounded-lg bg-accent-400 px-8 text-sm font-semibold text-bg-default transition-all hover:bg-accent-300 hover:shadow-lg hover:shadow-accent-400/20"
-                  href="/free-ai-audit"
+                  href="https://calendly.com/achraflachgar/15min"
+                  target="_blank"
+                  rel="noopener noreferrer"
                 >
                   {HERO_DATA.cta}
-                </Link>
+                </a>
                 <span className="inline-flex rounded-full bg-green-500/15 px-4 py-2 text-xs font-semibold text-green-600">
                   {HERO_DATA.metric}
                 </span>
@@ -408,12 +431,14 @@ export default function AutomationPage() {
               <FaqAccordion />
             </div>
 
-            <Link
+            <a
               className="mt-6 inline-flex text-sm font-medium text-accent-400 hover:text-accent-300"
-              href="/free-ai-audit"
+              href="https://calendly.com/achraflachgar/15min"
+              target="_blank"
+              rel="noopener noreferrer"
             >
               Still have questions? Talk to our team →
-            </Link>
+            </a>
           </Reveal>
         </div>
       </section>
@@ -431,12 +456,14 @@ export default function AutomationPage() {
                 Let&apos;s audit your current process and identify the quickest wins for automation.
               </p>
 
-              <Link
+              <a
                 className="mt-8 inline-flex h-12 items-center justify-center rounded-lg bg-accent-400 px-8 text-sm font-semibold text-bg-default transition-all hover:bg-accent-300 hover:shadow-lg hover:shadow-accent-400/20"
-                href="/free-ai-audit"
+                href="https://calendly.com/achraflachgar/15min"
+                target="_blank"
+                rel="noopener noreferrer"
               >
                 Schedule Free Audit
-              </Link>
+              </a>
             </div>
           </Reveal>
         </div>

@@ -5,6 +5,7 @@ import { trackHeroCTAClick, trackExperimentConverted } from "@/lib/analytics/eve
 import { trackEvent } from "@/lib/analytics";
 import { usePostHog } from "@/hooks/usePostHog";
 import { Reveal } from "@/components/ui";
+import { WhatsAppDemo } from "./WhatsAppDemo";
 
 interface HeroProps {
   eyebrow?: string;
@@ -89,12 +90,12 @@ export function Hero({
         className="pointer-events-none absolute -right-32 top-1/3 h-[500px] w-[500px] rounded-full blur-[140px] opacity-15"
         style={{ background: "radial-gradient(circle, rgba(91,33,246,0.5) 0%, transparent 70%)" }}
       />
-      <div className="container relative z-10">
+      <div className="container relative z-10 grid items-center gap-12 lg:grid-cols-[1fr_minmax(0,480px)] lg:gap-16">
         <Reveal>
           <p className="text-sm font-medium uppercase tracking-[0.18em] text-accent-400">
             {eyebrow}
           </p>
-          <h1 className="hero-headline mt-5 max-w-5xl text-4xl font-medium leading-tight tracking-tight text-white md:text-6xl">
+          <h1 className="hero-headline mt-5 max-w-2xl text-4xl font-medium leading-tight tracking-tight text-white md:text-5xl xl:text-6xl">
             {title}
           </h1>
           <p className="mt-6 max-w-prose text-base text-[#94A3B8] md:text-lg">
@@ -155,6 +156,11 @@ export function Hero({
               </div>
             ))}
           </div>
+        </Reveal>
+
+        {/* Right column: WhatsApp AI agent demo */}
+        <Reveal delay={0.2} className="relative">
+          <WhatsAppDemo />
         </Reveal>
       </div>
     </section>
