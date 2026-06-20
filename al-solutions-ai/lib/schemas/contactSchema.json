@@ -1,0 +1,29 @@
+{
+  "@context": "https://schema.org",
+  "@type": "ContactPage",
+  "name": "Contact AL Solutions AI",
+  "url": "https://www.alsolutionsai.online/en/contact",
+  "description": "Contact AL Solutions AI to book a free AI audit or discuss your AI chatbot and automation project.",
+  "mainEntity": {
+    "@type": "Organization",
+    "name": "AL Solutions AI",
+    "legalName": "AL Solutions AI Ltd",
+    "url": "https://www.alsolutionsai.online",
+    "contactPoint": [
+      {
+        "@type": "ContactPoint",
+        "contactType": "customer service",
+        "email": "hello@alsolutionsai.online",
+        "telephone": "+447418360646",
+        "availableLanguage": ["English", "Arabic", "French"],
+        "hoursAvailable": {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+          "opens": "09:00",
+          "closes": "18:00"
+        }
+      }
+    ],
+    "sameAs": ["https://www.linkedin.com/company/alsolutionsai"]
+  }
+}

@@ -60,7 +60,7 @@ export default function ContactForm() {
       <div className="grid gap-4 sm:grid-cols-2">
         {/* Name */}
         <div>
-          <label className="block text-xs font-semibold uppercase tracking-wider text-text-tertiary mb-2">Name *</label>
+          <label className="block text-xs font-semibold uppercase tracking-wider text-text-tertiary mb-1.5">Name *</label>
           <input
             type="text"
             name="name"
@@ -74,7 +74,7 @@ export default function ContactForm() {
 
         {/* Company */}
         <div>
-          <label className="block text-xs font-semibold uppercase tracking-wider text-text-tertiary mb-2">Company *</label>
+          <label className="block text-xs font-semibold uppercase tracking-wider text-text-tertiary mb-1.5">Company *</label>
           <input
             type="text"
             name="company"
@@ -90,7 +90,7 @@ export default function ContactForm() {
       <div className="grid gap-4 sm:grid-cols-2">
         {/* Email */}
         <div>
-          <label className="block text-xs font-semibold uppercase tracking-wider text-text-tertiary mb-2">Email *</label>
+          <label className="block text-xs font-semibold uppercase tracking-wider text-text-tertiary mb-1.5">Email *</label>
           <input
             type="email"
             name="email"
@@ -104,7 +104,7 @@ export default function ContactForm() {
 
         {/* Phone (Optional) */}
         <div>
-          <label className="block text-xs font-semibold uppercase tracking-wider text-text-tertiary mb-2">Phone (optional)</label>
+          <label className="block text-xs font-semibold uppercase tracking-wider text-text-tertiary mb-1.5">Phone (optional)</label>
           <input
             type="tel"
             name="phone"
@@ -118,7 +118,7 @@ export default function ContactForm() {
 
       {/* Message */}
       <div>
-        <label className="block text-xs font-semibold uppercase tracking-wider text-text-tertiary mb-2">What are you looking to build? *</label>
+        <label className="block text-xs font-semibold uppercase tracking-wider text-text-tertiary mb-1.5">What are you looking to build? *</label>
         <textarea
           name="message"
           value={formData.message}
@@ -138,7 +138,7 @@ export default function ContactForm() {
         Send message
       </button>
 
-      <p className="text-xs text-text-tertiary">We&apos;ll respond within 4 business hours.</p>
+      <p className="mt-3 text-xs text-text-tertiary">We&apos;ll respond within 2 hours.</p>
     </form>
   );
 }

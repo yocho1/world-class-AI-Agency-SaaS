@@ -5,6 +5,8 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "validate:jsonld": "node scripts/validate-jsonld.js",
+    "check:faq-accessibility": "node scripts/check-faq-a11y.js",
     "start": "next start",
     "lint": "eslint .",
     "typecheck": "tsc --noEmit",

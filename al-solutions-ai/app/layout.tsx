@@ -48,7 +48,7 @@ const organizationSchema = {
     "WhatsApp Business Automation",
     "Multilingual NLP",
   ],
-  sameAs: ["https://www.linkedin.com/company/al-solutions-ai"],
+  sameAs: ["https://www.linkedin.com/company/alsolutionsai"],
   contactPoint: {
     "@type": "ContactPoint",
     contactType: "customer service",

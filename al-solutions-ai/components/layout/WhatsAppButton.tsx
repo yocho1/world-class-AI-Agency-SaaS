@@ -4,7 +4,7 @@ import { useEffect, useMemo, useState } from "react";
 import { trackEvent } from "@/lib/analytics";
 
 const WHATSAPP_URL =
-  "https://wa.me/212674147995?text=Hi%2C%20I%27d%20like%20to%20learn%20about%20your%20AI%20services";
+  "https://wa.me/447418360646?text=Hi%2C%20I%27d%20like%20to%20learn%20about%20your%20AI%20services";
 const HIDE_KEY = "whatsappButtonHiddenUntil";
 const HIDE_DURATION_MS = 1000 * 60 * 60 * 24;
 
