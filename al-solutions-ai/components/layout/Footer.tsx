@@ -4,7 +4,7 @@ import Link from "next/link";
 export function Footer() {
   return (
     <footer className="border-t border-border-subtle bg-bg-surface py-12">
-      <div className="container grid gap-8 text-sm text-text-secondary md:grid-cols-[1.4fr_0.8fr_0.8fr_1fr]">
+      <div className="container grid gap-8 text-sm text-text-secondary md:grid-cols-[1.4fr_0.8fr_0.8fr_0.8fr]">
         <div>
           <Link href="/" aria-label="AL Solutions AI — home" className="relative inline-block h-14 w-56 overflow-hidden">
             <Image
@@ -38,13 +38,18 @@ export function Footer() {
           <div className="mt-3 flex flex-col gap-2">
             <Link href="/privacy">Privacy</Link>
             <Link href="/terms">Terms</Link>
-            <Link href="/contact">Contact</Link>
+            <Link href="/cookie-policy">Cookie Policy</Link>
+            <Link href="/disclaimer">Disclaimer</Link>
           </div>
         </div>
 
         <div>
-          <p className="text-xs uppercase tracking-[0.16em] text-text-tertiary">Built with</p>
-          <p className="mt-3 max-w-xs text-text-secondary">AL Solutions AI</p>
+          <p className="text-xs uppercase tracking-[0.16em] text-text-tertiary">Support</p>
+          <div className="mt-3 flex flex-col gap-2">
+            <Link href="/refund-cancellation-policy">Refund & Cancellation</Link>
+            <Link href="/accessibility-statement">Accessibility</Link>
+            <Link href="/contact">Contact</Link>
+          </div>
         </div>
 
       </div>
