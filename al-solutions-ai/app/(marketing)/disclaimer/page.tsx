@@ -59,7 +59,7 @@ export default function DisclaimerPage() {
           <section>
             <h2 className="text-2xl font-bold text-text-primary">2. Revenue & ROI calculator</h2>
             <p className="mt-4 leading-relaxed">
-              The "Calculate your revenue potential" tool on this Site is an <strong>illustrative estimate only</strong>, 
+              The &quot;Calculate your revenue potential&quot; tool on this Site is an <strong>illustrative estimate only</strong>, 
               based on inputs you provide and averages drawn from past client deployments. It is not a forecast, 
               projection, or guarantee of revenue, leads, or conversion rate for your business. Treat the output as 
               a starting point for a conversation, not a financial commitment from us.
@@ -89,7 +89,7 @@ export default function DisclaimerPage() {
             <h2 className="text-2xl font-bold text-text-primary">5. Third-party content and links</h2>
             <p className="mt-4 leading-relaxed">
               This Site links to or embeds third-party platforms (Google, Calendly, WhatsApp, LinkedIn) and 
-              displays third-party reviews. We don't control and aren't responsible for the accuracy or 
+              displays third-party reviews. We don&apos;t control and aren&apos;t responsible for the accuracy or 
               availability of third-party content.
             </p>
           </section>
@@ -116,7 +116,7 @@ export default function DisclaimerPage() {
               >
                 hello@alsolutionsai.online
               </a>
-              {" "}and we'll clarify or correct it.
+              {" "}and we&apos;ll clarify or correct it.
             </p>
             <p className="mt-4 leading-relaxed font-semibold text-text-primary">Solutions AI Ltd</p>
             <p className="leading-relaxed">

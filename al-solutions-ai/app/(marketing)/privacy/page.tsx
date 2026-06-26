@@ -1,4 +1,3 @@
-import Link from "next/link";
 import type { Metadata } from "next";
 import { alternatesFor, canonicalUrl } from "@/lib/seo";
 
@@ -37,7 +36,7 @@ export default function PrivacyPage() {
         <div className="space-y-8 text-text-secondary">
           <section>
             <p className="leading-relaxed">
-              AL Solutions AI ("we", "us", "our") is operated by <strong>Solutions AI Ltd</strong>, a company 
+              AL Solutions AI (&quot;we&quot;, &quot;us&quot;, &quot;our&quot;) is operated by <strong>Solutions AI Ltd</strong>, a company 
               registered in England and Wales (Company No. 11521309), registered office at 19 Shepiston Lane, 
               Hayes, United Kingdom, UB3 1LH.
             </p>
@@ -65,7 +64,7 @@ export default function PrivacyPage() {
                     <td className="px-4 py-3">Name, company name, email address, phone number (optional), project details</td>
                   </tr>
                   <tr>
-                    <td className="px-4 py-3 font-semibold text-text-primary">"Book free audit" / Calendly</td>
+                    <td className="px-4 py-3 font-semibold text-text-primary">&quot;Book free audit&quot; / Calendly</td>
                     <td className="px-4 py-3">Name, email, phone, meeting time, any notes you provide</td>
                   </tr>
                   <tr>
@@ -74,7 +73,7 @@ export default function PrivacyPage() {
                   </tr>
                   <tr>
                     <td className="px-4 py-3 font-semibold text-text-primary">WhatsApp</td>
-                    <td className="px-4 py-3">Phone number and message content, per WhatsApp's own terms</td>
+                    <td className="px-4 py-3">Phone number and message content, per WhatsApp&apos;s own terms</td>
                   </tr>
                   <tr>
                     <td className="px-4 py-3 font-semibold text-text-primary">Website analytics (Google Tag Manager)</td>
@@ -98,7 +97,7 @@ export default function PrivacyPage() {
               <li>To respond to enquiries and book audit calls</li>
               <li>To deliver the AI Readiness Checklist and related resources you request</li>
               <li>To scope, deliver, and support client projects</li>
-              <li>To send occasional updates if you've opted in (you can unsubscribe anytime)</li>
+              <li>To send occasional updates if you&apos;ve opted in (you can unsubscribe anytime)</li>
               <li>To understand site traffic and improve the website</li>
               <li>To meet legal and accounting obligations</li>
             </ul>
@@ -108,7 +107,7 @@ export default function PrivacyPage() {
             <h2 className="text-2xl font-bold text-text-primary">3. Legal basis for processing</h2>
             <ul className="mt-4 list-disc space-y-2 pl-6">
               <li>
-                <strong>Contract</strong> — where data is needed to deliver a service you've requested (e.g. an audit call)
+                <strong>Contract</strong> — where data is needed to deliver a service you&apos;ve requested (e.g. an audit call)
               </li>
               <li>
                 <strong>Consent</strong> — for marketing emails and non-essential cookies
@@ -157,7 +156,7 @@ export default function PrivacyPage() {
             <p className="mt-4 leading-relaxed">
               Some of the providers above (e.g. Google, Meta) may process data outside the UK/EEA, including in 
               the United States. Where this happens, we rely on appropriate safeguards such as Standard 
-              Contractual Clauses or the provider's equivalent data protection framework.
+              Contractual Clauses or the provider&apos;s equivalent data protection framework.
             </p>
           </section>
 
@@ -178,7 +177,7 @@ export default function PrivacyPage() {
             <ul className="mt-4 list-disc space-y-2 pl-6">
               <li>Access the personal data we hold about you</li>
               <li>Correct inaccurate data</li>
-              <li>Request deletion ("right to be forgotten")</li>
+              <li>Request deletion (&quot;right to be forgotten&quot;)</li>
               <li>Restrict or object to processing</li>
               <li>Request data portability</li>
               <li>Withdraw consent at any time</li>
@@ -191,7 +190,7 @@ export default function PrivacyPage() {
               >
                 privacy@alsolutionsai.online
               </a>
-              . You also have the right to complain to the UK Information Commissioner's Office 
+              . You also have the right to complain to the UK Information Commissioner&apos;s Office 
               ({" "}
               <a 
                 href="https://ico.org.uk"
@@ -225,7 +224,7 @@ export default function PrivacyPage() {
             <h2 className="text-2xl font-bold text-text-primary">11. Changes to this policy</h2>
             <p className="mt-4 leading-relaxed">
               We may update this policy as our services or legal obligations change. Material changes will be 
-              reflected with a new "last updated" date above.
+              reflected with a new &quot;last updated&quot; date above.
             </p>
           </section>
 

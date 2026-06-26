@@ -1,4 +1,3 @@
-import Link from "next/link";
 import type { Metadata } from "next";
 import { alternatesFor, canonicalUrl } from "@/lib/seo";
 
@@ -91,8 +90,8 @@ export default function RefundCancellationPolicyPage() {
           <section>
             <h2 className="text-2xl font-bold text-text-primary">5. If we fail to deliver</h2>
             <p className="mt-4 leading-relaxed">
-              If we materially fail to deliver the agreed scope (the system doesn't work as specified, or we miss the 
-              go-live date by more than <strong>2 weeks</strong> without a mutually agreed extension), you're entitled 
+              If we materially fail to deliver the agreed scope (the system doesn&apos;t work as specified, or we miss the 
+              go-live date by more than <strong>2 weeks</strong> without a mutually agreed extension), you&apos;re entitled 
               to a partial refund proportional to the undelivered work, per your Service Agreement.
             </p>
           </section>
@@ -115,7 +114,7 @@ export default function RefundCancellationPolicyPage() {
               >
                 billing@alsolutionsai.online
               </a>
-              {" "}with your project name and reason. We'll confirm receipt within 2 business hours and resolve 
+              {" "}with your project name and reason. We&apos;ll confirm receipt within 2 business hours and resolve 
               most requests within 5 business days.
             </p>
           </section>
@@ -123,7 +122,7 @@ export default function RefundCancellationPolicyPage() {
           <section>
             <h2 className="text-2xl font-bold text-text-primary">8. Disputes</h2>
             <p className="mt-4 leading-relaxed">
-              If we can't resolve a billing dispute directly, either party may escalate it through the dispute 
+              If we can&apos;t resolve a billing dispute directly, either party may escalate it through the dispute 
               resolution process set out in the Service Agreement, or as a last resort through the courts of England 
               and Wales.
             </p>

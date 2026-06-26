@@ -39,7 +39,7 @@ export default function CookiePolicyPage() {
             <p className="leading-relaxed">
               This Cookie Policy explains how <strong>Solutions AI Ltd</strong> (Company No. 11521309), 
               trading as AL Solutions AI, uses cookies and similar technologies on alsolutionsai.online 
-              (the "Site"). It should be read alongside our{" "}
+              (the &quot;Site&quot;). It should be read alongside our{" "}
               <Link href="/privacy" className="text-accent-400 hover:text-accent-300">
                 Privacy Policy
               </Link>
@@ -168,7 +168,7 @@ export default function CookiePolicyPage() {
               You can change your preference at any time by:
             </p>
             <ul className="mt-4 list-disc space-y-2 pl-6">
-              <li>Clicking "Cookie Settings" in the site footer</li>
+              <li>Clicking &quot;Cookie Settings&quot; in the site footer</li>
               <li>Clearing cookies in your browser and revisiting the Site</li>
               <li>Adjusting your browser settings to block cookies generally (note: this may affect site functionality)</li>
             </ul>
@@ -178,7 +178,7 @@ export default function CookiePolicyPage() {
             <h2 className="text-2xl font-bold text-text-primary">5. Third-party cookies</h2>
             <p className="mt-4 leading-relaxed">
               Some cookies are set by third parties we embed on the Site (Google, Calendly, WhatsApp/Meta, 
-              LinkedIn). We don't control these directly — refer to each provider's own cookie/privacy policy for details:
+              LinkedIn). We don&apos;t control these directly — refer to each provider&apos;s own cookie/privacy policy for details:
             </p>
             <ul className="mt-4 list-disc space-y-2 pl-6">
               <li>

@@ -1,4 +1,3 @@
-import Link from "next/link";
 import type { Metadata } from "next";
 import { alternatesFor, canonicalUrl } from "@/lib/seo";
 
@@ -37,9 +36,9 @@ export default function TermsPage() {
         <div className="space-y-8 text-text-secondary">
           <section>
             <p className="leading-relaxed">
-              These Terms govern your use of alsolutionsai.online (the "Site"), operated by{" "}
+              These Terms govern your use of alsolutionsai.online (the &quot;Site&quot;), operated by{" "}
               <strong>Solutions AI Ltd</strong> (Company No. 11521309, registered office 19 Shepiston Lane, 
-              Hayes, United Kingdom, UB3 1LH), trading as "AL Solutions AI". By using the Site, you agree to 
+              Hayes, United Kingdom, UB3 1LH), trading as &quot;AL Solutions AI&quot;. By using the Site, you agree to 
               these Terms.
             </p>
           </section>
@@ -111,7 +110,7 @@ export default function TermsPage() {
             <h2 className="text-2xl font-bold text-text-primary">7. Third-party services</h2>
             <p className="mt-4 leading-relaxed">
               The Site links to or embeds third-party services, including Calendly, WhatsApp, Google, and LinkedIn. 
-              Your use of those services is subject to their own terms — we're not responsible for their availability 
+              Your use of those services is subject to their own terms — we&apos;re not responsible for their availability 
               or content.
             </p>
           </section>
@@ -119,7 +118,7 @@ export default function TermsPage() {
           <section>
             <h2 className="text-2xl font-bold text-text-primary">8. Disclaimers</h2>
             <p className="mt-4 leading-relaxed">
-              The Site and demo chatbot are provided "as is." We don't guarantee the Site will be uninterrupted or 
+              The Site and demo chatbot are provided &quot;as is.&quot; We don&apos;t guarantee the Site will be uninterrupted or 
               error-free, and the demo chatbot is for illustrative purposes — outputs should not be relied on as 
               professional advice.
             </p>
@@ -131,7 +130,7 @@ export default function TermsPage() {
               To the fullest extent permitted by law, Solutions AI Ltd is not liable for any indirect, incidental, 
               or consequential loss arising from your use of the Site. Nothing in these Terms limits liability that 
               cannot be excluded under English law (e.g. for fraud or death/personal injury caused by negligence). 
-              Liability arising from a paid engagement is governed by that engagement's Service Agreement.
+              Liability arising from a paid engagement is governed by that engagement&apos;s Service Agreement.
             </p>
           </section>
 

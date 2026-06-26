@@ -59,16 +59,16 @@ export default function AccessibilityStatementPage() {
           <section>
             <h2 className="text-2xl font-bold text-text-primary">2. Known limitations</h2>
             <p className="mt-4 leading-relaxed">
-              We're continuing to improve accessibility across the Site. Some third-party embeds (the Calendly 
+              We&apos;re continuing to improve accessibility across the Site. Some third-party embeds (the Calendly 
               booking widget, the demo chatbot, WhatsApp link) are built and maintained by external providers, 
-              and their accessibility is governed by those providers' own standards rather than ours directly.
+              and their accessibility is governed by those providers&apos; own standards rather than ours directly.
             </p>
           </section>
 
           <section>
             <h2 className="text-2xl font-bold text-text-primary">3. Feedback</h2>
             <p className="mt-4 leading-relaxed">
-              If you encounter any accessibility barrier using this Site, please let us know — we'll do our best 
+              If you encounter any accessibility barrier using this Site, please let us know — we&apos;ll do our best 
               to fix it or provide the information you need in an alternative format.
             </p>
             <p className="mt-4 leading-relaxed">
